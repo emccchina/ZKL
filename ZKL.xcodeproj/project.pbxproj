@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F7D09D081A6E4F3700332331 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D071A6E4F3700332331 /* main.m */; };
 		F7D09D0B1A6E4F3700332331 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D0A1A6E4F3700332331 /* AppDelegate.m */; };
-		F7D09D0E1A6E4F3700332331 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D0D1A6E4F3700332331 /* ViewController.m */; };
 		F7D09D111A6E4F3700332331 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D09D0F1A6E4F3700332331 /* Main.storyboard */; };
 		F7D09D131A6E4F3700332331 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7D09D121A6E4F3700332331 /* Images.xcassets */; };
 		F7D09D161A6E4F3700332331 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D09D141A6E4F3700332331 /* LaunchScreen.xib */; };
@@ -80,6 +79,7 @@
 		F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DBD1A6E518100332331 /* KDPreView.m */; };
 		F7D09E021A6E53A400332331 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D09E011A6E53A400332331 /* libsqlite3.dylib */; };
 		F7D09E051A6E542700332331 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09E041A6E542700332331 /* BaseViewController.m */; };
+		F7D09E081A6E57E300332331 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09E071A6E57E300332331 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,8 +98,6 @@
 		F7D09D071A6E4F3700332331 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F7D09D091A6E4F3700332331 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F7D09D0A1A6E4F3700332331 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F7D09D0C1A6E4F3700332331 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F7D09D0D1A6E4F3700332331 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F7D09D101A6E4F3700332331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7D09D121A6E4F3700332331 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F7D09D151A6E4F3700332331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -243,6 +241,8 @@
 		F7D09E011A6E53A400332331 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F7D09E031A6E542700332331 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		F7D09E041A6E542700332331 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		F7D09E061A6E57E300332331 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		F7D09E071A6E57E300332331 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,8 +292,8 @@
 			children = (
 				F7D09D091A6E4F3700332331 /* AppDelegate.h */,
 				F7D09D0A1A6E4F3700332331 /* AppDelegate.m */,
-				F7D09D0C1A6E4F3700332331 /* ViewController.h */,
-				F7D09D0D1A6E4F3700332331 /* ViewController.m */,
+				F7D09E061A6E57E300332331 /* MainViewController.h */,
+				F7D09E071A6E57E300332331 /* MainViewController.m */,
 				F7D09D0F1A6E4F3700332331 /* Main.storyboard */,
 				F7D09D121A6E4F3700332331 /* Images.xcassets */,
 				F7D09D141A6E4F3700332331 /* LaunchScreen.xib */,
@@ -699,7 +699,6 @@
 				F7D09DF61A6E518100332331 /* UIView+JHExtension.m in Sources */,
 				F7D09DDD1A6E518100332331 /* UIRefreshControl+AFNetworking.m in Sources */,
 				F7D09DF21A6E518100332331 /* JHRefreshFooterView.m in Sources */,
-				F7D09D0E1A6E4F3700332331 /* ViewController.m in Sources */,
 				F7D09DFB1A6E518100332331 /* TSPopoverController.m in Sources */,
 				F7D09DF71A6E518100332331 /* CycleScrollView.m in Sources */,
 				F7D09DE71A6E518100332331 /* JGProgressHUDFadeZoomAnimation.m in Sources */,
@@ -750,6 +749,7 @@
 				F7D09DC51A6E518100332331 /* MyTextField.m in Sources */,
 				F7D09DC21A6E518100332331 /* MyNavigationController.m in Sources */,
 				F7D09DC71A6E518100332331 /* TimeLabel.m in Sources */,
+				F7D09E081A6E57E300332331 /* MainViewController.m in Sources */,
 				F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */,
 				F7D09DD01A6E518100332331 /* AFSecurityPolicy.m in Sources */,
 				F7D09DFA1A6E518100332331 /* TSActionSheet.m in Sources */,
@@ -956,6 +956,7 @@
 				F7D09D271A6E4F3700332331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7D09D281A6E4F3700332331 /* Build configuration list for PBXNativeTarget "ZKLTests" */ = {
 			isa = XCConfigurationList;
@@ -964,6 +965,7 @@
 				F7D09D2A1A6E4F3700332331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
