@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6039E5E6-5F21-43DA-B3B4-48ECF4E2176B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZKL</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CF402633207418C2E7B96D96D90CF653AAE9BADE</key>
+		<string>https://github.com/emccchina/ZKL.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZKL.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CF402633207418C2E7B96D96D90CF653AAE9BADE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/emccchina/ZKL.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF402633207418C2E7B96D96D90CF653AAE9BADE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF402633207418C2E7B96D96D90CF653AAE9BADE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZKL</string>
+		</dict>
+	</array>
+</dict>
+</plist>
