@@ -10,8 +10,7 @@
 #define ZYYG_PublicFile_h
 
 #import "AFNetworking.h"
-#import "UIKit+AFNetworking.h"
-
+#import "UIImageView+AFNetworking.h"
 #ifdef DEBUG
 #define NSLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else
@@ -28,5 +27,5 @@
 #import "PublicDefine.h"
 #import "Utities.h"
 #import "UserInfo.h"
-
+#import "POP.h"
 #endif

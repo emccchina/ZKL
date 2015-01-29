@@ -14,6 +14,25 @@
 
 @implementation Utities
 
++ (UIImage*)backImage
+{
+    CGFloat width = 40;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, width), NO, [UIScreen mainScreen].scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIColor *color = [UIColor colorWithRed:235.0/255.0 green:247.0/255.0 blue:239.0/255.0 alpha:1.0];
+    CGContextSetStrokeColorWithColor(context, [color CGColor]);
+    CGContextSetLineWidth(context, 4);
+    CGFloat radius = 5;
+    CGContextMoveToPoint(context, width/2+radius, width/2- 3*radius);
+    CGContextAddLineToPoint(context, width/2-radius, width/2);
+    CGContextAddLineToPoint(context, width/2+radius, width/2+3*radius);
+//    CGContextClosePath(context);
+    CGContextDrawPath(context, kCGPathStroke);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
+}
+
 + (CGSize)sizeWithUIFont:(UIFont*)font string:(NSString*)string
 {
     if (string == nil) {
@@ -197,5 +216,19 @@
     [bottomHUD dismissAfterDelay:1.0f];
 }
 
++ (UIView*)viewAddContraintsParentView:(UIView*)parentView subNibName:(NSString*)subNibName
+{
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:subNibName owner:parentView options:nil];
+    UIView *subView = nib[0];
+    CGFloat space = 0;
+    [subView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [parentView addSubview:subView];
+    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:parentView attribute:NSLayoutAttributeTop multiplier:1 constant:space]];
+    
+    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:parentView attribute:NSLayoutAttributeLeft multiplier:1 constant:space]];
+    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:parentView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:subView attribute:NSLayoutAttributeBottom multiplier:1 constant:space]];
+    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:parentView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:subView attribute:NSLayoutAttributeRight multiplier:1 constant:space]];
+    return subView;
+}
 
 @end

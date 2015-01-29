@@ -16,7 +16,7 @@
 
 - (void)awakeFromNib
 {
-    self.navigationBar.barTintColor = [UIColor redColor];//kRedColor;
+    self.navigationBar.barTintColor = kNavBGColor;
     self.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     self.navigationBar.translucent = NO;
 }

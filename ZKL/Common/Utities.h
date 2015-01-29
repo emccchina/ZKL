@@ -14,12 +14,13 @@
 + (CGSize)sizeWithUIFont:(UIFont*)font string:(NSString*)string;
 + (CGSize)sizeWithUIFont:(UIFont*)font string:(NSString*)string rect:(CGSize)size;
 
++ (UIImage*)backImage;
+
 //行间距
 + (CGSize)sizeWithUIFont:(UIFont*)font string:(NSString*)string rect:(CGSize)size space:(CGFloat)space;
 
 //创建barButton
 + (UIBarButtonItem*)barButtonItemWithSomething:(id)some target:(id)target action:(SEL)sel;
-
 
 //创建一个动画
 + (CATransition *)getAnimation:(NSInteger)mytag;
@@ -38,6 +39,6 @@
 //展示提示语
 + (void)showMessageOnWindow:(NSString*)message;
 
-
++ (UIView*)viewAddContraintsParentView:(UIView*)parentView subNibName:(NSString*)subNibName;
 
 @end

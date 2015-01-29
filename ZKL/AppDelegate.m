@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeView.h"
 
 @interface AppDelegate ()
+<UITabBarControllerDelegate>
 
 @end
 
@@ -17,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    UITabBarController *VC = (UITabBarController*)self.window.rootViewController;
+    VC.delegate = self;
     return YES;
 }
 
@@ -40,6 +44,24 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    if (viewController.tabBarItem.tag == 10) {
+        
+        HomeView *homeview = (HomeView*)[self.window viewWithTag:1];
+        if (!homeview) {
+            homeview = (HomeView*)[Utities viewAddContraintsParentView:self.window subNibName:@"HomeView"];
+            homeview.tag = 1;
+            
+        }
+        homeview.hidden = NO;
+        [homeview startAnimationHV];
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

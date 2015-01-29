@@ -31,3 +31,5 @@
                                     [lineT addConstraint:[NSLayoutConstraint constraintWithItem:lineT attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:1/[UIScreen mainScreen].scale]];
 
 #endif
+
+#define kNavBGColor    [UIColor colorWithRed:89.0/255.0 green:213.0/255.0 blue:212.0/255.0 alpha:1.0]
