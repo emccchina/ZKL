@@ -20,7 +20,8 @@
 //    view1.tabBarItem = [self tabBarItemWithTitle:@"平价交易" image:[UIImage imageNamed:@"fairGray"] selectedImage:[UIImage imageNamed:@"fairRed"]];
     
     UIViewController *view2 = [[UIViewController alloc] init];//[self viewControllerFormStoryboard:@"PersonCenter"];
-    UITabBarItem *item2 = [self tabBarItemWithTitle:nil image:[UIImage imageNamed:@"avatar"] selectedImage:[UIImage imageNamed:@"avatar"]];
+    [UserInfo shareUserInfo].homeAddImage = [Utities homeAddImage];
+    UITabBarItem *item2 = [self tabBarItemWithTitle:nil image:[UserInfo shareUserInfo].homeAddImage selectedImage:[UserInfo shareUserInfo].homeAddImage];
     item2.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
     item2.tag = 10;
     view2.tabBarItem = item2;

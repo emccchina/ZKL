@@ -25,6 +25,7 @@
 
 - (void)awakeFromNib
 {
+    self.backgroundColor = [UIColor clearColor];
     [self addTarget:self action:@selector(pressedSelf:) forControlEvents:UIControlEventTouchUpInside];
 }
 

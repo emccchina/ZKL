@@ -14,8 +14,8 @@
 + (CGSize)sizeWithUIFont:(UIFont*)font string:(NSString*)string;
 + (CGSize)sizeWithUIFont:(UIFont*)font string:(NSString*)string rect:(CGSize)size;
 
-+ (UIImage*)backImage;
-
++ (UIImage*)backImage:(BOOL)direction;//0左   1右
++ (UIImage*)homeAddImage;
 //行间距
 + (CGSize)sizeWithUIFont:(UIFont*)font string:(NSString*)string rect:(CGSize)size space:(CGFloat)space;
 

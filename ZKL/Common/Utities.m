@@ -14,7 +14,7 @@
 
 @implementation Utities
 
-+ (UIImage*)backImage
++ (UIImage*)backImage:(BOOL)direction
 {
     CGFloat width = 40;
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, width), NO, [UIScreen mainScreen].scale);
@@ -22,11 +22,36 @@
     UIColor *color = [UIColor colorWithRed:235.0/255.0 green:247.0/255.0 blue:239.0/255.0 alpha:1.0];
     CGContextSetStrokeColorWithColor(context, [color CGColor]);
     CGContextSetLineWidth(context, 4);
-    CGFloat radius = 5;
+    CGFloat radius = direction ? -5 : 5;
     CGContextMoveToPoint(context, width/2+radius, width/2- 3*radius);
-    CGContextAddLineToPoint(context, width/2-radius, width/2);
+    CGContextAddLineToPoint(context, width/2-radius*3/2, width/2);
     CGContextAddLineToPoint(context, width/2+radius, width/2+3*radius);
 //    CGContextClosePath(context);
+    CGContextDrawPath(context, kCGPathStroke);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
+}
+
++ (UIImage*)homeAddImage
+{
+    CGFloat width = 40;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, width), NO, [UIScreen mainScreen].scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIColor *color = [UIColor colorWithRed:235.0/255.0 green:247.0/255.0 blue:239.0/255.0 alpha:1.0];
+    CGContextSetStrokeColorWithColor(context, [color CGColor]);
+    CGContextSetLineWidth(context, 4);
+    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:251.0/255.0 green:153.0/255.0 blue:39.0/255.0 alpha:1.0].CGColor);
+    CGContextAddArc(context, width/2, width/2, width/2, 0, 2*M_PI, 1);
+    CGContextDrawPath(context, kCGPathFill);
+    CGFloat radius = 5;
+    CGContextSetLineWidth(context, 4);
+    CGContextMoveToPoint(context, radius, width/2);
+    CGContextAddLineToPoint(context, width-radius, width/2);
+    
+    CGContextMoveToPoint(context, width/2, radius);
+    CGContextAddLineToPoint(context, width/2, width - radius);
+    //    CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathStroke);
     UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

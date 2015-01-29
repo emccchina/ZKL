@@ -16,13 +16,13 @@
                     <items/>
                 </toolbar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwI-7c-1mO">
-                    <rect key="frame" x="275" y="545" width="50" height="50"/>
-                    <state key="normal" image="avatar">
+                    <rect key="frame" x="285" y="561" width="30" height="34"/>
+                    <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAO-b7-hcF">
-                    <rect key="frame" x="277" y="285" width="46" height="30"/>
+                    <rect key="frame" x="277" y="301" width="46" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -55,7 +55,4 @@
             </connections>
         </view>
     </objects>
-    <resources>
-        <image name="avatar" width="50" height="50"/>
-    </resources>
 </document>

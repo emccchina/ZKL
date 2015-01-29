@@ -18,9 +18,10 @@
 
 - (void)startAnimationHV
 {
+    [self.closeBut setBackgroundImage:[Utities homeAddImage] forState:UIControlStateNormal];
     self.closeBut.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0);
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
-    anim.toValue = @(1);
+    anim.toValue = @(M_PI_4);
     [self.closeBut.layer pop_addAnimation:anim forKey:@"size"];
     
     self.bu1.layer.transform = CATransform3DMakeTranslation(-300, 0, 0);
