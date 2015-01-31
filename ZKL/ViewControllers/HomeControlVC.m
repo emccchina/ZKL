@@ -22,16 +22,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"自控力";
+    self.view.backgroundColor = [UIColor greenColor];
+    [self.leftBut setBackgroundImage:[Utities backImage:0] forState:UIControlStateNormal];
+    [self.rightBut setBackgroundImage:[Utities backImage:1] forState:UIControlStateNormal];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.title = @"自控力";
-    self.view.backgroundColor = [UIColor greenColor];
+    
     NSLog(@"%@", NSStringFromCGRect(self.dreamView.frame));
-    [self.leftBut setBackgroundImage:[Utities backImage:0] forState:UIControlStateNormal];
-    [self.rightBut setBackgroundImage:[Utities backImage:1] forState:UIControlStateNormal];
-    [self.dreamView start:0];
+    
+    [self.dreamView start:1];
     [self.dreamView setStrokeEnd:0.6 animated:YES];
     
 }

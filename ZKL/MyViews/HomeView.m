@@ -18,11 +18,10 @@
 
 - (void)startAnimationHV
 {
+    willHidden = NO;
     [self.closeBut setBackgroundImage:[Utities homeAddImage] forState:UIControlStateNormal];
     self.closeBut.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0);
-    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
-    anim.toValue = @(M_PI_4);
-    [self.closeBut.layer pop_addAnimation:anim forKey:@"size"];
+    [self closeButAnimation:0];
     
     self.bu1.layer.transform = CATransform3DMakeTranslation(-300, 0, 0);
     POPSpringAnimation *anim1 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationX];
@@ -39,6 +38,29 @@
     
 }
 
+- (void)closeButAnimation:(BOOL)state//0 旋转变大   1还原
+{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
+    CGFloat angle = state ? 0 : M_PI_4;
+    anim.toValue = @(angle);
+    anim.delegate = self;
+    [self.closeBut.layer pop_addAnimation:anim forKey:@"size"];
+    
+    POPSpringAnimation *animScale = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    CGPoint scale = state ? CGPointMake(1.0, 1.0) : CGPointMake(1.2, 1.2);
+    animScale.toValue = [NSValue valueWithCGPoint:scale];
+    anim.name = @"state";
+    [self.closeBut.layer pop_addAnimation:animScale forKey:@"sizescale"];
+}
+
+- (void)selfAlpha:(CGFloat)endAlpha //1  消失    0 显示
+{
+    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim.fromValue = @(1-endAlpha);
+    anim.toValue = @(endAlpha);
+    [self pop_addAnimation:anim forKey:@"alpha"];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
@@ -46,10 +68,15 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.hidden = YES;
-//    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
-//    anim.toValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
-//    [self.closeBut.layer pop_addAnimation:anim forKey:@"s"];
+    willHidden = YES;
+    [self closeButAnimation:1];
+}
+
+- (void)pop_animationDidStop:(POPAnimation *)anim finished:(BOOL)finished{
+//    NSLog(@"finished  %@", anim.name);
+    if (willHidden) {
+        [self selfAlpha:0];
+    }
 }
 
 /*

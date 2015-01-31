@@ -54,9 +54,9 @@
         if (!homeview) {
             homeview = (HomeView*)[Utities viewAddContraintsParentView:self.window subNibName:@"HomeView"];
             homeview.tag = 1;
-            
+            homeview.alpha = 0;
         }
-        homeview.hidden = NO;
+        [homeview selfAlpha:1];
         [homeview startAnimationHV];
         return NO;
     }

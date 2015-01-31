@@ -13,10 +13,17 @@
 {
     UILabel     *dreamLabel;
     UILabel     *timeLabel;
+    UILabel     *addDreamLabel;
     ProgressCricleView  *fininshed;
     ProgressCricleView  *unFinished;
-    UIView      *circleWhite;
+    
     CAShapeLayer    *stateLayer;//什么状态，0添加   1暂停  2播放
+    
+    UIView      *circleWhite;
+    CAShapeLayer *circleBig;
+    CAShapeLayer *circleInside;
+    CAShapeLayer *circleInsideLightBG;
+    CAShapeLayer *rectTop;
 }
 @property(nonatomic) CAShapeLayer *circleLayer;
 @end
@@ -31,7 +38,23 @@
 
 - (void)pressedSelf:(id)sender
 {
-    self.typeState = !self.typeState;
+    switch (self.typeState) {
+        case 0:{
+            if (self.pressed) {
+                self.pressed(0);
+                return;
+            }
+        }break;
+        case 1:{
+            self.typeState = 2;
+        }break;
+        case 2:{
+            self.typeState = 1;
+        }break;
+            
+        default:
+            break;
+    }
     [self setStateLayer:self.typeState];
 }
 
@@ -39,9 +62,24 @@
 
 - (void)start:(NSInteger)type
 {
+    self.typeState = type;
     [self addCircleLayer];
     [self setup:self];
-    [self setStateLayer:0];
+    [self setStateLayer:type];
+}
+
+- (void)setStateHidden
+{
+    circleWhite.hidden = !self.typeState;
+    dreamLabel.hidden = !self.typeState;
+    timeLabel.hidden = !self.typeState;
+    circleInside.hidden = !self.typeState;
+    circleInsideLightBG.hidden = self.typeState;
+    self.circleLayer.hidden = !self.typeState;
+    rectTop.hidden = !self.typeState;
+    fininshed.hidden = !self.typeState;
+    unFinished.hidden = !self.typeState;
+    addDreamLabel.hidden = self.typeState;
 }
 
 - (void)setStrokeEnd:(CGFloat)strokeEnd animated:(BOOL)animated
@@ -54,12 +92,6 @@
 }
 
 #pragma mark - Property Setters
-
-- (void)setStrokeColor:(UIColor *)strokeColor
-{
-    self.circleLayer.strokeColor = strokeColor.CGColor;
-    _strokeColor = strokeColor;
-}
 
 - (POPMutableAnimatableProperty *)animationProperty:(NSInteger)type {
     switch (type) {
@@ -139,6 +171,14 @@
         circleWhite.layer.backgroundColor = [UIColor whiteColor].CGColor;
     }
     
+    if (!addDreamLabel) {
+        addDreamLabel = [UILabel new];
+        [self addSubview:addDreamLabel];
+        addDreamLabel.textColor = kTextColor;
+        addDreamLabel.font = [UIFont boldSystemFontOfSize:sizeFont/2];
+        addDreamLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    
     dreamLabel.text = @"梦想";
     dreamLabel.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)/2);
     dreamLabel.center =CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)/4+15);
@@ -147,6 +187,9 @@
     timeLabel.text = @"0%";
     circleWhite.frame = CGRectMake(CGRectGetWidth(self.frame)/2-8, -4, 16, 16);
     circleWhite.layer.cornerRadius = 8;
+    addDreamLabel.text = @"添加梦想";
+    addDreamLabel.frame = CGRectMake(0, 0, self.frame.size.width, CGRectGetHeight(self.frame)/2);
+    addDreamLabel.center = CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)*6/8);
 }
 
 - (CGPoint)pointFromCircle:(CGFloat)progress reduceAngle:(CGFloat)angleReduce radiusVar:(CGFloat)radiusVar
@@ -163,60 +206,98 @@
 {
     CGFloat lineWidth = 8.f;
     CGFloat radius = CGRectGetWidth(self.bounds)/2 - lineWidth/2;
-    CAShapeLayer *circleBig = [CAShapeLayer layer];
-    CGRect rect = CGRectMake(lineWidth/2, lineWidth/2, radius * 2, radius * 2);
-    circleBig.path = [UIBezierPath bezierPathWithRoundedRect:rect
-                                                       cornerRadius:radius].CGPath;
-    circleBig.strokeColor = kOutsideColor.CGColor;
-    circleBig.fillColor = nil;
-    circleBig.lineWidth = lineWidth;
-    circleBig.lineCap = kCALineCapRound;
-    circleBig.lineJoin = kCALineJoinMiter;
-    [self.layer addSublayer:circleBig];
     
-    CAShapeLayer *circleInside = [CAShapeLayer layer];
-    CGRect rectInside = CGRectMake(lineWidth, lineWidth, radius * 2-lineWidth, radius * 2-lineWidth);
-    circleInside.path = [UIBezierPath bezierPathWithRoundedRect:rectInside
-                                                cornerRadius:radius].CGPath;
-    circleInside.strokeColor = nil;//[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3].CGColor;
-    circleInside.fillColor = kBGColor.CGColor;
-    circleInside.lineWidth = 0;
-    circleInside.lineCap = kCALineCapRound;
-    circleInside.lineJoin = kCALineJoinMiter;
-    [self.layer addSublayer:circleInside];
+    if (!circleBig) {
+        circleBig = [CAShapeLayer layer];
+        CGRect rect = CGRectMake(lineWidth/2, lineWidth/2, radius * 2, radius * 2);
+        circleBig.path = [UIBezierPath bezierPathWithRoundedRect:rect
+                                                    cornerRadius:radius].CGPath;
+        circleBig.strokeColor = kOutsideColor.CGColor;
+        circleBig.fillColor = nil;
+        circleBig.lineWidth = lineWidth;
+        circleBig.lineCap = kCALineCapRound;
+        circleBig.lineJoin = kCALineJoinMiter;
+        [self.layer addSublayer:circleBig];
+    }
+    
+    if (!circleInside) {
+        circleInside = [CAShapeLayer layer];
+        CGRect rectInside = CGRectMake(lineWidth, lineWidth, radius * 2-lineWidth, radius * 2-lineWidth);
+        circleInside.path = [UIBezierPath bezierPathWithRoundedRect:rectInside
+                                                       cornerRadius:radius].CGPath;
+        circleInside.strokeColor = nil;//[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3].CGColor;
+        circleInside.fillColor = kBGColor.CGColor;
+        circleInside.lineWidth = 0;
+        circleInside.lineCap = kCALineCapRound;
+        circleInside.lineJoin = kCALineJoinMiter;
+        [self.layer addSublayer:circleInside];
+    }
+    if (!circleInsideLightBG) {
+        circleInsideLightBG = [CAShapeLayer layer];
+        CGRect rectInside = CGRectMake(lineWidth, lineWidth, radius * 2-lineWidth, radius * 2-lineWidth);
+        circleInsideLightBG.path = [UIBezierPath bezierPathWithRoundedRect:rectInside
+                                                       cornerRadius:radius].CGPath;
+        circleInsideLightBG.strokeColor = nil;//[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3].CGColor;
+        circleInsideLightBG.fillColor = kBGLightColor.CGColor;
+        circleInsideLightBG.lineWidth = 0;
+        circleInsideLightBG.lineCap = kCALineCapRound;
+        circleInsideLightBG.lineJoin = kCALineJoinMiter;
+        [self.layer addSublayer:circleInsideLightBG];
+    }
     
     lineWidth = 4.f;
     CGFloat space = 2;
     radius = CGRectGetWidth(self.bounds)/2 - lineWidth/2-space;
-    self.circleLayer = [CAShapeLayer layer];
-    CGRect rect1 = CGRectMake(lineWidth/2+space, lineWidth/2+space, radius * 2, radius * 2);
-    self.circleLayer.path = [UIBezierPath bezierPathWithRoundedRect:rect1
-                                                       cornerRadius:radius].CGPath;
-    self.circleLayer.strokeColor = kProgressColor.CGColor;
-    self.circleLayer.fillColor = nil;
-    self.circleLayer.lineWidth = lineWidth;
-    self.circleLayer.strokeStart = 0;
-    self.circleLayer.strokeEnd = 0;
-    self.circleLayer.lineCap = kCALineCapRound;
-    self.circleLayer.lineJoin = kCALineJoinRound;
-    [self.layer addSublayer:self.circleLayer];
+    if (!self.circleLayer) {
+        self.circleLayer = [CAShapeLayer layer];
+        CGRect rect1 = CGRectMake(lineWidth/2+space, lineWidth/2+space, radius * 2, radius * 2);
+        self.circleLayer.path = [UIBezierPath bezierPathWithRoundedRect:rect1
+                                                           cornerRadius:radius].CGPath;
+        self.circleLayer.strokeColor = kProgressColor.CGColor;
+        self.circleLayer.fillColor = nil;
+        self.circleLayer.lineWidth = lineWidth;
+        self.circleLayer.strokeStart = 0;
+        self.circleLayer.strokeEnd = 0;
+        self.circleLayer.lineCap = kCALineCapRound;
+        self.circleLayer.lineJoin = kCALineJoinRound;
+        [self.layer addSublayer:self.circleLayer];
+    }
     
-    CAShapeLayer *rectTop = [CAShapeLayer layer];
-    CGRect rectTopRect = CGRectMake(CGRectGetWidth(self.frame)/2-3, -5, 3, 20);
-    rectTop.path = [UIBezierPath bezierPathWithRect:rectTopRect].CGPath;
-    rectTop.strokeColor = 0;
-    rectTop.fillColor = [UIColor whiteColor].CGColor;
-    [self.layer addSublayer:rectTop];
+    if (!rectTop) {
+        rectTop = [CAShapeLayer layer];
+        CGRect rectTopRect = CGRectMake(CGRectGetWidth(self.frame)/2-3, -5, 3, 20);
+        rectTop.path = [UIBezierPath bezierPathWithRect:rectTopRect].CGPath;
+        rectTop.strokeColor = 0;
+        rectTop.fillColor = [UIColor whiteColor].CGColor;
+        [self.layer addSublayer:rectTop];
+    }
+    
     
 }
 
+
 - (void)setStateLayer:(NSInteger)type
 {
+    [self setStateHidden];
     [stateLayer removeFromSuperlayer];
     stateLayer = [CAShapeLayer layer];
     CGFloat space = CGRectGetWidth(self.frame)/6;
     switch (type) {
         case 0:{
+            stateLayer.strokeColor = [UIColor colorWithRed:101.0/255.0 green:196.0/255.0 blue:211.0/255.0 alpha:1].CGColor;
+            stateLayer.fillColor = nil;
+            stateLayer.lineWidth = space/6;
+            stateLayer.lineCap = kCALineCapRound;
+            stateLayer.lineJoin = kCALineJoinRound;
+            CGRect rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space, CGRectGetHeight(self.frame)/2-space/12-18, 2*space, space/6);
+            UIBezierPath *path = [UIBezierPath bezierPathWithRect:rectstate];
+            rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space/12, CGRectGetHeight(self.frame)/2-space-18, space/6, space*2);
+            UIBezierPath *path1 = [UIBezierPath bezierPathWithRect:rectstate];
+            [path appendPath:path1];
+            stateLayer.path = path.CGPath;
+        }break;
+        case 1:{
+            stateLayer.fillColor = [UIColor whiteColor].CGColor;
             CGRect rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space*3/4, CGRectGetHeight(self.frame)/2-space, space/2, space*2);
             UIBezierPath *path = [UIBezierPath bezierPathWithRect:rectstate];
             rectstate.origin.x += space;
@@ -224,9 +305,9 @@
             [path appendPath:path1];
             stateLayer.path = path.CGPath;
         }break;
-        case 1:{
+        case 2:{
             //1.获取图形上下文
-            
+            stateLayer.fillColor = [UIColor whiteColor].CGColor;
             CGFloat midX = CGRectGetWidth(self.frame)/2+10;
             CGFloat midY = CGRectGetHeight(self.frame)/2;
             CGMutablePathRef path=CGPathCreateMutable();
@@ -235,9 +316,6 @@
             CGPathAddLineToPoint(path, NULL, midX-space, midY+space);
             UIBezierPath *path1 = [UIBezierPath bezierPathWithCGPath:path];
             stateLayer.path = path1.CGPath;
-        }break;
-        case 2:{
-            
         }break;
             
         default:
