@@ -134,7 +134,7 @@
 - (void)setProgressCircle:(ProgressCricleView*)view progress:(CGFloat)progress
 {
     view.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame)/4, CGRectGetWidth(self.frame)/4);
-    view.center = [self pointFromCircle:progress reduceAngle:.1 radiusVar:-4];
+    view.center = [self pointFromCircle:progress reduceAngle:.1 radiusVar:0];
     [view setProgress:progress];
 }
 

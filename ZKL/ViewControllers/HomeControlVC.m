@@ -8,6 +8,7 @@
 
 #import "HomeControlVC.h"
 #import "DreamTime.h"
+#import "ProgressRectView.h"
 
 @interface HomeControlVC ()
 
@@ -15,6 +16,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *leftBut;
 @property (weak, nonatomic) IBOutlet DreamTime *dreamView;
+@property (weak, nonatomic) IBOutlet UILabel *dreameTitle;
+@property (weak, nonatomic) IBOutlet ProgressRectView *dreamProgress;
+@property (weak, nonatomic) IBOutlet ProgressRectView *needProgress;
+@property (weak, nonatomic) IBOutlet ProgressRectView *wasteProgress;
 @end
 
 @implementation HomeControlVC
@@ -23,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"自控力";
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
     [self.leftBut setBackgroundImage:[Utities backImage:0] forState:UIControlStateNormal];
     [self.rightBut setBackgroundImage:[Utities backImage:1] forState:UIControlStateNormal];
 }
@@ -35,6 +40,10 @@
     
     [self.dreamView start:1];
     [self.dreamView setStrokeEnd:0.6 animated:YES];
+    
+    [self.dreamProgress setViewWithTitle:@"10小时" progress:0.6];
+    [self.needProgress setViewWithTitle:@"8小时" progress:0.8];
+    [self.wasteProgress setViewWithTitle:@"2小时" progress:0.2];
     
 }
 - (void)didReceiveMemoryWarning {

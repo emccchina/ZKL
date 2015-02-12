@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5756F2E04C56C1857922024C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D45F144EA7FC0C69E98E14EF /* libPods.a */; };
+		F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */; };
 		F7ACCF221A71EF3300ABAA69 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7ACCF211A71EF3300ABAA69 /* HomeView.xib */; };
 		F7ACCF241A71FE7900ABAA69 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7ACCF231A71FE7900ABAA69 /* QuartzCore.framework */; };
 		F7ACCF271A7241D100ABAA69 /* DreamTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F7ACCF261A7241D100ABAA69 /* DreamTime.m */; };
@@ -82,6 +83,8 @@
 		173E3982BD6B614786560469 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C04D8267727ED642C92248FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D45F144EA7FC0C69E98E14EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F79F809A1A7F443000FDA3F9 /* ProgressRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressRectView.h; sourceTree = "<group>"; };
+		F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressRectView.m; sourceTree = "<group>"; };
 		F7ACCF211A71EF3300ABAA69 /* HomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
 		F7ACCF231A71FE7900ABAA69 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F7ACCF251A7241D100ABAA69 /* DreamTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamTime.h; sourceTree = "<group>"; };
@@ -481,6 +484,8 @@
 				F7ACCF261A7241D100ABAA69 /* DreamTime.m */,
 				F7C9873F1A77195F001AE3DA /* ProgressCricleView.h */,
 				F7C987401A77195F001AE3DA /* ProgressCricleView.m */,
+				F79F809A1A7F443000FDA3F9 /* ProgressRectView.h */,
+				F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */,
 			);
 			name = MyViews;
 			path = ZKL/MyViews;
@@ -681,6 +686,7 @@
 				F7D09DC71A6E518100332331 /* TimeLabel.m in Sources */,
 				F7D09E081A6E57E300332331 /* MainViewController.m in Sources */,
 				F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */,
+				F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */,
 				F7D09DFA1A6E518100332331 /* TSActionSheet.m in Sources */,
 				F7D09DC01A6E518100332331 /* FileManager.m in Sources */,
 				F7D09DC11A6E518100332331 /* MyButton.m in Sources */,
