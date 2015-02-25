@@ -14,5 +14,6 @@
 + (UserInfo*)shareUserInfo; //全局共享的用户信息 单例模式
 
 @property (strong, nonatomic) UIImage   *homeAddImage;
+@property (strong, nonatomic) UIImage   *backImage;
 
 @end

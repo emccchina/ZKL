@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5756F2E04C56C1857922024C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D45F144EA7FC0C69E98E14EF /* libPods.a */; };
+		F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59951A9D64B3006EC998 /* AddDreamVC.m */; };
+		F75C59991A9D95F7006EC998 /* WhiteBlackTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */; };
 		F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */; };
 		F7ACCF221A71EF3300ABAA69 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7ACCF211A71EF3300ABAA69 /* HomeView.xib */; };
 		F7ACCF241A71FE7900ABAA69 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7ACCF231A71FE7900ABAA69 /* QuartzCore.framework */; };
@@ -83,6 +85,10 @@
 		173E3982BD6B614786560469 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C04D8267727ED642C92248FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D45F144EA7FC0C69E98E14EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F75C59941A9D64B3006EC998 /* AddDreamVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDreamVC.h; sourceTree = "<group>"; };
+		F75C59951A9D64B3006EC998 /* AddDreamVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamVC.m; sourceTree = "<group>"; };
+		F75C59971A9D95F7006EC998 /* WhiteBlackTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteBlackTextFiled.h; sourceTree = "<group>"; };
+		F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteBlackTextFiled.m; sourceTree = "<group>"; };
 		F79F809A1A7F443000FDA3F9 /* ProgressRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressRectView.h; sourceTree = "<group>"; };
 		F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressRectView.m; sourceTree = "<group>"; };
 		F7ACCF211A71EF3300ABAA69 /* HomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
@@ -486,6 +492,8 @@
 				F7C987401A77195F001AE3DA /* ProgressCricleView.m */,
 				F79F809A1A7F443000FDA3F9 /* ProgressRectView.h */,
 				F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */,
+				F75C59971A9D95F7006EC998 /* WhiteBlackTextFiled.h */,
+				F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */,
 			);
 			name = MyViews;
 			path = ZKL/MyViews;
@@ -498,6 +506,8 @@
 				F7D09E041A6E542700332331 /* BaseViewController.m */,
 				F7ACCF281A7243D600ABAA69 /* HomeControlVC.h */,
 				F7ACCF291A7243D600ABAA69 /* HomeControlVC.m */,
+				F75C59941A9D64B3006EC998 /* AddDreamVC.h */,
+				F75C59951A9D64B3006EC998 /* AddDreamVC.m */,
 			);
 			name = ViewControllers;
 			path = ZKL/ViewControllers;
@@ -658,6 +668,7 @@
 				F7D09DF41A6E518100332331 /* UIScrollView+JHExtension.m in Sources */,
 				F7D33C9B1A70DF2A00A6487A /* HomeView.m in Sources */,
 				F7D09DE51A6E518100332331 /* JGProgressHUDAnimation.m in Sources */,
+				F75C59991A9D95F7006EC998 /* WhiteBlackTextFiled.m in Sources */,
 				F7D09DEB1A6E518100332331 /* JGProgressHUDRingIndicatorView.m in Sources */,
 				F7D09DEE1A6E518100332331 /* JHRefreshCommonAniView.m in Sources */,
 				F7D09DC81A6E518100332331 /* UserInfo.m in Sources */,
@@ -668,6 +679,7 @@
 				F7D09DCB1A6E518100332331 /* NSString+AES.m in Sources */,
 				F7D09DFC1A6E518100332331 /* TSPopoverPopoverView.m in Sources */,
 				F7D09DFE1A6E518100332331 /* UIBarButtonItem+WEPopover.m in Sources */,
+				F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */,
 				F7D09DF31A6E518100332331 /* JHRefreshHeaderView.m in Sources */,
 				F7D09DFD1A6E518100332331 /* TSPopoverTouchView.m in Sources */,
 				F7ACCF2A1A7243D600ABAA69 /* HomeControlVC.m in Sources */,

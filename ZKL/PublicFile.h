@@ -24,6 +24,11 @@
 #define kScreenWidth    CGRectGetWidth([UIScreen mainScreen].bounds)
 #define kScreenHeight   CGRectGetHeight([UIScreen mainScreen].bounds)
 
+#define kLightGrayColor [UIColor colorWithRed:155.0/255.0 green:155.0/255.0 blue:155.0/255.0 alpha:1]
+#define kGrayColor      [UIColor colorWithRed:85.0/255.0 green:85.0/255.0 blue:85.0/255.0 alpha:1]
+#define kBlackColor     [UIColor colorWithRed:41.0/255.0 green:41.0/255.0 blue:41.0/255.0 alpha:1]
+#define kBGGrayColor     [UIColor colorWithRed:236.0/255.0 green:236.0/255.0 blue:236.0/255.0 alpha:1]
+
 #import "PublicDefine.h"
 #import "Utities.h"
 #import "UserInfo.h"

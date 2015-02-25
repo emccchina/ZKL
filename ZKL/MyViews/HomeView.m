@@ -15,26 +15,37 @@
     self.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
 }
 
+- (IBAction)doButton:(id)sender {
+    UIButton *button = (UIButton*)sender;
+    NSLog(@"%d",button.tag);
+}
 
 - (void)startAnimationHV
 {
+    POPSpringAnimation *anim1 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];
+    anim1.toValue = @(0);
+    anim1.springBounciness = 20;
+    for (int i = 2; i < 5; i++) {
+        UIButton *button = (UIButton*)[self viewWithTag:i];
+        button.layer.transform = CATransform3DMakeTranslation(0, 200, 0);
+        [button.layer pop_addAnimation:anim1 forKey:@"transformY"];
+    }
     willHidden = NO;
     [self.closeBut setBackgroundImage:[Utities homeAddImage] forState:UIControlStateNormal];
     self.closeBut.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0);
     [self closeButAnimation:0];
     
-    self.bu1.layer.transform = CATransform3DMakeTranslation(-300, 0, 0);
-    POPSpringAnimation *anim1 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationX];
-    anim1.toValue = @(0);
-    [self.bu1.layer pop_addAnimation:anim1 forKey:@"size1"];
+//    self.bu1.layer.transform = CATransform3DMakeTranslation(-300, 0, 0);
     
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleY];
-    self.button.layer.transform = CATransform3DMakeScale(1.0, 0.1, 1.0);
-    animation.toValue = @(1.0);
-    animation.springBounciness = 10;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.button.layer pop_addAnimation:animation forKey:@"ZoomInY"];
-    });
+//    [self.bu1.layer pop_addAnimation:anim1 forKey:@"size1"];
+//    
+//    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleY];
+//    self.button.layer.transform = CATransform3DMakeScale(1.0, 0.1, 1.0);
+//    animation.toValue = @(1.0);
+//    animation.springBounciness = 10;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.button.layer pop_addAnimation:animation forKey:@"ZoomInY"];
+//    });
     
 }
 

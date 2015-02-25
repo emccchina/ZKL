@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -21,35 +21,57 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAO-b7-hcF">
-                    <rect key="frame" x="277" y="301" width="46" height="30"/>
-                    <state key="normal" title="Button">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFY-Dd-4WR">
+                    <rect key="frame" x="0.0" y="377" width="200" height="34"/>
+                    <state key="normal" title="1">
+                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="doButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="G1E-et-cPY"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syb-iq-z6z">
-                    <rect key="frame" x="277" y="70" width="46" height="30"/>
-                    <state key="normal" title="Button">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6R-6E-Bu7">
+                    <rect key="frame" x="200" y="377" width="200" height="34"/>
+                    <state key="normal" title="2">
+                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="doButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Cdp-dn-pzL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsT-CC-hTf">
+                    <rect key="frame" x="400" y="377" width="200" height="34"/>
+                    <state key="normal" title="3">
+                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="doButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="B39-Gr-6Yb"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="osf-L9-soS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5CS-qd-bsb"/>
-                <constraint firstItem="syb-iq-z6z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="70" id="J4n-vM-b7g"/>
-                <constraint firstAttribute="centerX" secondItem="gAO-b7-hcF" secondAttribute="centerX" id="Pfh-BK-1oH"/>
-                <constraint firstAttribute="centerX" secondItem="syb-iq-z6z" secondAttribute="centerX" id="UgI-bz-aMA"/>
+                <constraint firstItem="O6R-6E-Bu7" firstAttribute="leading" secondItem="AFY-Dd-4WR" secondAttribute="trailing" id="6dD-ew-4eC"/>
+                <constraint firstItem="UsT-CC-hTf" firstAttribute="leading" secondItem="O6R-6E-Bu7" secondAttribute="trailing" id="7WM-w3-T8X"/>
+                <constraint firstItem="O6R-6E-Bu7" firstAttribute="width" secondItem="AFY-Dd-4WR" secondAttribute="width" id="PQM-0w-whI"/>
+                <constraint firstAttribute="trailing" secondItem="UsT-CC-hTf" secondAttribute="trailing" id="Y9R-e7-9kA"/>
+                <constraint firstItem="UsT-CC-hTf" firstAttribute="width" secondItem="O6R-6E-Bu7" secondAttribute="width" id="YB4-C7-etk"/>
                 <constraint firstItem="osf-L9-soS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cM7-oJ-tET"/>
+                <constraint firstItem="OwI-7c-1mO" firstAttribute="top" secondItem="AFY-Dd-4WR" secondAttribute="bottom" constant="150" id="cP3-El-ifc"/>
                 <constraint firstAttribute="trailing" secondItem="osf-L9-soS" secondAttribute="trailing" id="dxc-si-gTu"/>
                 <constraint firstAttribute="centerX" secondItem="OwI-7c-1mO" secondAttribute="centerX" id="fht-qh-m9a"/>
                 <constraint firstAttribute="bottom" secondItem="OwI-7c-1mO" secondAttribute="bottom" constant="5" id="jeQ-gS-KcG"/>
-                <constraint firstItem="OwI-7c-1mO" firstAttribute="top" secondItem="gAO-b7-hcF" secondAttribute="bottom" constant="230" id="sJc-ek-gos"/>
+                <constraint firstItem="AFY-Dd-4WR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="m8b-Zy-eyJ"/>
+                <constraint firstItem="O6R-6E-Bu7" firstAttribute="top" secondItem="AFY-Dd-4WR" secondAttribute="top" id="s4W-O5-ZwM"/>
                 <constraint firstAttribute="bottom" secondItem="osf-L9-soS" secondAttribute="bottom" id="uKM-Qd-ZEi"/>
+                <constraint firstItem="UsT-CC-hTf" firstAttribute="top" secondItem="O6R-6E-Bu7" secondAttribute="top" id="ufH-45-olJ"/>
             </constraints>
             <connections>
-                <outlet property="bu1" destination="syb-iq-z6z" id="S2C-H6-Bga"/>
-                <outlet property="button" destination="gAO-b7-hcF" id="Hrm-Cg-BX7"/>
+                <outlet property="but1" destination="AFY-Dd-4WR" id="ALl-uo-hBe"/>
                 <outlet property="closeBut" destination="OwI-7c-1mO" id="sCV-IJ-4BM"/>
                 <outlet property="toolBar" destination="osf-L9-soS" id="eH6-lN-cp7"/>
             </connections>
