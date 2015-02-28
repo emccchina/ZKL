@@ -15,8 +15,9 @@
 		F7ACCF241A71FE7900ABAA69 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7ACCF231A71FE7900ABAA69 /* QuartzCore.framework */; };
 		F7ACCF271A7241D100ABAA69 /* DreamTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F7ACCF261A7241D100ABAA69 /* DreamTime.m */; };
 		F7ACCF2A1A7243D600ABAA69 /* HomeControlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7ACCF291A7243D600ABAA69 /* HomeControlVC.m */; };
-		F7B1670A1AA16A16000B84D1 /* CanlendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B167091AA16A16000B84D1 /* CanlendarView.xib */; };
 		F7B1670D1AA188D0000B84D1 /* CustomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B1670C1AA188D0000B84D1 /* CustomModel.m */; };
+		F7B167131AA1A6BE000B84D1 /* DayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B167121AA1A6BE000B84D1 /* DayButton.m */; };
+		F7B1671B1AA1A9CE000B84D1 /* NSDate+Agenda.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B167161AA1A9CE000B84D1 /* NSDate+Agenda.m */; };
 		F7BDC40C1AA05D92008A1BD0 /* CalendarVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7BDC40B1AA05D92008A1BD0 /* CalendarVC.storyboard */; };
 		F7BDC40F1AA05DD8008A1BD0 /* CalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */; };
 		F7BDC4151AA068FA008A1BD0 /* CanlendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */; };
@@ -108,9 +109,12 @@
 		F7ACCF261A7241D100ABAA69 /* DreamTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamTime.m; sourceTree = "<group>"; };
 		F7ACCF281A7243D600ABAA69 /* HomeControlVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeControlVC.h; sourceTree = "<group>"; };
 		F7ACCF291A7243D600ABAA69 /* HomeControlVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeControlVC.m; sourceTree = "<group>"; };
-		F7B167091AA16A16000B84D1 /* CanlendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CanlendarView.xib; sourceTree = "<group>"; };
 		F7B1670B1AA188D0000B84D1 /* CustomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomModel.h; sourceTree = "<group>"; };
 		F7B1670C1AA188D0000B84D1 /* CustomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomModel.m; sourceTree = "<group>"; };
+		F7B167111AA1A6BE000B84D1 /* DayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayButton.h; sourceTree = "<group>"; };
+		F7B167121AA1A6BE000B84D1 /* DayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayButton.m; sourceTree = "<group>"; };
+		F7B167151AA1A9CE000B84D1 /* NSDate+Agenda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Agenda.h"; sourceTree = "<group>"; };
+		F7B167161AA1A9CE000B84D1 /* NSDate+Agenda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Agenda.m"; sourceTree = "<group>"; };
 		F7BDC40B1AA05D92008A1BD0 /* CalendarVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CalendarVC.storyboard; sourceTree = "<group>"; };
 		F7BDC40D1AA05DD8008A1BD0 /* CalendarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarVC.h; sourceTree = "<group>"; };
 		F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarVC.m; sourceTree = "<group>"; };
@@ -275,6 +279,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F7B167141AA1A9CE000B84D1 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				F7B167151AA1A9CE000B84D1 /* NSDate+Agenda.h */,
+				F7B167161AA1A9CE000B84D1 /* NSDate+Agenda.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
 		F7D09CF91A6E4F3700332331 = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +397,7 @@
 		F7D09D411A6E518000332331 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F7B167141AA1A9CE000B84D1 /* NSDate */,
 				F7D09D421A6E518000332331 /* aes */,
 				F7D09D7C1A6E518100332331 /* JGProgressHUD */,
 				F7D09D8D1A6E518100332331 /* JHRefresh */,
@@ -529,7 +543,8 @@
 				F7EF35581A9F066300FEE796 /* ImageButton.m */,
 				F7BDC4131AA068FA008A1BD0 /* CanlendarView.h */,
 				F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */,
-				F7B167091AA16A16000B84D1 /* CanlendarView.xib */,
+				F7B167111AA1A6BE000B84D1 /* DayButton.h */,
+				F7B167121AA1A6BE000B84D1 /* DayButton.m */,
 			);
 			name = MyViews;
 			path = ZKL/MyViews;
@@ -652,7 +667,6 @@
 				F7D33C961A70D8C700A6487A /* Club.storyboard in Resources */,
 				F7D09D131A6E4F3700332331 /* Images.xcassets in Resources */,
 				F7D164FE1AA00B1F0085F73B /* EditTime.xib in Resources */,
-				F7B1670A1AA16A16000B84D1 /* CanlendarView.xib in Resources */,
 				F7D09DEF1A6E518100332331 /* JHRefresh.bundle in Resources */,
 				F7BDC40C1AA05D92008A1BD0 /* CalendarVC.storyboard in Resources */,
 			);
@@ -725,6 +739,7 @@
 				F7D09DEB1A6E518100332331 /* JGProgressHUDRingIndicatorView.m in Sources */,
 				F7D09DEE1A6E518100332331 /* JHRefreshCommonAniView.m in Sources */,
 				F7D09DC81A6E518100332331 /* UserInfo.m in Sources */,
+				F7B167131AA1A6BE000B84D1 /* DayButton.m in Sources */,
 				F7D09DF01A6E518100332331 /* JHRefreshBaseView.m in Sources */,
 				F7BDC4151AA068FA008A1BD0 /* CanlendarView.m in Sources */,
 				F7D09DC91A6E518100332331 /* Utities.m in Sources */,
@@ -756,6 +771,7 @@
 				F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */,
 				F7EF35591A9F066300FEE796 /* ImageButton.m in Sources */,
 				F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */,
+				F7B1671B1AA1A9CE000B84D1 /* NSDate+Agenda.m in Sources */,
 				F7D09DFA1A6E518100332331 /* TSActionSheet.m in Sources */,
 				F7D09DC01A6E518100332331 /* FileManager.m in Sources */,
 				F7B1670D1AA188D0000B84D1 /* CustomModel.m in Sources */,

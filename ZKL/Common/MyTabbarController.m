@@ -28,7 +28,7 @@
     view2.tabBarItem = item2;
     
     
-    UIViewController *view3 = [self viewControllerFormStoryboard:@"Club"];
+    UIViewController *view3 = [self viewControllerFormStoryboard:@"CalendarVC"];//[self viewControllerFormStoryboard:@"Club"];
 //    view3.tabBarItem = [self tabBarItemWithTitle:@"个人中心" image:[UIImage imageNamed:@"personGray"] selectedImage:[UIImage imageNamed:@"personRed"]];
     self.viewControllers = [NSArray arrayWithObjects:view1,view2, view3, nil];
 }

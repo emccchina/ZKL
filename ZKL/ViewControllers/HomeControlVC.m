@@ -39,8 +39,6 @@
 {
     [super viewDidAppear:animated];
     
-    NSLog(@"%@", NSStringFromCGRect(self.dreamView.frame));
-    
     [self.dreamView start:0];
     [self.dreamView setStrokeEnd:0.6 animated:YES];
     [self.dreamView setPressed:^(NSInteger type){

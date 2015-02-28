@@ -19,11 +19,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self showBackItem];
-    
-    
-//    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CanlendarView" owner:self options:nil];
-//    UIView *view = nib[0];
-//    [self.view addSubview:view];
 }
 
 - (void)back
