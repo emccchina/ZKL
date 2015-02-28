@@ -10,8 +10,8 @@
 
 #define kDuration                5
 #define kBGColor                [UIColor colorWithRed:94.0/255.0 green:196.0/255.0 blue:211.0/255.0 alpha:1]
-#define kBGLightColor           [UIColor colorWithRed:153.0/255.0 green:244.0/255.0 blue:235.0/255.0 alpha:1]
-#define kOutsideColor           [UIColor colorWithRed:146.0/255.0 green:222.0/255.0 blue:228.0/255.0 alpha:1.0]
+#define kBGLightColor           [UIColor colorWithRed:153.0/255.0 green:244.0/255.0 blue:235.0/255.0 alpha:.5]
+#define kOutsideColor           [UIColor colorWithRed:146.0/255.0 green:222.0/255.0 blue:228.0/255.0 alpha:.6]
 #define kProgressColor          [UIColor colorWithRed:50.0/255.0 green:172.0/255.0 blue:191.0/255.0 alpha:1.0]
 #define kTextColor              [UIColor colorWithRed:57.0/255.0 green:168.0/255.0 blue:185.0/255.0 alpha:1.0]
 

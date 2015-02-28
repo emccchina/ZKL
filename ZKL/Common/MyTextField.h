@@ -11,6 +11,7 @@
 @interface MyTextField : UITextField
 {
 }
+@property (nonatomic, strong) UIView *mySuperview;
 @property (nonatomic, assign) CGRect superRect;
 @property (nonatomic, strong) id mark;
 @end

@@ -36,19 +36,16 @@
     NSLog(@"%@", NSStringFromCGRect(self.superRect));
     NSLog(@"keyboard info %@", notification.userInfo);
     CGRect _keyboardRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//    CGFloat u = CGRectGetMaxY(self.superRect);
     //如果self在键盘之下 才做偏移
     if (CGRectGetMaxY(self.superRect)>=_keyboardRect.origin.y)
         {
+            
             [UIView animateWithDuration:[[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]
                                   delay:0
-                                options:UIViewAnimationOptionCurveEaseInOut
+                                options:[[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue]
                              animations:^{
-                                 CGRect re = self.superRect;
-                                 re.origin.y = _keyboardRect.origin.y-self.superRect.size.height;
-                                 self.superview.transform = CGAffineTransformMakeTranslation(0, -_keyboardRect.size.height);
+                                 self.mySuperview.transform = CGAffineTransformMakeTranslation(0, -_keyboardRect.size.height*(iPhone_iOS8?1:2));
                              } completion:nil];
-            
             
         }
 
@@ -61,7 +58,7 @@
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          
-                         self.superview.transform = CGAffineTransformMakeTranslation(0, 0);
+                         self.mySuperview.transform = CGAffineTransformMakeTranslation(0, 0);
                      } completion:nil];
 }
 /*

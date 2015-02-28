@@ -27,6 +27,16 @@
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
 }
 
+- (void)back
+{
+    if ([self.navigationController respondsToSelector:@selector(popViewControllerAnimated:)]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -35,8 +45,8 @@
     [self.timeEverydayTF setTitle:@"每天所需时间"];
     
     POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
-    self.OKButton.layer.transform = CATransform3DMakeScale(0.1, 1, 1.0);
     animation.toValue = @(1.0);
+    animation.fromValue = @(.1);
     animation.springBounciness = 15;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.OKButton.layer pop_addAnimation:animation forKey:@"ZoomInX"];

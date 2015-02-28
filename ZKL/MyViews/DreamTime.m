@@ -77,7 +77,7 @@
     circleInsideLightBG.hidden = self.typeState;
     self.circleLayer.hidden = !self.typeState;
     rectTop.hidden = !self.typeState;
-    fininshed.hidden = !self.typeState;
+//    fininshed.hidden = !self.typeState;
     unFinished.hidden = !self.typeState;
     addDreamLabel.hidden = self.typeState;
 }
@@ -143,13 +143,13 @@
 - (void)setup:(UIView*)parentView
 {
     CGFloat sizeFont = CGRectGetWidth(self.frame)/4;
-    if (!dreamLabel) {
-        dreamLabel = [UILabel new];
-        dreamLabel.textColor = kTextColor;
-        dreamLabel.font = [UIFont boldSystemFontOfSize:sizeFont];
-        [self addSubview:dreamLabel];
-        dreamLabel.textAlignment = NSTextAlignmentCenter;
-    }
+//    if (!dreamLabel) {
+//        dreamLabel = [UILabel new];
+//        dreamLabel.textColor = kTextColor;
+//        dreamLabel.font = [UIFont boldSystemFontOfSize:sizeFont];
+//        [self addSubview:dreamLabel];
+//        dreamLabel.textAlignment = NSTextAlignmentCenter;
+//    }
     if (!timeLabel) {
         timeLabel = [UILabel new];
         timeLabel.textColor = kTextColor;
@@ -157,10 +157,10 @@
         [self addSubview:timeLabel];
         timeLabel.textAlignment = NSTextAlignmentCenter;
     }
-    if (!fininshed) {
-        fininshed = [ProgressCricleView new];
-        [self addSubview:fininshed];
-    }
+//    if (!fininshed) {
+//        fininshed = [ProgressCricleView new];
+//        [self addSubview:fininshed];
+//    }
     if (!unFinished) {
         unFinished = [ProgressCricleView new];
         [self addSubview:unFinished];
@@ -168,28 +168,28 @@
     if (!circleWhite) {
         circleWhite = [UIView new];
         [self addSubview:circleWhite];
-        circleWhite.layer.backgroundColor = [UIColor whiteColor].CGColor;
+        circleWhite.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.8].CGColor;
     }
     
-    if (!addDreamLabel) {
-        addDreamLabel = [UILabel new];
-        [self addSubview:addDreamLabel];
-        addDreamLabel.textColor = kTextColor;
-        addDreamLabel.font = [UIFont boldSystemFontOfSize:sizeFont/2];
-        addDreamLabel.textAlignment = NSTextAlignmentCenter;
-    }
+//    if (!addDreamLabel) {
+//        addDreamLabel = [UILabel new];
+//        [self addSubview:addDreamLabel];
+//        addDreamLabel.textColor = kTextColor;
+//        addDreamLabel.font = [UIFont boldSystemFontOfSize:sizeFont/2];
+//        addDreamLabel.textAlignment = NSTextAlignmentCenter;
+//    }
     
-    dreamLabel.text = @"梦想";
-    dreamLabel.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)/2);
-    dreamLabel.center =CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)/4+15);
+//    dreamLabel.text = @"梦想";
+//    dreamLabel.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)/2);
+//    dreamLabel.center =CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)/4+15);
     timeLabel.frame =  CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)/2);
-    timeLabel.center = CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)*3/4-15);
+    timeLabel.center = CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)/2);
     timeLabel.text = @"0%";
     circleWhite.frame = CGRectMake(CGRectGetWidth(self.frame)/2-8, -4, 16, 16);
     circleWhite.layer.cornerRadius = 8;
-    addDreamLabel.text = @"添加梦想";
-    addDreamLabel.frame = CGRectMake(0, 0, self.frame.size.width, CGRectGetHeight(self.frame)/2);
-    addDreamLabel.center = CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)*6/8);
+//    addDreamLabel.text = @"添加梦想";
+//    addDreamLabel.frame = CGRectMake(0, 0, self.frame.size.width, CGRectGetHeight(self.frame)/2);
+//    addDreamLabel.center = CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)*6/8);
 }
 
 - (CGPoint)pointFromCircle:(CGFloat)progress reduceAngle:(CGFloat)angleReduce radiusVar:(CGFloat)radiusVar
@@ -281,7 +281,7 @@
     [self setStateHidden];
     [stateLayer removeFromSuperlayer];
     stateLayer = [CAShapeLayer layer];
-    CGFloat space = CGRectGetWidth(self.frame)/6;
+    CGFloat space = CGRectGetWidth(self.frame)/5;
     switch (type) {
         case 0:{
             stateLayer.strokeColor = [UIColor colorWithRed:101.0/255.0 green:196.0/255.0 blue:211.0/255.0 alpha:1].CGColor;
@@ -289,15 +289,15 @@
             stateLayer.lineWidth = space/6;
             stateLayer.lineCap = kCALineCapRound;
             stateLayer.lineJoin = kCALineJoinRound;
-            CGRect rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space, CGRectGetHeight(self.frame)/2-space/12-18, 2*space, space/6);
+            CGRect rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space, CGRectGetHeight(self.frame)/2-space/12, 2*space, space/6);
             UIBezierPath *path = [UIBezierPath bezierPathWithRect:rectstate];
-            rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space/12, CGRectGetHeight(self.frame)/2-space-18, space/6, space*2);
+            rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space/12, CGRectGetHeight(self.frame)/2-space, space/6, space*2);
             UIBezierPath *path1 = [UIBezierPath bezierPathWithRect:rectstate];
             [path appendPath:path1];
             stateLayer.path = path.CGPath;
         }break;
         case 1:{
-            stateLayer.fillColor = [UIColor whiteColor].CGColor;
+//            stateLayer.fillColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5].CGColor;
             CGRect rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space*3/4, CGRectGetHeight(self.frame)/2-space, space/2, space*2);
             UIBezierPath *path = [UIBezierPath bezierPathWithRect:rectstate];
             rectstate.origin.x += space;
@@ -307,7 +307,7 @@
         }break;
         case 2:{
             //1.获取图形上下文
-            stateLayer.fillColor = [UIColor whiteColor].CGColor;
+//            stateLayer.fillColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5].CGColor;
             CGFloat midX = CGRectGetWidth(self.frame)/2+10;
             CGFloat midY = CGRectGetHeight(self.frame)/2;
             CGMutablePathRef path=CGPathCreateMutable();
@@ -322,7 +322,7 @@
             break;
     }
     
-    stateLayer.fillColor = [UIColor whiteColor].CGColor;
+    stateLayer.fillColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5].CGColor;
     stateLayer.lineCap = kCALineCapRound;
     stateLayer.lineJoin = kCALineJoinMiter;
     [self.layer addSublayer:stateLayer];
@@ -344,11 +344,11 @@
     animation.duration =  kDuration;
     [timeLabel pop_addAnimation:animation forKey:@"numberLabelAnimation"];
     
-    [self setProgressCircle:fininshed progress:strokeEnd];
-    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    alpha.fromValue = @(0);
-    alpha.toValue = @(1);
-    alpha.duration = kDuration;
-    [fininshed pop_addAnimation:alpha forKey:@"alpha"];
+//    [self setProgressCircle:fininshed progress:strokeEnd];
+//    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+//    alpha.fromValue = @(0);
+//    alpha.toValue = @(1);
+//    alpha.duration = kDuration;
+//    [fininshed pop_addAnimation:alpha forKey:@"alpha"];
 }
 @end

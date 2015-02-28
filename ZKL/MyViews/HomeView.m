@@ -7,45 +7,44 @@
 //
 
 #import "HomeView.h"
-
-//#import <QuartzCore/QuartzCore.h>
+#import "ImageButton.h"
 @implementation HomeView
 - (void)awakeFromNib
 {
     self.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
+    CGFloat topSpace = ((!iPhone_iOS8 || iPhone4) ? 15 : 75);
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.textView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:topSpace]];
 }
 
 - (IBAction)doButton:(id)sender {
-    UIButton *button = (UIButton*)sender;
-    NSLog(@"%d",button.tag);
+    ImageButton *button = (ImageButton*)sender;
+    doButtonType = button.tag - 1;
+    [self doCloseButton:nil];
 }
 
 - (void)startAnimationHV
 {
-    POPSpringAnimation *anim1 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];
-    anim1.toValue = @(0);
-    anim1.springBounciness = 20;
+    doButtonType = 0;
+    self.textView.content = @"jl;sdkjfo;saji;就哦啊；发i就；道炯；就；就；就是；哦节哀；金额；放假啊呜；乐嘉；发i阿松；if金额；连接；哦阿杰；非叫我；哦阿胶；就按；积分；饿文件；藕粉骄傲；我姐夫；";
+//    if (iPhone_iOS8) {
+        POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];
+        anim.fromValue = @(-100);
+        anim.toValue = @(0);
+        anim.springBounciness = 20;
+        [self.textView.layer pop_addAnimation:anim forKey:@"RotationX"];
+//    }
+    
     for (int i = 2; i < 5; i++) {
-        UIButton *button = (UIButton*)[self viewWithTag:i];
-        button.layer.transform = CATransform3DMakeTranslation(0, 200, 0);
+        POPSpringAnimation *anim1 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];
+        anim1.toValue = @(0);
+        anim1.fromValue = @(200);
+        anim1.springBounciness = 10+i*4;
+        ImageButton *button = (ImageButton*)[self viewWithTag:i];
         [button.layer pop_addAnimation:anim1 forKey:@"transformY"];
     }
     willHidden = NO;
     [self.closeBut setBackgroundImage:[Utities homeAddImage] forState:UIControlStateNormal];
-    self.closeBut.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0);
     [self closeButAnimation:0];
-    
-//    self.bu1.layer.transform = CATransform3DMakeTranslation(-300, 0, 0);
-    
-//    [self.bu1.layer pop_addAnimation:anim1 forKey:@"size1"];
-//    
-//    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleY];
-//    self.button.layer.transform = CATransform3DMakeScale(1.0, 0.1, 1.0);
-//    animation.toValue = @(1.0);
-//    animation.springBounciness = 10;
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.button.layer pop_addAnimation:animation forKey:@"ZoomInY"];
-//    });
     
 }
 
@@ -54,6 +53,7 @@
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
     CGFloat angle = state ? 0 : M_PI_4;
     anim.toValue = @(angle);
+    anim.fromValue = @(state ? M_PI_4 : 0);
     anim.delegate = self;
     [self.closeBut.layer pop_addAnimation:anim forKey:@"size"];
     
@@ -79,14 +79,20 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self doCloseButton:nil];
+}
+- (IBAction)doCloseButton:(id)sender {
     willHidden = YES;
     [self closeButAnimation:1];
 }
 
 - (void)pop_animationDidStop:(POPAnimation *)anim finished:(BOOL)finished{
-//    NSLog(@"finished  %@", anim.name);
+    NSLog(@"finished  %@", anim.name);
     if (willHidden) {
         [self selfAlpha:0];
+        if (self.doBut) {
+            self.doBut(doButtonType);
+        }
     }
 }
 

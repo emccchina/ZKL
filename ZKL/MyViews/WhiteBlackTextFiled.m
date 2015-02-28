@@ -23,7 +23,6 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    NSLog(@"draw in rect");
     CGFloat space = 10;
     CGFloat height = rect.size.height;
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -44,10 +43,11 @@
     CGContextAddLineToPoint(context, titleSize.width+3, height);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFill);
+    
     [self.title drawAtPoint:CGPointMake(10, (height-titleSize.height)/2) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:myFont}];
     
     POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
-    self.layer.transform = CATransform3DMakeScale(0.1, 1, 1.0);
+    animation.fromValue = @(.1);
     animation.toValue = @(1.0);
     animation.springBounciness = 15;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

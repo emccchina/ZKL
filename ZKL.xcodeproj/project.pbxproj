@@ -15,6 +15,11 @@
 		F7ACCF241A71FE7900ABAA69 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7ACCF231A71FE7900ABAA69 /* QuartzCore.framework */; };
 		F7ACCF271A7241D100ABAA69 /* DreamTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F7ACCF261A7241D100ABAA69 /* DreamTime.m */; };
 		F7ACCF2A1A7243D600ABAA69 /* HomeControlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7ACCF291A7243D600ABAA69 /* HomeControlVC.m */; };
+		F7B1670A1AA16A16000B84D1 /* CanlendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B167091AA16A16000B84D1 /* CanlendarView.xib */; };
+		F7B1670D1AA188D0000B84D1 /* CustomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B1670C1AA188D0000B84D1 /* CustomModel.m */; };
+		F7BDC40C1AA05D92008A1BD0 /* CalendarVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7BDC40B1AA05D92008A1BD0 /* CalendarVC.storyboard */; };
+		F7BDC40F1AA05DD8008A1BD0 /* CalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */; };
+		F7BDC4151AA068FA008A1BD0 /* CanlendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */; };
 		F7C987411A77195F001AE3DA /* ProgressCricleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C987401A77195F001AE3DA /* ProgressCricleView.m */; };
 		F7D09D081A6E4F3700332331 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D071A6E4F3700332331 /* main.m */; };
 		F7D09D0B1A6E4F3700332331 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D0A1A6E4F3700332331 /* AppDelegate.m */; };
@@ -55,7 +60,6 @@
 		F7D09DF61A6E518100332331 /* UIView+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DA61A6E518100332331 /* UIView+JHExtension.m */; };
 		F7D09DF71A6E518100332331 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DA91A6E518100332331 /* CycleScrollView.m */; };
 		F7D09DF81A6E518100332331 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DAB1A6E518100332331 /* NSTimer+Addition.m */; };
-		F7D09DF91A6E518100332331 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DAE1A6E518100332331 /* HMSegmentedControl.m */; };
 		F7D09DFA1A6E518100332331 /* TSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DB11A6E518100332331 /* TSActionSheet.m */; };
 		F7D09DFB1A6E518100332331 /* TSPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DB31A6E518100332331 /* TSPopoverController.m */; };
 		F7D09DFC1A6E518100332331 /* TSPopoverPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DB51A6E518100332331 /* TSPopoverPopoverView.m */; };
@@ -65,10 +69,17 @@
 		F7D09E021A6E53A400332331 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D09E011A6E53A400332331 /* libsqlite3.dylib */; };
 		F7D09E051A6E542700332331 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09E041A6E542700332331 /* BaseViewController.m */; };
 		F7D09E081A6E57E300332331 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09E071A6E57E300332331 /* MainViewController.m */; };
+		F7D164FC1AA00AF70085F73B /* EditTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D164FB1AA00AF70085F73B /* EditTime.m */; };
+		F7D164FE1AA00B1F0085F73B /* EditTime.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D164FD1AA00B1F0085F73B /* EditTime.xib */; };
+		F7D165001AA019F20085F73B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7D164FF1AA019F20085F73B /* Default-568h@2x.png */; };
 		F7D33C941A70D88900A6487A /* PersonCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D33C931A70D88900A6487A /* PersonCenter.storyboard */; };
 		F7D33C961A70D8C700A6487A /* Club.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D33C951A70D8C700A6487A /* Club.storyboard */; };
 		F7D33C981A70D8E400A6487A /* SelfControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D33C971A70D8E400A6487A /* SelfControl.storyboard */; };
 		F7D33C9B1A70DF2A00A6487A /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D33C9A1A70DF2A00A6487A /* HomeView.m */; };
+		F7EF35501A9EBDBE00FEE796 /* MyDreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */; };
+		F7EF35531A9EC01A00FEE796 /* TextInHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF35521A9EC01A00FEE796 /* TextInHomeView.m */; };
+		F7EF35561A9EC3B800FEE796 /* Mydate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF35551A9EC3B800FEE796 /* Mydate.m */; };
+		F7EF35591A9F066300FEE796 /* ImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF35581A9F066300FEE796 /* ImageButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +108,14 @@
 		F7ACCF261A7241D100ABAA69 /* DreamTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamTime.m; sourceTree = "<group>"; };
 		F7ACCF281A7243D600ABAA69 /* HomeControlVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeControlVC.h; sourceTree = "<group>"; };
 		F7ACCF291A7243D600ABAA69 /* HomeControlVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeControlVC.m; sourceTree = "<group>"; };
+		F7B167091AA16A16000B84D1 /* CanlendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CanlendarView.xib; sourceTree = "<group>"; };
+		F7B1670B1AA188D0000B84D1 /* CustomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomModel.h; sourceTree = "<group>"; };
+		F7B1670C1AA188D0000B84D1 /* CustomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomModel.m; sourceTree = "<group>"; };
+		F7BDC40B1AA05D92008A1BD0 /* CalendarVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CalendarVC.storyboard; sourceTree = "<group>"; };
+		F7BDC40D1AA05DD8008A1BD0 /* CalendarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarVC.h; sourceTree = "<group>"; };
+		F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarVC.m; sourceTree = "<group>"; };
+		F7BDC4131AA068FA008A1BD0 /* CanlendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanlendarView.h; sourceTree = "<group>"; };
+		F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanlendarView.m; sourceTree = "<group>"; };
 		F7C9873F1A77195F001AE3DA /* ProgressCricleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressCricleView.h; sourceTree = "<group>"; };
 		F7C987401A77195F001AE3DA /* ProgressCricleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressCricleView.m; sourceTree = "<group>"; };
 		F7D09D021A6E4F3700332331 /* ZKL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZKL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,8 +198,6 @@
 		F7D09DA91A6E518100332331 /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 		F7D09DAA1A6E518100332331 /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
 		F7D09DAB1A6E518100332331 /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
-		F7D09DAD1A6E518100332331 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
-		F7D09DAE1A6E518100332331 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		F7D09DB01A6E518100332331 /* TSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSActionSheet.h; sourceTree = "<group>"; };
 		F7D09DB11A6E518100332331 /* TSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSActionSheet.m; sourceTree = "<group>"; };
 		F7D09DB21A6E518100332331 /* TSPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPopoverController.h; sourceTree = "<group>"; };
@@ -200,11 +217,23 @@
 		F7D09E041A6E542700332331 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		F7D09E061A6E57E300332331 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		F7D09E071A6E57E300332331 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		F7D164FA1AA00AF70085F73B /* EditTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTime.h; sourceTree = "<group>"; };
+		F7D164FB1AA00AF70085F73B /* EditTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTime.m; sourceTree = "<group>"; };
+		F7D164FD1AA00B1F0085F73B /* EditTime.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTime.xib; sourceTree = "<group>"; };
+		F7D164FF1AA019F20085F73B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F7D33C931A70D88900A6487A /* PersonCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonCenter.storyboard; sourceTree = "<group>"; };
 		F7D33C951A70D8C700A6487A /* Club.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Club.storyboard; sourceTree = "<group>"; };
 		F7D33C971A70D8E400A6487A /* SelfControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelfControl.storyboard; sourceTree = "<group>"; };
 		F7D33C991A70DF2A00A6487A /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		F7D33C9A1A70DF2A00A6487A /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
+		F7EF354E1A9EBDBE00FEE796 /* MyDreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDreamModel.h; sourceTree = "<group>"; };
+		F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDreamModel.m; sourceTree = "<group>"; };
+		F7EF35511A9EC01A00FEE796 /* TextInHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextInHomeView.h; sourceTree = "<group>"; };
+		F7EF35521A9EC01A00FEE796 /* TextInHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextInHomeView.m; sourceTree = "<group>"; };
+		F7EF35541A9EC3B800FEE796 /* Mydate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mydate.h; sourceTree = "<group>"; };
+		F7EF35551A9EC3B800FEE796 /* Mydate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mydate.m; sourceTree = "<group>"; };
+		F7EF35571A9F066300FEE796 /* ImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageButton.h; sourceTree = "<group>"; };
+		F7EF35581A9F066300FEE796 /* ImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +278,8 @@
 		F7D09CF91A6E4F3700332331 = {
 			isa = PBXGroup;
 			children = (
+				F7D164FF1AA019F20085F73B /* Default-568h@2x.png */,
+				F7EF354D1A9EBD8700FEE796 /* Models */,
 				F7D09E011A6E53A400332331 /* libsqlite3.dylib */,
 				F7D09D2B1A6E518000332331 /* Common */,
 				F7D09D411A6E518000332331 /* Libs */,
@@ -282,6 +313,7 @@
 				F7D33C931A70D88900A6487A /* PersonCenter.storyboard */,
 				F7D33C951A70D8C700A6487A /* Club.storyboard */,
 				F7D33C971A70D8E400A6487A /* SelfControl.storyboard */,
+				F7BDC40B1AA05D92008A1BD0 /* CalendarVC.storyboard */,
 				F7D09D121A6E4F3700332331 /* Images.xcassets */,
 				F7D09D141A6E4F3700332331 /* LaunchScreen.xib */,
 				F7D09D051A6E4F3700332331 /* Supporting Files */,
@@ -340,6 +372,10 @@
 				F7D09D3E1A6E518000332331 /* UserInfo.m */,
 				F7D09D3F1A6E518000332331 /* Utities.h */,
 				F7D09D401A6E518000332331 /* Utities.m */,
+				F7B1670B1AA188D0000B84D1 /* CustomModel.h */,
+				F7B1670C1AA188D0000B84D1 /* CustomModel.m */,
+				F7EF35541A9EC3B800FEE796 /* Mydate.h */,
+				F7EF35551A9EC3B800FEE796 /* Mydate.m */,
 			);
 			name = Common;
 			path = ZKL/Common;
@@ -352,7 +388,6 @@
 				F7D09D7C1A6E518100332331 /* JGProgressHUD */,
 				F7D09D8D1A6E518100332331 /* JHRefresh */,
 				F7D09DA71A6E518100332331 /* ScrollView */,
-				F7D09DAC1A6E518100332331 /* SegmentView */,
 				F7D09DAF1A6E518100332331 /* TSPopover */,
 				F7D09DBB1A6E518100332331 /* zoomScrollview */,
 			);
@@ -444,15 +479,6 @@
 			path = ScrollView;
 			sourceTree = "<group>";
 		};
-		F7D09DAC1A6E518100332331 /* SegmentView */ = {
-			isa = PBXGroup;
-			children = (
-				F7D09DAD1A6E518100332331 /* HMSegmentedControl.h */,
-				F7D09DAE1A6E518100332331 /* HMSegmentedControl.m */,
-			);
-			path = SegmentView;
-			sourceTree = "<group>";
-		};
 		F7D09DAF1A6E518100332331 /* TSPopover */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +512,9 @@
 				F7D33C991A70DF2A00A6487A /* HomeView.h */,
 				F7D33C9A1A70DF2A00A6487A /* HomeView.m */,
 				F7ACCF211A71EF3300ABAA69 /* HomeView.xib */,
+				F7D164FA1AA00AF70085F73B /* EditTime.h */,
+				F7D164FB1AA00AF70085F73B /* EditTime.m */,
+				F7D164FD1AA00B1F0085F73B /* EditTime.xib */,
 				F7ACCF251A7241D100ABAA69 /* DreamTime.h */,
 				F7ACCF261A7241D100ABAA69 /* DreamTime.m */,
 				F7C9873F1A77195F001AE3DA /* ProgressCricleView.h */,
@@ -494,6 +523,13 @@
 				F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */,
 				F75C59971A9D95F7006EC998 /* WhiteBlackTextFiled.h */,
 				F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */,
+				F7EF35511A9EC01A00FEE796 /* TextInHomeView.h */,
+				F7EF35521A9EC01A00FEE796 /* TextInHomeView.m */,
+				F7EF35571A9F066300FEE796 /* ImageButton.h */,
+				F7EF35581A9F066300FEE796 /* ImageButton.m */,
+				F7BDC4131AA068FA008A1BD0 /* CanlendarView.h */,
+				F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */,
+				F7B167091AA16A16000B84D1 /* CanlendarView.xib */,
 			);
 			name = MyViews;
 			path = ZKL/MyViews;
@@ -508,9 +544,21 @@
 				F7ACCF291A7243D600ABAA69 /* HomeControlVC.m */,
 				F75C59941A9D64B3006EC998 /* AddDreamVC.h */,
 				F75C59951A9D64B3006EC998 /* AddDreamVC.m */,
+				F7BDC40D1AA05DD8008A1BD0 /* CalendarVC.h */,
+				F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */,
 			);
 			name = ViewControllers;
 			path = ZKL/ViewControllers;
+			sourceTree = "<group>";
+		};
+		F7EF354D1A9EBD8700FEE796 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F7EF354E1A9EBDBE00FEE796 /* MyDreamModel.h */,
+				F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */,
+			);
+			name = Models;
+			path = ZKL/Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -598,11 +646,15 @@
 				F7D33C981A70D8E400A6487A /* SelfControl.storyboard in Resources */,
 				F7ACCF221A71EF3300ABAA69 /* HomeView.xib in Resources */,
 				F7D09D111A6E4F3700332331 /* Main.storyboard in Resources */,
+				F7D165001AA019F20085F73B /* Default-568h@2x.png in Resources */,
 				F7D09D161A6E4F3700332331 /* LaunchScreen.xib in Resources */,
 				F7D33C941A70D88900A6487A /* PersonCenter.storyboard in Resources */,
 				F7D33C961A70D8C700A6487A /* Club.storyboard in Resources */,
 				F7D09D131A6E4F3700332331 /* Images.xcassets in Resources */,
+				F7D164FE1AA00B1F0085F73B /* EditTime.xib in Resources */,
+				F7B1670A1AA16A16000B84D1 /* CanlendarView.xib in Resources */,
 				F7D09DEF1A6E518100332331 /* JHRefresh.bundle in Resources */,
+				F7BDC40C1AA05D92008A1BD0 /* CalendarVC.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,15 +720,17 @@
 				F7D09DF41A6E518100332331 /* UIScrollView+JHExtension.m in Sources */,
 				F7D33C9B1A70DF2A00A6487A /* HomeView.m in Sources */,
 				F7D09DE51A6E518100332331 /* JGProgressHUDAnimation.m in Sources */,
+				F7EF35561A9EC3B800FEE796 /* Mydate.m in Sources */,
 				F75C59991A9D95F7006EC998 /* WhiteBlackTextFiled.m in Sources */,
 				F7D09DEB1A6E518100332331 /* JGProgressHUDRingIndicatorView.m in Sources */,
 				F7D09DEE1A6E518100332331 /* JHRefreshCommonAniView.m in Sources */,
 				F7D09DC81A6E518100332331 /* UserInfo.m in Sources */,
 				F7D09DF01A6E518100332331 /* JHRefreshBaseView.m in Sources */,
+				F7BDC4151AA068FA008A1BD0 /* CanlendarView.m in Sources */,
 				F7D09DC91A6E518100332331 /* Utities.m in Sources */,
-				F7D09DF91A6E518100332331 /* HMSegmentedControl.m in Sources */,
 				F7D09DEA1A6E518100332331 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				F7D09DCB1A6E518100332331 /* NSString+AES.m in Sources */,
+				F7EF35501A9EBDBE00FEE796 /* MyDreamModel.m in Sources */,
 				F7D09DFC1A6E518100332331 /* TSPopoverPopoverView.m in Sources */,
 				F7D09DFE1A6E518100332331 /* UIBarButtonItem+WEPopover.m in Sources */,
 				F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */,
@@ -686,7 +740,9 @@
 				F7D09DE91A6E518100332331 /* JGProgressHUDIndicatorView.m in Sources */,
 				F7D09DC61A6E518100332331 /* NSDictionary+safeObjectForKey.m in Sources */,
 				F7D09DED1A6E518100332331 /* JHRefreshAniBaseView.m in Sources */,
+				F7D164FC1AA00AF70085F73B /* EditTime.m in Sources */,
 				F7D09DF51A6E518100332331 /* UIScrollView+JHRefresh.m in Sources */,
+				F7EF35531A9EC01A00FEE796 /* TextInHomeView.m in Sources */,
 				F7D09DE81A6E518100332331 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
 				F7ACCF271A7241D100ABAA69 /* DreamTime.m in Sources */,
 				F7D09DF81A6E518100332331 /* NSTimer+Addition.m in Sources */,
@@ -698,9 +754,12 @@
 				F7D09DC71A6E518100332331 /* TimeLabel.m in Sources */,
 				F7D09E081A6E57E300332331 /* MainViewController.m in Sources */,
 				F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */,
+				F7EF35591A9F066300FEE796 /* ImageButton.m in Sources */,
 				F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */,
 				F7D09DFA1A6E518100332331 /* TSActionSheet.m in Sources */,
 				F7D09DC01A6E518100332331 /* FileManager.m in Sources */,
+				F7B1670D1AA188D0000B84D1 /* CustomModel.m in Sources */,
+				F7BDC40F1AA05DD8008A1BD0 /* CalendarVC.m in Sources */,
 				F7D09DC11A6E518100332331 /* MyButton.m in Sources */,
 				F7D09DF11A6E518100332331 /* JHRefreshConfig.m in Sources */,
 			);

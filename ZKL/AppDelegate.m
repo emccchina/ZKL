@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 #import "HomeView.h"
-
+#import "MyNavigationController.h"
+#import "EditTime.h"
 @interface AppDelegate ()
 <UITabBarControllerDelegate>
 
@@ -57,11 +58,62 @@
             homeview.alpha = 0;
         }
         [homeview selfAlpha:1];
-        [homeview startAnimationHV];
+        [homeview startAnimationHV];//AddreamVC
+        homeview.doBut = ^(NSInteger type){
+            switch (type) {
+                case 0:{
+                    
+                }break;
+                case 1:{
+                    [self presnetAddreamVC];
+                }break;
+                case 2:{
+                    [self presentEditTimeView];
+                }break;
+                case 3:{
+                    NSLog(@"jij;l");
+                    [self presentCalendarVC];
+                }break;
+                default:
+                    break;
+            }
+            
+        };
         return NO;
     }
     
     return YES;
+}
+
+- (void)presentEditTimeView
+{
+    EditTime *editTime = (EditTime*)[self.window viewWithTag:10];
+    if (!editTime) {
+        editTime = (EditTime*)[Utities viewAddContraintsParentView:self.window subNibName:@"EditTime"];
+        editTime.tag = 10;
+    }
+    editTime.hidden = NO;
+}
+
+- (void)presnetAddreamVC
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SelfControl" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AddreamVC"];
+    MyNavigationController *nVC = [[MyNavigationController alloc] initWithRootViewController:vc];
+    [nVC awakeFromNib];
+    UITabBarController *VC = (UITabBarController*)self.window.rootViewController;
+    [VC presentViewController:nVC animated:YES completion:nil];
+}
+
+- (void)presentCalendarVC
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"CalendarVC" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CalendarVC"];
+    MyNavigationController *nVC = [[MyNavigationController alloc] initWithRootViewController:vc];
+    [nVC awakeFromNib];
+    UITabBarController *VC = (UITabBarController*)self.window.rootViewController;
+    [VC presentViewController:nVC animated:YES completion:nil];
+
 }
 
 @end

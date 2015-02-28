@@ -9,7 +9,7 @@
 #import "HomeControlVC.h"
 #import "DreamTime.h"
 #import "ProgressRectView.h"
-
+#import "MyDate.h"
 @interface HomeControlVC ()
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
@@ -33,6 +33,7 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.dreamView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:topHieght]];
     [self.leftBut setBackgroundImage:[Utities backImage:0] forState:UIControlStateNormal];
     [self.rightBut setBackgroundImage:[Utities backImage:1] forState:UIControlStateNormal];
+    [Mydate getNowDateComponents];
 }
 - (void)viewDidAppear:(BOOL)animated
 {

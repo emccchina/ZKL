@@ -33,4 +33,5 @@
 #import "Utities.h"
 #import "UserInfo.h"
 #import "POP.h"
+#import "Mantle.h"
 #endif
