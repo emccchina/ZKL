@@ -108,8 +108,8 @@
 - (void)presentCalendarVC
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"CalendarVC" bundle:nil];
-    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CalendarVC"];
-    MyNavigationController *nVC = [[MyNavigationController alloc] initWithRootViewController:vc];
+//    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CalendarVC"];
+    MyNavigationController *nVC = [storyboard instantiateInitialViewController];//[[MyNavigationController alloc] initWithRootViewController:vc];
     [nVC awakeFromNib];
     UITabBarController *VC = (UITabBarController*)self.window.rootViewController;
     [VC presentViewController:nVC animated:YES completion:nil];

@@ -9,7 +9,6 @@
 #import "CanlendarView.h"
 #import "NSDate+Agenda.h"
 #import "DayButton.h"
-
 @interface CanlendarView()
 {
     NSDate      *currentDate;
@@ -39,7 +38,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSLog(@"my rect %@", NSStringFromCGRect(rect));
+//    NSLog(@"my rect %@", NSStringFromCGRect(rect));
     NSArray *arr = @[@"doPreYear:",@"doNextYear:",@"doPreMonth:",@"doNextMonth:"];
     
     //计算有多少天
@@ -66,7 +65,7 @@
      //箭头+时间
      int arrowSize = 20;
      int xmargin = width/8;
-     int ymargin = 10;
+     int ymargin = xmargin/4;
 
     CGContextBeginPath(context);
     CGContextSetStrokeColorWithColor(context, kArrowsColor.CGColor);
@@ -144,6 +143,7 @@
         DayButton *day = [[DayButton alloc] initWithFrame:CGRectMake((i%7)*dayHeight, (i/7)*dayHeight+y, dayHeight, dayHeight)];
         [day setshowMonth:showDate showDay:[self dateAtItem:i]];
         [self addSubview:day];
+        
     }
 }
 
@@ -154,7 +154,6 @@
     NSInteger weekDay = [showDate weekDay];
     NSDate *dateToReturn = nil;
     dateToReturn = [showDate dayOfNum:item-weekDay+1];
-//    NSLog(@"Date at indexPath:%d -> %@", item,dateToReturn);
     return dateToReturn;
 }
 

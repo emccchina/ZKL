@@ -8,8 +8,30 @@
 
 #import "DayButton.h"
 #import "NSDate+Agenda.h"
+#import "FBShimmeringView.h"
 
 @implementation DayButton
+
+- (void)awakeFromNib
+{
+    
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+//        FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.bounds];
+//        [self addSubview:shimmeringView];
+//        shimmeringView.contentView = self.titleLabel;
+//        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+//        // Start shimmering.
+//        shimmeringView.shimmering = YES;
+//        shimmeringView.shimmeringSpeed = 50;
+    }
+    return self;
+    
+}
 
 - (void)setshowMonth:(NSDate *)showDate showDay:(NSDate*)dateDay
 {
@@ -35,6 +57,9 @@
             break;
     }
     [self setTitleColor:titleColor forState:UIControlStateNormal];
+    if ([self.date isToday]) {
+        self.layer.backgroundColor = kNavBGColor.CGColor;
+    }
 }
 
 
@@ -42,9 +67,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    if ([self.date isToday]) {
-        self.layer.backgroundColor = kNavBGColor.CGColor;
-    }
+    
 }
 
 
