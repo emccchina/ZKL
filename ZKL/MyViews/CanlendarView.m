@@ -29,23 +29,21 @@
     self.calendar = [NSDate gregorianCalendar];
     currentDate = [NSDate date];
     showDate = [[NSDate date] firstDayOfTheMonth];
-    self.userInteractionEnabled = YES;
+//    self.userInteractionEnabled = YES;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    showDate = [showDate preMonth];
-    NSInteger weekDay = [showDate weekDay] -1;
-    NSInteger items =  weekDay + [NSDate numberOfDaysInMonthForDate:showDate];
-    NSLog(@"pre %@, next %@,%d", [showDate preMonth], [showDate nextMonth],items);
-    [self setNeedsDisplay];
+
 }
 
 - (void)drawRect:(CGRect)rect
 {
     NSLog(@"my rect %@", NSStringFromCGRect(rect));
+    NSArray *arr = @[@"doPreYear:",@"doNextYear:",@"doPreMonth:",@"doNextMonth:"];
+    
     //计算有多少天
-    NSInteger weekDay = [showDate weekDay] -1;
+    NSInteger weekDay = [showDate weekDay];
     NSInteger items =  weekDay + [NSDate numberOfDaysInMonthForDate:showDate];
     
     CGFloat width = CGRectGetWidth(rect);
@@ -53,6 +51,11 @@
     
     //清楚 重画
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    for (id subview in self.subviews) {
+//        if ([subview isKindOfClass:[DayButton class]]) {
+//            [subview removeFromSuperview];
+//        }
+//    }
     CGContextClearRect(UIGraphicsGetCurrentContext(),rect); //清除rect
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
@@ -75,6 +78,11 @@
         CGContextAddLineToPoint(context,xmargin*i-x*arrowSize/2,ymargin+arrowSize/2);
         CGContextAddLineToPoint(context,xmargin*i,ymargin+arrowSize);
         x *= -1;
+        
+        UIButton *but = [[UIButton alloc] initWithFrame:CGRectMake(xmargin*i-arrowSize, 0, arrowSize*2, xmargin)];
+        [but addTarget:self action:NSSelectorFromString(arr[i/2]) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:but];
+        
     }
     CGContextStrokePath(context);
     
@@ -132,32 +140,47 @@
     
 //画日期
     
-    for (int i = 0; i < items; i++) {
+    for (int i = 0; i < numRows*7; i++) {
         DayButton *day = [[DayButton alloc] initWithFrame:CGRectMake((i%7)*dayHeight, (i/7)*dayHeight+y, dayHeight, dayHeight)];
-        [day setTitle:[NSString stringWithFormat:@"%ld", (long)(i+1)] forState:UIControlStateNormal];
+        [day setshowMonth:showDate showDay:[self dateAtItem:i]];
         [self addSubview:day];
     }
+}
+
+#pragma -mark private monthed
+
+- (NSDate *)dateAtItem:(NSInteger)item
+{
+    NSInteger weekDay = [showDate weekDay];
+    NSDate *dateToReturn = nil;
+    dateToReturn = [showDate dayOfNum:item-weekDay+1];
+//    NSLog(@"Date at indexPath:%d -> %@", item,dateToReturn);
+    return dateToReturn;
 }
 
 #pragma -mark  events
 - (void)doPreYear:(id)sender
 {
-    
+    showDate = [showDate preYear];
+    [self setNeedsDisplay];
 }
 
 - (void)doNextYear:(id)sender
 {
-    
+    showDate = [showDate nextYear];
+    [self setNeedsDisplay];
 }
 
 - (void)doPreMonth:(id)sender
 {
-    
+    showDate = [showDate preMonth];
+    [self setNeedsDisplay];
 }
 
 - (void)doNextMonth:(id)sender
 {
-    
+    showDate = [showDate nextMonth];
+    [self setNeedsDisplay];
 }
 
 @end

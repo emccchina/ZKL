@@ -11,8 +11,8 @@
 typedef NS_ENUM(NSInteger,  DayType) {
     KDayTypeEmpty,
     KDayTypeToday,
-    KDayTypePast,
-    KDayTypeFutur
+    KDayTypePast,//本月以前的
+    KDayTypeFutur//本月以后的
 };
 
 typedef NS_ENUM(NSInteger, DayState) {
@@ -22,8 +22,11 @@ typedef NS_ENUM(NSInteger, DayState) {
 };
 
 @interface DayButton : UIButton
-
+{
+    NSDate      *_date;
+}
 @property (nonatomic, assign) DayType   dayType;
 @property (nonatomic, assign) DayState  dayState;
-
+@property (nonatomic, strong) NSDate    *date;
+- (void)setshowMonth:(NSDate *)showDate showDay:(NSDate*)dateDay;
 @end

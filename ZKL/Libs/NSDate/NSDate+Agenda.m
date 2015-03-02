@@ -51,6 +51,15 @@ const char * const JmoLocaleStoreKey = "jmo.locale";
 
 #pragma mark -
 
+-(NSDate *)dayOfNum:(int)numDay{
+    NSCalendar *gregorian = [self.class gregorianCalendar];
+    NSDateComponents *comps = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self];
+    [comps setDay:numDay];
+    NSDate *day = [gregorian dateFromComponents:comps];
+    return day;
+}
+
+
 - (NSDate *)firstDayOfTheMonth
 {
     NSCalendar *gregorian = [self.class gregorianCalendar];
@@ -89,8 +98,40 @@ const char * const JmoLocaleStoreKey = "jmo.locale";
 {
     NSCalendar *gregorian = [self.class gregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:self];
-    NSInteger weekday = [comps weekday];
+    NSInteger weekday = [comps weekday]-1;//0 周日
     return weekday ;
+}
+
+- (NSComparisonResult)compareWithMonth:(NSDate *)date
+{
+    NSCalendar *calendar = [self.class gregorianCalendar];
+    NSDateComponents *otherDay = [calendar components:NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+    NSDateComponents *today = [[NSCalendar currentCalendar] components:NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
+    if([today month] == [otherDay month] &&
+       [today year] == [otherDay year] &&
+       [today era] == [otherDay era]) {
+        return NSOrderedSame;
+    }
+    if([today month] < [otherDay month] &&
+       [today year] <= [otherDay year] &&
+       [today era] == [otherDay era]) {
+        return NSOrderedDescending;
+    }
+    if([today month] > [otherDay month] &&
+       [today year] >= [otherDay year] &&
+       [today era] == [otherDay era]) {
+        return NSOrderedAscending;
+    }
+    
+    if([today year] < [otherDay year] &&
+       [today era] == [otherDay era]) {
+        return NSOrderedDescending;
+    }
+    if([today year] > [otherDay year] &&
+       [today era] == [otherDay era]) {
+        return NSOrderedAscending;
+    }
+    return NO;
 }
 
 - (BOOL)isToday
@@ -125,13 +166,13 @@ const char * const JmoLocaleStoreKey = "jmo.locale";
 - (NSDate*)preYear{
     NSCalendar *calendar = [self.class gregorianCalendar];
     NSDateComponents *comps = [calendar components:NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
-    [comps setMonth:[comps year]-1];
+    [comps setYear:[comps year]-1];
     return [calendar dateFromComponents:comps];
 }
 - (NSDate*)nextYear{
     NSCalendar *calendar = [self.class gregorianCalendar];
     NSDateComponents *comps = [calendar components:NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
-    [comps setMonth:[comps year]+1];
+    [comps setYear:[comps year]+1];
     return [calendar dateFromComponents:comps];
 }
 

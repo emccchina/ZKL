@@ -24,6 +24,8 @@
 + (NSInteger)numberOfMonthFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 + (NSInteger)numberOfDaysInMonthForDate:(NSDate *)fromDate;
 
+- (NSComparisonResult)compareWithMonth:(NSDate*)date;
+
 - (BOOL)isToday;
 
 - (NSDate*)preMonth;
@@ -31,6 +33,8 @@
 
 - (NSDate*)preYear;
 - (NSDate*)nextYear;
+
+- (NSDate *)dayOfNum:(int)numDay;
 
 - (NSDate *)startingDate;
 - (NSDate *)endingDate;
