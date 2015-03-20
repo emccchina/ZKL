@@ -17,7 +17,7 @@
 - (void)awakeFromNib
 {
     self.navigationBar.barTintColor = kNavBGColor;
-    self.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:kFontName size:20]};//[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     self.navigationBar.translucent = NO;
 }
 

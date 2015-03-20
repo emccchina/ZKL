@@ -33,3 +33,4 @@
 #endif
 
 #define kNavBGColor    [UIColor colorWithRed:89.0/255.0 green:213.0/255.0 blue:212.0/255.0 alpha:1.0]
+#define kFontName       @"FZLTHK--GBK1-0"

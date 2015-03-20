@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5756F2E04C56C1857922024C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D45F144EA7FC0C69E98E14EF /* libPods.a */; };
+		F729AC8C1AB7D55E00F0690E /* 兰亭黑 GBK.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F729AC8B1AB7D55E00F0690E /* 兰亭黑 GBK.TTF */; };
 		F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59951A9D64B3006EC998 /* AddDreamVC.m */; };
 		F75C59991A9D95F7006EC998 /* WhiteBlackTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */; };
 		F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */; };
@@ -77,10 +78,14 @@
 		F7D33C961A70D8C700A6487A /* Club.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D33C951A70D8C700A6487A /* Club.storyboard */; };
 		F7D33C981A70D8E400A6487A /* SelfControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D33C971A70D8E400A6487A /* SelfControl.storyboard */; };
 		F7D33C9B1A70DF2A00A6487A /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D33C9A1A70DF2A00A6487A /* HomeView.m */; };
+		F7EBB4701ABBA59D00EFD10F /* RichStyleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EBB46F1ABBA59D00EFD10F /* RichStyleLabel.m */; };
 		F7EF35501A9EBDBE00FEE796 /* MyDreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */; };
 		F7EF35531A9EC01A00FEE796 /* TextInHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF35521A9EC01A00FEE796 /* TextInHomeView.m */; };
 		F7EF35561A9EC3B800FEE796 /* Mydate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF35551A9EC3B800FEE796 /* Mydate.m */; };
 		F7EF35591A9F066300FEE796 /* ImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF35581A9F066300FEE796 /* ImageButton.m */; };
+		F7F02E3A1ABA620E0095EA2E /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F02E391ABA620E0095EA2E /* ChartView.m */; };
+		F7F02E3C1ABA631F0095EA2E /* ChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F02E3B1ABA631F0095EA2E /* ChartView.xib */; };
+		F7F02E431ABAB41C0095EA2E /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F02E421ABAB41C0095EA2E /* SettingVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +102,7 @@
 		173E3982BD6B614786560469 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C04D8267727ED642C92248FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D45F144EA7FC0C69E98E14EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F729AC8B1AB7D55E00F0690E /* 兰亭黑 GBK.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "兰亭黑 GBK.TTF"; sourceTree = "<group>"; };
 		F75C59941A9D64B3006EC998 /* AddDreamVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDreamVC.h; sourceTree = "<group>"; };
 		F75C59951A9D64B3006EC998 /* AddDreamVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamVC.m; sourceTree = "<group>"; };
 		F75C59971A9D95F7006EC998 /* WhiteBlackTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteBlackTextFiled.h; sourceTree = "<group>"; };
@@ -230,6 +236,8 @@
 		F7D33C971A70D8E400A6487A /* SelfControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelfControl.storyboard; sourceTree = "<group>"; };
 		F7D33C991A70DF2A00A6487A /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		F7D33C9A1A70DF2A00A6487A /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
+		F7EBB46E1ABBA59D00EFD10F /* RichStyleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichStyleLabel.h; sourceTree = "<group>"; };
+		F7EBB46F1ABBA59D00EFD10F /* RichStyleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichStyleLabel.m; sourceTree = "<group>"; };
 		F7EF354E1A9EBDBE00FEE796 /* MyDreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDreamModel.h; sourceTree = "<group>"; };
 		F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDreamModel.m; sourceTree = "<group>"; };
 		F7EF35511A9EC01A00FEE796 /* TextInHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextInHomeView.h; sourceTree = "<group>"; };
@@ -238,6 +246,11 @@
 		F7EF35551A9EC3B800FEE796 /* Mydate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mydate.m; sourceTree = "<group>"; };
 		F7EF35571A9F066300FEE796 /* ImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageButton.h; sourceTree = "<group>"; };
 		F7EF35581A9F066300FEE796 /* ImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageButton.m; sourceTree = "<group>"; };
+		F7F02E381ABA620E0095EA2E /* ChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartView.h; sourceTree = "<group>"; };
+		F7F02E391ABA620E0095EA2E /* ChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartView.m; sourceTree = "<group>"; };
+		F7F02E3B1ABA631F0095EA2E /* ChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartView.xib; sourceTree = "<group>"; };
+		F7F02E411ABAB41C0095EA2E /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
+		F7F02E421ABAB41C0095EA2E /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +410,8 @@
 		F7D09D411A6E518000332331 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F7EBB46D1ABBA59D00EFD10F /* RichStyleLabel */,
+				F729AC8B1AB7D55E00F0690E /* 兰亭黑 GBK.TTF */,
 				F7B167141AA1A9CE000B84D1 /* NSDate */,
 				F7D09D421A6E518000332331 /* aes */,
 				F7D09D7C1A6E518100332331 /* JGProgressHUD */,
@@ -543,6 +558,9 @@
 				F7EF35581A9F066300FEE796 /* ImageButton.m */,
 				F7BDC4131AA068FA008A1BD0 /* CanlendarView.h */,
 				F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */,
+				F7F02E381ABA620E0095EA2E /* ChartView.h */,
+				F7F02E391ABA620E0095EA2E /* ChartView.m */,
+				F7F02E3B1ABA631F0095EA2E /* ChartView.xib */,
 				F7B167111AA1A6BE000B84D1 /* DayButton.h */,
 				F7B167121AA1A6BE000B84D1 /* DayButton.m */,
 			);
@@ -561,9 +579,20 @@
 				F75C59951A9D64B3006EC998 /* AddDreamVC.m */,
 				F7BDC40D1AA05DD8008A1BD0 /* CalendarVC.h */,
 				F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */,
+				F7F02E411ABAB41C0095EA2E /* SettingVC.h */,
+				F7F02E421ABAB41C0095EA2E /* SettingVC.m */,
 			);
 			name = ViewControllers;
 			path = ZKL/ViewControllers;
+			sourceTree = "<group>";
+		};
+		F7EBB46D1ABBA59D00EFD10F /* RichStyleLabel */ = {
+			isa = PBXGroup;
+			children = (
+				F7EBB46E1ABBA59D00EFD10F /* RichStyleLabel.h */,
+				F7EBB46F1ABBA59D00EFD10F /* RichStyleLabel.m */,
+			);
+			path = RichStyleLabel;
 			sourceTree = "<group>";
 		};
 		F7EF354D1A9EBD8700FEE796 /* Models */ = {
@@ -663,12 +692,14 @@
 				F7D09D111A6E4F3700332331 /* Main.storyboard in Resources */,
 				F7D165001AA019F20085F73B /* Default-568h@2x.png in Resources */,
 				F7D09D161A6E4F3700332331 /* LaunchScreen.xib in Resources */,
+				F729AC8C1AB7D55E00F0690E /* 兰亭黑 GBK.TTF in Resources */,
 				F7D33C941A70D88900A6487A /* PersonCenter.storyboard in Resources */,
 				F7D33C961A70D8C700A6487A /* Club.storyboard in Resources */,
 				F7D09D131A6E4F3700332331 /* Images.xcassets in Resources */,
 				F7D164FE1AA00B1F0085F73B /* EditTime.xib in Resources */,
 				F7D09DEF1A6E518100332331 /* JHRefresh.bundle in Resources */,
 				F7BDC40C1AA05D92008A1BD0 /* CalendarVC.storyboard in Resources */,
+				F7F02E3C1ABA631F0095EA2E /* ChartView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,7 +782,9 @@
 				F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */,
 				F7D09DF31A6E518100332331 /* JHRefreshHeaderView.m in Sources */,
 				F7D09DFD1A6E518100332331 /* TSPopoverTouchView.m in Sources */,
+				F7F02E431ABAB41C0095EA2E /* SettingVC.m in Sources */,
 				F7ACCF2A1A7243D600ABAA69 /* HomeControlVC.m in Sources */,
+				F7EBB4701ABBA59D00EFD10F /* RichStyleLabel.m in Sources */,
 				F7D09DE91A6E518100332331 /* JGProgressHUDIndicatorView.m in Sources */,
 				F7D09DC61A6E518100332331 /* NSDictionary+safeObjectForKey.m in Sources */,
 				F7D09DED1A6E518100332331 /* JHRefreshAniBaseView.m in Sources */,
@@ -766,6 +799,7 @@
 				F7D09DC51A6E518100332331 /* MyTextField.m in Sources */,
 				F7C987411A77195F001AE3DA /* ProgressCricleView.m in Sources */,
 				F7D09DC21A6E518100332331 /* MyNavigationController.m in Sources */,
+				F7F02E3A1ABA620E0095EA2E /* ChartView.m in Sources */,
 				F7D09DC71A6E518100332331 /* TimeLabel.m in Sources */,
 				F7D09E081A6E57E300332331 /* MainViewController.m in Sources */,
 				F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */,

@@ -20,6 +20,7 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:imageview attribute:NSLayoutAttributeCenterY multiplier:1 constant:1]];
     UILabel *label = [[UILabel alloc] init];
     label.text = self.title;
+    label.font = [UIFont fontWithName:kFontName size:18];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = kBlackColor;
     [self addSubview:label];

@@ -316,6 +316,7 @@
             CGPathAddLineToPoint(path, NULL, midX-space, midY+space);
             UIBezierPath *path1 = [UIBezierPath bezierPathWithCGPath:path];
             stateLayer.path = path1.CGPath;
+            CGPathRelease(path);
         }break;
             
         default:

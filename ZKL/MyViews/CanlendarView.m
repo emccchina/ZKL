@@ -85,7 +85,7 @@
     }
     CGContextStrokePath(context);
     
-    UIFont *font = [UIFont fontWithName:@"CourierNewPS-BoldItalicMT" size:20];
+    UIFont *font = [UIFont fontWithName:kFontName size:20];
     NSString *year = [NSString stringWithFormat:@"%ld",(long)[showDate yearComponents]];
     CGSize sizeYear = [Utities sizeWithUIFont:font string:year];
     [year drawInRect:CGRectMake(xmargin*2-sizeYear.width/2, ymargin, sizeYear.width, arrowSize*2) withAttributes:@{NSForegroundColorAttributeName:kArrowsColor, NSFontAttributeName:font}];
@@ -132,7 +132,7 @@
     NSArray *weekdays = [NSDate weekdaySymbols];
     for (int i =0; i<[weekdays count]; i++) {
         NSString *weekdayValue = (NSString *)[weekdays objectAtIndex:i];
-        UIFont *fontweek = [UIFont fontWithName:@"STHeitiTC-Medium" size:17];
+        UIFont *fontweek = [UIFont fontWithName:kFontName size:17];
         CGSize weekSize = [Utities sizeWithUIFont:fontweek string:weekdayValue];
         [weekdayValue drawInRect:CGRectMake((.5+i)*dayHeight-weekSize.width/2, -dayHeight/2-weekSize.height/2 +y, dayHeight, dayHeight) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:fontweek}];
     }
