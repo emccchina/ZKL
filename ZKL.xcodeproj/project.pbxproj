@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5756F2E04C56C1857922024C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D45F144EA7FC0C69E98E14EF /* libPods.a */; };
-		F729AC8C1AB7D55E00F0690E /* 兰亭黑 GBK.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F729AC8B1AB7D55E00F0690E /* 兰亭黑 GBK.TTF */; };
 		F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59951A9D64B3006EC998 /* AddDreamVC.m */; };
 		F75C59991A9D95F7006EC998 /* WhiteBlackTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */; };
 		F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */; };
@@ -92,6 +91,8 @@
 		F7F02E3A1ABA620E0095EA2E /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F02E391ABA620E0095EA2E /* ChartView.m */; };
 		F7F02E3C1ABA631F0095EA2E /* ChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F02E3B1ABA631F0095EA2E /* ChartView.xib */; };
 		F7F02E431ABAB41C0095EA2E /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F02E421ABAB41C0095EA2E /* SettingVC.m */; };
+		F96523E01ABFBAED00AFDEEE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F96523DF1ABFBAED00AFDEEE /* UserModel.m */; };
+		F96523E31ABFBB0F00AFDEEE /* PlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F96523E21ABFBB0F00AFDEEE /* PlanModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,7 +109,6 @@
 		173E3982BD6B614786560469 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C04D8267727ED642C92248FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D45F144EA7FC0C69E98E14EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F729AC8B1AB7D55E00F0690E /* 兰亭黑 GBK.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "兰亭黑 GBK.TTF"; sourceTree = "<group>"; };
 		F75C59941A9D64B3006EC998 /* AddDreamVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDreamVC.h; sourceTree = "<group>"; };
 		F75C59951A9D64B3006EC998 /* AddDreamVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamVC.m; sourceTree = "<group>"; };
 		F75C59971A9D95F7006EC998 /* WhiteBlackTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteBlackTextFiled.h; sourceTree = "<group>"; };
@@ -268,6 +268,10 @@
 		F7F02E3B1ABA631F0095EA2E /* ChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartView.xib; sourceTree = "<group>"; };
 		F7F02E411ABAB41C0095EA2E /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
 		F7F02E421ABAB41C0095EA2E /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
+		F96523DE1ABFBAED00AFDEEE /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		F96523DF1ABFBAED00AFDEEE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		F96523E11ABFBB0F00AFDEEE /* PlanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanModel.h; sourceTree = "<group>"; };
+		F96523E21ABFBB0F00AFDEEE /* PlanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,11 +326,11 @@
 			isa = PBXGroup;
 			children = (
 				F7D164FF1AA019F20085F73B /* Default-568h@2x.png */,
-				F7EF354D1A9EBD8700FEE796 /* Models */,
 				F7D09E011A6E53A400332331 /* libsqlite3.dylib */,
 				F7D09D2B1A6E518000332331 /* Common */,
 				F7D09D411A6E518000332331 /* Libs */,
 				F7D09DBE1A6E518100332331 /* MyViews */,
+				F7EF354D1A9EBD8700FEE796 /* Models */,
 				F7D09DBF1A6E518100332331 /* ViewControllers */,
 				F7D09D041A6E4F3700332331 /* ZKL */,
 				F7D09D1E1A6E4F3700332331 /* ZKLTests */,
@@ -428,7 +432,6 @@
 			isa = PBXGroup;
 			children = (
 				F7EBB46D1ABBA59D00EFD10F /* RichStyleLabel */,
-				F729AC8B1AB7D55E00F0690E /* 兰亭黑 GBK.TTF */,
 				F7B167141AA1A9CE000B84D1 /* NSDate */,
 				F7D09D421A6E518000332331 /* aes */,
 				F7D09D7C1A6E518100332331 /* JGProgressHUD */,
@@ -628,6 +631,10 @@
 			children = (
 				F7EF354E1A9EBDBE00FEE796 /* MyDreamModel.h */,
 				F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */,
+				F96523DE1ABFBAED00AFDEEE /* UserModel.h */,
+				F96523DF1ABFBAED00AFDEEE /* UserModel.m */,
+				F96523E11ABFBB0F00AFDEEE /* PlanModel.h */,
+				F96523E21ABFBB0F00AFDEEE /* PlanModel.m */,
 			);
 			name = Models;
 			path = ZKL/Models;
@@ -721,7 +728,6 @@
 				F7D09D111A6E4F3700332331 /* Main.storyboard in Resources */,
 				F7D165001AA019F20085F73B /* Default-568h@2x.png in Resources */,
 				F7D09D161A6E4F3700332331 /* LaunchScreen.xib in Resources */,
-				F729AC8C1AB7D55E00F0690E /* 兰亭黑 GBK.TTF in Resources */,
 				F7D33C941A70D88900A6487A /* PersonCenter.storyboard in Resources */,
 				F7D33C961A70D8C700A6487A /* Club.storyboard in Resources */,
 				F7D09D131A6E4F3700332331 /* Images.xcassets in Resources */,
@@ -815,6 +821,7 @@
 				F7D09DFD1A6E518100332331 /* TSPopoverTouchView.m in Sources */,
 				F7F02E431ABAB41C0095EA2E /* SettingVC.m in Sources */,
 				F7ACCF2A1A7243D600ABAA69 /* HomeControlVC.m in Sources */,
+				F96523E31ABFBB0F00AFDEEE /* PlanModel.m in Sources */,
 				F7EBB4701ABBA59D00EFD10F /* RichStyleLabel.m in Sources */,
 				F7D09DE91A6E518100332331 /* JGProgressHUDIndicatorView.m in Sources */,
 				F7D09DC61A6E518100332331 /* NSDictionary+safeObjectForKey.m in Sources */,
@@ -825,6 +832,7 @@
 				F7D09DE81A6E518100332331 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
 				F7ACCF271A7241D100ABAA69 /* DreamTime.m in Sources */,
 				F7D09DF81A6E518100332331 /* NSTimer+Addition.m in Sources */,
+				F96523E01ABFBAED00AFDEEE /* UserModel.m in Sources */,
 				F7D09D081A6E4F3700332331 /* main.m in Sources */,
 				F7D09DE61A6E518100332331 /* JGProgressHUDFadeAnimation.m in Sources */,
 				F7EBB4781ABBBB9200EFD10F /* DoingVC.m in Sources */,
