@@ -22,6 +22,7 @@
 		F7BDC40C1AA05D92008A1BD0 /* CalendarVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7BDC40B1AA05D92008A1BD0 /* CalendarVC.storyboard */; };
 		F7BDC40F1AA05DD8008A1BD0 /* CalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */; };
 		F7BDC4151AA068FA008A1BD0 /* CanlendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */; };
+		F7BF99441ABFAA780000B445 /* DoneShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BF99431ABFAA780000B445 /* DoneShowView.m */; };
 		F7C987411A77195F001AE3DA /* ProgressCricleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C987401A77195F001AE3DA /* ProgressCricleView.m */; };
 		F7D09D081A6E4F3700332331 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D071A6E4F3700332331 /* main.m */; };
 		F7D09D0B1A6E4F3700332331 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D0A1A6E4F3700332331 /* AppDelegate.m */; };
@@ -79,6 +80,11 @@
 		F7D33C981A70D8E400A6487A /* SelfControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D33C971A70D8E400A6487A /* SelfControl.storyboard */; };
 		F7D33C9B1A70DF2A00A6487A /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D33C9A1A70DF2A00A6487A /* HomeView.m */; };
 		F7EBB4701ABBA59D00EFD10F /* RichStyleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EBB46F1ABBA59D00EFD10F /* RichStyleLabel.m */; };
+		F7EBB4741ABBB32700EFD10F /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EBB4721ABBB32700EFD10F /* HeaderCell.m */; };
+		F7EBB4751ABBB32700EFD10F /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7EBB4731ABBB32700EFD10F /* HeaderCell.xib */; };
+		F7EBB4781ABBBB9200EFD10F /* DoingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EBB4771ABBBB9200EFD10F /* DoingVC.m */; };
+		F7EBB47B1ABBBB9F00EFD10F /* DoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EBB47A1ABBBB9F00EFD10F /* DoneVC.m */; };
+		F7EBB47E1ABBCF9D00EFD10F /* DoingShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EBB47D1ABBCF9D00EFD10F /* DoingShowView.m */; };
 		F7EF35501A9EBDBE00FEE796 /* MyDreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */; };
 		F7EF35531A9EC01A00FEE796 /* TextInHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF35521A9EC01A00FEE796 /* TextInHomeView.m */; };
 		F7EF35561A9EC3B800FEE796 /* Mydate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF35551A9EC3B800FEE796 /* Mydate.m */; };
@@ -126,6 +132,8 @@
 		F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarVC.m; sourceTree = "<group>"; };
 		F7BDC4131AA068FA008A1BD0 /* CanlendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanlendarView.h; sourceTree = "<group>"; };
 		F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanlendarView.m; sourceTree = "<group>"; };
+		F7BF99421ABFAA780000B445 /* DoneShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneShowView.h; sourceTree = "<group>"; };
+		F7BF99431ABFAA780000B445 /* DoneShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneShowView.m; sourceTree = "<group>"; };
 		F7C9873F1A77195F001AE3DA /* ProgressCricleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressCricleView.h; sourceTree = "<group>"; };
 		F7C987401A77195F001AE3DA /* ProgressCricleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressCricleView.m; sourceTree = "<group>"; };
 		F7D09D021A6E4F3700332331 /* ZKL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZKL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +246,15 @@
 		F7D33C9A1A70DF2A00A6487A /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
 		F7EBB46E1ABBA59D00EFD10F /* RichStyleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichStyleLabel.h; sourceTree = "<group>"; };
 		F7EBB46F1ABBA59D00EFD10F /* RichStyleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichStyleLabel.m; sourceTree = "<group>"; };
+		F7EBB4711ABBB32700EFD10F /* HeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCell.h; sourceTree = "<group>"; };
+		F7EBB4721ABBB32700EFD10F /* HeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCell.m; sourceTree = "<group>"; };
+		F7EBB4731ABBB32700EFD10F /* HeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		F7EBB4761ABBBB9200EFD10F /* DoingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoingVC.h; sourceTree = "<group>"; };
+		F7EBB4771ABBBB9200EFD10F /* DoingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoingVC.m; sourceTree = "<group>"; };
+		F7EBB4791ABBBB9F00EFD10F /* DoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneVC.h; sourceTree = "<group>"; };
+		F7EBB47A1ABBBB9F00EFD10F /* DoneVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneVC.m; sourceTree = "<group>"; };
+		F7EBB47C1ABBCF9D00EFD10F /* DoingShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoingShowView.h; sourceTree = "<group>"; };
+		F7EBB47D1ABBCF9D00EFD10F /* DoingShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoingShowView.m; sourceTree = "<group>"; };
 		F7EF354E1A9EBDBE00FEE796 /* MyDreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDreamModel.h; sourceTree = "<group>"; };
 		F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDreamModel.m; sourceTree = "<group>"; };
 		F7EF35511A9EC01A00FEE796 /* TextInHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextInHomeView.h; sourceTree = "<group>"; };
@@ -563,6 +580,13 @@
 				F7F02E3B1ABA631F0095EA2E /* ChartView.xib */,
 				F7B167111AA1A6BE000B84D1 /* DayButton.h */,
 				F7B167121AA1A6BE000B84D1 /* DayButton.m */,
+				F7EBB4711ABBB32700EFD10F /* HeaderCell.h */,
+				F7EBB4721ABBB32700EFD10F /* HeaderCell.m */,
+				F7EBB4731ABBB32700EFD10F /* HeaderCell.xib */,
+				F7EBB47C1ABBCF9D00EFD10F /* DoingShowView.h */,
+				F7EBB47D1ABBCF9D00EFD10F /* DoingShowView.m */,
+				F7BF99421ABFAA780000B445 /* DoneShowView.h */,
+				F7BF99431ABFAA780000B445 /* DoneShowView.m */,
 			);
 			name = MyViews;
 			path = ZKL/MyViews;
@@ -581,6 +605,10 @@
 				F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */,
 				F7F02E411ABAB41C0095EA2E /* SettingVC.h */,
 				F7F02E421ABAB41C0095EA2E /* SettingVC.m */,
+				F7EBB4761ABBBB9200EFD10F /* DoingVC.h */,
+				F7EBB4771ABBBB9200EFD10F /* DoingVC.m */,
+				F7EBB4791ABBBB9F00EFD10F /* DoneVC.h */,
+				F7EBB47A1ABBBB9F00EFD10F /* DoneVC.m */,
 			);
 			name = ViewControllers;
 			path = ZKL/ViewControllers;
@@ -689,6 +717,7 @@
 			files = (
 				F7D33C981A70D8E400A6487A /* SelfControl.storyboard in Resources */,
 				F7ACCF221A71EF3300ABAA69 /* HomeView.xib in Resources */,
+				F7EBB4751ABBB32700EFD10F /* HeaderCell.xib in Resources */,
 				F7D09D111A6E4F3700332331 /* Main.storyboard in Resources */,
 				F7D165001AA019F20085F73B /* Default-568h@2x.png in Resources */,
 				F7D09D161A6E4F3700332331 /* LaunchScreen.xib in Resources */,
@@ -751,12 +780,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7D09DCA1A6E518100332331 /* NSData+AES.m in Sources */,
+				F7EBB47E1ABBCF9D00EFD10F /* DoingShowView.m in Sources */,
 				F7D09DF61A6E518100332331 /* UIView+JHExtension.m in Sources */,
 				F7D09DF21A6E518100332331 /* JHRefreshFooterView.m in Sources */,
 				F7D09DFB1A6E518100332331 /* TSPopoverController.m in Sources */,
 				F7D09DF71A6E518100332331 /* CycleScrollView.m in Sources */,
 				F7D09DE71A6E518100332331 /* JGProgressHUDFadeZoomAnimation.m in Sources */,
 				F7D09D0B1A6E4F3700332331 /* AppDelegate.m in Sources */,
+				F7BF99441ABFAA780000B445 /* DoneShowView.m in Sources */,
 				F7D09DC41A6E518100332331 /* MyTabBarItem.m in Sources */,
 				F7D09E051A6E542700332331 /* BaseViewController.m in Sources */,
 				F7D09DE41A6E518100332331 /* JGProgressHUD.m in Sources */,
@@ -796,9 +827,12 @@
 				F7D09DF81A6E518100332331 /* NSTimer+Addition.m in Sources */,
 				F7D09D081A6E4F3700332331 /* main.m in Sources */,
 				F7D09DE61A6E518100332331 /* JGProgressHUDFadeAnimation.m in Sources */,
+				F7EBB4781ABBBB9200EFD10F /* DoingVC.m in Sources */,
 				F7D09DC51A6E518100332331 /* MyTextField.m in Sources */,
+				F7EBB47B1ABBBB9F00EFD10F /* DoneVC.m in Sources */,
 				F7C987411A77195F001AE3DA /* ProgressCricleView.m in Sources */,
 				F7D09DC21A6E518100332331 /* MyNavigationController.m in Sources */,
+				F7EBB4741ABBB32700EFD10F /* HeaderCell.m in Sources */,
 				F7F02E3A1ABA620E0095EA2E /* ChartView.m in Sources */,
 				F7D09DC71A6E518100332331 /* TimeLabel.m in Sources */,
 				F7D09E081A6E57E300332331 /* MainViewController.m in Sources */,

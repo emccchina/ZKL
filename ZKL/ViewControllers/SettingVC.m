@@ -7,23 +7,35 @@
 //
 
 #import "SettingVC.h"
+#import "HeaderCell.h"
 
 @interface SettingVC ()
 <UITableViewDataSource, UITableViewDelegate>{
-    
+    NSArray *settingArray;
 }
 @property (weak, nonatomic) IBOutlet UITableView *settingTB;
 @end
-
+static NSString *headerCell = @"headerCell";
+static NSString *settingCell = @"settingCell";
 @implementation SettingVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self showBackItem];
+    
+    [self setArray];
+    
     self.settingTB.delegate = self;
     self.settingTB.dataSource = self;
-//    [self.settingTB registerClass:[UITableViewCell class] forCellReuseIdentifier:@"1"];
+//    [self.settingTB registerNib:[UINib nibWithNibName:@"HeaderCell" bundle:nil] forCellReuseIdentifier:headerCell];
+}
+
+- (void)setArray
+{
+    NSString *imageURL = @"http://d.hiphotos.baidu.com/image/w%3D310/sign=ab89bcb967380cd7e61ea4ec9145ad14/ae51f3deb48f8c548f19862638292df5e1fe7ff4.jpg";
+    NSArray *section1 = @[@[imageURL,@"正在进行的梦想",@"DoingVC"],@[imageURL,@"已经完成的梦想",@"DoneVC"]];
+    settingArray = @[section1];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,14 +46,15 @@
 #pragma mark -tableView
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return settingArray.count+1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return 1;
     }
-    return 2;
+    NSArray *arr = settingArray[section-1];
+    return arr.count;
     
 }
 
@@ -50,7 +63,7 @@
     if (section == 0) {
         return .1;
     }
-    return 10;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,11 +78,27 @@
 {
     if (indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"1" forIndexPath:indexPath];
-        
+        HeaderCell *headerView = (HeaderCell*)[cell viewWithTag:10];
+        if (!headerView) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HeaderCell" owner:cell options:nil];
+            headerView = nib[0];
+            headerView.frame = cell.bounds;
+            [cell addSubview:headerView];
+            headerView.tag = 10;
+        }
+        [headerView.header setImageWithURL:[NSURL URLWithString:@"http://d.hiphotos.baidu.com/image/pic/item/55e736d12f2eb93890a739fbd7628535e4dd6ff4.jpg"]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        headerView.name.text = @"name";
+        headerView.diolague.text = @"jkj;i";
         return cell;
     }else{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"2" forIndexPath:indexPath];
-        cell.textLabel.text = @"34";
+        NSArray *arr1 = settingArray[indexPath.section-1];
+        NSArray *arr = arr1[indexPath.row];
+        UIImageView *imageV = (UIImageView*)[cell viewWithTag:10];
+        [imageV setImageWithURL:[NSURL URLWithString:arr[0]]];
+        UILabel *title = (UILabel*)[cell viewWithTag:11];
+        title.text = arr[1];
         return cell;
     }
 }
@@ -77,7 +106,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if (indexPath.section == 0) {
+        return;
+    }
+    NSArray *arr1 = settingArray[indexPath.section-1];
+    NSArray *arr = arr1[indexPath.row];
+    [self performSegueWithIdentifier:arr[2] sender:self];
 }
 
 /*

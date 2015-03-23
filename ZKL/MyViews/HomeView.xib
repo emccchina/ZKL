@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -37,7 +37,7 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="avatar"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="添加梦想"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="调整梦想"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="doButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="gd8-KQ-Bq4"/>
@@ -51,7 +51,7 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="avatar"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="修改时间"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="编辑时间"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="doButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="vIF-Qc-xdL"/>

@@ -51,7 +51,7 @@ const char * const JmoLocaleStoreKey = "jmo.locale";
 
 #pragma mark -
 
--(NSDate *)dayOfNum:(int)numDay{
+-(NSDate *)dayOfNum:(NSInteger)numDay{
     NSCalendar *gregorian = [self.class gregorianCalendar];
     NSDateComponents *comps = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self];
     [comps setDay:numDay];

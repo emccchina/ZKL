@@ -33,6 +33,8 @@
         dio = string;
     }
     self.dioLabel.text = dio;
+    self.dioLabel.numberOfLines = 0;
+    self.sortLabel.numberOfLines = 0;
 }
 
 @end

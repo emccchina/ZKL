@@ -34,7 +34,7 @@
 - (NSDate*)preYear;
 - (NSDate*)nextYear;
 
-- (NSDate *)dayOfNum:(int)numDay;
+- (NSDate *)dayOfNum:(NSInteger)numDay;
 
 - (NSDate *)startingDate;
 - (NSDate *)endingDate;
