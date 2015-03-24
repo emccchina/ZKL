@@ -39,6 +39,8 @@
     [points addObject:[self dictionaryWithTime:@"4" date:@"3/33"]];
     [points addObject:[self dictionaryWithTime:@"6" date:@"2/25"]];
     self.showView.points = points;
+    self.showView.backgroundColor = [UIColor clearColor];
+    
 }
 
 - (NSDictionary*)dictionaryWithTime:(NSString*)time date:(NSString*)date

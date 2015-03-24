@@ -33,9 +33,9 @@ static NSString *settingCell = @"settingCell";
 
 - (void)setArray
 {
-    NSString *imageURL = @"http://d.hiphotos.baidu.com/image/w%3D310/sign=ab89bcb967380cd7e61ea4ec9145ad14/ae51f3deb48f8c548f19862638292df5e1fe7ff4.jpg";
-    NSArray *section1 = @[@[imageURL,@"正在进行的梦想",@"DoingVC"],@[imageURL,@"已经完成的梦想",@"DoneVC"]];
-    settingArray = @[section1];
+    NSArray *section1 = @[@[@"running",@"正在进行的梦想",@"DoingVC"],@[@"finished",@"已经完成的梦想",@"DoneVC"]];
+    NSArray *section2 = @[@[@"setting",@"设置",@"DoingVC"]];
+    settingArray = @[section1,section2];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,7 +96,7 @@ static NSString *settingCell = @"settingCell";
         NSArray *arr1 = settingArray[indexPath.section-1];
         NSArray *arr = arr1[indexPath.row];
         UIImageView *imageV = (UIImageView*)[cell viewWithTag:10];
-        [imageV setImageWithURL:[NSURL URLWithString:arr[0]]];
+        [imageV setImage:[UIImage imageNamed:arr[0]]];
         UILabel *title = (UILabel*)[cell viewWithTag:11];
         title.text = arr[1];
         return cell;

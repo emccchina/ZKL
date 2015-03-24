@@ -11,7 +11,9 @@
 #define kDate       @"date"
 
 @interface DoneShowView : UIView
-
+{
+    UIImageView *humanView;
+}
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) CGFloat  dreamTime;
 @property (nonatomic, assign) CGFloat  restTime;

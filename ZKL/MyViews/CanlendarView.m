@@ -143,8 +143,15 @@
         DayButton *day = [[DayButton alloc] initWithFrame:CGRectMake((i%7)*dayHeight, (i/7)*dayHeight+y, dayHeight, dayHeight)];
         [day setshowMonth:showDate showDay:[self dateAtItem:i]];
         [self addSubview:day];
-        
+        if (i / 7) {
+            [day setDayState:kDayStateTwo];
+        }else{
+            [day setDayState:kDayStateOne];
+        }
     }
+    
+//底部的
+    
 }
 
 #pragma -mark private monthed

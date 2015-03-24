@@ -24,6 +24,8 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+//    self.backgroundColor = [UIColor clearColor];
+//    self.layer.backgroundColor = [UIColor clearColor].CGColor;
     CGFloat width = CGRectGetWidth(rect);
     CGFloat height = CGRectGetHeight(rect);
     CGFloat spaceH = height /10;
@@ -31,6 +33,7 @@
     
     CGFloat scale = [UIScreen mainScreen].scale;
     CGContextRef content = UIGraphicsGetCurrentContext();
+    CGContextClearRect(content, rect);
     CGContextSetLineWidth(content, 1/scale);
     UIColor *bgColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1];
     CGContextSetFillColorWithColor(content, bgColor.CGColor);
@@ -48,7 +51,11 @@
     CGContextAddLineToPoint(content, spaceW*6+sizeTitle.width, spaceH/2);
     CGContextAddLineToPoint(content, spaceW*6+sizeTitle.width, spaceH*3/2);
     CGContextDrawPath(content, kCGPathFill);
-    
+    if (!humanView) {
+        humanView = [[UIImageView alloc] initWithFrame:CGRectMake(20, spaceH*2+10, 74, 74)];
+        humanView.image = [UIImage imageNamed:@"human2"];
+        [self addSubview:humanView];
+    }
     [self.title drawInRect:CGRectMake(spaceW*2, spaceH-(sizeTitle.height)/2, sizeTitle.width, sizeTitle.height) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:font3}];
     UIFont *font4 = [UIFont fontWithName:kFontName size:13];
     [@"时间比例" drawInRect:CGRectMake(width/2 - 50, spaceH*2-3, 150, 40) withAttributes:@{NSForegroundColorAttributeName:kBlackColor, NSFontAttributeName:font4}];

@@ -29,7 +29,10 @@
     headerCell.name.text = @"name";
     headerCell.diolague.text = @"jkj;i";
     self.showView.title = @"过四级";
-    
+    self.showView.dio = @"岁月是把杀猪刀";
+    self.showView.progress = 0.3;
+    self.showView.totalTime = 30;
+    self.showView.buttom = YES;
 }
 
 - (void)didReceiveMemoryWarning {

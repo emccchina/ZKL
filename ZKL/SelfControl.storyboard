@@ -86,33 +86,36 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="梦想" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF2-ru-jWL">
-                                <rect key="frame" x="10" y="500" width="34" height="20"/>
+                                <rect key="frame" x="10" y="500" width="34" height="10"/>
                                 <fontDescription key="fontDescription" name="FZLTHK--GBK1-0" family="FZLanTingHei-R-GBK" pointSize="17"/>
                                 <color key="textColor" red="0.066666666666666666" green="0.34509803921568627" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teN-mj-C3B" customClass="ProgressRectView">
-                                <rect key="frame" x="55" y="501" width="519" height="20"/>
+                                <rect key="frame" x="55" y="501" width="519" height="10"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJz-6E-5qw" customClass="ProgressRectView">
-                                <rect key="frame" x="55" y="536" width="173" height="20"/>
+                                <rect key="frame" x="55" y="526" width="173" height="9"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="必须" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg4-hw-Io0">
-                                <rect key="frame" x="10" y="536" width="34" height="20"/>
+                                <rect key="frame" x="10" y="526" width="34" height="20"/>
                                 <fontDescription key="fontDescription" name="FZLTHK--GBK1-0" family="FZLanTingHei-R-GBK" pointSize="17"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="休息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtN-VX-LFd">
-                                <rect key="frame" x="357" y="536" width="34" height="20"/>
+                                <rect key="frame" x="357" y="526" width="34" height="20"/>
                                 <fontDescription key="fontDescription" name="FZLTHK--GBK1-0" family="FZLanTingHei-R-GBK" pointSize="17"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euo-qH-pXU" customClass="ProgressRectView">
-                                <rect key="frame" x="401" y="536" width="173" height="20"/>
+                                <rect key="frame" x="401" y="526" width="173" height="9"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbQ-pQ-4nr" customClass="ProgressLineView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-0C-AA6">
@@ -147,12 +150,16 @@
                             <constraint firstItem="FtN-VX-LFd" firstAttribute="top" secondItem="euo-qH-pXU" secondAttribute="top" id="ISP-rZ-aIg"/>
                             <constraint firstItem="TnZ-W7-pj5" firstAttribute="leading" secondItem="pPc-PS-HkJ" secondAttribute="leadingMargin" id="Jnw-Rd-5Nw"/>
                             <constraint firstItem="teN-mj-C3B" firstAttribute="height" secondItem="gJz-6E-5qw" secondAttribute="height" id="K54-LC-wEa"/>
+                            <constraint firstAttribute="trailing" secondItem="bbQ-pQ-4nr" secondAttribute="trailing" id="NbY-L7-d97"/>
                             <constraint firstItem="teN-mj-C3B" firstAttribute="trailing" secondItem="euo-qH-pXU" secondAttribute="trailing" id="SIV-Sp-jSl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TnZ-W7-pj5" secondAttribute="trailing" id="TV6-Fj-QwR"/>
                             <constraint firstItem="RqS-0Q-1bZ" firstAttribute="centerY" secondItem="sQR-Wt-fg8" secondAttribute="centerY" constant="-11" id="U2y-eq-Rim"/>
                             <constraint firstAttribute="trailingMargin" secondItem="teN-mj-C3B" secondAttribute="trailing" constant="10" id="ZJf-ST-ISW"/>
                             <constraint firstItem="gJz-6E-5qw" firstAttribute="width" secondItem="euo-qH-pXU" secondAttribute="width" id="ZVr-ra-lvY"/>
+                            <constraint firstItem="bbQ-pQ-4nr" firstAttribute="top" secondItem="gJz-6E-5qw" secondAttribute="bottom" constant="15" id="bqe-f3-PSg"/>
+                            <constraint firstAttribute="bottom" secondItem="bbQ-pQ-4nr" secondAttribute="bottom" constant="50" id="dT4-n7-6Cr"/>
                             <constraint firstItem="gJz-6E-5qw" firstAttribute="top" secondItem="FtN-VX-LFd" secondAttribute="top" id="dga-xo-ax9"/>
+                            <constraint firstItem="bbQ-pQ-4nr" firstAttribute="leading" secondItem="pPc-PS-HkJ" secondAttribute="leading" id="geJ-Bi-tMr"/>
                             <constraint firstItem="teN-mj-C3B" firstAttribute="leading" secondItem="gJz-6E-5qw" secondAttribute="leading" id="hNb-TL-F2r"/>
                             <constraint firstItem="sQR-Wt-fg8" firstAttribute="leading" secondItem="pPc-PS-HkJ" secondAttribute="leading" constant="80" id="hzQ-j5-423"/>
                             <constraint firstItem="dj4-sz-T0F" firstAttribute="centerY" secondItem="sQR-Wt-fg8" secondAttribute="centerY" constant="-11" id="iDW-kR-AxX"/>
@@ -171,6 +178,7 @@
                         <outlet property="homeButton" destination="yPK-0C-AA6" id="CR0-gS-JXd"/>
                         <outlet property="leftBut" destination="dj4-sz-T0F" id="KOZ-gN-sE6"/>
                         <outlet property="needProgress" destination="gJz-6E-5qw" id="JDh-Iz-50J"/>
+                        <outlet property="progreessLine" destination="bbQ-pQ-4nr" id="qBA-oI-PJK"/>
                         <outlet property="rightBut" destination="RqS-0Q-1bZ" id="BRS-c8-w1B"/>
                         <outlet property="wasteProgress" destination="euo-qH-pXU" id="yx8-M7-Esm"/>
                         <segue destination="NDD-5v-rDy" kind="show" identifier="AddDreamVC" id="5jy-xg-jxk"/>

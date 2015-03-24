@@ -28,6 +28,21 @@
 //        // Start shimmering.
 //        shimmeringView.shimmering = YES;
 //        shimmeringView.shimmeringSpeed = 50;
+        
+        cup = [CAShapeLayer layer];
+        cup.frame = CGRectMake(CGRectGetWidth(frame)*2/3, CGRectGetHeight(frame)*2/3, CGRectGetWidth(frame)/3, CGRectGetWidth(frame)/3);
+        cup.contents = (id)[UIImage imageNamed:@"cup"].CGImage;
+//        cup.backgroundColor = [UIColor orangeColor].CGColor;
+        [self.layer addSublayer:cup];
+        
+        redPoint = [CAShapeLayer layer];
+        redPoint.frame = CGRectMake(CGRectGetWidth(frame)/2-2, CGRectGetHeight(frame)-10, 4, 4);
+        redPoint.cornerRadius = 2;
+        redPoint.backgroundColor = [UIColor redColor].CGColor;
+        [self.layer addSublayer:redPoint];
+        
+        cup.hidden = YES;
+        redPoint.hidden = YES;
     }
     return self;
     
@@ -59,6 +74,30 @@
     [self setTitleColor:titleColor forState:UIControlStateNormal];
     if ([self.date isToday]) {
         self.layer.backgroundColor = kNavBGColor.CGColor;
+    }
+}
+
+- (void)setDayState:(DayState)dayState
+{
+    switch (dayState) {
+        case kDayStateZone:
+        {
+            cup.hidden = YES;
+            redPoint.hidden = YES;
+        }break;
+        case kDayStateOne:
+        {
+            cup.hidden = YES;
+            redPoint.hidden = NO;
+        }break;
+        case kDayStateTwo:
+        {
+            cup.hidden = NO;
+            redPoint.hidden = YES;
+        }break;
+            
+        default:
+            break;
     }
 }
 

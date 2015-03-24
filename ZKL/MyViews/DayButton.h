@@ -24,6 +24,8 @@ typedef NS_ENUM(NSInteger, DayState) {
 @interface DayButton : UIButton
 {
     NSDate      *_date;
+    CAShapeLayer *redPoint;
+    CAShapeLayer *cup;
 }
 @property (nonatomic, assign) DayType   dayType;
 @property (nonatomic, assign) DayState  dayState;

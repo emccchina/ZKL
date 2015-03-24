@@ -22,6 +22,7 @@
 		F7BDC40F1AA05DD8008A1BD0 /* CalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDC40E1AA05DD8008A1BD0 /* CalendarVC.m */; };
 		F7BDC4151AA068FA008A1BD0 /* CanlendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */; };
 		F7BF99441ABFAA780000B445 /* DoneShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BF99431ABFAA780000B445 /* DoneShowView.m */; };
+		F7BF99471ABFE81C0000B445 /* ProgressLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BF99461ABFE81C0000B445 /* ProgressLineView.m */; };
 		F7C987411A77195F001AE3DA /* ProgressCricleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C987401A77195F001AE3DA /* ProgressCricleView.m */; };
 		F7D09D081A6E4F3700332331 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D071A6E4F3700332331 /* main.m */; };
 		F7D09D0B1A6E4F3700332331 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09D0A1A6E4F3700332331 /* AppDelegate.m */; };
@@ -134,6 +135,8 @@
 		F7BDC4141AA068FA008A1BD0 /* CanlendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanlendarView.m; sourceTree = "<group>"; };
 		F7BF99421ABFAA780000B445 /* DoneShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneShowView.h; sourceTree = "<group>"; };
 		F7BF99431ABFAA780000B445 /* DoneShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneShowView.m; sourceTree = "<group>"; };
+		F7BF99451ABFE81C0000B445 /* ProgressLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressLineView.h; sourceTree = "<group>"; };
+		F7BF99461ABFE81C0000B445 /* ProgressLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressLineView.m; sourceTree = "<group>"; };
 		F7C9873F1A77195F001AE3DA /* ProgressCricleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressCricleView.h; sourceTree = "<group>"; };
 		F7C987401A77195F001AE3DA /* ProgressCricleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressCricleView.m; sourceTree = "<group>"; };
 		F7D09D021A6E4F3700332331 /* ZKL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZKL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -590,6 +593,8 @@
 				F7EBB47D1ABBCF9D00EFD10F /* DoingShowView.m */,
 				F7BF99421ABFAA780000B445 /* DoneShowView.h */,
 				F7BF99431ABFAA780000B445 /* DoneShowView.m */,
+				F7BF99451ABFE81C0000B445 /* ProgressLineView.h */,
+				F7BF99461ABFE81C0000B445 /* ProgressLineView.m */,
 			);
 			name = MyViews;
 			path = ZKL/MyViews;
@@ -798,6 +803,7 @@
 				F7D09E051A6E542700332331 /* BaseViewController.m in Sources */,
 				F7D09DE41A6E518100332331 /* JGProgressHUD.m in Sources */,
 				F7D09DEC1A6E518100332331 /* JHRefreshAmazingAniView.m in Sources */,
+				F7BF99471ABFE81C0000B445 /* ProgressLineView.m in Sources */,
 				F7D09DC31A6E518100332331 /* MyTabbarController.m in Sources */,
 				F7D09DF41A6E518100332331 /* UIScrollView+JHExtension.m in Sources */,
 				F7D33C9B1A70DF2A00A6487A /* HomeView.m in Sources */,

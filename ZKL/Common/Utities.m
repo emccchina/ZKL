@@ -97,7 +97,10 @@
 {
     UIBarButtonItem *item = nil;
     if ([some isKindOfClass:[UIImage class]]) {
-        item = [[UIBarButtonItem alloc] initWithImage:(UIImage *)some style:UIBarButtonItemStyleDone target:target action:sel];
+        UIButton *view  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [view setBackgroundImage:(UIImage*)some forState:UIControlStateNormal];
+        [view addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];
+        item = [[UIBarButtonItem alloc] initWithCustomView:view];
     }else{
         item = [[UIBarButtonItem alloc] initWithTitle:(NSString *)some style:UIBarButtonItemStyleDone target:target action:sel];
         item.tintColor = [UIColor whiteColor];

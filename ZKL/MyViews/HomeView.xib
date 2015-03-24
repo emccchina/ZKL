@@ -36,7 +36,7 @@
                         <constraint firstAttribute="width" secondItem="PfS-D1-DuB" secondAttribute="height" multiplier="1:1" id="YqC-xv-d0x"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="avatar"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="addHome"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="调整梦想"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -50,7 +50,7 @@
                         <constraint firstAttribute="width" secondItem="Hmq-Cd-mhE" secondAttribute="height" multiplier="1:1" id="4TO-8t-bxp"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="avatar"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="editHome"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="编辑时间"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -64,7 +64,7 @@
                         <constraint firstAttribute="width" secondItem="2Nc-Dt-Ehb" secondAttribute="height" multiplier="1:1" id="j6r-Ov-WdF"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="avatar"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="calendarHome"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="日历图表"/>
                     </userDefinedRuntimeAttributes>
                     <connections>

@@ -13,10 +13,10 @@
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-
+    
     CGFloat width = CGRectGetWidth(rect);
     CGFloat height = CGRectGetHeight(rect);
-    CGFloat spaceH = height /10;
+    CGFloat spaceH = height / 11;
     CGFloat spaceW = width / 20;
     
     CGFloat scale = [UIScreen mainScreen].scale;
@@ -24,7 +24,7 @@
     CGContextSetLineWidth(content, 1/scale);
     UIColor *bgColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1];
     CGContextSetFillColorWithColor(content, bgColor.CGColor);
-    CGContextAddRect(content, CGRectMake(0, spaceH, width, height-spaceH*2));
+    CGContextAddRect(content, CGRectMake(0, spaceH, width, height-spaceH*4));
     CGContextDrawPath(content, kCGPathFill);
     
     UIFont *font3 = [UIFont fontWithName:kFontName size:20];
@@ -40,6 +40,16 @@
     CGContextDrawPath(content, kCGPathFill);
     
     [self.title drawInRect:CGRectMake(spaceW*2, spaceH-(sizeTitle.height)/2, sizeTitle.width, sizeTitle.height) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:font3}];
+    
+    if (!progressView) {
+        progressView = [[ProgressLineView alloc] initWithFrame:CGRectMake(0, spaceH*2, width, (iPhone4 ?spaceH*8 : spaceH*6))];
+        [self addSubview:progressView];
+    }
+    progressView.progress = self.progress;
+    progressView.title = self.dio;
+    progressView.backgroundColor = [UIColor clearColor];
+    progressView.totalTime = self.progress*self.totalTime;
+    progressView.bottom = self.buttom;
     
 }
 

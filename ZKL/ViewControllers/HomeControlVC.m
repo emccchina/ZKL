@@ -13,7 +13,7 @@
 #import "HomeView.h"
 #import "EditTime.h"
 #import "AppDelegate.h"
-
+#import "ProgressLineView.h"
 @interface HomeControlVC ()
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet ProgressRectView *needProgress;
 @property (weak, nonatomic) IBOutlet ProgressRectView *wasteProgress;
 @property (weak, nonatomic) IBOutlet UIButton *homeButton;
+@property (weak, nonatomic) IBOutlet ProgressLineView *progreessLine;
 @end
 
 @implementation HomeControlVC
@@ -33,7 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"自控力";
-    self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UserInfo shareUserInfo].backImage target:self action:@selector(doRight:)];
+    self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
     self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
     CGFloat topHieght = iPhone4 ? 10 : 50;
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.dreamView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:topHieght]];
@@ -41,6 +42,13 @@
     [self.rightBut setBackgroundImage:[Utities backImage:1] forState:UIControlStateNormal];
     [Mydate getNowDateComponents];
     [self.homeButton setBackgroundImage:[Utities homeAddImage] forState:UIControlStateNormal];
+    
+    self.progreessLine.hidden = iPhone4;
+    
+    self.progreessLine.progress = 0.8;
+    self.progreessLine.title = @"岁月是把猪饲料";
+    self.progreessLine.backgroundColor = [UIColor clearColor];
+    self.progreessLine.bottom = NO;
 }
 - (void)viewDidAppear:(BOOL)animated
 {
