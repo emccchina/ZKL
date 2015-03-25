@@ -15,6 +15,7 @@
 <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet MyTextField *timeTF;
+@property (weak, nonatomic) IBOutlet MyTextField *minuteTF;
 @property (weak, nonatomic) IBOutlet UIButton *OKButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancel;
 @property (weak, nonatomic) IBOutlet UIView *whiteBG;

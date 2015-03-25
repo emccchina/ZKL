@@ -20,12 +20,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self createDB];
     [UserInfo shareUserInfo].homeAddImage = [Utities homeAddImage];
     [UserInfo shareUserInfo].backImage = [self myBackImage];
     UITabBarController *VC = (UITabBarController*)self.window.rootViewController;
     VC.delegate = self;
     return YES;
 }
+
+- (void)createDB
+{
+    NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *dbPath   = [docsPath stringByAppendingPathComponent:@"dream.db"];
+    FMDatabase *db     = [FMDatabase databaseWithPath:dbPath];NSString *sql = @"create table bulktest1 (id integer primary key autoincrement, x text);"
+    "create table bulktest2 (id integer primary key autoincrement, y text);"
+    "create table bulktest3 (id integer primary key autoincrement, z text);"
+    "insert into bulktest1 (x) values ('XXX');"
+    "insert into bulktest2 (y) values ('YYY');"
+    "insert into bulktest3 (z) values ('ZZZ');";
+    
+    BOOL success = [db executeStatements:sql];
+    
+    sql = @"select count(*) as count from bulktest1;"
+    "select count(*) as count from bulktest2;"
+    "select count(*) as count from bulktest3;";
+    
+    success = [db executeStatements:sql withResultBlock:^int(NSDictionary *dictionary) {
+        NSInteger count = [dictionary[@"count"] integerValue];
+        return 0;
+    }];
+    
+}
+
 - (UIImage*)myBackImage
 {
     CGFloat width = 22;

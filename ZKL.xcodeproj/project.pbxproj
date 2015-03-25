@@ -16,6 +16,10 @@
 		F7ACCF241A71FE7900ABAA69 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7ACCF231A71FE7900ABAA69 /* QuartzCore.framework */; };
 		F7ACCF271A7241D100ABAA69 /* DreamTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F7ACCF261A7241D100ABAA69 /* DreamTime.m */; };
 		F7ACCF2A1A7243D600ABAA69 /* HomeControlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7ACCF291A7243D600ABAA69 /* HomeControlVC.m */; };
+		F7AEF8841AC24218000A9142 /* PublicStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7AEF8831AC24218000A9142 /* PublicStoryboard.storyboard */; };
+		F7AEF88B1AC2427D000A9142 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AEF8861AC2427D000A9142 /* LoginVC.m */; };
+		F7AEF88C1AC2427D000A9142 /* MyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AEF8881AC2427D000A9142 /* MyWebView.m */; };
+		F7AEF88D1AC2427D000A9142 /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AEF88A1AC2427D000A9142 /* RegisterVC.m */; };
 		F7B1670D1AA188D0000B84D1 /* CustomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B1670C1AA188D0000B84D1 /* CustomModel.m */; };
 		F7B167131AA1A6BE000B84D1 /* DayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B167121AA1A6BE000B84D1 /* DayButton.m */; };
 		F7B1671B1AA1A9CE000B84D1 /* NSDate+Agenda.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B167161AA1A9CE000B84D1 /* NSDate+Agenda.m */; };
@@ -124,6 +128,13 @@
 		F7ACCF261A7241D100ABAA69 /* DreamTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamTime.m; sourceTree = "<group>"; };
 		F7ACCF281A7243D600ABAA69 /* HomeControlVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeControlVC.h; sourceTree = "<group>"; };
 		F7ACCF291A7243D600ABAA69 /* HomeControlVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeControlVC.m; sourceTree = "<group>"; };
+		F7AEF8831AC24218000A9142 /* PublicStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PublicStoryboard.storyboard; sourceTree = "<group>"; };
+		F7AEF8851AC2427D000A9142 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		F7AEF8861AC2427D000A9142 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
+		F7AEF8871AC2427D000A9142 /* MyWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWebView.h; sourceTree = "<group>"; };
+		F7AEF8881AC2427D000A9142 /* MyWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWebView.m; sourceTree = "<group>"; };
+		F7AEF8891AC2427D000A9142 /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
+		F7AEF88A1AC2427D000A9142 /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		F7B1670B1AA188D0000B84D1 /* CustomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomModel.h; sourceTree = "<group>"; };
 		F7B1670C1AA188D0000B84D1 /* CustomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomModel.m; sourceTree = "<group>"; };
 		F7B167111AA1A6BE000B84D1 /* DayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayButton.h; sourceTree = "<group>"; };
@@ -366,6 +377,7 @@
 				F7D33C951A70D8C700A6487A /* Club.storyboard */,
 				F7D33C971A70D8E400A6487A /* SelfControl.storyboard */,
 				F7BDC40B1AA05D92008A1BD0 /* CalendarVC.storyboard */,
+				F7AEF8831AC24218000A9142 /* PublicStoryboard.storyboard */,
 				F7D09D121A6E4F3700332331 /* Images.xcassets */,
 				F7D09D141A6E4F3700332331 /* LaunchScreen.xib */,
 				F7D09D051A6E4F3700332331 /* Supporting Files */,
@@ -620,6 +632,12 @@
 				F7EBB4771ABBBB9200EFD10F /* DoingVC.m */,
 				F7EBB4791ABBBB9F00EFD10F /* DoneVC.h */,
 				F7EBB47A1ABBBB9F00EFD10F /* DoneVC.m */,
+				F7AEF8851AC2427D000A9142 /* LoginVC.h */,
+				F7AEF8861AC2427D000A9142 /* LoginVC.m */,
+				F7AEF8871AC2427D000A9142 /* MyWebView.h */,
+				F7AEF8881AC2427D000A9142 /* MyWebView.m */,
+				F7AEF8891AC2427D000A9142 /* RegisterVC.h */,
+				F7AEF88A1AC2427D000A9142 /* RegisterVC.m */,
 			);
 			name = ViewControllers;
 			path = ZKL/ViewControllers;
@@ -741,6 +759,7 @@
 				F7D09D131A6E4F3700332331 /* Images.xcassets in Resources */,
 				F7D164FE1AA00B1F0085F73B /* EditTime.xib in Resources */,
 				F7D09DEF1A6E518100332331 /* JHRefresh.bundle in Resources */,
+				F7AEF8841AC24218000A9142 /* PublicStoryboard.storyboard in Resources */,
 				F7289BB21AC131630044F64F /* 兰亭黑 GBK.TTF in Resources */,
 				F7BDC40C1AA05D92008A1BD0 /* CalendarVC.storyboard in Resources */,
 				F7F02E3C1ABA631F0095EA2E /* ChartView.xib in Resources */,
@@ -795,6 +814,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7D09DCA1A6E518100332331 /* NSData+AES.m in Sources */,
+				F7AEF88D1AC2427D000A9142 /* RegisterVC.m in Sources */,
 				F7EBB47E1ABBCF9D00EFD10F /* DoingShowView.m in Sources */,
 				F7D09DF61A6E518100332331 /* UIView+JHExtension.m in Sources */,
 				F7D09DF21A6E518100332331 /* JHRefreshFooterView.m in Sources */,
@@ -823,6 +843,7 @@
 				F7D09DC91A6E518100332331 /* Utities.m in Sources */,
 				F7D09DEA1A6E518100332331 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				F7D09DCB1A6E518100332331 /* NSString+AES.m in Sources */,
+				F7AEF88C1AC2427D000A9142 /* MyWebView.m in Sources */,
 				F7EF35501A9EBDBE00FEE796 /* MyDreamModel.m in Sources */,
 				F7D09DFC1A6E518100332331 /* TSPopoverPopoverView.m in Sources */,
 				F7D09DFE1A6E518100332331 /* UIBarButtonItem+WEPopover.m in Sources */,
@@ -857,6 +878,7 @@
 				F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */,
 				F7EF35591A9F066300FEE796 /* ImageButton.m in Sources */,
 				F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */,
+				F7AEF88B1AC2427D000A9142 /* LoginVC.m in Sources */,
 				F7B1671B1AA1A9CE000B84D1 /* NSDate+Agenda.m in Sources */,
 				F7D09DFA1A6E518100332331 /* TSActionSheet.m in Sources */,
 				F7D09DC01A6E518100332331 /* FileManager.m in Sources */,

@@ -73,13 +73,14 @@
         }
     }];
     [self.dreamProgress setViewWithTitle:@"10小时" progress:0.6 progress:YES];
-    [self.needProgress setViewWithTitle:@"8小时" progress:0.8 progress:YES];
+    [self.needProgress setViewWithTitle:@"8小时" progress:0.8 progress:NO];
     [self.wasteProgress setViewWithTitle:@"4小时" progress:0.2 progress:NO];
     
 }
 - (void)doRight:(UINavigationItem*)item
 {
-    [self performSegueWithIdentifier:@"SettingVC" sender:self];
+//    [self performSegueWithIdentifier:@"SettingVC" sender:self];
+    [Utities presentLoginVC:self];
 }
 - (IBAction)doHomeButton:(id)sender {
     [self presentHomeView];

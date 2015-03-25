@@ -23,8 +23,24 @@
         //注册键盘通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+        
+        UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
+        [topView setBarStyle:UIBarStyleDefault];
+        UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doFinish)];
+        NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
+        [topView setItems:buttonsArray];
+        [self setInputAccessoryView:topView];
     }
     return self;
+}
+
+- (void)doFinish
+{
+    [self resignFirstResponder];
+    if (self.finished) {
+        self.finished(self);
+    }
 }
 
 #pragma mark keyboardNotification

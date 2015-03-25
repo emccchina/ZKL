@@ -34,4 +34,5 @@
 #import "UserInfo.h"
 #import "POP.h"
 #import "Mantle.h"
+#import "FMDB.h"
 #endif

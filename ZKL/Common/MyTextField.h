@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MyTextField;
+typedef void (^DoFinished) (MyTextField* tf);
 @interface MyTextField : UITextField
 {
 }
 @property (nonatomic, strong) UIView *mySuperview;
 @property (nonatomic, assign) CGRect superRect;
 @property (nonatomic, strong) id mark;
+@property (nonatomic, copy) DoFinished finished;
 @end

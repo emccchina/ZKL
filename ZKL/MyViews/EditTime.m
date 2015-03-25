@@ -56,14 +56,18 @@
     self.timeTF.keyboardType = UIKeyboardTypeNumberPad;
     self.timeTF.layer.borderWidth = 1/scale;
     self.timeTF.layer.borderColor = lineColor.CGColor;
-   
-    UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
-    [topView setBarStyle:UIBarStyleDefault];
-    UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doFinish)];
-    NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
-    [topView setItems:buttonsArray];
-    [self.timeTF setInputAccessoryView:topView];
+    self.timeTF.finished = ^(MyTextField* tf){
+        [self doFinish:tf];
+    };
+    self.minuteTF.delegate  = self;
+    self.minuteTF.returnKeyType = UIReturnKeyDone;
+    self.minuteTF.keyboardType = UIKeyboardTypeNumberPad;
+    self.minuteTF.layer.borderWidth = 1/scale;
+    self.minuteTF.layer.borderColor = lineColor.CGColor;
+    self.minuteTF.finished = ^(MyTextField *tf){
+        [self doFinish:tf];
+    };
+    
     
     self.OKButton.layer.cornerRadius = 3;
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
@@ -114,9 +118,9 @@
     [self setButSelected:2];
 }
 
-- (void)doFinish
+- (void)doFinish:(MyTextField*)tf
 {
-    [self.timeTF resignFirstResponder];
+    
 }
 - (IBAction)doOKButton:(id)sender {
     [self.timeTF resignFirstResponder];

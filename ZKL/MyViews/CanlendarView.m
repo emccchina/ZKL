@@ -46,7 +46,7 @@
     NSInteger items =  weekDay + [NSDate numberOfDaysInMonthForDate:showDate];
     
     CGFloat width = CGRectGetWidth(rect);
-//    CGFloat height = CGRectGetHeight(rect);
+    CGFloat height = CGRectGetHeight(rect);
     
     //清楚 重画
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -121,12 +121,15 @@
     for (int i = 1; i <= numRows; i++) {
         CGContextMoveToPoint(context, 0, dayHeight*i+y);
         CGContextAddLineToPoint(context, width, dayHeight*i+y);
+//        CGContextStrokePath(context);
     }
     for (int i = 1; i <= 7; i++) {
         CGContextMoveToPoint(context, dayHeight*i, y);
         CGContextAddLineToPoint(context, dayHeight*i, dayHeight*numRows+y);
+        
     }
     CGContextStrokePath(context);
+
 //.........................
     //画 周一 至周日
     NSArray *weekdays = [NSDate weekdaySymbols];
@@ -151,7 +154,44 @@
     }
     
 //底部的
+    y += numRows*dayHeight;
+    CGContextSetFillColorWithColor(context, kNavBGColor.CGColor);
+    CGContextAddRect(context, CGRectMake(0, y, width, height-y));
+    CGContextDrawPath(context, kCGPathFill);
+
+    y += dayHeight*.5;
+    CGContextSetFillColorWithColor(context, [UIColor orangeColor].CGColor);
+    CGContextAddRect(context, CGRectMake(0, y, width, dayHeight));
+    CGContextDrawPath(context, kCGPathFill);
     
+    UIFont *font3 = [UIFont fontWithName:kFontName size:15];
+    NSString *stringLeft = @"本月累计获得奖杯数";
+    CGSize sizeLeft = [Utities sizeWithUIFont:font3 string:stringLeft];
+    [stringLeft drawInRect:CGRectMake(width/4-sizeLeft.width/2, y+(dayHeight-sizeLeft.height)/2, sizeLeft.width, sizeLeft.height) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:font3}];
+    
+    NSString *stringRight = @"累计获得奖杯数";
+    CGSize sizeRight = [Utities sizeWithUIFont:font3 string:stringRight];
+    [stringRight drawInRect:CGRectMake(width*3/4-sizeRight.width/2, y+(dayHeight-sizeRight.height)/2, sizeRight.width, sizeRight.height) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:font3}];
+    
+    y += dayHeight;
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextSetLineWidth(context, 1);
+    
+    CGContextSetStrokeColorWithColor(context, [UIColor lightGrayColor].CGColor);
+    CGContextAddRect(context, CGRectMake(10, y, width/2-20, height-y-dayHeight*.5));
+    CGContextAddRect(context, CGRectMake(width/2+10, y, width/2-20, height-y-dayHeight*.5));
+    CGContextDrawPath(context, kCGPathFillStroke);
+    
+    
+    UIFont* font4 = [UIFont fontWithName:kFontName size:30];
+    NSString *stringMonth = @"8";
+    CGSize sizeMonth1 = [Utities sizeWithUIFont:font4 string:stringMonth];
+    y += (height-y-dayHeight*.5 - sizeMonth1.height)/2;
+    
+    [stringMonth drawInRect:CGRectMake(width/4-sizeMonth1.width/2, y, sizeMonth1.width, sizeMonth1.height) withAttributes:@{NSForegroundColorAttributeName:kNavBGColor, NSFontAttributeName:font4}];
+    
+    CGSize sizeMonth2 = [Utities sizeWithUIFont:font4 string:@"20"];
+    [@"20" drawInRect:CGRectMake(width*3/4-sizeMonth2.width/2, y, sizeMonth2.width, sizeMonth2.height) withAttributes:@{NSForegroundColorAttributeName:kNavBGColor, NSFontAttributeName:font4}];
 }
 
 #pragma -mark private monthed

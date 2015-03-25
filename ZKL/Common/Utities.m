@@ -96,15 +96,15 @@
 + (UIBarButtonItem*)barButtonItemWithSomething:(id)some target:(id)target action:(SEL)sel
 {
     UIBarButtonItem *item = nil;
-    if ([some isKindOfClass:[UIImage class]]) {
+//    if ([some isKindOfClass:[UIImage class]]) {
         UIButton *view  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         [view setBackgroundImage:(UIImage*)some forState:UIControlStateNormal];
         [view addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];
         item = [[UIBarButtonItem alloc] initWithCustomView:view];
-    }else{
-        item = [[UIBarButtonItem alloc] initWithTitle:(NSString *)some style:UIBarButtonItemStyleDone target:target action:sel];
-        item.tintColor = [UIColor whiteColor];
-    }
+//    }else{
+//        item = [[UIBarButtonItem alloc] initWithTitle:(NSString *)some style:UIBarButtonItemStyleDone target:target action:sel];
+//        item.tintColor = [UIColor whiteColor];
+//    }
     return item;
 }
 
@@ -257,6 +257,15 @@
     [parentView addConstraint:[NSLayoutConstraint constraintWithItem:parentView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:subView attribute:NSLayoutAttributeBottom multiplier:1 constant:space]];
     [parentView addConstraint:[NSLayoutConstraint constraintWithItem:parentView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:subView attribute:NSLayoutAttributeRight multiplier:1 constant:space]];
     return subView;
+}
+
++ (void)presentLoginVC:(UIViewController*)parentVC
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PublicStoryboard" bundle:nil];
+    UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
+    vc.hidesBottomBarWhenPushed = YES;
+    [parentVC.navigationController.view.layer addAnimation:[Utities getAnimation:5] forKey:nil];
+    [parentVC.navigationController pushViewController:vc animated:YES];
 }
 
 @end

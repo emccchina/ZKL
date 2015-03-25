@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib
 {
-    myFont = [UIFont systemFontOfSize:16];
+    myFont = [UIFont fontWithName:kFontName size:16];
     myTF = [[UITextField alloc] init];
     myTF.font = myFont;
     myTF.delegate = self;

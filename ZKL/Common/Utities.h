@@ -41,4 +41,6 @@
 
 + (UIView*)viewAddContraintsParentView:(UIView*)parentView subNibName:(NSString*)subNibName;
 
+//展示登录页面
++ (void)presentLoginVC:(UIViewController*)VC;
 @end

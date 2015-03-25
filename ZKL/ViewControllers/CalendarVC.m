@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self showBackItem];
-    self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UserInfo shareUserInfo].backImage target:self action:@selector(doRight:)];
+    self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:nil target:nil action:nil];
     if (!chartView) {
         chartView = (ChartView*)[Utities viewAddContraintsParentView:self.view subNibName:@"ChartView"];
     }
