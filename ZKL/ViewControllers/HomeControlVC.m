@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self showBackItem];
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
     self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
@@ -49,6 +50,11 @@
     self.progreessLine.title = @"岁月是把猪饲料";
     self.progreessLine.backgroundColor = [UIColor clearColor];
     self.progreessLine.bottom = NO;
+}
+
+- (void)back
+{
+    [Utities presentLoginVC:self];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -79,8 +85,8 @@
 }
 - (void)doRight:(UINavigationItem*)item
 {
-//    [self performSegueWithIdentifier:@"SettingVC" sender:self];
-    [Utities presentLoginVC:self];
+    [self performSegueWithIdentifier:@"SettingVC" sender:self];
+    
 }
 - (IBAction)doHomeButton:(id)sender {
     [self presentHomeView];

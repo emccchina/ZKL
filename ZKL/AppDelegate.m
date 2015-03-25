@@ -46,7 +46,7 @@
     "select count(*) as count from bulktest3;";
     
     success = [db executeStatements:sql withResultBlock:^int(NSDictionary *dictionary) {
-        NSInteger count = [dictionary[@"count"] integerValue];
+        
         return 0;
     }];
     
