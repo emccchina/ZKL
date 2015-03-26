@@ -139,30 +139,27 @@
         return;
     }
     [self showIndicatorView:kNetworkConnecting];
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    NSString *url = [NSString stringWithFormat:@"%@login.ashx",kServerDomain];
-//    NSString *password = [Utities md5AndBase:self.passwordTF.text];
-//    NSLog(@"url %@, %@", url, password);
-//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.accoutTF.text, @"LoginName",password, @"PassWord", nil];
-//   MutableOrderedDictionary *orderdict=[self dictWithAES:dict];
-//    [manager POST:url parameters:orderdict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"result is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-//        [self dismissIndicatorView];
-//        NSString *aesde = [[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding] AES256DecryptWithKey:kAESKey];
-//        id result = [self parseResults:[aesde dataUsingEncoding:NSUTF8StringEncoding]];
-//        NSLog(@"result is %@",result);
-//        if (result) {
-//            UserInfo *userInfo = [UserInfo shareUserInfo];
-//            [userInfo setParams:userInfo parmas:result];
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        [Utities errorPrint:error vc:self];
-//        [self dismissIndicatorView];
-//        [self showAlertView:kNetworkNotConnect];
-//        
-//    }];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@loginaction!userLogin.action",kServerDomain];
+    NSString *password = self.passwordTF.text;
+    NSLog(@"url %@, %@", url, password);
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.accoutTF.text, @"userName",password, @"password", nil];
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        [self dismissIndicatorView];
+        id result = [self parseResults:responseObject];
+        NSLog(@"result is %@",result);
+        if (result) {
+            UserInfo *userInfo = [UserInfo shareUserInfo];
+            [userInfo setParams:userInfo parmas:result];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+        [self showAlertView:kNetworkNotConnect];
+    }];
 }
 
 
@@ -176,7 +173,6 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     CGPoint point = textField.frame.origin;
-    //    NSLog(@"super view frame %@", NSStringFromCGPoint(point));
     CGFloat height = kScreenHeight;
     CGFloat space = (height - point.y - 100) - 250;
     if (space < 0) {

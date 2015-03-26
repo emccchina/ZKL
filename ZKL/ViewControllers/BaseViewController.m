@@ -151,10 +151,11 @@
         [self showAlertView:@"数据解析出错"];
         return nil;
     }
-    if ([result[@"errno"] integerValue]) {
-        [self showAlertView:result[@"msg"]];
+    if ([result[@"errorno"] integerValue]) {
+        [self showAlertView:result[@"message"]];
         return nil;
     }
+    
     return result;
     
 }

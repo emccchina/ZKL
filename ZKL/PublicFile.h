@@ -35,4 +35,6 @@
 #import "POP.h"
 #import "Mantle.h"
 #import "FMDB.h"
+#import "NSDictionary+safeObjectForKey.h"
+#import "ServerFile.h"
 #endif

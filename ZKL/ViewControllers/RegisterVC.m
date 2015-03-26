@@ -14,15 +14,17 @@
     BOOL    agree;//是否同意协议
     BOOL    registerSuccessuful;
 }
+
 @property (weak, nonatomic) IBOutlet UIView *BGView;
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
+@property (weak, nonatomic) IBOutlet UITextField *emailTF;
 @property (weak, nonatomic) IBOutlet UITextField *verifyTF;
 @property (weak, nonatomic) IBOutlet UIButton *getVerifiBut;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordAgainTF;
 @property (weak, nonatomic) IBOutlet UIButton *agreeBut;
 @property (weak, nonatomic) IBOutlet UIButton *registerBut;
-@property (weak, nonatomic) IBOutlet UIImageView *fourImage;
+
 
 @end
 
@@ -50,7 +52,7 @@
 - (void)setInitState
 {
     self.title = self.typeVC ? @"找回密码" : @"注册帐号";
-    self.userNameTF.placeholder=self.typeVC ? @"手机号/邮箱" : @"手机号码";
+    self.userNameTF.placeholder=self.typeVC ? @"账号" : @"账号";
     self.agreeBut.hidden = self.typeVC;
     [self.registerBut setTitle:(self.typeVC ? @"确定" : @"注册") forState:UIControlStateNormal];
 }
@@ -98,22 +100,22 @@
     [self showIndicatorView:kNetworkConnecting];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *url = [NSString stringWithFormat:@"%@RegSendSMS.ashx",kServerDomain];
+    NSString *url = [NSString stringWithFormat:@"%@loginaction!userRegist.action",kServerDomain];
     if (self.typeVC) {
-      url = [NSString stringWithFormat:@"%@SendEmailPass.ashx",kServerDomain];
+      url = [NSString stringWithFormat:@"%@loginaction!userRetrievePass.action",kServerDomain];
     }
       NSLog(@"url is  %@", url);
-    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"LoginName", nil];
+    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"userName", nil];
     [manager POST:url parameters:regsiterDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"request is  %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
         if (result) {
-            if([@"0" isEqual:result[@"errno"]]){
+            if([@"0" isEqual:result[@"errorno"]]){
                 [self showAlertView:@"已成功发送验证码"];
                 [self startTime];
             }else{
-                [self showAlertView:result[@"msg"]];
+                [self showAlertView:result[@"message"]];
             }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -171,33 +173,31 @@
     }
 
     [self showIndicatorView:kNetworkConnecting];
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    NSString *url = [NSString stringWithFormat:@"%@RetakePassWord.ashx",kServerDomain];
-//    NSString *password = [Utities md5AndBase:self.passwordTF.text];
-//    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"LoginName",password, @"PassWord", self.verifyTF.text, @"checkCode", nil];
-//    MutableOrderedDictionary *newDict= [self dictWithAES:regsiterDict];
-//     NSLog(@"url is  %@ %@",url,regsiterDict);
-//    [manager POST:url parameters:newDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"request is  %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-//        [self dismissIndicatorView];
-//        id result = [self parseResults:responseObject];
-//        if (result) {
-//            if([@"0" isEqual:result[@"errno"]]){
-//                [self showAlertView:@"密码找回成功,请登录!"];
-//            }
-//        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        [Utities errorPrint:error vc:self];
-//        [self dismissIndicatorView];
-//        [self showAlertView:kNetworkNotConnect];
-//        
-//    }];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@loginaction!userRetrievePass.action",kServerDomain];
+    NSString *password = self.passwordTF.text;
+    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"userName",password, @"password", self.verifyTF.text, @"checkCode", nil];
+    [manager POST:url parameters:regsiterDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"request is  %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        [self dismissIndicatorView];
+        id result = [self parseResults:responseObject];
+        if (result) {
+            if([@"0" isEqual:result[@"errorno"]]){
+                [self showAlertView:@"密码找回成功,请登录!"];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+        [self showAlertView:kNetworkNotConnect];
+        
+    }];
 }
 
 - (void)requestRegister
 {
-    if ([self.passwordTF.text length] < 8) {
+    if ([self.passwordTF.text length] < 6) {
         [self showAlertView:@"密码不得少于八位"];
         return;
     }
@@ -215,28 +215,25 @@
     }
     
     [self showIndicatorView:kNetworkConnecting];
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    NSString *url = [NSString stringWithFormat:@"%@reg.ashx",kServerDomain];
-//    NSString *password = [Utities md5AndBase:self.passwordTF.text];
-//    NSLog(@"url %@, %@", url, password);
-//    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"LoginName",password, @"PassWord", self.verifyTF.text, @"checkCode", nil];
-//    MutableOrderedDictionary *newDict=[self dictWithAES:regsiterDict];
-//    [manager POST:url parameters:newDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"request is  %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-//        [self dismissIndicatorView];
-//        NSString *aesde = [[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding] AES256DecryptWithKey:kAESKey];
-//        id result = [self parseResults:[aesde dataUsingEncoding:NSUTF8StringEncoding]];
-//        if (result) {
-//            [self showAlertView:@"注册成功,请登录"];
-//            registerSuccessuful = YES;
-//        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        [Utities errorPrint:error vc:self];
-//        [self dismissIndicatorView];
-//        [self showAlertView:kNetworkNotConnect];
-//        
-//    }];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@loginaction!userRegist.action",kServerDomain];
+    NSString *password = self.passwordTF.text;
+    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"userName",password, @"password", self.verifyTF.text, @"checkCode", nil];
+        [manager POST:url parameters:regsiterDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"request is  %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        [self dismissIndicatorView];
+        id result = [self parseResults:responseObject];
+        if (result) {
+            [self showAlertView:@"注册成功,请登录"];
+            registerSuccessuful = YES;
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+        [self showAlertView:kNetworkNotConnect];
+        
+    }];
 }
 
 - (void)doAlertView
@@ -271,37 +268,5 @@
     //    self.view.frame = _initFrame;
     [self changeConstraint:0 restore:YES];
 }
-
-////加密
-//-(MutableOrderedDictionary *)dictWithAES:(NSDictionary *)oDict
-//{
-// 
-//    NSMutableString *lStr=[NSMutableString string];
-//    [lStr appendString:[self aeskeyOrNot:oDict[@"LoginName"] aes:YES]];
-//    [lStr appendString:[self aeskeyOrNot:oDict[@"PassWord"] aes:YES]];
-//    [lStr appendString:[self aeskeyOrNot:oDict[@"checkCode"] aes:YES]];
-//    [lStr appendString:kAESKey];
-//    NSLog(@"123 %@",lStr);
-//    MutableOrderedDictionary *orderArr= [MutableOrderedDictionary dictionary];
-//    [orderArr insertObject:[self aeskeyOrNot:oDict[@"LoginName"] aes:YES] forKey:@"LoginName" atIndex:0];
-//    [orderArr insertObject:[self aeskeyOrNot:oDict[@"PassWord"] aes:YES] forKey:@"PassWord" atIndex:1];
-//    [orderArr insertObject:[self aeskeyOrNot:oDict[@"checkCode"] aes:YES] forKey:@"checkCode" atIndex:2];
-//    [orderArr insertObject:[Utities md5AndBase:lStr] forKey:@"m" atIndex:3];
-//    [orderArr insertObject:ARC4RANDOM_MAX forKey:@"t" atIndex:4];
-//    NSLog(@"aes dict is %@   -----   %@", orderArr, oDict);
-//    return orderArr;
-//}
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 @end

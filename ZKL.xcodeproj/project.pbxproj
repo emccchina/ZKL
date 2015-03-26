@@ -97,6 +97,8 @@
 		F7F02E3A1ABA620E0095EA2E /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F02E391ABA620E0095EA2E /* ChartView.m */; };
 		F7F02E3C1ABA631F0095EA2E /* ChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F02E3B1ABA631F0095EA2E /* ChartView.xib */; };
 		F7F02E431ABAB41C0095EA2E /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F02E421ABAB41C0095EA2E /* SettingVC.m */; };
+		F925F4741AC3A14F0036CD7A /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F925F4731AC3A14F0036CD7A /* MessageModel.m */; };
+		F925F47B1AC3AB890036CD7A /* PageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F925F47A1AC3AB890036CD7A /* PageModel.m */; };
 		F96523E01ABFBAED00AFDEEE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F96523DF1ABFBAED00AFDEEE /* UserModel.m */; };
 		F96523E31ABFBB0F00AFDEEE /* PlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F96523E21ABFBB0F00AFDEEE /* PlanModel.m */; };
 /* End PBXBuildFile section */
@@ -284,6 +286,11 @@
 		F7F02E3B1ABA631F0095EA2E /* ChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartView.xib; sourceTree = "<group>"; };
 		F7F02E411ABAB41C0095EA2E /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
 		F7F02E421ABAB41C0095EA2E /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
+		F925F4721AC3A14F0036CD7A /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		F925F4731AC3A14F0036CD7A /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		F925F4781AC3AAC50036CD7A /* ServerFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerFile.h; sourceTree = "<group>"; };
+		F925F4791AC3AB890036CD7A /* PageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageModel.h; sourceTree = "<group>"; };
+		F925F47A1AC3AB890036CD7A /* PageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageModel.m; sourceTree = "<group>"; };
 		F96523DE1ABFBAED00AFDEEE /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		F96523DF1ABFBAED00AFDEEE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		F96523E11ABFBB0F00AFDEEE /* PlanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanModel.h; sourceTree = "<group>"; };
@@ -440,6 +447,7 @@
 				F7B1670C1AA188D0000B84D1 /* CustomModel.m */,
 				F7EF35541A9EC3B800FEE796 /* Mydate.h */,
 				F7EF35551A9EC3B800FEE796 /* Mydate.m */,
+				F925F4781AC3AAC50036CD7A /* ServerFile.h */,
 			);
 			name = Common;
 			path = ZKL/Common;
@@ -661,6 +669,10 @@
 				F96523DF1ABFBAED00AFDEEE /* UserModel.m */,
 				F96523E11ABFBB0F00AFDEEE /* PlanModel.h */,
 				F96523E21ABFBB0F00AFDEEE /* PlanModel.m */,
+				F925F4721AC3A14F0036CD7A /* MessageModel.h */,
+				F925F4731AC3A14F0036CD7A /* MessageModel.m */,
+				F925F4791AC3AB890036CD7A /* PageModel.h */,
+				F925F47A1AC3AB890036CD7A /* PageModel.m */,
 			);
 			name = Models;
 			path = ZKL/Models;
@@ -844,6 +856,7 @@
 				F7D09DEA1A6E518100332331 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				F7D09DCB1A6E518100332331 /* NSString+AES.m in Sources */,
 				F7AEF88C1AC2427D000A9142 /* MyWebView.m in Sources */,
+				F925F47B1AC3AB890036CD7A /* PageModel.m in Sources */,
 				F7EF35501A9EBDBE00FEE796 /* MyDreamModel.m in Sources */,
 				F7D09DFC1A6E518100332331 /* TSPopoverPopoverView.m in Sources */,
 				F7D09DFE1A6E518100332331 /* UIBarButtonItem+WEPopover.m in Sources */,
@@ -856,6 +869,7 @@
 				F7EBB4701ABBA59D00EFD10F /* RichStyleLabel.m in Sources */,
 				F7D09DE91A6E518100332331 /* JGProgressHUDIndicatorView.m in Sources */,
 				F7D09DC61A6E518100332331 /* NSDictionary+safeObjectForKey.m in Sources */,
+				F925F4741AC3A14F0036CD7A /* MessageModel.m in Sources */,
 				F7D09DED1A6E518100332331 /* JHRefreshAniBaseView.m in Sources */,
 				F7D164FC1AA00AF70085F73B /* EditTime.m in Sources */,
 				F7D09DF51A6E518100332331 /* UIScrollView+JHRefresh.m in Sources */,
