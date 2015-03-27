@@ -12,13 +12,18 @@
 #define kBlackBGTF      [UIColor blackColor]
 
 typedef void (^EditFinished) (NSString *editString);
-
+typedef NS_ENUM(NSInteger, kTypeTF){
+    kNomalType,
+    kDateType
+};
 @interface WhiteBlackTextFiled : UIView
 <UITextFieldDelegate>
 {
+    
     UITextField *myTF;
     UIFont      *myFont;
 }
 @property (nonatomic, strong) NSString      *title;
 @property (nonatomic, copy) EditFinished   finished;
+@property (nonatomic, assign) kTypeTF       type;
 @end

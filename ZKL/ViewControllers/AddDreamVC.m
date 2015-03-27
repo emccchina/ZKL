@@ -43,7 +43,7 @@
     [self.addTF setTitle:@"添加梦想"];
     [self.needTimeTF setTitle:@"预计所需时间"];
     [self.timeEverydayTF setTitle:@"每天所需时间"];
-    
+    [self.timeEverydayTF setType:kDateType];
     POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
     animation.toValue = @(1.0);
     animation.fromValue = @(.1);

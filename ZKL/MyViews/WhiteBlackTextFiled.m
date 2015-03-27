@@ -19,6 +19,30 @@
     [self addSubview:myTF];
 }
 
+- (void)setType:(kTypeTF)type
+{
+    if (type == kDateType) {
+        UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), 30)];
+        [topView setBarStyle:UIBarStyleDefault];
+        
+        UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doFinish)];
+        NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
+        
+        [topView setItems:buttonsArray];
+        [myTF setInputAccessoryView:topView];
+        UIDatePicker * picker = [[UIDatePicker alloc] init];
+        myTF.inputView = picker;
+    }
+}
+
+- (void)doFinish
+{
+    if (self.finished) {
+//        self.finished(textField.text);
+    }
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
