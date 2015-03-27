@@ -9,7 +9,7 @@
 #import "WhiteBlackTextFiled.h"
 
 @implementation WhiteBlackTextFiled
-
+@synthesize TF = myTF;
 - (void)awakeFromNib
 {
     myFont = [UIFont fontWithName:kFontName size:16];

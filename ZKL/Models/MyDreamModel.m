@@ -13,8 +13,22 @@
 + (NSDictionary*)JSONKeyPathsByPropertyKey
 {
     return @{
-             @"name":@"name"
+             @"au":@"AuthorIntro",
+             @"url":@"Pic_Url",
+             @"pid":@"Product_Id",
+             @"pname":@"Product_Name",
+             @"pprice":@"Product_Price",
+             @"sid":@"Special_Id",
              };
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError *__autoreleasing *)error
+{
+    self = [super initWithDictionary:dictionaryValue error:error];
+    if (self) {
+        
+    }
+    return self;
 }
 
 @end

@@ -46,6 +46,7 @@
     self.addTF.finished = ^(NSString* string){
         
     };
+    self.addTF.TF.text = @"123";
     [self.needTimeTF setTitle:@"预计所需时间"];
     self.needTimeTF.finished = ^(NSString* string){
         

@@ -11,9 +11,11 @@
 @interface MyDreamModel : MTLModel
 <MTLJSONSerializing>
 
-@property (nonatomic, strong) NSString      *name;//
-@property (nonatomic, strong) NSDate        *startTime;//
-@property (nonatomic, strong) NSDate        *endTime;//
-@property (nonatomic, assign) CGFloat       progress;//已经完成多少
+@property (nonatomic, strong) NSString      *au;
+@property (nonatomic, strong) NSString      *url;//
+@property (nonatomic, strong) NSString      *pid;//
+@property (nonatomic, strong) NSString      *pname;//
+@property (nonatomic, strong) NSString      *pprice;//
+@property (nonatomic, strong) NSString      *sid;//
 
 @end
