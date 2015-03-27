@@ -36,6 +36,7 @@
     [self showBackItem];
     [self setInitState];
     self.userNameTF.delegate = self;
+    self.emailTF.delegate = self;
     self.verifyTF.delegate = self;
     self.passwordTF.delegate = self;
     self.passwordAgainTF.delegate = self;
@@ -53,6 +54,9 @@
 {
     self.title = self.typeVC ? @"找回密码" : @"注册帐号";
     self.userNameTF.placeholder=self.typeVC ? @"账号" : @"账号";
+    self.emailTF.hidden =self.typeVC;
+    self.verifyTF.hidden =!self.typeVC;
+    self.getVerifiBut.hidden =!self.typeVC;
     self.agreeBut.hidden = self.typeVC;
     [self.registerBut setTitle:(self.typeVC ? @"确定" : @"注册") forState:UIControlStateNormal];
 }
@@ -90,11 +94,7 @@
 
 - (IBAction)getVerification:(id)sender {
     if ([self.userNameTF.text isEqualToString:@""]) {
-        if (self.typeVC) {
-            [self showAlertView:@"请填写手机号码/邮箱"];
-            return;
-        }
-        [self showAlertView:@"请填写手机号码"];
+        [self showAlertView:@"请填写账号!"];
         return;
     }
     [self showIndicatorView:kNetworkConnecting];
@@ -163,8 +163,8 @@
         [self showAlertView:@"请完善信息"];
         return;
     }
-    if ([self.passwordTF.text length] < 8) {
-        [self showAlertView:@"密码不得少于八位"];
+    if ([self.passwordTF.text length] < 6) {
+        [self showAlertView:@"密码不得少于六位"];
         return;
     }
     if (![self.passwordAgainTF.text isEqualToString:self.passwordTF.text]) {
@@ -197,16 +197,20 @@
 
 - (void)requestRegister
 {
+    if ([self.userNameTF.text length] < 4) {
+        [self showAlertView:@"用户名不得少于四位"];
+        return;
+    }
     if ([self.passwordTF.text length] < 6) {
-        [self showAlertView:@"密码不得少于八位"];
+        [self showAlertView:@"密码不得少于六位"];
         return;
     }
     if (!agree) {
         [self showAlertView:@"请签署中艺易购协议协议"];
         return;
     }
-    if  ([self.userNameTF.text isEqualToString:@""]||[self.verifyTF.text isEqualToString:@""]|| [self.passwordTF.text isEqualToString:@""] || [self.passwordAgainTF.text isEqualToString:@""]){
-        [self showAlertView:@"请完善基本信息"];
+    if  ([self.userNameTF.text isEqualToString:@""]||[self.emailTF.text isEqualToString:@""]|| [self.passwordTF.text isEqualToString:@""] || [self.passwordAgainTF.text isEqualToString:@""]){
+        [self showAlertView:@"请完善信息!"];
         return;
     }
     if (![self.passwordAgainTF.text isEqualToString:self.passwordTF.text]) {
@@ -219,14 +223,19 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@loginaction!userRegist.action",kServerDomain];
     NSString *password = self.passwordTF.text;
-    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"userName",password, @"password", self.verifyTF.text, @"checkCode", nil];
+    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"userName",password, @"password", self.emailTF.text, @"email", nil];
         [manager POST:url parameters:regsiterDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"request is  %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
         if (result) {
-            [self showAlertView:@"注册成功,请登录"];
-            registerSuccessuful = YES;
+            if (0==result[@"errorno"]) {
+                [self showAlertView:@"注册成功,请登录"];
+                registerSuccessuful = YES;
+            }else{
+                [self showAlertView:result[@"message"]];
+            }
+            
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];
