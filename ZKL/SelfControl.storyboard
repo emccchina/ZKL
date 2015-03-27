@@ -275,6 +275,8 @@
                     <connections>
                         <outlet property="OKButton" destination="Z8E-22-5Io" id="cxz-mb-PXU"/>
                         <outlet property="addTF" destination="5gI-md-Syc" id="ZsA-NP-9RQ"/>
+                        <outlet property="beginTime" destination="C9R-xd-QeK" id="wTT-JZ-hJc"/>
+                        <outlet property="endTime" destination="gS2-DZ-yLJ" id="2bS-Dm-rwL"/>
                         <outlet property="needTimeTF" destination="gec-Pp-8zR" id="kQX-GK-b72"/>
                         <outlet property="timeEverydayTF" destination="H28-8l-byI" id="s8D-1x-1Wy"/>
                     </connections>

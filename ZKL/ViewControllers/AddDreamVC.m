@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet WhiteBlackTextFiled *needTimeTF;
 @property (weak, nonatomic) IBOutlet WhiteBlackTextFiled *timeEverydayTF;
 @property (weak, nonatomic) IBOutlet UIButton *OKButton;
+@property (weak, nonatomic) IBOutlet WhiteBlackTextFiled *beginTime;
+@property (weak, nonatomic) IBOutlet WhiteBlackTextFiled *endTime;
 
 @end
 
@@ -41,9 +43,28 @@
 {
     [super viewWillAppear:animated];
     [self.addTF setTitle:@"添加梦想"];
+    self.addTF.finished = ^(NSString* string){
+        
+    };
     [self.needTimeTF setTitle:@"预计所需时间"];
+    self.needTimeTF.finished = ^(NSString* string){
+        
+    };
     [self.timeEverydayTF setTitle:@"每天所需时间"];
-    [self.timeEverydayTF setType:kDateType];
+    self.timeEverydayTF.finished = ^(NSString* string){
+        
+    };
+    [self.beginTime setTitle:@"开始时间"];
+    [self.beginTime setType:kDateType];
+    self.beginTime.finished = ^(NSString* string){
+        
+    };
+    [self.endTime setTitle:@"结束时间"];
+    [self.endTime setType:kDateType];
+    self.endTime.finished = ^(NSString* string){
+        
+    };
+    
     POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
     animation.toValue = @(1.0);
     animation.fromValue = @(.1);

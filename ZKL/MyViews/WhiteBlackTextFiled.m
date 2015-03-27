@@ -31,15 +31,22 @@
         
         [topView setItems:buttonsArray];
         [myTF setInputAccessoryView:topView];
-        UIDatePicker * picker = [[UIDatePicker alloc] init];
+        picker = [[UIDatePicker alloc] init];
+        picker.minimumDate = [NSDate date];
         myTF.inputView = picker;
     }
 }
 
 - (void)doFinish
 {
+    [myTF resignFirstResponder];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm"];
+    NSString *destDate= [dateFormatter stringFromDate:picker.date];
+    myTF.text = destDate;
     if (self.finished) {
-//        self.finished(textField.text);
+        self.finished(destDate);
     }
 }
 
