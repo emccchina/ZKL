@@ -35,7 +35,6 @@
         [myTF setInputAccessoryView:topView];
     }
     if (type == kDateType) {
-        
         picker = [[UIDatePicker alloc] init];
         picker.minimumDate = [NSDate date];
         picker.datePickerMode=UIDatePickerModeDate;

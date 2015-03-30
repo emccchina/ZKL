@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) UIImage   *homeAddImage;
 @property (strong, nonatomic) UIImage   *backImage;
-@property (nonatomic, assign) NSInteger userid;
+@property (nonatomic, assign) long long userid;
 @property (nonatomic, strong) NSString *userCode;
 
 @property (nonatomic, strong) NSString *userName;// 用户名(登陆用)

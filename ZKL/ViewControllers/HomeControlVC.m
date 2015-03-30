@@ -14,7 +14,13 @@
 #import "EditTime.h"
 #import "AppDelegate.h"
 #import "ProgressLineView.h"
+#import "PerformModel.h"
 @interface HomeControlVC ()
+{
+    UserInfo *user;
+    PerformModel *perform;
+    
+}
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
 
@@ -34,6 +40,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self showBackItem];
+    user = [UserInfo shareUserInfo];
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
     self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
@@ -50,6 +57,7 @@
     self.progreessLine.title = @"岁月是把猪饲料";
     self.progreessLine.backgroundColor = [UIColor clearColor];
     self.progreessLine.bottom = NO;
+    
 }
 
 - (void)back
@@ -78,11 +86,44 @@
                 break;
         }
     }];
-    [self.dreamProgress setViewWithTitle:@"10小时" progress:0.6 progress:YES];
+    
+    [self getPlan];
+    
+    [self.dreamProgress setViewWithTitle:@"10小时" progress:0.0 progress:YES];
     [self.needProgress setViewWithTitle:@"8小时" progress:0.8 progress:NO];
     [self.wasteProgress setViewWithTitle:@"4小时" progress:0.2 progress:NO];
     
 }
+
+- (void)getPlan
+{
+    if (user.userCode) {
+        [self showIndicatorView:kNetworkConnecting];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSString *url = [NSString stringWithFormat:@"%@performaction!getTodayPlan.action",kServerDomain];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:user.userCode , @"userCode",nil];
+        NSLog( @"%@ ", dict);
+        [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self dismissIndicatorView];
+            id result = [self parseResults:responseObject];
+            NSLog(@"result is %@",result);
+            if (result) {
+                if (0==result[@"errorno"]) {
+                    perform=[PerformModel initWithDict:result[@"result"]];
+                }
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [Utities errorPrint:error vc:self];
+            [self dismissIndicatorView];
+            [self showAlertView:kNetworkNotConnect];
+        }];
+        
+    }
+    
+}
+
 - (void)doRight:(UINavigationItem*)item
 {
     [self performSegueWithIdentifier:@"SettingVC" sender:self];

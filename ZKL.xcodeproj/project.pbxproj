@@ -99,8 +99,8 @@
 		F7F02E431ABAB41C0095EA2E /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F02E421ABAB41C0095EA2E /* SettingVC.m */; };
 		F925F4741AC3A14F0036CD7A /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F925F4731AC3A14F0036CD7A /* MessageModel.m */; };
 		F925F47B1AC3AB890036CD7A /* PageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F925F47A1AC3AB890036CD7A /* PageModel.m */; };
-		F96523E01ABFBAED00AFDEEE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F96523DF1ABFBAED00AFDEEE /* UserModel.m */; };
 		F96523E31ABFBB0F00AFDEEE /* PlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F96523E21ABFBB0F00AFDEEE /* PlanModel.m */; };
+		F9AC181A1AC940AB003A6A65 /* PerformModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AC18191AC940AB003A6A65 /* PerformModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,10 +291,10 @@
 		F925F4781AC3AAC50036CD7A /* ServerFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerFile.h; sourceTree = "<group>"; };
 		F925F4791AC3AB890036CD7A /* PageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageModel.h; sourceTree = "<group>"; };
 		F925F47A1AC3AB890036CD7A /* PageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageModel.m; sourceTree = "<group>"; };
-		F96523DE1ABFBAED00AFDEEE /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
-		F96523DF1ABFBAED00AFDEEE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		F96523E11ABFBB0F00AFDEEE /* PlanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanModel.h; sourceTree = "<group>"; };
 		F96523E21ABFBB0F00AFDEEE /* PlanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanModel.m; sourceTree = "<group>"; };
+		F9AC18181AC940AB003A6A65 /* PerformModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformModel.h; sourceTree = "<group>"; };
+		F9AC18191AC940AB003A6A65 /* PerformModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -665,10 +665,10 @@
 			children = (
 				F7EF354E1A9EBDBE00FEE796 /* MyDreamModel.h */,
 				F7EF354F1A9EBDBE00FEE796 /* MyDreamModel.m */,
-				F96523DE1ABFBAED00AFDEEE /* UserModel.h */,
-				F96523DF1ABFBAED00AFDEEE /* UserModel.m */,
 				F96523E11ABFBB0F00AFDEEE /* PlanModel.h */,
 				F96523E21ABFBB0F00AFDEEE /* PlanModel.m */,
+				F9AC18181AC940AB003A6A65 /* PerformModel.h */,
+				F9AC18191AC940AB003A6A65 /* PerformModel.m */,
 				F925F4721AC3A14F0036CD7A /* MessageModel.h */,
 				F925F4731AC3A14F0036CD7A /* MessageModel.m */,
 				F925F4791AC3AB890036CD7A /* PageModel.h */,
@@ -826,6 +826,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7D09DCA1A6E518100332331 /* NSData+AES.m in Sources */,
+				F9AC181A1AC940AB003A6A65 /* PerformModel.m in Sources */,
 				F7AEF88D1AC2427D000A9142 /* RegisterVC.m in Sources */,
 				F7EBB47E1ABBCF9D00EFD10F /* DoingShowView.m in Sources */,
 				F7D09DF61A6E518100332331 /* UIView+JHExtension.m in Sources */,
@@ -877,7 +878,6 @@
 				F7D09DE81A6E518100332331 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
 				F7ACCF271A7241D100ABAA69 /* DreamTime.m in Sources */,
 				F7D09DF81A6E518100332331 /* NSTimer+Addition.m in Sources */,
-				F96523E01ABFBAED00AFDEEE /* UserModel.m in Sources */,
 				F7D09D081A6E4F3700332331 /* main.m in Sources */,
 				F7D09DE61A6E518100332331 /* JGProgressHUDFadeAnimation.m in Sources */,
 				F7EBB4781ABBBB9200EFD10F /* DoingVC.m in Sources */,
