@@ -29,7 +29,9 @@
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
     self.addTF.TF.text=[NSString stringWithFormat:@"%@",_plan.title];
     self.needTimeTF.TF.text=[NSString stringWithFormat:@"%lld 分钟",_plan.totalMinute];
+    self.needTimeTF.type = kNumberType;
     self.timeEverydayTF.TF.text=[NSString stringWithFormat:@"%lld 分钟",_plan.planMinute];
+    self.timeEverydayTF.editTF = NO;
     self.beginTime.TF.text=[NSString stringWithFormat:@"%@",_plan.beginDate];
     self.needTimeTF.TF.text=[NSString stringWithFormat:@"%@",_plan.endDate];
     

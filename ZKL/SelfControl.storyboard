@@ -215,22 +215,15 @@
                                     <constraint firstAttribute="height" constant="40" id="bjO-or-mdu"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H28-8l-byI" customClass="WhiteBlackTextFiled">
-                                <rect key="frame" x="10" y="174" width="580" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="OSD-TN-Rov"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9R-xd-QeK" customClass="WhiteBlackTextFiled">
-                                <rect key="frame" x="10" y="224" width="580" height="40"/>
+                                <rect key="frame" x="10" y="174" width="580" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nBg-7O-qo0"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS2-DZ-yLJ" customClass="WhiteBlackTextFiled">
-                                <rect key="frame" x="10" y="274" width="580" height="40"/>
+                                <rect key="frame" x="10" y="224" width="580" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="G9C-xs-m3k"/>
@@ -250,20 +243,27 @@
                                     <action selector="doOkButton:" destination="NDD-5v-rDy" eventType="touchUpInside" id="IMQ-7Z-bAN"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H28-8l-byI" customClass="WhiteBlackTextFiled">
+                                <rect key="frame" x="10" y="274" width="580" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OSD-TN-Rov"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="H28-8l-byI" firstAttribute="top" secondItem="gec-Pp-8zR" secondAttribute="bottom" constant="10" id="5uq-gS-piC"/>
+                            <constraint firstItem="C9R-xd-QeK" firstAttribute="top" secondItem="gec-Pp-8zR" secondAttribute="bottom" constant="10" id="3cR-fg-0aB"/>
                             <constraint firstItem="5gI-md-Syc" firstAttribute="top" secondItem="inK-t5-eFz" secondAttribute="bottom" constant="10" id="7Z8-QJ-Q5s"/>
                             <constraint firstItem="gec-Pp-8zR" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="7aa-83-zfg"/>
                             <constraint firstItem="gec-Pp-8zR" firstAttribute="top" secondItem="5gI-md-Syc" secondAttribute="bottom" constant="10" id="Ekt-wT-hLf"/>
                             <constraint firstItem="gS2-DZ-yLJ" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="ErZ-IZ-4Jg"/>
                             <constraint firstAttribute="centerX" secondItem="Z8E-22-5Io" secondAttribute="centerX" id="IKs-Ey-cjf"/>
                             <constraint firstAttribute="trailing" secondItem="C9R-xd-QeK" secondAttribute="trailing" constant="10" id="KGo-tE-ECK"/>
+                            <constraint firstItem="Z8E-22-5Io" firstAttribute="top" secondItem="H28-8l-byI" secondAttribute="bottom" constant="20" id="NtN-kR-3hb"/>
                             <constraint firstItem="gS2-DZ-yLJ" firstAttribute="top" secondItem="C9R-xd-QeK" secondAttribute="bottom" constant="10" id="Qsj-ZW-khe"/>
-                            <constraint firstItem="C9R-xd-QeK" firstAttribute="top" secondItem="H28-8l-byI" secondAttribute="bottom" constant="10" id="RKN-5E-T7y"/>
+                            <constraint firstItem="H28-8l-byI" firstAttribute="top" secondItem="gS2-DZ-yLJ" secondAttribute="bottom" constant="10" id="UXk-v1-Fql"/>
                             <constraint firstItem="H28-8l-byI" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="eg6-Ur-9o4"/>
-                            <constraint firstItem="Z8E-22-5Io" firstAttribute="top" secondItem="gS2-DZ-yLJ" secondAttribute="bottom" constant="20" id="hFM-Xv-bb4"/>
                             <constraint firstItem="5gI-md-Syc" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="htP-Cq-UOl"/>
                             <constraint firstItem="C9R-xd-QeK" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="nE9-Kf-C9R"/>
                             <constraint firstAttribute="trailing" secondItem="gec-Pp-8zR" secondAttribute="trailing" constant="10" id="qBk-DL-M5g"/>

@@ -14,11 +14,13 @@
 typedef void (^EditFinished) (NSString *editString);
 typedef NS_ENUM(NSInteger, kTypeTF){
     kNomalType,
-    kDateType
+    kDateType,
+    kNumberType
 };
 @interface WhiteBlackTextFiled : UIView
 <UITextFieldDelegate>
 {
+    UIPickerView *numberPicker;
     UIDatePicker *picker;
     UITextField *myTF;
     UIFont      *myFont;
@@ -27,5 +29,5 @@ typedef NS_ENUM(NSInteger, kTypeTF){
 @property (nonatomic, strong) UITextField   *TF;
 @property (nonatomic, copy) EditFinished   finished;
 @property (nonatomic, assign) kTypeTF       type;
-
+@property (nonatomic, assign) BOOL          editTF;//是否可以编辑
 @end

@@ -15,13 +15,14 @@
     myFont = [UIFont fontWithName:kFontName size:16];
     myTF = [[UITextField alloc] init];
     myTF.font = myFont;
+    self.editTF = YES;
     myTF.delegate = self;
     [self addSubview:myTF];
 }
 
 - (void)setType:(kTypeTF)type
 {
-    if (type == kDateType) {
+    if (type != kNomalType) {
         UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), 30)];
         [topView setBarStyle:UIBarStyleDefault];
         
@@ -31,24 +32,36 @@
         
         [topView setItems:buttonsArray];
         [myTF setInputAccessoryView:topView];
+    }
+    if (type == kDateType) {
+        
         picker = [[UIDatePicker alloc] init];
         picker.minimumDate = [NSDate date];
         picker.datePickerMode=UIDatePickerModeDate;
         myTF.inputView = picker;
+    }else if (type == kNumberType){
+        myTF.keyboardType = UIKeyboardTypeNumberPad;
     }
 }
+
+//- (void)setEditTF:(BOOL)editTF
+//{
+//    myTF.editing
+//}
 
 - (void)doFinish
 {
     [myTF resignFirstResponder];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat: @"yyyy-MM-dd"];
-    NSString *destDate= [dateFormatter stringFromDate:picker.date];
-    myTF.text = destDate;
-    if (self.finished) {
-        self.finished(destDate);
+    if (self.type == kDateType) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+        NSString *destDate= [dateFormatter stringFromDate:picker.date];
+        myTF.text = destDate;
+        if (self.finished) {
+            self.finished(destDate);
+        }
     }
+    
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -89,8 +102,11 @@
     myTF.frame = CGRectMake(titleSize.width+space+15, 0, rect.size.width-titleSize.width-space-15, height);
 }
 
-#pragma UITextFieldDelegate
-
+#pragma -mark UITextFieldDelegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return self.editTF;
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -99,4 +115,6 @@
     }
     return YES;
 }
+
+
 @end
