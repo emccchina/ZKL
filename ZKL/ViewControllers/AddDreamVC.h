@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "PlanModel.h"
 
 @interface AddDreamVC : BaseViewController
+
+@property(nonatomic,strong) PlanModel *plan;
 
 @end

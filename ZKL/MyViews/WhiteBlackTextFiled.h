@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, kTypeTF){
     UIFont      *myFont;
 }
 @property (nonatomic, strong) NSString      *title;
+@property (nonatomic, strong) UITextField   *TF;
 @property (nonatomic, copy) EditFinished   finished;
 @property (nonatomic, assign) kTypeTF       type;
 
