@@ -22,6 +22,7 @@
 
 - (void)setType:(kTypeTF)type
 {
+    _type = type;
     if (type != kNomalType) {
         UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), 30)];
         [topView setBarStyle:UIBarStyleDefault];

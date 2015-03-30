@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, kTypeTF){
 @interface WhiteBlackTextFiled : UIView
 <UITextFieldDelegate>
 {
+    kTypeTF     _type;
     UIPickerView *numberPicker;
     UIDatePicker *picker;
     UITextField *myTF;
