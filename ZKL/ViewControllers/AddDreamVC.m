@@ -27,9 +27,9 @@
     [self showBackItem];
     self.OKButton.layer.cornerRadius = 5;
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
-    self.addTF.TF.text=_plan.title;
-    self.needTimeTF.TF.text=[NSString stringWithFormat:@"%lld",_plan.totalMinute];
-    self.timeEverydayTF.TF.text=[NSString stringWithFormat:@"%lld",_plan.planMinute];
+    self.addTF.TF.text=[NSString stringWithFormat:@"%@",_plan.title];
+    self.needTimeTF.TF.text=[NSString stringWithFormat:@"%lld 分钟",_plan.totalMinute];
+    self.timeEverydayTF.TF.text=[NSString stringWithFormat:@"%lld 分钟",_plan.planMinute];
     self.beginTime.TF.text=[NSString stringWithFormat:@"%@",_plan.beginDate];
     self.needTimeTF.TF.text=[NSString stringWithFormat:@"%@",_plan.endDate];
     
@@ -47,12 +47,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
     [super viewWillAppear:animated];
-    [self.addTF setTitle:@"添加梦想"];
+    [self.addTF setTitle:@"梦想标题"];
     self.addTF.finished = ^(NSString* string){
         _plan.title=string;
     };
-    self.addTF.TF.text = @"123";
     [self.needTimeTF setTitle:@"预计所需时间"];
     self.needTimeTF.finished = ^(NSString* string){
         _plan.totalMinute=[string longLongValue];
@@ -61,12 +61,12 @@
     self.timeEverydayTF.finished = ^(NSString* string){
          _plan.planMinute=[string longLongValue];
     };
-    [self.beginTime setTitle:@"开始时间"];
+    [self.beginTime setTitle:@"开始日期"];
     [self.beginTime setType:kDateType];
     self.beginTime.finished = ^(NSString* string){
          _plan.beginDate=[NSDate date];
     };
-    [self.endTime setTitle:@"结束时间"];
+    [self.endTime setTitle:@"结束日期"];
     [self.endTime setType:kDateType];
     self.endTime.finished = ^(NSString* string){
          _plan.endDate=[NSDate date];

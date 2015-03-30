@@ -28,6 +28,4 @@ typedef NS_ENUM(NSInteger, kTypeTF){
 @property (nonatomic, copy) EditFinished   finished;
 @property (nonatomic, assign) kTypeTF       type;
 
-@property (nonatomic, strong) UITextField   *TF;
-
 @end
