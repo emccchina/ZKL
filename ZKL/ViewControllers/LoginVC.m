@@ -146,7 +146,7 @@
     NSLog(@"url %@, %@", url, password);
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.accoutTF.text, @"userName",password, @"password", nil];
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+//        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
         NSLog(@"result is %@",result);
@@ -191,21 +191,7 @@
     
 }
 
-//-(MutableOrderedDictionary *)dictWithAES:(NSDictionary *)oDict
-//{
-//    NSMutableString *lStr=[NSMutableString string];
-//    [lStr appendString:[[oDict[@"LoginName"] cleanString:oDict[@"LoginName"] ] AES256EncryptWithKey:kAESKey]];
-//    [lStr appendString:[[oDict[@"PassWord"] cleanString:oDict[@"PassWord"] ] AES256EncryptWithKey:kAESKey]];
-//    [lStr appendString:kAESKey];
-////    NSString *ostr=[NSString stringWithFormat:@"%@%@%@" ,[oDict[@"email"] AES256EncryptWithKey:kAESKey],[oDict[@"pass"] AES256EncryptWithKey:kAESKey],kAESKey];
-//    MutableOrderedDictionary *orderArr= [MutableOrderedDictionary dictionary];
-//    [orderArr insertObject:[oDict[@"LoginName"] AES256EncryptWithKey:kAESKey] forKey:@"LoginName" atIndex:0];
-//    [orderArr insertObject:[oDict[@"PassWord"] AES256EncryptWithKey:kAESKey] forKey:@"PassWord" atIndex:1];
-//    [orderArr insertObject:[Utities md5AndBase:lStr] forKey:@"m" atIndex:2];
-//    [orderArr insertObject:ARC4RANDOM_MAX forKey:@"t" atIndex:3];
-//    NSLog(@"aes dict is %@", orderArr);
-//    return orderArr;
-//}
+
 /*
 #pragma mark - Navigation
 

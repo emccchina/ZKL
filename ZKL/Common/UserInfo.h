@@ -46,6 +46,7 @@
 @property (nonatomic, strong) NSString *incomeLevel;// 收入水平
 @property (nonatomic, assign) NSInteger userState; // 激活状态 0未激活 1激活
 
+- (BOOL)isLogin;
 + (UserInfo*)shareUserInfo; //全局共享的用户信息 单例模式
 - (UserInfo*)setParams:(UserInfo*)userInfo parmas:(NSDictionary *)param;
 

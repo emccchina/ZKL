@@ -113,15 +113,16 @@
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         NSLog(@"result is %@",result);
         if (result) {
             if (0==result[@"errorno"]) {
                 [self showAlertView:@"添加成功!"];
+                [self back];
             }else{
                 [self showAlertView:result[@"message"]];
             }
-
-            [self.navigationController popViewControllerAnimated:YES];
+            
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];

@@ -20,6 +20,14 @@
     return userInfoInstance;
 }
 
+- (BOOL)isLogin
+{
+    if (!self.userCode || [self.userCode isEqualToString:@""]) {
+        return NO;
+    }
+    return YES;
+}
+
 -(UserInfo *)setParams:(UserInfo *)userInfo parmas:(NSDictionary *)param
 {
     userInfo.userid=[[param safeObjectForKey:@"userid"] longLongValue];

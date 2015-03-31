@@ -17,9 +17,7 @@
 #import "PerformModel.h"
 @interface HomeControlVC ()
 {
-    UserInfo *user;
     PerformModel *perform;
-    
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
@@ -39,8 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self showBackItem];
-    user = [UserInfo shareUserInfo];
+//    [self showBackItem];
     perform =[PerformModel sharePerform];
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
@@ -62,6 +59,10 @@
     [self.dreamView setPressed:^(NSInteger type){
         switch (type) {
             case 0:
+                if (![[UserInfo shareUserInfo] isLogin]) {
+                    [Utities presentLoginVC:self];
+                    break;
+                }
                 [self presentAddDreamVC];
                 break;
             case 1:{
@@ -88,33 +89,25 @@
     [super viewDidAppear:animated];
     
     [self.dreamView start:0];
-//    [self.dreamView setStrokeEnd:0.6 animated:YES];
-    
-    
     [self getPlan];
-    NSLog( @"重新赋值" );
-    [self setPerform];
-
-    
 }
 
 - (void)getPlan
 {
-    if (user.userCode) {
+    if ([[UserInfo shareUserInfo] isLogin]) {
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         NSString *url = [NSString stringWithFormat:@"%@performaction!getTodayPlan.action",kServerDomain];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:user.userCode , @"userCode",nil];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[[UserInfo shareUserInfo] userCode] , @"userCode",nil];
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
             id result = [self parseResults:responseObject];
-            NSLog(@"result is %@",result);
+            NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
             if (result) {
                 perform=[perform setParams:perform parmas:result[@"result"]];
                 [self.dreamView start:1];
                 [self.dreamView setStrokeEnd:0.5 animated:YES];
-//                [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];
@@ -128,7 +121,7 @@
 
 - (void)startPlan
 {
-    if (user.userCode) {
+    if ([[UserInfo shareUserInfo] isLogin]) {
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -137,10 +130,8 @@
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
             id result = [self parseResults:responseObject];
-            NSLog(@"result is %@",result);
             if (result) {
                 [self.dreamView start:2];
-//                [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];
@@ -154,19 +145,18 @@
 
 - (void)stopPlan
 {
-    if (user.userCode) {
+    if ([[UserInfo shareUserInfo] isLogin]) {
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         NSString *url = [NSString stringWithFormat:@"%@performaction!stopPlan.action",kServerDomain];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:user.userCode , @"userCode",nil];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[[UserInfo shareUserInfo] userCode] , @"userCode",nil];
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
             id result = [self parseResults:responseObject];
-            NSLog(@"result is %@",result);
+            NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
             if (result) {
                 [self.dreamView start:1];
-//                [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];
@@ -188,15 +178,15 @@
         f= a/perform.planMinute;
     }
 
-    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%d小时%d分钟",h ,m  ] progress:f  progress:YES];
+    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m  ] progress:f  progress:YES];
     
     h=perform.restMinute/60;
     m=perform.restMinute%60;
-    [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%d小时%d分钟",h ,m] progress:0.0 progress:NO];
+    [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m] progress:0.0 progress:NO];
     
     h=perform.wasteMinute/60;
     m=perform.wasteMinute%60;
-    [self.wasteProgress setViewWithTitle:[NSString stringWithFormat:@"%d小时%d分钟",h ,m ] progress:0.0 progress:NO];
+    [self.wasteProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m ] progress:0.0 progress:NO];
 }
 
 - (void)doRight:(UINavigationItem*)item
