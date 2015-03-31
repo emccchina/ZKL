@@ -152,7 +152,7 @@
         NSLog(@"result is %@",result);
         if (result) {
             UserInfo *userInfo = [UserInfo shareUserInfo];
-            [userInfo setParams:userInfo parmas:result];
+            [userInfo setParams:userInfo parmas:result[@"result"]];
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

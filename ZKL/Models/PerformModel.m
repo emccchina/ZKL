@@ -10,13 +10,22 @@
 
 @implementation PerformModel
 
-+(PerformModel *)initWithDict:(NSDictionary *)performDict
++ (PerformModel *)sharePerform
 {
-    PerformModel *perform=[[PerformModel init] alloc];
+    static PerformModel *performInstance = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        performInstance = [[self alloc] init];
+    });
+    return performInstance;
+}
+
+-(PerformModel *)setParams:(PerformModel *)perform parmas:(NSDictionary *)performDict
+{
     perform.performCode = [performDict safeObjectForKey:@"performCode"];
     perform.userCode = [performDict safeObjectForKey:@"userCode"];
     perform.planCode = [performDict safeObjectForKey:@"planCode"];
-//    perform.theDay = [[performDict safeObjectForKey:@"theDay"] ];
+    //    perform.theDay = [[performDict safeObjectForKey:@"theDay"] ];
     perform.planMinute = [[performDict safeObjectForKey:@"planMinute"] integerValue];
     perform.realPlanMinute = [[performDict safeObjectForKey:@"realPlanMinute"] integerValue];
     perform.restMinute = [[performDict safeObjectForKey:@"restMinute"] integerValue];
@@ -24,4 +33,8 @@
     perform.wasteMinute = [[performDict safeObjectForKey:@"wasteMinute"] integerValue];
     return perform;
 }
+
+
 @end
+
+

@@ -20,6 +20,7 @@
 @property (nonatomic, assign) NSInteger realRestMinute;// 实际使用的时间 (分钟)
 @property (nonatomic, assign) NSInteger wasteMinute; // 虚度系统计算出来(24小时=realPlanMinute+realRestMinute+westeMinute)
 
-+(PerformModel *)initWithDict:(NSDictionary *)performDict;
++ (PerformModel *)sharePerform;
+- (PerformModel *)setParams:(PerformModel *)perform parmas:(NSDictionary *)performDict;
 
 @end

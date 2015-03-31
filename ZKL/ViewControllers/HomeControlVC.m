@@ -41,6 +41,7 @@
     // Do any additional setup after loading the view.
     [self showBackItem];
     user = [UserInfo shareUserInfo];
+    perform =[PerformModel sharePerform];
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
     self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
@@ -79,19 +80,17 @@
                 
             }break;
             case 2:{
-                
+               
             }break;
-                
             default:
                 break;
         }
     }];
     
     [self getPlan];
-    
-    [self.dreamProgress setViewWithTitle:@"10小时" progress:0.0 progress:YES];
-    [self.needProgress setViewWithTitle:@"8小时" progress:0.8 progress:NO];
-    [self.wasteProgress setViewWithTitle:@"4小时" progress:0.2 progress:NO];
+    NSLog( @"重新赋值" );
+    [self setPerform];
+
     
 }
 
@@ -103,15 +102,12 @@
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         NSString *url = [NSString stringWithFormat:@"%@performaction!getTodayPlan.action",kServerDomain];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:user.userCode , @"userCode",nil];
-        NSLog( @"%@ ", dict);
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
             id result = [self parseResults:responseObject];
             NSLog(@"result is %@",result);
             if (result) {
-                if (0==result[@"errorno"]) {
-                    perform=[PerformModel initWithDict:result[@"result"]];
-                }
+                perform=[perform setParams:perform parmas:result[@"result"]];
                 [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -122,6 +118,27 @@
         
     }
     
+}
+
+-(void) setPerform
+{
+    NSInteger  h=perform.planMinute/60;
+    NSInteger  m=perform.planMinute%60;
+    CGFloat a=(CGFloat)(perform.realPlanMinute);
+    CGFloat f=0;
+    if(a >1){
+        f= a/perform.planMinute;
+    }
+
+    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%d小时%d分钟",h ,m  ] progress:f  progress:YES];
+    
+    h=perform.restMinute/60;
+    m=perform.restMinute%60;
+    [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%d小时%d分钟",h ,m] progress:0.0 progress:NO];
+    
+    h=perform.wasteMinute/60;
+    m=perform.wasteMinute%60;
+    [self.wasteProgress setViewWithTitle:[NSString stringWithFormat:@"%d小时%d分钟",h ,m ] progress:0.0 progress:NO];
 }
 
 - (void)doRight:(UINavigationItem*)item
@@ -189,6 +206,7 @@
     }
     editTime.hidden = NO;
 }
+
 
 
 - (void)presentCalendarVC
