@@ -59,18 +59,6 @@
     self.progreessLine.backgroundColor = [UIColor clearColor];
     self.progreessLine.bottom = NO;
     
-}
-
-- (void)back
-{
-    [Utities presentLoginVC:self];
-}
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self.dreamView start:0];
-    [self.dreamView setStrokeEnd:0.6 animated:YES];
     [self.dreamView setPressed:^(NSInteger type){
         switch (type) {
             case 0:
@@ -82,12 +70,26 @@
             }break;
             case 2:{
                 [self stopPlan];
-               [self.dreamView start:1];
+                [self.dreamView start:1];
             }break;
             default:
                 break;
         }
     }];
+    
+}
+
+- (void)back
+{
+    [Utities presentLoginVC:self];
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.dreamView start:0];
+//    [self.dreamView setStrokeEnd:0.6 animated:YES];
+    
     
     [self getPlan];
     NSLog( @"重新赋值" );
@@ -111,7 +113,8 @@
             if (result) {
                 perform=[perform setParams:perform parmas:result[@"result"]];
                 [self.dreamView start:1];
-                [self.navigationController popViewControllerAnimated:YES];
+                [self.dreamView setStrokeEnd:0.5 animated:YES];
+//                [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];
@@ -137,7 +140,7 @@
             NSLog(@"result is %@",result);
             if (result) {
                 [self.dreamView start:2];
-                [self.navigationController popViewControllerAnimated:YES];
+//                [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];
@@ -163,7 +166,7 @@
             NSLog(@"result is %@",result);
             if (result) {
                 [self.dreamView start:1];
-                [self.navigationController popViewControllerAnimated:YES];
+//                [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];
