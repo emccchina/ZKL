@@ -25,6 +25,7 @@
     perform.performCode = [performDict safeObjectForKey:@"performCode"];
     perform.userCode = [performDict safeObjectForKey:@"userCode"];
     perform.planCode = [performDict safeObjectForKey:@"planCode"];
+    perform.performName = [performDict safeObjectForKey:@"performName"];
     //    perform.theDay = [[performDict safeObjectForKey:@"theDay"] ];
     perform.planMinute = [[performDict safeObjectForKey:@"planMinute"] integerValue];
     perform.realPlanMinute = [[performDict safeObjectForKey:@"realPlanMinute"] integerValue];

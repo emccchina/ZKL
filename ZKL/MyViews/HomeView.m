@@ -25,7 +25,7 @@
 - (void)startAnimationHV
 {
     doButtonType = 0;
-    self.textView.content = @"jl;sdkjfo;saji;就哦啊；发i就；道炯；就；就；就是；哦节哀；金额；放假啊呜；乐嘉；发i阿松；if金额；连接；哦阿杰；非叫我；哦阿胶；就按；积分；饿文件；藕粉骄傲；我姐夫；";
+    self.textView.content = @"1231231231312312313";
 //    if (iPhone_iOS8) {
         POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];
         anim.fromValue = @(-100);

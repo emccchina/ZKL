@@ -12,6 +12,7 @@
 @interface SettingVC ()
 <UITableViewDataSource, UITableViewDelegate>{
     NSArray *settingArray;
+    UserInfo *user;
 }
 @property (weak, nonatomic) IBOutlet UITableView *settingTB;
 @end
@@ -25,6 +26,7 @@ static NSString *settingCell = @"settingCell";
     [self showBackItem];
     
     [self setArray];
+    user =[UserInfo shareUserInfo];
     
     self.settingTB.delegate = self;
     self.settingTB.dataSource = self;
@@ -86,10 +88,10 @@ static NSString *settingCell = @"settingCell";
             [cell addSubview:headerView];
             headerView.tag = 10;
         }
-        [headerView.header setImageWithURL:[NSURL URLWithString:@"http://d.hiphotos.baidu.com/image/pic/item/55e736d12f2eb93890a739fbd7628535e4dd6ff4.jpg"]];
+        [headerView.header setImageWithURL:[NSURL URLWithString:user.headimgurl]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        headerView.name.text = @"name";
-        headerView.diolague.text = @"jkj;i";
+        headerView.name.text = user.userName;
+        headerView.diolague.text = user.nickName;
         return cell;
     }else{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"2" forIndexPath:indexPath];

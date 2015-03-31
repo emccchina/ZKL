@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *performCode;// 编号
 @property (nonatomic, strong) NSString *userCode;// 用户
 @property (nonatomic, strong) NSString *planCode;// 计划
+@property (nonatomic, strong) NSString *performName;
 @property (nonatomic, strong) NSDate *theDay;// 日期
 @property (nonatomic, assign) NSInteger planMinute;// 计划的时间 (分钟)-可能是修改过的 默认是 planMinute
 @property (nonatomic, assign) NSInteger realPlanMinute;// 实际使用的时间 (分钟)

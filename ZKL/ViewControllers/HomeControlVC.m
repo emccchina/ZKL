@@ -77,10 +77,12 @@
                 [self presentAddDreamVC];
                 break;
             case 1:{
-                
+                [self startPlan];
+                [self.dreamView start:2];
             }break;
             case 2:{
-               
+                [self stopPlan];
+               [self.dreamView start:1];
             }break;
             default:
                 break;
@@ -108,6 +110,59 @@
             NSLog(@"result is %@",result);
             if (result) {
                 perform=[perform setParams:perform parmas:result[@"result"]];
+                [self.dreamView start:1];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [Utities errorPrint:error vc:self];
+            [self dismissIndicatorView];
+            [self showAlertView:kNetworkNotConnect];
+        }];
+        
+    }
+    
+}
+
+- (void)startPlan
+{
+    if (user.userCode) {
+        [self showIndicatorView:kNetworkConnecting];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSString *url = [NSString stringWithFormat:@"%@performaction!startPlan.action",kServerDomain];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:perform.performCode , @"performCode",nil];
+        [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self dismissIndicatorView];
+            id result = [self parseResults:responseObject];
+            NSLog(@"result is %@",result);
+            if (result) {
+                [self.dreamView start:2];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [Utities errorPrint:error vc:self];
+            [self dismissIndicatorView];
+            [self showAlertView:kNetworkNotConnect];
+        }];
+        
+    }
+    
+}
+
+- (void)stopPlan
+{
+    if (user.userCode) {
+        [self showIndicatorView:kNetworkConnecting];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSString *url = [NSString stringWithFormat:@"%@performaction!stopPlan.action",kServerDomain];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:user.userCode , @"userCode",nil];
+        [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self dismissIndicatorView];
+            id result = [self parseResults:responseObject];
+            NSLog(@"result is %@",result);
+            if (result) {
+                [self.dreamView start:1];
                 [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
