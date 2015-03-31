@@ -108,7 +108,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!addNewPlan.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:user.userCode , @"userCode",self.addTF.TF.text, @"title",self.needTimeTF.TF.text , @"totalHour", self.beginTime.TF.text , @"beginDate", self.endTime.TF.text , @"endDate",nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:user.userCode , @"userCode",self.addTF.TF.text, @"title",self.needTimeTF.TF.text , @"totalHour", self.beginTime.TF.text , @"beginString", self.endTime.TF.text , @"endString",nil];
      NSLog( @"%@ ", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self dismissIndicatorView];
