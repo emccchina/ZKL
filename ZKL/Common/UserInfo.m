@@ -26,8 +26,29 @@ static UserInfo *userInfoInstance = nil;
     self = [super init];
     if (self) {
         self.update = YES;
+        self.homeAddImage = [Utities homeAddImage];
+        self.backImage = [self myBackImage];
     }
     return self;
+}
+
+- (UIImage*)myBackImage
+{
+    CGFloat width = 22;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, width), NO, [UIScreen mainScreen].scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIColor *color = [UIColor colorWithRed:235.0/255.0 green:247.0/255.0 blue:239.0/255.0 alpha:1.0];
+    CGContextSetStrokeColorWithColor(context, [color CGColor]);
+    CGContextSetLineWidth(context, 2);
+    CGFloat radius = 5;
+    CGContextMoveToPoint(context, width/2+radius, width/2- 3*radius);
+    CGContextAddLineToPoint(context, width/2-radius*2, width/2) ;
+    CGContextAddLineToPoint(context, width/2+radius, width/2+3*radius);
+    //    CGContextClosePath(context);
+    CGContextDrawPath(context, kCGPathStroke);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
 }
 
 - (void)parseWithDict:(NSDictionary *)result

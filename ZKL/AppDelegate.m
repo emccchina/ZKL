@@ -21,8 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self createDB];
-    [UserInfo shareUserInfo].homeAddImage = [Utities homeAddImage];
-    [UserInfo shareUserInfo].backImage = [self myBackImage];
+    [UserInfo shareUserInfo];
     UITabBarController *VC = (UITabBarController*)self.window.rootViewController;
     VC.delegate = self;
     return YES;
@@ -52,24 +51,7 @@
     
 }
 
-- (UIImage*)myBackImage
-{
-    CGFloat width = 22;
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, width), NO, [UIScreen mainScreen].scale);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    UIColor *color = [UIColor colorWithRed:235.0/255.0 green:247.0/255.0 blue:239.0/255.0 alpha:1.0];
-    CGContextSetStrokeColorWithColor(context, [color CGColor]);
-    CGContextSetLineWidth(context, 2);
-    CGFloat radius = 5;
-    CGContextMoveToPoint(context, width/2+radius, width/2- 3*radius);
-    CGContextAddLineToPoint(context, width/2-radius*2, width/2) ;
-    CGContextAddLineToPoint(context, width/2+radius, width/2+3*radius);
-    //    CGContextClosePath(context);
-    CGContextDrawPath(context, kCGPathStroke);
-    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return theImage;
-}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
