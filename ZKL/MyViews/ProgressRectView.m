@@ -17,66 +17,63 @@
 //    [self.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     self.layer.cornerRadius = 5;
     self.layer.backgroundColor = [UIColor redColor].CGColor;
-//    CAShapeLayer *bg = [CAShapeLayer layer];
-//    CGMutablePathRef path = CGPathCreateMutable();
-//    CGPathMoveToPoint(path, NULL, 0, self.frame.size.height/2);
-//    CGPathAddLineToPoint(path, NULL, self.frame.size.width,self.frame.size.height/2);
-//    bg.path = [UIBezierPath bezierPathWithCGPath:path].CGPath;
-//    bg.strokeColor = [UIColor redColor].CGColor;
-//    bg.fillColor = [UIColor redColor].CGColor;
-//    bg.lineWidth = self.frame.size.height;
-//    bg.strokeStart = 0;//progress;
-//    bg.strokeEnd = 1;
-//    bg.lineCap = kCALineCapRound;
-//    bg.lineJoin = kCALineJoinMiter;
-//    [self.layer addSublayer:bg];
-//    CGPathRelease(path);
+    CAShapeLayer *bg = [CAShapeLayer layer];
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 0, self.frame.size.height/2);
+    CGPathAddLineToPoint(path, NULL, self.frame.size.width,self.frame.size.height/2);
+    bg.path = [UIBezierPath bezierPathWithCGPath:path].CGPath;
+    bg.strokeColor = [UIColor redColor].CGColor;
+    bg.fillColor = [UIColor redColor].CGColor;
+    bg.lineWidth = self.frame.size.height;
+    bg.strokeStart = 0;//progress;
+    bg.strokeEnd = 1;
+    bg.lineCap = kCALineCapRound;
+    bg.lineJoin = kCALineJoinMiter;
+    [self.layer addSublayer:bg];
+    CGPathRelease(path);
     
-    UIColor* barColor =  [UIColor colorWithRed:30.0f/256.0f green:104.0f/256.0f blue:209.0f/256.0f alpha:1];
-    CALayer* barberPoleLayer = [CALayer layer];
-    barberPoleLayer.frame = self.bounds;
-    CALayer* barberPoleMaskLayer = [CALayer layer];
-    barberPoleMaskLayer.frame = self.bounds;
-    barberPoleMaskLayer.cornerRadius = self.frame.size.height/2;
-    // mask doesnt work without a solid background
-    barberPoleMaskLayer.backgroundColor = [UIColor whiteColor].CGColor;
-    barberPoleLayer.mask = barberPoleMaskLayer;
+//    UIColor* barColor =  [UIColor colorWithRed:30.0f/256.0f green:104.0f/256.0f blue:209.0f/256.0f alpha:1];
+//    CALayer* barberPoleLayer = [CALayer layer];
+//    barberPoleLayer.frame = self.bounds;
+//    CALayer* barberPoleMaskLayer = [CALayer layer];
+//    barberPoleMaskLayer.frame = self.bounds;
+//    barberPoleMaskLayer.cornerRadius = self.frame.size.height/2;
+//    // mask doesnt work without a solid background
+//    barberPoleMaskLayer.backgroundColor = [UIColor whiteColor].CGColor;
+//    barberPoleLayer.mask = barberPoleMaskLayer;
+//    
+//    self.barberPoleStripWidth = 5;
+//    CGRect frame = self.frame;
+//    CALayer* barberStrip = [CALayer layer];
+//    barberStrip.frame = CGRectMake(0,0,self.barberPoleStripWidth * 2,frame.size.height);
+//    
+//    CGMutablePathRef stripPath = CGPathCreateMutable();
+//    CGPathMoveToPoint(stripPath, nil, 0, 0);
+//    CGPathAddLineToPoint(stripPath, nil, self.barberPoleStripWidth, 0);
+//    CGPathAddLineToPoint(stripPath, nil, self.barberPoleStripWidth * 2, barberStrip.frame.size.height);
+//    CGPathAddLineToPoint(stripPath, nil, self.barberPoleStripWidth, barberStrip.frame.size.height);
+//    
+//    CAShapeLayer* stripShape = [CAShapeLayer layer];
+//    stripShape.fillColor = barColor.CGColor;
+//    stripShape.path = stripPath;
+//    
+//    [barberStrip addSublayer:stripShape];
+//    CGPathRelease(stripPath);
+//    
+//    self.replicatorLayer= [CAReplicatorLayer layer];
+//    self.replicatorLayer.bounds = barberPoleLayer.bounds;
+//    self.replicatorLayer.position = CGPointMake(- barberStrip.frame.size.width * 4, barberPoleLayer.frame.size.height / 2);
+//    self.replicatorLayer.instanceCount = (NSInteger)roundf(frame.size.width / barberStrip.frame.size.width * 2) + 1;
+//    
+//    CATransform3D finalTransform = CATransform3DMakeTranslation(barberStrip.frame.size.width, 0, 0);
+//    [self.replicatorLayer setInstanceTransform:finalTransform];
+//    
+//    [self.replicatorLayer addSublayer:barberStrip];
+//    
+//    [barberPoleLayer addSublayer:self.replicatorLayer];
+//    
+//    [self.layer addSublayer:barberPoleLayer];
     
-    self.barberPoleStripWidth = 5;
-    CGRect frame = self.frame;
-    CALayer* barberStrip = [CALayer layer];
-    barberStrip.frame = CGRectMake(0,0,self.barberPoleStripWidth * 2,frame.size.height);
-    
-    CGMutablePathRef stripPath = CGPathCreateMutable();
-    CGPathMoveToPoint(stripPath, nil, 0, 0);
-    CGPathAddLineToPoint(stripPath, nil, self.barberPoleStripWidth, 0);
-    CGPathAddLineToPoint(stripPath, nil, self.barberPoleStripWidth * 2, barberStrip.frame.size.height);
-    CGPathAddLineToPoint(stripPath, nil, self.barberPoleStripWidth, barberStrip.frame.size.height);
-    
-    CAShapeLayer* stripShape = [CAShapeLayer layer];
-    stripShape.fillColor = barColor.CGColor;
-    stripShape.path = stripPath;
-    
-    [barberStrip addSublayer:stripShape];
-    CGPathRelease(stripPath);
-    
-    self.replicatorLayer= [CAReplicatorLayer layer];
-    self.replicatorLayer.bounds = barberPoleLayer.bounds;
-    self.replicatorLayer.position = CGPointMake(- barberStrip.frame.size.width * 4, barberPoleLayer.frame.size.height / 2);
-    self.replicatorLayer.instanceCount = (NSInteger)roundf(frame.size.width / barberStrip.frame.size.width * 2) + 1;
-    
-    CATransform3D finalTransform = CATransform3DMakeTranslation(barberStrip.frame.size.width, 0, 0);
-    [self.replicatorLayer setInstanceTransform:finalTransform];
-    
-    [self.replicatorLayer addSublayer:barberStrip];
-    
-    [barberPoleLayer addSublayer:self.replicatorLayer];
-    
-    [self.layer addSublayer:barberPoleLayer];
-    
-//    barberPoleView.alpha = 0.65f;
-    
-//    [self addSubview:barberPoleView];
 
 }
 
@@ -119,24 +116,39 @@
         unFinished = [CAShapeLayer layer];
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathMoveToPoint(path, NULL, space, height/2);
-        CGPathAddLineToPoint(path, NULL, width-50, height/2);
+        CGPathAddLineToPoint(path, NULL, width-70, height/2);
         unFinished.path = [UIBezierPath bezierPathWithCGPath:path].CGPath;
-        unFinished.strokeColor = [UIColor orangeColor].CGColor;
+        unFinished.strokeColor = [UIColor whiteColor].CGColor;
         unFinished.fillColor = [UIColor redColor].CGColor;
         unFinished.lineWidth = lineWidth;
-        unFinished.strokeStart = progress;
+        unFinished.strokeStart = 0;
         unFinished.strokeEnd = 1;
         unFinished.lineCap = kCALineCapRound;
         unFinished.lineJoin = kCALineJoinMiter;
         [self.layer addSublayer:unFinished];
         CGPathRelease(path);
         
+        finished = [CAShapeLayer layer];
+        CGMutablePathRef path1 = CGPathCreateMutable();
+        CGPathMoveToPoint(path1, NULL, space, height/2);
+        CGPathAddLineToPoint(path1, NULL, width-70, height/2);
+        finished.path = [UIBezierPath bezierPathWithCGPath:path1].CGPath;
+        finished.strokeColor = [UIColor orangeColor].CGColor;
+        finished.fillColor = [UIColor redColor].CGColor;
+        finished.lineWidth = lineWidth;
+        finished.strokeStart = 0;
+        finished.strokeEnd = progress;
+        finished.lineCap = kCALineCapRound;
+        finished.lineJoin = kCALineJoinMiter;
+        [self.layer addSublayer:finished];
+        CGPathRelease(path1);
         
-        WhorlLayer *finished = [[WhorlLayer alloc] initWithFrame:CGRectMake(space, height/2-lineWidth/2, (width-40-space*2)*progress+space, lineWidth)];
-        [self addSubview:finished];
+        
+//        WhorlLayer *finished = [[WhorlLayer alloc] initWithFrame:CGRectMake(space, height/2-lineWidth/2, (width-40-space*2)*progress+space, lineWidth)];
+//        [self addSubview:finished];
     }
     if (p) {
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-40, 0, 40, height)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-60, 0, 60, height)];
     }else{
         titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
         titleLabel.textAlignment = NSTextAlignmentCenter;

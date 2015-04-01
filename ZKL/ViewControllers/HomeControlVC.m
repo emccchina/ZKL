@@ -18,6 +18,7 @@
 @interface HomeControlVC ()
 {
     PerformModel *perform;
+    NSInteger stateDream;//0添加 1暂停 2播放
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
@@ -39,15 +40,7 @@
     // Do any additional setup after loading the view.
 //    [self showBackItem];
     perform =[PerformModel sharePerform];
-    
-    perform.userCode = @"12345678";
-    perform.performCode = @"1234";
-    perform.performName = @"我的梦想";
-    perform.theDay = [NSDate date];
-    perform.realPlanMinute = 100;
-    perform.realRestMinute = 50;
-    perform.planMinute = 200;
-    perform.restMinute = 300;
+    stateDream = 0;
     
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
@@ -97,19 +90,21 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     [self.dreamView start:0];
     [self getPlan];
-    [self setPerform];
 }
 
 - (void)getPlan
 {
-    if ([[UserInfo shareUserInfo] isLogin] && [UserInfo shareUserInfo].update) {
+    [self setViewState:stateDream];
+    if (![[UserInfo shareUserInfo] isLogin]) {
+        return;
+    }
+    if ( [UserInfo shareUserInfo].update) {
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSString *url = [NSString stringWithFormat:@"%@performaction!getTodayPlan.action",kServerDomain];
+        NSString *url = [NSString stringWithFormat:@"%@performaction!getTodayPerform.action",kServerDomain];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[[UserInfo shareUserInfo] userCode] , @"userCode",nil];
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
@@ -117,10 +112,9 @@
             id result = [self parseResults:responseObject];
             NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
             if (result) {
-                perform=[MTLJSONAdapter modelOfClass:[PerformModel class] fromJSONDictionary:result[@"result"] error:nil];
+                [perform setPerformDict:result[@"result"]];
                 perform.update = NO;
-                [self.dreamView start:1];
-                [self.dreamView setStrokeEnd:0.5 animated:YES];
+                [self setViewState:1];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];
@@ -129,7 +123,16 @@
         }];
         
     }
-    
+}
+
+- (void)setViewState:(NSInteger)state
+{
+    stateDream = state;
+    //0添加 1暂停 2播放
+    self.dreameTitle.text = perform.performName;
+    [self.dreamView start:state];
+    [self.dreamView setStrokeEnd:0.5 animated:YES];
+    [self setPerform];
 }
 
 - (void)startPlan
@@ -138,10 +141,11 @@
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSString *url = [NSString stringWithFormat:@"%@performaction!startPlan.action",kServerDomain];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:perform.performCode , @"performCode",nil];
+        NSString *url = [NSString stringWithFormat:@"%@performaction!srartPerform.action",kServerDomain];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:perform.performCode , @"performCode",[UserInfo shareUserInfo].userCode,@"userCode", nil];
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
+            NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
             id result = [self parseResults:responseObject];
             if (result) {
                 [self.dreamView start:2];
@@ -162,8 +166,8 @@
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSString *url = [NSString stringWithFormat:@"%@performaction!stopPlan.action",kServerDomain];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[[UserInfo shareUserInfo] userCode] , @"userCode",nil];
+        NSString *url = [NSString stringWithFormat:@"%@performaction!stopPerform.action",kServerDomain];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:perform.performCode , @"performCode",[UserInfo shareUserInfo].userCode,@"userCode", nil];
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
             id result = [self parseResults:responseObject];

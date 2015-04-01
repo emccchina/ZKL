@@ -13,7 +13,7 @@
     CAShapeLayer    *bg;
     UIImageView     *progressImage;
     CAShapeLayer    *unFinished;
-    
+    CAShapeLayer    *finished;
     UILabel         *titleLabel;
 
 }

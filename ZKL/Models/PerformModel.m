@@ -20,6 +20,12 @@
     return performInstance;
 }
 
+- (void)setPerformDict:(NSDictionary *)dict
+{
+    MTLJSONAdapter *adapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:dict modelClass:self.class error:nil];
+    [self mergeValuesForKeysFromModel:adapter.model];
+}
+
 + (NSDictionary*)JSONKeyPathsByPropertyKey
 {
     return @{@"performCode":@"performCode",
@@ -30,11 +36,16 @@
              @"realPlanMinute":@"realPlanMinute",
              @"restMinute":@"restMinute",
              @"realRestMinute":@"realRestMinute",
-             @"wasteMinute":@"wasteMinute"
+             @"wasteMinute":@"wasteMinute",
+             @"theDay":@"theDay",
+             @"timeLine":@"timeLine",
+             @"timeSwitch":@"timeSwitch",
+             @"performID":@"id",
+             @"createTime":@"createTime",
+             @"lastUpdateTime":@"lastUpdateTime",
+             @"viewState":@"viewState"
              };
 }
-
-
 
 @end
 

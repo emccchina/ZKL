@@ -38,24 +38,28 @@
 
 - (void)pressedSelf:(id)sender
 {
-    switch (self.typeState) {
-        case 0:{
-            if (self.pressed) {
-                self.pressed(0);
-                return;
-            }
-        }break;
-        case 1:{
-            self.typeState = 2;
-        }break;
-        case 2:{
-            self.typeState = 1;
-        }break;
-            
-        default:
-            break;
+    if (self.pressed) {
+        self.pressed(self.typeState);
+        return;
     }
-    [self setStateLayer:self.typeState];
+//    switch (self.typeState) {
+//        case 0:{
+//            if (self.pressed) {
+//                self.pressed(0);
+//                return;
+//            }
+//        }break;
+//        case 1:{
+//            
+//        }break;
+//        case 2:{
+//            self.typeState = 1;
+//        }break;
+//            
+//        default:
+//            break;
+//    }
+//    [self setStateLayer:self.typeState];
 }
 
 #pragma mark - Instance Methods
