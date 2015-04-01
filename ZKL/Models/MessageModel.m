@@ -10,13 +10,14 @@
 
 @implementation MessageModel
 
-+(MessageModel *)initWithDict:(NSDictionary *)messageDict
++ (NSDictionary*)JSONKeyPathsByPropertyKey
 {
-    MessageModel *message=[[MessageModel init] alloc];
-    message.errorno =[[messageDict safeObjectForKey:@"errorno"] integerValue];
-    message.message =[messageDict safeObjectForKey:@"message"];
-    message.result =messageDict[@"result"];
-    return message;
+    return @{
+             @"errorno":@"errorno",
+             @"message":@"message",
+             @"result":@"result",
+             };
 }
+
 
 @end

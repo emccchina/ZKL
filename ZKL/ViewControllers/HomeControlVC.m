@@ -39,7 +39,16 @@
     // Do any additional setup after loading the view.
 //    [self showBackItem];
     perform =[PerformModel sharePerform];
-    perform.update = YES;
+    
+    perform.userCode = @"12345678";
+    perform.performCode = @"1234";
+    perform.performName = @"我的梦想";
+    perform.theDay = [NSDate date];
+    perform.realPlanMinute = 100;
+    perform.realRestMinute = 50;
+    perform.planMinute = 200;
+    perform.restMinute = 300;
+    
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
     self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
@@ -91,11 +100,12 @@
     
     [self.dreamView start:0];
     [self getPlan];
+    [self setPerform];
 }
 
 - (void)getPlan
 {
-    if ([[UserInfo shareUserInfo] isLogin] && perform.update) {
+    if ([[UserInfo shareUserInfo] isLogin] && [UserInfo shareUserInfo].update) {
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -103,10 +113,11 @@
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[[UserInfo shareUserInfo] userCode] , @"userCode",nil];
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
+            [UserInfo shareUserInfo].update = NO;
             id result = [self parseResults:responseObject];
             NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
             if (result) {
-                perform=[perform setParams:perform parmas:result[@"result"]];
+                perform=[MTLJSONAdapter modelOfClass:[PerformModel class] fromJSONDictionary:result[@"result"] error:nil];
                 perform.update = NO;
                 [self.dreamView start:1];
                 [self.dreamView setStrokeEnd:0.5 animated:YES];
@@ -170,7 +181,7 @@
     
 }
 
--(void) setPerform
+-(void)setPerform
 {
     NSInteger  h=perform.planMinute/60;
     NSInteger  m=perform.planMinute%60;

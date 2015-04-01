@@ -11,7 +11,17 @@
 //User info 单例模式
 @interface UserInfo : MTLModel
 <MTLJSONSerializing>
-
+/*
+ MTLModel 类的解析 https://github.com/Mantle/Mantle 参考， 主要在实现+ (NSDictionary*)JSONKeyPathsByPropertyKey 这个协议 （MTLJSONSerializing），
+ 使用参考
+ MTLJSONAdapter *adapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:result modelClass:[self class] error:nil];
+ [self mergeValuesForKeysFromModel:adapter.model];
+ 
+ 或
+ 
+ UserInfo* userInfo = [MTLJSONAdapter modelOfClass:[UserInfo Class] fromJSONDictionary:JSONDictionary error:&error];
+ 
+ */
 @property (strong, nonatomic) UIImage   *homeAddImage;
 @property (strong, nonatomic) UIImage   *backImage;
 
@@ -47,8 +57,9 @@
 @property (nonatomic, strong) NSString *incomeLevel;// 收入水平
 @property (nonatomic, assign) NSInteger userState; // 激活状态 0未激活 1激活
 
+@property (nonatomic, assign) BOOL      update;//
+
 - (BOOL)isLogin;
 + (UserInfo*)shareUserInfo; //全局共享的用户信息 单例模式
-- (UserInfo*)setParams:(UserInfo*)userInfo parmas:(NSDictionary *)param;
 - (void)parseWithDict:(NSDictionary*)result;
 @end

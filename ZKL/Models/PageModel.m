@@ -10,14 +10,14 @@
 
 @implementation PageModel
 
-+(PageModel *)initWithDict:(NSDictionary *)pageDict
++ (NSDictionary*)JSONKeyPathsByPropertyKey
 {
-    PageModel *page = [[PageModel init] alloc];
-    page.currentPage = [[pageDict safeObjectForKey:@"currentPage"] integerValue];
-    page.pageSize = [[pageDict safeObjectForKey:@"pageSize"] integerValue];
-    page.total = [[pageDict safeObjectForKey:@"total"] integerValue];
-    page.rows = pageDict[@"rows"];
-    return page;
+    return @{
+             @"currentPage":@"",
+             @"pageSize":@"",
+             @"total":@"",
+             @"rows":@"",
+             };
 }
 
 @end

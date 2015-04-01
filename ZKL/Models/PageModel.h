@@ -8,13 +8,12 @@
 
 #import "BaseViewController.h"
 
-@interface PageModel : NSObject
-
+@interface PageModel : MTLModel
+<MTLJSONSerializing>
 @property (nonatomic,assign) NSInteger currentPage;
 @property (nonatomic,assign) NSInteger pageSize;
 @property (nonatomic,assign) NSInteger total;
 @property (nonatomic,strong) NSMutableArray  *rows;
 
-+(PageModel *) initWithDict:(NSDictionary *)pageDict;
 
 @end

@@ -7,8 +7,33 @@
 //
 
 #import "PlanModel.h"
-
+#import "PerformModel.h"
 @implementation PlanModel
 
++ (NSDictionary*)JSONKeyPathsByPropertyKey
+{
+    return @{@"planid":@"",
+             @"planCode":@"",
+             @"usercode":@"",
+             @"superCode":@"",
+             @"frontCode":@"",
+             @"title":@"",
+             @"content":@"",
+             @"beginDate":@"",
+             @"endDate":@"",
+             @"totalHour":@"",
+             @"unableMinute":@"",
+             @"planMinute":@"",
+             @"dayCount":@"",
+             @"priority":@"",
+             @"tag":@"",
+             @"performModels":@""
+             };
+}
+
++ (NSValueTransformer*)performModelsJSONTransformer{
+    NSLog(@"arr transform");
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[PerformModel class]];
+}
 
 @end

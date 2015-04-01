@@ -21,13 +21,22 @@ static UserInfo *userInfoInstance = nil;
     return userInfoInstance;
 }
 
-- (void)parseWithDict:(NSDictionary *)result
+- (instancetype)init
 {
-    
+    self = [super init];
+    if (self) {
+        self.update = YES;
+    }
+    return self;
 }
 
-
-
+- (void)parseWithDict:(NSDictionary *)result
+{
+    //单例模式 只有一个实例化 所以合并在一起
+    MTLJSONAdapter *adapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:result modelClass:[self class] error:nil];
+    [self mergeValuesForKeysFromModel:adapter.model];
+    
+}
 
 - (BOOL)isLogin
 {
@@ -40,9 +49,10 @@ static UserInfo *userInfoInstance = nil;
 + (NSDictionary*)JSONKeyPathsByPropertyKey
 {
     return @{
-             @"userid":@"userid",
+             @"userid":@"id",
              @"userCode":@"userCode",
              @"openid":@"openid",
+             @"email":@"email",
              @"userName":@"userName",
              @"nickName":@"nickName",
              @"realName":@"realName",
@@ -68,42 +78,6 @@ static UserInfo *userInfoInstance = nil;
              @"incomeLevel":@"incomeLevel",
              @"userState":@"userState"
              };
-}
-
--(UserInfo *)setParams:(UserInfo *)userInfo parmas:(NSDictionary *)param
-{
-    userInfo.userid=[param safeObjectForKey:@"userid"];
-    userInfo.userCode=[param safeObjectForKey:@"userCode"];
-    userInfo.openid=[param safeObjectForKey:@"openid"];
-    userInfo.userName=[param safeObjectForKey:@"userName"];
-    userInfo.nickName=[param safeObjectForKey:@"nickName"];
-    userInfo.realName=[param safeObjectForKey:@"realName"];
-    userInfo.password=[param safeObjectForKey:@"password"];
-    userInfo.sex=[[param safeObjectForKey:@"sex"] integerValue] == 1?@"男":@"女" ;
-    userInfo.city=[param safeObjectForKey:@"city"];
-    userInfo.province=[param safeObjectForKey:@"province"];
-    userInfo.country=[param safeObjectForKey:@"country"];
-    userInfo.headimgurl=[param safeObjectForKey:@"headimgurl"];
-    userInfo.subscribeTime=[param safeObjectForKey:@"subscribeTime"];
-    userInfo.email=[param safeObjectForKey:@"email"];
-    
-    userInfo.idCardNO=[param safeObjectForKey:@"idCardNO"];
-    userInfo.birthday=[param safeObjectForKey:@"birthday"];
-    userInfo.qq=[param safeObjectForKey:@"qq"];
-    userInfo.blog=[param safeObjectForKey:@"blog"];
-    userInfo.handPhone=[param safeObjectForKey:@"handPhone"];
-    userInfo.telphone=[param safeObjectForKey:@"telphone"];
-    userInfo.fax=[param safeObjectForKey:@"fax"];
-    userInfo.departmentCode=[param safeObjectForKey:@"departmentCode"];
-    userInfo.zipcode=[param safeObjectForKey:@"zipcode"];
-    userInfo.homeAddress=[param safeObjectForKey:@"homeAddress"];
-    userInfo.address=[param safeObjectForKey:@"address"];
-    userInfo.hobby=[param safeObjectForKey:@"hobby"];
-    userInfo.occupation=[param safeObjectForKey:@"occupation"];
-    userInfo.education=[param safeObjectForKey:@"education"];
-    userInfo.incomeLevel=[param safeObjectForKey:@"incomeLevel"];
-    userInfo.userState=[param safeObjectForKey:@"userState"];
-    return userInfo;
 }
 
 @end

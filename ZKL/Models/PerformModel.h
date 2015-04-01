@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PerformModel : NSObject
+@interface PerformModel : MTLModel
+<MTLJSONSerializing>
 
 @property (nonatomic, assign) BOOL      update;//是否需要更新
 @property (nonatomic, strong) NSString *performCode;// 编号
@@ -23,6 +24,5 @@
 @property (nonatomic, assign) NSInteger wasteMinute; // 虚度系统计算出来(24小时=realPlanMinute+realRestMinute+westeMinute)
 
 + (PerformModel *)sharePerform;
-- (PerformModel *)setParams:(PerformModel *)perform parmas:(NSDictionary *)performDict;
 
 @end

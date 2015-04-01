@@ -151,8 +151,7 @@
         id result = [self parseResults:responseObject];
         if (result) {
             UserInfo *userInfo = [UserInfo shareUserInfo];
-//            [userInfo parseWithDict:result[@"result"]];
-            [userInfo setParams:userInfo parmas:result[@"result"]];
+            [userInfo parseWithDict:result[@"result"]];
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

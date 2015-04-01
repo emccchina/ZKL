@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PlanModel : NSObject
+@interface PlanModel : MTLModel
+<MTLJSONSerializing>
 
 @property (nonatomic, assign) long long planid;
 @property (nonatomic, strong) NSString *planCode;// 编号
@@ -25,5 +26,5 @@
 @property (nonatomic, assign) NSInteger dayCount;// 需要的天数
 @property (nonatomic, assign) NSInteger priority;// 优先级 越小越优先
 @property (nonatomic, strong) NSString *tag;// 标签(特殊任务标记)
-
+@property (nonatomic, strong) NSArray   *performModels;
 @end

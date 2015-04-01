@@ -20,20 +20,20 @@
     return performInstance;
 }
 
--(PerformModel *)setParams:(PerformModel *)perform parmas:(NSDictionary *)performDict
++ (NSDictionary*)JSONKeyPathsByPropertyKey
 {
-    perform.performCode = [performDict safeObjectForKey:@"performCode"];
-    perform.userCode = [performDict safeObjectForKey:@"userCode"];
-    perform.planCode = [performDict safeObjectForKey:@"planCode"];
-    perform.performName = [performDict safeObjectForKey:@"performName"];
-    //    perform.theDay = [[performDict safeObjectForKey:@"theDay"] ];
-    perform.planMinute = [[performDict safeObjectForKey:@"planMinute"] integerValue];
-    perform.realPlanMinute = [[performDict safeObjectForKey:@"realPlanMinute"] integerValue];
-    perform.restMinute = [[performDict safeObjectForKey:@"restMinute"] integerValue];
-    perform.realRestMinute = [[performDict safeObjectForKey:@"realRestMinute"] integerValue];
-    perform.wasteMinute = [[performDict safeObjectForKey:@"wasteMinute"] integerValue];
-    return perform;
+    return @{@"performCode":@"performCode",
+             @"userCode":@"userCode",
+             @"planCode":@"planCode",
+             @"performName":@"performName",
+             @"planMinute":@"planMinute",
+             @"realPlanMinute":@"realPlanMinute",
+             @"restMinute":@"restMinute",
+             @"realRestMinute":@"realRestMinute",
+             @"wasteMinute":@"wasteMinute"
+             };
 }
+
 
 
 @end

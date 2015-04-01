@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MessageModel : NSObject
+@interface MessageModel : MTLModel
+<MTLJSONSerializing>
 
 @property (nonatomic,assign) NSInteger errorno;
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, strong) NSDictionary *result;
 
-+(MessageModel *) initWithDict:(NSDictionary *)messageDict;
 
 @end

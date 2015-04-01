@@ -117,7 +117,8 @@
         NSLog(@"result is %@",result);
         if (result) {
             if (0==result[@"errorno"]) {
-                [self showAlertView:@"添加成功!"];
+//                [self showAlertView:@"添加成功!"];
+                [UserInfo shareUserInfo].update = YES;
                 [self back];
             }else{
                 [self showAlertView:result[@"message"]];
