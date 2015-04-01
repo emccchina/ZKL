@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Mantle.h"
 //User info 单例模式
-@interface UserInfo : NSObject
+@interface UserInfo : MTLModel
+<MTLJSONSerializing>
 
 @property (strong, nonatomic) UIImage   *homeAddImage;
 @property (strong, nonatomic) UIImage   *backImage;
@@ -49,5 +50,5 @@
 - (BOOL)isLogin;
 + (UserInfo*)shareUserInfo; //全局共享的用户信息 单例模式
 - (UserInfo*)setParams:(UserInfo*)userInfo parmas:(NSDictionary *)param;
-
+- (void)parseWithDict:(NSDictionary*)result;
 @end

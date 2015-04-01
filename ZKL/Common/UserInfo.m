@@ -10,15 +10,24 @@
 
 @implementation UserInfo
 
+static UserInfo *userInfoInstance = nil;
+
 + (UserInfo*)shareUserInfo
 {
-    static UserInfo *userInfoInstance = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         userInfoInstance = [[self alloc] init];
     });
     return userInfoInstance;
 }
+
+- (void)parseWithDict:(NSDictionary *)result
+{
+    
+}
+
+
+
 
 - (BOOL)isLogin
 {
@@ -28,9 +37,42 @@
     return YES;
 }
 
++ (NSDictionary*)JSONKeyPathsByPropertyKey
+{
+    return @{
+             @"userid":@"userid",
+             @"userCode":@"userCode",
+             @"openid":@"openid",
+             @"userName":@"userName",
+             @"nickName":@"nickName",
+             @"realName":@"realName",
+             @"password":@"password",
+             @"sex":@"sex",
+             @"city":@"city",
+             @"province":@"province",
+             @"country":@"country",
+             @"headimgurl":@"headimgurl",
+             @"subscribeTime":@"subscribeTime",
+             @"idCardNO":@"idCardNO",
+             @"birthday":@"birthday",
+             @"qq":@"qq",
+             @"blog":@"blog",
+             @"handPhone":@"handPhone",
+             @"telphone":@"telphone",
+             @"fax":@"fax",
+             @"departmentCode":@"departmentCode",
+             @"address":@"address",
+             @"hobby":@"hobby",
+             @"occupation":@"occupation",
+             @"education":@"education",
+             @"incomeLevel":@"incomeLevel",
+             @"userState":@"userState"
+             };
+}
+
 -(UserInfo *)setParams:(UserInfo *)userInfo parmas:(NSDictionary *)param
 {
-    userInfo.userid=[[param safeObjectForKey:@"userid"] longLongValue];
+    userInfo.userid=[param safeObjectForKey:@"userid"];
     userInfo.userCode=[param safeObjectForKey:@"userCode"];
     userInfo.openid=[param safeObjectForKey:@"openid"];
     userInfo.userName=[param safeObjectForKey:@"userName"];
@@ -60,7 +102,7 @@
     userInfo.occupation=[param safeObjectForKey:@"occupation"];
     userInfo.education=[param safeObjectForKey:@"education"];
     userInfo.incomeLevel=[param safeObjectForKey:@"incomeLevel"];
-    userInfo.userState=[[param safeObjectForKey:@"userState"] integerValue];
+    userInfo.userState=[param safeObjectForKey:@"userState"];
     return userInfo;
 }
 

@@ -39,6 +39,7 @@
     // Do any additional setup after loading the view.
 //    [self showBackItem];
     perform =[PerformModel sharePerform];
+    perform.update = YES;
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
     self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
@@ -94,7 +95,7 @@
 
 - (void)getPlan
 {
-    if ([[UserInfo shareUserInfo] isLogin]) {
+    if ([[UserInfo shareUserInfo] isLogin] && perform.update) {
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -106,6 +107,7 @@
             NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
             if (result) {
                 perform=[perform setParams:perform parmas:result[@"result"]];
+                perform.update = NO;
                 [self.dreamView start:1];
                 [self.dreamView setStrokeEnd:0.5 animated:YES];
             }

@@ -64,21 +64,21 @@
     };
     [self.needTimeTF setTitle:@"预计所需时间"];
     self.needTimeTF.finished = ^(NSString* string){
-//        _plan.totalMinute=[string longLongValue];
+
     };
     [self.timeEverydayTF setTitle:@"每天所需时间"];
     self.timeEverydayTF.finished = ^(NSString* string){
-//         _plan.planMinute=[string longLongValue];
+
     };
     [self.beginTime setTitle:@"开始日期"];
     [self.beginTime setType:kDateType];
     self.beginTime.finished = ^(NSString* string){
-//         _plan.beginDate=[NSDate date];
+
     };
     [self.endTime setTitle:@"结束日期"];
     [self.endTime setType:kDateType];
     self.endTime.finished = ^(NSString* string){
-//         _plan.endDate=[NSDate date];
+
     };
     
     POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];

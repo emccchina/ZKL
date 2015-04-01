@@ -10,6 +10,7 @@
 
 @interface PerformModel : NSObject
 
+@property (nonatomic, assign) BOOL      update;//是否需要更新
 @property (nonatomic, strong) NSString *performCode;// 编号
 @property (nonatomic, strong) NSString *userCode;// 用户
 @property (nonatomic, strong) NSString *planCode;// 计划

@@ -146,12 +146,12 @@
     NSLog(@"url %@, %@", url, password);
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.accoutTF.text, @"userName",password, @"password", nil];
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
-        NSLog(@"result is %@",result);
         if (result) {
             UserInfo *userInfo = [UserInfo shareUserInfo];
+//            [userInfo parseWithDict:result[@"result"]];
             [userInfo setParams:userInfo parmas:result[@"result"]];
             [self.navigationController popViewControllerAnimated:YES];
         }
