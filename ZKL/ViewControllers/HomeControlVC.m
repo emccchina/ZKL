@@ -69,11 +69,11 @@
                 [self presentAddDreamVC];
                 break;
             case 1:{
-                [self startPlan];
+                [self stopPlan];
                 [self.dreamView start:2];
             }break;
             case 2:{
-                [self stopPlan];
+                [self startPlan];
                 [self.dreamView start:1];
             }break;
             default:
@@ -141,14 +141,14 @@
         [self showIndicatorView:kNetworkConnecting];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSString *url = [NSString stringWithFormat:@"%@performaction!srartPerform.action",kServerDomain];
+        NSString *url = [NSString stringWithFormat:@"%@performaction!startPerform.action",kServerDomain];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:perform.performCode , @"performCode",[UserInfo shareUserInfo].userCode,@"userCode", nil];
         [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self dismissIndicatorView];
             NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
             id result = [self parseResults:responseObject];
             if (result) {
-                [self.dreamView start:2];
+                [self.dreamView start:1];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];
@@ -173,7 +173,7 @@
             id result = [self parseResults:responseObject];
             NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
             if (result) {
-                [self.dreamView start:1];
+                [self.dreamView start:2];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [Utities errorPrint:error vc:self];

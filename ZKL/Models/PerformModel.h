@@ -22,8 +22,8 @@
 @property (nonatomic, assign) NSInteger restMinute;// 实际使用的时间 (分钟)
 @property (nonatomic, assign) NSInteger realRestMinute;// 实际使用的时间 (分钟)
 @property (nonatomic, assign) NSInteger wasteMinute; // 虚度系统计算出来(24小时=realPlanMinute+realRestMinute+westeMinute)
-@property (nonatomic, assign) long long timeLine;
-@property (nonatomic, strong) NSString *timeSwitch;
+@property (nonatomic, assign) long long timeLine; //时间线(后台用)
+@property (nonatomic, strong) NSString *timeSwitch; //开关 (后台用)
 @property (nonatomic, assign) NSInteger performID;
 @property (nonatomic, assign) long long createTime;
 @property (nonatomic, assign) long long lastUpdateTime;
