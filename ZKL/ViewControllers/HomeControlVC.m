@@ -187,18 +187,17 @@
 
 -(void)setPerform
 {
-    NSInteger  h=perform.planMinute/60;
-    NSInteger  m=perform.planMinute%60;
+    NSInteger  h=perform.realPlanMinute/60;
+    NSInteger  m=perform.realPlanMinute%60;
     CGFloat a=(CGFloat)(perform.realPlanMinute);
     CGFloat f=0;
-    if(a >1){
+    if(a >0){
         f= a/perform.planMinute;
     }
-
     [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m  ] progress:f  progress:YES];
     
-    h=perform.restMinute/60;
-    m=perform.restMinute%60;
+    h=perform.realRestMinute/60;
+    m=perform.realRestMinute%60;
     [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m] progress:0.0 progress:NO];
     
     h=perform.wasteMinute/60;
