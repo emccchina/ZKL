@@ -36,4 +36,5 @@
 #import "Mantle.h"
 #import "FMDB.h"
 #import "ServerFile.h"
+#import "SQLManager.h"
 #endif

@@ -10,22 +10,6 @@
 
 @implementation PerformModel
 
-+ (PerformModel *)sharePerform
-{
-    static PerformModel *performInstance = nil;
-    static dispatch_once_t predicate;
-    dispatch_once(&predicate, ^{
-        performInstance = [[self alloc] init];
-    });
-    return performInstance;
-}
-
-- (void)setPerformDict:(NSDictionary *)dict
-{
-    MTLJSONAdapter *adapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:dict modelClass:self.class error:nil];
-    [self mergeValuesForKeysFromModel:adapter.model];
-}
-
 + (NSDictionary*)JSONKeyPathsByPropertyKey
 {
     return @{@"performCode":@"performCode",

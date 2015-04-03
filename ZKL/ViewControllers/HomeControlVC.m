@@ -15,9 +15,11 @@
 #import "AppDelegate.h"
 #import "ProgressLineView.h"
 #import "PerformModel.h"
+#import "NSTimer+Addition.h"
 @interface HomeControlVC ()
 {
-    PerformModel *perform;
+    NSTimer     *myTimer;
+    PlanModel    *doingPlan;
     NSInteger stateDream;//0添加 1暂停 2播放
 }
 
@@ -39,8 +41,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self showBackItem];
-    perform =[PerformModel sharePerform];
-    stateDream = 0;
     
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
@@ -52,9 +52,14 @@
     [Mydate getNowDateComponents];
     [self.homeButton setBackgroundImage:[Utities homeAddImage] forState:UIControlStateNormal];
     
+    myTimer = [NSTimer scheduledTimerWithTimeInterval:2
+                                               target:self
+                                             selector:@selector(animationTimerDidFired:)
+                                             userInfo:nil
+                                              repeats:YES];
     self.progreessLine.hidden = iPhone4;
     
-    self.progreessLine.progress = 0.8;
+    self.progreessLine.progress = 0;
     self.progreessLine.title = @"岁月是把猪饲料";
     self.progreessLine.backgroundColor = [UIColor clearColor];
     self.progreessLine.bottom = NO;
@@ -62,25 +67,28 @@
     [self.dreamView setPressed:^(NSInteger type){
         switch (type) {
             case 0:
-                if (![[UserInfo shareUserInfo] isLogin]) {
-                    [Utities presentLoginVC:self];
-                    break;
-                }
+//                if (![[UserInfo shareUserInfo] isLogin]) {
+//                    [Utities presentLoginVC:self];
+//                    break;
+//                }
                 [self presentAddDreamVC];
                 break;
             case 1:{
-                [self stopPlan];
-                [self.dreamView start:2];
+                [self setViewState:2];
             }break;
             case 2:{
-                [self startPlan];
-                [self.dreamView start:1];
+                [self setViewState:1];
             }break;
             default:
                 break;
         }
     }];
     
+}
+
+- (void)animationTimerDidFired:(NSTimer*)timer
+{
+    NSLog(@"time doing");
 }
 
 - (void)back
@@ -90,120 +98,52 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.dreamView start:0];
-    [self getPlan];
-}
-
-- (void)getPlan
-{
+    
+    doingPlan = [SQLManager shareUserInfo].myDoingPlan;
+    stateDream = !doingPlan ? 0 : (doingPlan.finished ? 0 : doingPlan.doing+1);
     [self setViewState:stateDream];
-    if (![[UserInfo shareUserInfo] isLogin]) {
-        return;
-    }
-    if ( [UserInfo shareUserInfo].update) {
-        [self showIndicatorView:kNetworkConnecting];
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSString *url = [NSString stringWithFormat:@"%@performaction!getTodayPerform.action",kServerDomain];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[[UserInfo shareUserInfo] userCode] , @"userCode",nil];
-        [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self dismissIndicatorView];
-            [UserInfo shareUserInfo].update = NO;
-            id result = [self parseResults:responseObject];
-            NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-            if (result) {
-                [perform setPerformDict:result[@"result"]];
-                perform.update = NO;
-                [self setViewState:1];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [Utities errorPrint:error vc:self];
-            [self dismissIndicatorView];
-            [self showAlertView:kNetworkNotConnect];
-        }];
-        
-    }
+    
 }
 
 - (void)setViewState:(NSInteger)state
 {
     stateDream = state;
+    if (state == 2) {
+        [myTimer resumeTimer];
+    }else{
+        [myTimer pauseTimer];
+    }
     //0添加 1暂停 2播放
-    self.dreameTitle.text = perform.performName;
+    self.dreameTitle.text = !stateDream ? @"添加梦想" : doingPlan.title;
     [self.dreamView start:state];
-    [self.dreamView setStrokeEnd:0.5 animated:YES];
+    if (state && [doingPlan.totalHour floatValue]) {
+        CGFloat progress = [doingPlan.finishedTime floatValue]/[doingPlan.totalHour floatValue];
+        [self.dreamView setStrokeEnd:progress animated:YES];
+        self.progreessLine.progress = progress;
+    }else{
+        self.progreessLine.progress = 0;
+    }
     [self setPerform];
 }
 
-- (void)startPlan
-{
-    if ([[UserInfo shareUserInfo] isLogin]) {
-        [self showIndicatorView:kNetworkConnecting];
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSString *url = [NSString stringWithFormat:@"%@performaction!startPerform.action",kServerDomain];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:perform.performCode , @"performCode",[UserInfo shareUserInfo].userCode,@"userCode", nil];
-        [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self dismissIndicatorView];
-            NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-            id result = [self parseResults:responseObject];
-            if (result) {
-                [self.dreamView start:1];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [Utities errorPrint:error vc:self];
-            [self dismissIndicatorView];
-            [self showAlertView:kNetworkNotConnect];
-        }];
-        
-    }
-    
-}
-
-- (void)stopPlan
-{
-    if ([[UserInfo shareUserInfo] isLogin]) {
-        [self showIndicatorView:kNetworkConnecting];
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSString *url = [NSString stringWithFormat:@"%@performaction!stopPerform.action",kServerDomain];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:perform.performCode , @"performCode",[UserInfo shareUserInfo].userCode,@"userCode", nil];
-        [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self dismissIndicatorView];
-            id result = [self parseResults:responseObject];
-            NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-            if (result) {
-                [self.dreamView start:2];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [Utities errorPrint:error vc:self];
-            [self dismissIndicatorView];
-            [self showAlertView:kNetworkNotConnect];
-        }];
-        
-    }
-    
-}
 
 -(void)setPerform
 {
-    NSInteger  h=perform.planMinute/60;
-    NSInteger  m=perform.planMinute%60;
-    CGFloat a=(CGFloat)(perform.realPlanMinute);
-    CGFloat f=0;
+    PerformModel *perform = doingPlan.doingPerform;
+    CGFloat  h = [perform.planDream floatValue]/60;
+    CGFloat a = [perform.realDream floatValue];
+    CGFloat f = 0;
     if(a >1){
-        f= a/perform.planMinute;
+        f= a/[perform.planDream floatValue];
     }
 
-    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m  ] progress:f  progress:YES];
+    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:f  progress:YES];
     
-    h=perform.restMinute/60;
-    m=perform.restMinute%60;
-    [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m] progress:0.0 progress:NO];
+    h=[perform.realRest floatValue]/60;
+    [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:0.0 progress:NO];
     
-    h=perform.wasteMinute/60;
-    m=perform.wasteMinute%60;
-    [self.wasteProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m ] progress:0.0 progress:NO];
+    h=[perform.realWaste floatValue]/60;
+    [self.wasteProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:0.0 progress:NO];
 }
 
 - (void)doRight:(UINavigationItem*)item

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v2z-uW-D3S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v2z-uW-D3S">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -99,13 +99,13 @@
                                 <rect key="frame" x="55" y="526" width="173" height="9"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="必须" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg4-hw-Io0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="休息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg4-hw-Io0">
                                 <rect key="frame" x="10" y="526" width="34" height="20"/>
                                 <fontDescription key="fontDescription" name="FZLTHK--GBK1-0" family="FZLanTingHei-R-GBK" pointSize="17"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="休息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtN-VX-LFd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="虚度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtN-VX-LFd">
                                 <rect key="frame" x="357" y="526" width="34" height="20"/>
                                 <fontDescription key="fontDescription" name="FZLTHK--GBK1-0" family="FZLanTingHei-R-GBK" pointSize="17"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.34509803919999998" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,7 +115,7 @@
                                 <rect key="frame" x="401" y="526" width="173" height="9"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbQ-pQ-4nr" customClass="ProgressLineView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbQ-pQ-4nr" customClass="ProgressLineView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-0C-AA6">
@@ -230,7 +230,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8E-22-5Io">
-                                <rect key="frame" x="225" y="334" width="150" height="40"/>
+                                <rect key="frame" x="225" y="414" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Nub-Qq-TqO"/>
                                     <constraint firstAttribute="height" constant="40" id="cf6-CF-bBn"/>
@@ -250,6 +250,13 @@
                                     <constraint firstAttribute="height" constant="40" id="OSD-TN-Rov"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAt-dK-GvT" customClass="WhiteBlackTextFiled">
+                                <rect key="frame" x="10" y="324" width="580" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="18h-CW-qz4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -260,11 +267,14 @@
                             <constraint firstItem="gS2-DZ-yLJ" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="ErZ-IZ-4Jg"/>
                             <constraint firstAttribute="centerX" secondItem="Z8E-22-5Io" secondAttribute="centerX" id="IKs-Ey-cjf"/>
                             <constraint firstAttribute="trailing" secondItem="C9R-xd-QeK" secondAttribute="trailing" constant="10" id="KGo-tE-ECK"/>
-                            <constraint firstItem="Z8E-22-5Io" firstAttribute="top" secondItem="H28-8l-byI" secondAttribute="bottom" constant="20" id="NtN-kR-3hb"/>
                             <constraint firstItem="gS2-DZ-yLJ" firstAttribute="top" secondItem="C9R-xd-QeK" secondAttribute="bottom" constant="10" id="Qsj-ZW-khe"/>
                             <constraint firstItem="H28-8l-byI" firstAttribute="top" secondItem="gS2-DZ-yLJ" secondAttribute="bottom" constant="10" id="UXk-v1-Fql"/>
+                            <constraint firstItem="BAt-dK-GvT" firstAttribute="width" secondItem="H28-8l-byI" secondAttribute="width" id="bA7-UF-qFV"/>
+                            <constraint firstItem="Z8E-22-5Io" firstAttribute="top" secondItem="BAt-dK-GvT" secondAttribute="bottom" constant="50" id="dQY-vC-3WE"/>
+                            <constraint firstItem="BAt-dK-GvT" firstAttribute="top" secondItem="H28-8l-byI" secondAttribute="bottom" constant="10" id="duU-l7-UmI"/>
                             <constraint firstItem="H28-8l-byI" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="eg6-Ur-9o4"/>
                             <constraint firstItem="5gI-md-Syc" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="htP-Cq-UOl"/>
+                            <constraint firstItem="BAt-dK-GvT" firstAttribute="leading" secondItem="H28-8l-byI" secondAttribute="leading" id="jEK-NZ-T6d"/>
                             <constraint firstItem="C9R-xd-QeK" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="nE9-Kf-C9R"/>
                             <constraint firstAttribute="trailing" secondItem="gec-Pp-8zR" secondAttribute="trailing" constant="10" id="qBk-DL-M5g"/>
                             <constraint firstAttribute="trailing" secondItem="H28-8l-byI" secondAttribute="trailing" constant="10" id="sRg-OZ-9AC"/>
@@ -278,6 +288,7 @@
                         <outlet property="beginTime" destination="C9R-xd-QeK" id="wTT-JZ-hJc"/>
                         <outlet property="endTime" destination="gS2-DZ-yLJ" id="2bS-Dm-rwL"/>
                         <outlet property="needTimeTF" destination="gec-Pp-8zR" id="kQX-GK-b72"/>
+                        <outlet property="restTime" destination="BAt-dK-GvT" id="tMO-Cf-Kww"/>
                         <outlet property="timeEverydayTF" destination="H28-8l-byI" id="s8D-1x-1Wy"/>
                     </connections>
                 </viewController>

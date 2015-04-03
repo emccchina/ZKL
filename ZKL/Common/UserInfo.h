@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
+#import "PlanModel.h"
 //User info 单例模式
 @interface UserInfo : MTLModel
 <MTLJSONSerializing>
@@ -58,6 +59,8 @@
 @property (nonatomic, assign) NSInteger userState; // 激活状态 0未激活 1激活
 
 @property (nonatomic, assign) BOOL      update;//
+
+@property (nonatomic, strong) PlanModel *doingPlan;
 
 - (BOOL)isLogin;
 + (UserInfo*)shareUserInfo; //全局共享的用户信息 单例模式

@@ -240,4 +240,20 @@ const char * const JmoLocaleStoreKey = "jmo.locale";
     return months[index - 1];
 }
 
++ (NSDate*)dateFromString:(NSString*)string
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+    NSDate *destDate= [dateFormatter dateFromString:string];
+    return destDate;
+}
+
++ (NSString*)stringFromDate:(NSDate*)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+    NSString *destDate= [dateFormatter stringFromDate:date];
+    return destDate;
+}
+
 @end

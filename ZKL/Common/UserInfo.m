@@ -10,10 +10,9 @@
 
 @implementation UserInfo
 
-static UserInfo *userInfoInstance = nil;
-
 + (UserInfo*)shareUserInfo
 {
+    static UserInfo *userInfoInstance = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         userInfoInstance = [[self alloc] init];

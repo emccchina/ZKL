@@ -68,11 +68,6 @@
 		F7D09DF61A6E518100332331 /* UIView+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DA61A6E518100332331 /* UIView+JHExtension.m */; };
 		F7D09DF71A6E518100332331 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DA91A6E518100332331 /* CycleScrollView.m */; };
 		F7D09DF81A6E518100332331 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DAB1A6E518100332331 /* NSTimer+Addition.m */; };
-		F7D09DFA1A6E518100332331 /* TSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DB11A6E518100332331 /* TSActionSheet.m */; };
-		F7D09DFB1A6E518100332331 /* TSPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DB31A6E518100332331 /* TSPopoverController.m */; };
-		F7D09DFC1A6E518100332331 /* TSPopoverPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DB51A6E518100332331 /* TSPopoverPopoverView.m */; };
-		F7D09DFD1A6E518100332331 /* TSPopoverTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DB81A6E518100332331 /* TSPopoverTouchView.m */; };
-		F7D09DFE1A6E518100332331 /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DBA1A6E518100332331 /* UIBarButtonItem+WEPopover.m */; };
 		F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09DBD1A6E518100332331 /* KDPreView.m */; };
 		F7D09E021A6E53A400332331 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D09E011A6E53A400332331 /* libsqlite3.dylib */; };
 		F7D09E051A6E542700332331 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D09E041A6E542700332331 /* BaseViewController.m */; };
@@ -84,6 +79,7 @@
 		F7D33C961A70D8C700A6487A /* Club.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D33C951A70D8C700A6487A /* Club.storyboard */; };
 		F7D33C981A70D8E400A6487A /* SelfControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D33C971A70D8E400A6487A /* SelfControl.storyboard */; };
 		F7D33C9B1A70DF2A00A6487A /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D33C9A1A70DF2A00A6487A /* HomeView.m */; };
+		F7D4B8D71ACD300600AABB2F /* SQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D4B8D61ACD300600AABB2F /* SQLManager.m */; };
 		F7EBB4701ABBA59D00EFD10F /* RichStyleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EBB46F1ABBA59D00EFD10F /* RichStyleLabel.m */; };
 		F7EBB4741ABBB32700EFD10F /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EBB4721ABBB32700EFD10F /* HeaderCell.m */; };
 		F7EBB4751ABBB32700EFD10F /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7EBB4731ABBB32700EFD10F /* HeaderCell.xib */; };
@@ -234,17 +230,6 @@
 		F7D09DA91A6E518100332331 /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 		F7D09DAA1A6E518100332331 /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
 		F7D09DAB1A6E518100332331 /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
-		F7D09DB01A6E518100332331 /* TSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSActionSheet.h; sourceTree = "<group>"; };
-		F7D09DB11A6E518100332331 /* TSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSActionSheet.m; sourceTree = "<group>"; };
-		F7D09DB21A6E518100332331 /* TSPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPopoverController.h; sourceTree = "<group>"; };
-		F7D09DB31A6E518100332331 /* TSPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPopoverController.m; sourceTree = "<group>"; };
-		F7D09DB41A6E518100332331 /* TSPopoverPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPopoverPopoverView.h; sourceTree = "<group>"; };
-		F7D09DB51A6E518100332331 /* TSPopoverPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPopoverPopoverView.m; sourceTree = "<group>"; };
-		F7D09DB61A6E518100332331 /* TSPopoverTouchesDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPopoverTouchesDelegate.h; sourceTree = "<group>"; };
-		F7D09DB71A6E518100332331 /* TSPopoverTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPopoverTouchView.h; sourceTree = "<group>"; };
-		F7D09DB81A6E518100332331 /* TSPopoverTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPopoverTouchView.m; sourceTree = "<group>"; };
-		F7D09DB91A6E518100332331 /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
-		F7D09DBA1A6E518100332331 /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
 		F7D09DBC1A6E518100332331 /* KDPreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPreView.h; sourceTree = "<group>"; };
 		F7D09DBD1A6E518100332331 /* KDPreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDPreView.m; sourceTree = "<group>"; };
 		F7D09E001A6E51EF00332331 /* PublicFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicFile.h; sourceTree = "<group>"; };
@@ -262,6 +247,9 @@
 		F7D33C971A70D8E400A6487A /* SelfControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelfControl.storyboard; sourceTree = "<group>"; };
 		F7D33C991A70DF2A00A6487A /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
 		F7D33C9A1A70DF2A00A6487A /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
+		F7D4B8D41ACD261C00AABB2F /* DreamDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DreamDefine.h; sourceTree = "<group>"; };
+		F7D4B8D51ACD300600AABB2F /* SQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLManager.h; sourceTree = "<group>"; };
+		F7D4B8D61ACD300600AABB2F /* SQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLManager.m; sourceTree = "<group>"; };
 		F7EBB46E1ABBA59D00EFD10F /* RichStyleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichStyleLabel.h; sourceTree = "<group>"; };
 		F7EBB46F1ABBA59D00EFD10F /* RichStyleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichStyleLabel.m; sourceTree = "<group>"; };
 		F7EBB4711ABBB32700EFD10F /* HeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCell.h; sourceTree = "<group>"; };
@@ -447,7 +435,10 @@
 				F7B1670C1AA188D0000B84D1 /* CustomModel.m */,
 				F7EF35541A9EC3B800FEE796 /* Mydate.h */,
 				F7EF35551A9EC3B800FEE796 /* Mydate.m */,
+				F7D4B8D51ACD300600AABB2F /* SQLManager.h */,
+				F7D4B8D61ACD300600AABB2F /* SQLManager.m */,
 				F925F4781AC3AAC50036CD7A /* ServerFile.h */,
+				F7D4B8D41ACD261C00AABB2F /* DreamDefine.h */,
 			);
 			name = Common;
 			path = ZKL/Common;
@@ -463,7 +454,6 @@
 				F7D09D7C1A6E518100332331 /* JGProgressHUD */,
 				F7D09D8D1A6E518100332331 /* JHRefresh */,
 				F7D09DA71A6E518100332331 /* ScrollView */,
-				F7D09DAF1A6E518100332331 /* TSPopover */,
 				F7D09DBB1A6E518100332331 /* zoomScrollview */,
 			);
 			name = Libs;
@@ -552,24 +542,6 @@
 				F7D09DAB1A6E518100332331 /* NSTimer+Addition.m */,
 			);
 			path = ScrollView;
-			sourceTree = "<group>";
-		};
-		F7D09DAF1A6E518100332331 /* TSPopover */ = {
-			isa = PBXGroup;
-			children = (
-				F7D09DB01A6E518100332331 /* TSActionSheet.h */,
-				F7D09DB11A6E518100332331 /* TSActionSheet.m */,
-				F7D09DB21A6E518100332331 /* TSPopoverController.h */,
-				F7D09DB31A6E518100332331 /* TSPopoverController.m */,
-				F7D09DB41A6E518100332331 /* TSPopoverPopoverView.h */,
-				F7D09DB51A6E518100332331 /* TSPopoverPopoverView.m */,
-				F7D09DB61A6E518100332331 /* TSPopoverTouchesDelegate.h */,
-				F7D09DB71A6E518100332331 /* TSPopoverTouchView.h */,
-				F7D09DB81A6E518100332331 /* TSPopoverTouchView.m */,
-				F7D09DB91A6E518100332331 /* UIBarButtonItem+WEPopover.h */,
-				F7D09DBA1A6E518100332331 /* UIBarButtonItem+WEPopover.m */,
-			);
-			path = TSPopover;
 			sourceTree = "<group>";
 		};
 		F7D09DBB1A6E518100332331 /* zoomScrollview */ = {
@@ -831,7 +803,6 @@
 				F7EBB47E1ABBCF9D00EFD10F /* DoingShowView.m in Sources */,
 				F7D09DF61A6E518100332331 /* UIView+JHExtension.m in Sources */,
 				F7D09DF21A6E518100332331 /* JHRefreshFooterView.m in Sources */,
-				F7D09DFB1A6E518100332331 /* TSPopoverController.m in Sources */,
 				F7D09DF71A6E518100332331 /* CycleScrollView.m in Sources */,
 				F7D09DE71A6E518100332331 /* JGProgressHUDFadeZoomAnimation.m in Sources */,
 				F7D09D0B1A6E4F3700332331 /* AppDelegate.m in Sources */,
@@ -859,14 +830,12 @@
 				F7AEF88C1AC2427D000A9142 /* MyWebView.m in Sources */,
 				F925F47B1AC3AB890036CD7A /* PageModel.m in Sources */,
 				F7EF35501A9EBDBE00FEE796 /* MyDreamModel.m in Sources */,
-				F7D09DFC1A6E518100332331 /* TSPopoverPopoverView.m in Sources */,
-				F7D09DFE1A6E518100332331 /* UIBarButtonItem+WEPopover.m in Sources */,
 				F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */,
 				F7D09DF31A6E518100332331 /* JHRefreshHeaderView.m in Sources */,
-				F7D09DFD1A6E518100332331 /* TSPopoverTouchView.m in Sources */,
 				F7F02E431ABAB41C0095EA2E /* SettingVC.m in Sources */,
 				F7ACCF2A1A7243D600ABAA69 /* HomeControlVC.m in Sources */,
 				F96523E31ABFBB0F00AFDEEE /* PlanModel.m in Sources */,
+				F7D4B8D71ACD300600AABB2F /* SQLManager.m in Sources */,
 				F7EBB4701ABBA59D00EFD10F /* RichStyleLabel.m in Sources */,
 				F7D09DE91A6E518100332331 /* JGProgressHUDIndicatorView.m in Sources */,
 				F7D09DC61A6E518100332331 /* NSDictionary+safeObjectForKey.m in Sources */,
@@ -894,7 +863,6 @@
 				F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */,
 				F7AEF88B1AC2427D000A9142 /* LoginVC.m in Sources */,
 				F7B1671B1AA1A9CE000B84D1 /* NSDate+Agenda.m in Sources */,
-				F7D09DFA1A6E518100332331 /* TSActionSheet.m in Sources */,
 				F7D09DC01A6E518100332331 /* FileManager.m in Sources */,
 				F7B1670D1AA188D0000B84D1 /* CustomModel.m in Sources */,
 				F7BDC40F1AA05DD8008A1BD0 /* CalendarVC.m in Sources */,

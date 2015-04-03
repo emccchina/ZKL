@@ -10,6 +10,11 @@
 #import "PerformModel.h"
 @implementation PlanModel
 
+- (BOOL)doing
+{
+    return self.finished ? NO : _doing;
+}
+
 + (NSDictionary*)JSONKeyPathsByPropertyKey
 {
     return @{@"planid":@"",
@@ -29,6 +34,15 @@
              @"tag":@"",
              @"performModels":@""
              };
+}
+
+- (PerformModel*)doingPerform
+{
+    if (!_doingPerform) {
+        //数据库查询
+        _doingPerform = [[SQLManager shareUserInfo] myDoingPerform:self.planid];
+    }
+    return _doingPerform;
 }
 
 + (NSValueTransformer*)performModelsJSONTransformer{

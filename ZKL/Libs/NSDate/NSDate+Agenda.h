@@ -41,4 +41,7 @@
 + (NSArray *)weekdaySymbols;
 + (NSString *)monthSymbolAtIndex:(NSInteger)index;
 
++ (NSDate*)dateFromString:(NSString*)string;
++ (NSString*)stringFromDate:(NSDate*)date;
+
 @end
