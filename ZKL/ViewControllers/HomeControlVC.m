@@ -129,6 +129,7 @@
 
 -(void)setPerform
 {
+<<<<<<< HEAD
     PerformModel *perform = doingPlan.doingPerform;
     CGFloat  h = [perform.planDream floatValue]/60;
     CGFloat a = [perform.realDream floatValue];
@@ -141,6 +142,20 @@
     
     h=[perform.realRest floatValue]/60;
     [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:0.0 progress:NO];
+=======
+    NSInteger  h=perform.realPlanMinute/60;
+    NSInteger  m=perform.realPlanMinute%60;
+    CGFloat a=(CGFloat)(perform.realPlanMinute);
+    CGFloat f=0;
+    if(a >0){
+        f= a/perform.planMinute;
+    }
+    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m  ] progress:f  progress:YES];
+    
+    h=perform.realRestMinute/60;
+    m=perform.realRestMinute%60;
+    [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m] progress:0.0 progress:NO];
+>>>>>>> origin/master
     
     h=[perform.realWaste floatValue]/60;
     [self.wasteProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:0.0 progress:NO];
