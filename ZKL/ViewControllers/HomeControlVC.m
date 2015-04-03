@@ -23,6 +23,8 @@
     NSInteger stateDream;//0添加 1暂停 2播放
     BOOL        reminder;
 }
+#define kTimerSpace1 10
+#define kTimerShundle 0.5
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
 
@@ -53,7 +55,7 @@
     [Mydate getNowDateComponents];
     [self.homeButton setBackgroundImage:[Utities homeAddImage] forState:UIControlStateNormal];
     
-    myTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+    myTimer = [NSTimer scheduledTimerWithTimeInterval:kTimerShundle
                                                target:self
                                              selector:@selector(animationTimerDidFired:)
                                              userInfo:nil
@@ -90,7 +92,17 @@
 - (void)animationTimerDidFired:(NSTimer*)timer
 {
     PerformModel *perform = doingPlan.doingPerform;
-    perform.realDream = [NSString stringWithFormat:@"%ld",(long)[perform.realDream integerValue]+10];
+    if ([SQLManager shareUserInfo].running) {
+        
+        NSInteger timeInterval = [[NSDate date] timeIntervalSinceDate:[SQLManager shareUserInfo].runningBeginTime]/1;
+        NSLog(@"%d", timeInterval);
+        perform.realDream = [NSString stringWithFormat:@"%ld",(long)[perform.realDream integerValue]+timeInterval];
+        doingPlan.finishedTime = [NSString stringWithFormat:@"%ld",(long)[doingPlan.finishedTime floatValue]+timeInterval];
+        [SQLManager shareUserInfo].running = NO;
+    }else{
+        perform.realDream = [NSString stringWithFormat:@"%ld",(long)[perform.realDream integerValue]+kTimerSpace1];
+        doingPlan.finishedTime = [NSString stringWithFormat:@"%ld",(long)[doingPlan.finishedTime floatValue]+kTimerSpace1];
+    }
     if ([perform.realDream integerValue] >= [perform.planDream integerValue]) {
         perform.finished = YES;
         if (!reminder) {
@@ -100,7 +112,7 @@
         
     }
     
-    doingPlan.finishedTime = [NSString stringWithFormat:@"%ld",(long)[doingPlan.finishedTime floatValue]+10];
+    
     
     [[SQLManager shareUserInfo] updatePerform:perform];
     [[SQLManager shareUserInfo] updatePlan:doingPlan];
@@ -119,6 +131,10 @@
     
     doingPlan = [SQLManager shareUserInfo].myDoingPlan;
     stateDream = !doingPlan ? 0 : (doingPlan.finished ? 0 : doingPlan.doing+1);
+    if ([SQLManager shareUserInfo].running) {
+        stateDream = 2;
+        [myTimer resumeTimerAfterTimeInterval:kTimerShundle];
+    }
     [self setViewState:stateDream];
     
 }
@@ -126,8 +142,9 @@
 - (void)setViewState:(NSInteger)state
 {
     stateDream = state;
+    [SQLManager shareUserInfo].runningState = stateDream -1;
     if (state == 2) {
-        [myTimer resumeTimerAfterTimeInterval:2];
+        [myTimer resumeTimerAfterTimeInterval:kTimerShundle];
     }else{
         [myTimer pauseTimer];
     }
