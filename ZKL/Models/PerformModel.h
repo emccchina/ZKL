@@ -10,6 +10,11 @@
 
 @interface PerformModel : MTLModel
 <MTLJSONSerializing>
+{
+    NSString *_realDream;
+    NSString *_realRest;
+    NSString *_realWaste;
+}
 
 @property (nonatomic, strong) NSString *planId;
 @property (nonatomic, strong) NSString *performCode;//日期计
@@ -25,6 +30,8 @@
 @property (nonatomic, strong) NSString *editRest;
 @property (nonatomic, strong) NSString *editWaste;
 
+
+@property (nonatomic, assign) BOOL finished;
 @property (nonatomic, assign) BOOL edit;
 
 

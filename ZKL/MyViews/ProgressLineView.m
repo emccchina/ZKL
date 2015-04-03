@@ -81,17 +81,18 @@
         humanView = [[UIImageView alloc] init];
         [self addSubview:humanView];
     }
-    humanView.frame = CGRectMake(self.progress*width, height-spaceH*spaceMuli-80, 74, 74);
+    
     humanView.image = [UIImage imageNamed:@"human1"];
-
+    humanView.frame = CGRectMake(self.progress*width*0.8, height-spaceH*spaceMuli-80, 74, 74);
     UIFont *font3 = [UIFont fontWithName:kFontName size:15];
     CGSize size = [Utities sizeWithUIFont:font3 string:self.title];
     CGFloat x = 0;
     if (self.progress > 0.5) {
-        x = width /2 - size.width/2+(self.progress-0.5)*width;
+        x = width /2 - size.width/2+(self.progress-0.5)*width-75;
     }else{
-        x = 75 + self.progress *width;
+        x = self.progress *width+75;
     }
+    
     [self.title drawInRect:CGRectMake(x, height-spaceH*spaceMuli-80, size.width/2+10, size.height*2) withAttributes:@{NSForegroundColorAttributeName:kBlackColor, NSFontAttributeName:font3}];
     
     if (!self.bottom) {

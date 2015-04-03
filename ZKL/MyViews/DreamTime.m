@@ -92,7 +92,10 @@
         [self animateToStrokeEnd:strokeEnd];
         return;
     }
+    timeLabel.text = [NSString stringWithFormat:@"%ld%%",(long)(strokeEnd*100)];
+    strokeEnd = (strokeEnd <= 1) ? strokeEnd:1;
     self.circleLayer.strokeEnd = strokeEnd;
+    circleWhite.center = [self pointFromCircle:strokeEnd reduceAngle:0 radiusVar:4];
 }
 
 #pragma mark - Property Setters
@@ -335,6 +338,14 @@
 
 - (void)animateToStrokeEnd:(CGFloat)strokeEnd
 {
+    POPBasicAnimation *animation = [POPBasicAnimation animation];
+    animation.property = [self animationProperty:0];
+    animation.fromValue = @(0);
+    animation.toValue = [NSNumber numberWithFloat:strokeEnd*100];
+    animation.duration =  kDuration;
+    [timeLabel pop_addAnimation:animation forKey:@"numberLabelAnimation"];
+    
+    strokeEnd = (strokeEnd <= 1) ? strokeEnd:1;
     POPBasicAnimation *strokeAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPShapeLayerStrokeEnd];
     strokeAnimation.fromValue = @(0);
     strokeAnimation.toValue = @(strokeEnd);
@@ -342,12 +353,7 @@
     strokeAnimation.property = [self animationProperty:2];
     [self.circleLayer pop_addAnimation:strokeAnimation forKey:@"layerStrokeAnimation"];
     
-    POPBasicAnimation *animation = [POPBasicAnimation animation];
-    animation.property = [self animationProperty:0];
-    animation.fromValue = @(0);
-    animation.toValue = [NSNumber numberWithFloat:strokeEnd*100];
-    animation.duration =  kDuration;
-    [timeLabel pop_addAnimation:animation forKey:@"numberLabelAnimation"];
+    
     
 //    [self setProgressCircle:fininshed progress:strokeEnd];
 //    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];

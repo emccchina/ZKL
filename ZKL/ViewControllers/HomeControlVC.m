@@ -21,6 +21,7 @@
     NSTimer     *myTimer;
     PlanModel    *doingPlan;
     NSInteger stateDream;//0添加 1暂停 2播放
+    BOOL        reminder;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
@@ -52,7 +53,7 @@
     [Mydate getNowDateComponents];
     [self.homeButton setBackgroundImage:[Utities homeAddImage] forState:UIControlStateNormal];
     
-    myTimer = [NSTimer scheduledTimerWithTimeInterval:2
+    myTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                target:self
                                              selector:@selector(animationTimerDidFired:)
                                              userInfo:nil
@@ -88,7 +89,24 @@
 
 - (void)animationTimerDidFired:(NSTimer*)timer
 {
-    NSLog(@"time doing");
+    PerformModel *perform = doingPlan.doingPerform;
+    perform.realDream = [NSString stringWithFormat:@"%ld",(long)[perform.realDream integerValue]+10];
+    if ([perform.realDream integerValue] >= [perform.planDream integerValue]) {
+        perform.finished = YES;
+        if (!reminder) {
+            [self showAlertView:[NSString stringWithFormat:@"%@\n今日已完成",doingPlan.title]];
+        }
+        reminder = YES;
+        
+    }
+    
+    doingPlan.finishedTime = [NSString stringWithFormat:@"%ld",(long)[doingPlan.finishedTime floatValue]+10];
+    
+    [[SQLManager shareUserInfo] updatePerform:perform];
+    [[SQLManager shareUserInfo] updatePlan:doingPlan];
+    
+    [self setViewState:stateDream];
+    NSLog(@"time doing %@, %@", perform.realDream, doingPlan.finishedTime);
 }
 
 - (void)back
@@ -109,7 +127,7 @@
 {
     stateDream = state;
     if (state == 2) {
-        [myTimer resumeTimer];
+        [myTimer resumeTimerAfterTimeInterval:2];
     }else{
         [myTimer pauseTimer];
     }
@@ -118,10 +136,7 @@
     [self.dreamView start:state];
     if (state && [doingPlan.totalHour floatValue]) {
         CGFloat progress = [doingPlan.finishedTime floatValue]/[doingPlan.totalHour floatValue];
-        [self.dreamView setStrokeEnd:progress animated:YES];
-        self.progreessLine.progress = progress;
-    }else{
-        self.progreessLine.progress = 0;
+        [self.dreamView setStrokeEnd:progress animated:(state==1?YES:NO)];
     }
     [self setPerform];
 }
@@ -129,7 +144,6 @@
 
 -(void)setPerform
 {
-<<<<<<< HEAD
     PerformModel *perform = doingPlan.doingPerform;
     CGFloat  h = [perform.planDream floatValue]/60;
     CGFloat a = [perform.realDream floatValue];
@@ -137,28 +151,22 @@
     if(a >1){
         f= a/[perform.planDream floatValue];
     }
-
-    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:f  progress:YES];
+    
+    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",a/60] progress:f  progress:YES];
     
     h=[perform.realRest floatValue]/60;
     [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:0.0 progress:NO];
-=======
-    NSInteger  h=perform.realPlanMinute/60;
-    NSInteger  m=perform.realPlanMinute%60;
-    CGFloat a=(CGFloat)(perform.realPlanMinute);
-    CGFloat f=0;
-    if(a >0){
-        f= a/perform.planMinute;
-    }
-    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m  ] progress:f  progress:YES];
-    
-    h=perform.realRestMinute/60;
-    m=perform.realRestMinute%60;
-    [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%ld小时%ld分钟",(long)h ,(long)m] progress:0.0 progress:NO];
->>>>>>> origin/master
     
     h=[perform.realWaste floatValue]/60;
     [self.wasteProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:0.0 progress:NO];
+    
+    if (stateDream && [perform.planDream floatValue]) {
+        CGFloat progress = [perform.realDream floatValue]/[perform.planDream floatValue];
+        self.progreessLine.progress = (progress<=1)?progress:1;
+    }else{
+        self.progreessLine.progress = 0;
+    }
+    [self.progreessLine setNeedsDisplay];
 }
 
 - (void)doRight:(UINavigationItem*)item
