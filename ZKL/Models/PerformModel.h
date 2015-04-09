@@ -29,7 +29,7 @@
 @property (nonatomic, strong) NSString *editDream;
 @property (nonatomic, strong) NSString *editRest;
 @property (nonatomic, strong) NSString *editWaste;
-
+@property (nonatomic, assign) NSInteger cups;
 
 @property (nonatomic, assign) BOOL finished;
 @property (nonatomic, assign) BOOL edit;

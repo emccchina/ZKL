@@ -88,11 +88,14 @@
 
 - (void)setStrokeEnd:(CGFloat)strokeEnd animated:(BOOL)animated
 {
+    
     if (animated) {
         [self animateToStrokeEnd:strokeEnd];
         return;
     }
+    
     timeLabel.text = [NSString stringWithFormat:@"%ld%%",(long)(strokeEnd*100)];
+    NSLog(@"...............%f", strokeEnd);
     strokeEnd = (strokeEnd <= 1) ? strokeEnd:1;
     self.circleLayer.strokeEnd = strokeEnd;
     circleWhite.center = [self pointFromCircle:strokeEnd reduceAngle:0 radiusVar:4];

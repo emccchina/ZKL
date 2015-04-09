@@ -13,7 +13,7 @@
 - (void)awakeFromNib
 {
     myFont = [UIFont fontWithName:kFontName size:16];
-    myTF = [[UITextField alloc] init];
+    myTF = [[MyTextField alloc] init];
     myTF.font = myFont;
     self.editTF = YES;
     myTF.delegate = self;
@@ -44,10 +44,6 @@
     }
 }
 
-//- (void)setEditTF:(BOOL)editTF
-//{
-//    myTF.editing
-//}
 
 - (void)doFinish
 {
@@ -103,10 +99,6 @@
 }
 
 #pragma -mark UITextFieldDelegate
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    return self.editTF;
-}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -114,6 +106,25 @@
         self.finished(textField.text);
     }
     return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return self.editTF;
+}
+
+- (void)textFieldDidBeginEditing:(MyTextField *)textField
+{
+    [textField addNotifications];
+    NSLog(@"bigin tf,, %d", [textField isFirstResponder]);
+    textField.superRect = self.frame;
+    textField.mySuperview = self.superview;
+}
+
+- (void)textFieldDidEndEditing:(MyTextField *)textField
+{
+    NSLog(@"end tf");
+    [textField removeNotifications];
 }
 
 

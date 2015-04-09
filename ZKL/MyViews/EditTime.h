@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "MyTextField.h"
+#import "PerformModel.h"
 
 @class DrawBut;
 
 @interface EditTime : UIView
 <UITextFieldDelegate>
+{
+    PerformModel *_performModel;
+}
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet MyTextField *timeTF;
 @property (weak, nonatomic) IBOutlet MyTextField *minuteTF;
@@ -22,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet DrawBut *dreamBut;
 @property (weak, nonatomic) IBOutlet DrawBut *restBut;
 @property (weak, nonatomic) IBOutlet DrawBut *wasteBut;
+@property (nonatomic, strong) PerformModel *performModel;
 @end
 
 @interface DrawBut : UIButton

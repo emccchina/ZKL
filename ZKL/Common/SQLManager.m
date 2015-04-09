@@ -9,20 +9,20 @@
 #import "SQLManager.h"
 #import "NSDate+Agenda.h"
 #define kDreamsTable        @"dreamsTable"
-#define kProgressTable      @"progressTable"
-
 #define kCreateTime         @"createTime"//每个梦想的标志
 #define kTitle              @"title"
 #define kBeginTime          @"beginTime"
 #define kEndTime            @"endTime"
 #define kTotalTime          @"totalTime"
-#define kDayTime            @"dayTime"
-#define kFinishedTime       @"finishedTime"
-#define kFinished           @"finished"
-#define kRestTime           @"restTime"
+#define kDayTime            @"dayTime"//每天完成了多少
+#define kFinishedTime       @"finishedTime"//已经完成多少时间
+#define kFinished           @"finished"//是否完成
+#define kRestTime           @"restTime"//每天休息时间
+#define kValid              @"valid"
 
-#define kEdit               @"edit"
-#define kDate               @"date"
+#define kProgressTable      @"progressTable"
+#define kEdit               @"edit"//
+#define kDate               @"date"//哪一天的
 #define kPlanDream          @"planDream"
 #define kPlanRest           @"planRest"
 #define kPlanWaste          @"planWaste"
@@ -32,6 +32,7 @@
 #define kEditDream          @"editDream"
 #define kEditRest           @"editRest"
 #define kEditWaste          @"editWaste"
+#define kCup                @"cups"//到这天为止奖杯总数
 
 @implementation SQLManager
 
@@ -65,6 +66,7 @@
         _myDoingPlan.dayTime = [provicesResult stringForColumn:kDayTime];
         _myDoingPlan.finished = [provicesResult intForColumn:kFinished];
         _myDoingPlan.finishedTime = [provicesResult stringForColumn:kFinishedTime];
+        _myDoingPlan.restTime = [provicesResult stringForColumn:kRestTime];
         if (![self invauildPlan]) {
             return nil;
         }
@@ -134,6 +136,25 @@
     return NO;
 }
 
+- (NSInteger)cupsTotal
+{
+    if (![db open]) {
+        return 0;
+    }
+    NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE %@ = 1", kProgressTable, kFinished];
+    return  [db intForQuery:sql];
+}
+
+- (NSInteger)cupsMonth:(NSString *)month
+{
+    if (![db open]) {
+        return 0;
+    }
+    NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE %@ like '%%%@%%'", kProgressTable,kDate, month];
+    return  [db intForQuery:sql];
+
+}
+
 - (PlanModel*)myDoingPlan
 {
     if (_myDoingPlan) {
@@ -150,6 +171,19 @@
     return [NSArray array];
 }
 
+- (BOOL)deletePerform:(PerformModel *)perform
+{
+    _myDoingPerform = nil;
+    if (!perform) {
+        return 0;
+    }
+    if (![db open]) {
+        return 0;
+    }
+    NSString *sql = [NSString stringWithFormat:@"delete FROM %@ WHERE %@ = ('%@')", kProgressTable,kDate, perform.performCode];
+    return  [db intForQuery:sql];
+}
+
 - (PerformModel*)myDoingPerform:(NSString*)planId
 {//取出当天的计划
     if (_myDoingPerform && [_myDoingPerform.performCode isEqualToString:[NSDate stringFromDate:[NSDate date]]]) {
@@ -162,38 +196,59 @@
     return [NSArray array];
 }
 
+- (BOOL)existPerform:(NSString*)planID performID:(NSString*)performID
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ('%@') and %@ = ('%@')", kProgressTable, kCreateTime, planID, kDate, performID];
+    return [db executeStatements:sql];
+}
+
 - (void)updatePerform:(PerformModel*)model
 {
     if (![db open]) {
         return;
     }
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ('%@') and %@ = ('%@')", kProgressTable, kCreateTime, model.planId, kDate, model.performCode];
-    BOOL successf = [db executeStatements:sql];
-    if (!successf) {
-        return;
-    }
-    
-    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@ = ('%@') where %@ = ('%@') and %@ = ('%@')", kProgressTable, kRealDream, model.realDream, kRealWaste, model.realWaste, kDate,model.performCode, kCreateTime, model.planId];
+//    if (![self existPerform:model.planId performID:model.performCode]) {
+//        return;
+//    }
+    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@ = ('%@'),%@= ('%d') where %@ = ('%@') and %@ = ('%@')", kProgressTable, kRealDream, model.realDream, kRealWaste, model.realWaste, kFinished, model.finished, kDate,model.performCode, kCreateTime, model.planId];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPerform = model;
     }
 }
+
+- (BOOL)existPlan:(NSString*)planID
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ('%@')", kDreamsTable, kCreateTime, planID];
+    return [db executeStatements:sql];
+}
+
 - (void)updatePlan:(PlanModel*)planModel
 {
     if (![db open]) {
         return;
     }
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ('%@')", kDreamsTable, kCreateTime, planModel.planid];
-    BOOL successf = [db executeStatements:sql];
-    if (!successf) {
-        return;
-    }
+//    if (![self existPlan:planModel.planid]) {
+//        return;
+//    }
     NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@') where %@ = ('%@')", kDreamsTable, kFinishedTime, planModel.finishedTime, kCreateTime, planModel.planid];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPlan = planModel;
     }
+}
+
+- (BOOL)updatePlanVlaid:(PlanModel*)model
+{
+    if (![db open]) {
+        return NO;
+    }
+    //    if (![self existPlan:planModel.planid]) {
+    //        return;
+    //    }
+    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%d') where %@ = ('%@')", kDreamsTable, kValid, model.valid, kCreateTime, model.planid];
+    return [db executeStatements:string];
+    
 }
 
 - (BOOL)writePerformModel:(PerformModel *)model
@@ -215,7 +270,7 @@
     if (![db open]) {
         return NO;
     }
-    NSString *string = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@) values ('%@', '%@','%@','%@','%@','%@','%d','%@','%@');", kDreamsTable, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime];
+    NSString *string = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@) values ('%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d');", kDreamsTable, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPlan = model;
@@ -236,7 +291,7 @@
     if (![db open]) {
         return;
     }
-    NSString *dreams = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer primary key autoincrement,%@ text, %@ text, %@ text, %@ text, %@ text, %@ text, %@ integer, %@ text, %@ text);", kDreamsTable, kCreateTime, kTitle,kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished, kFinishedTime,kRestTime];
+    NSString *dreams = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer primary key autoincrement,%@ text, %@ text, %@ text, %@ text, %@ text, %@ text, %@ integer, %@ text, %@ text,%@ integer);", kDreamsTable, kCreateTime, kTitle,kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished, kFinishedTime,kRestTime, kValid];
     NSString *progress = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer primary key autoincrement,%@ text, %@ integer, %@ text, %@ text, %@ text, %@ text, %@ text,%@ text,%@ text,%@ text,%@ text,%@ text, %@ integer);", kProgressTable, kCreateTime,kEdit, kDate, kPlanDream, kPlanRest, kPlanWaste, kRealDream, kRealRest, kRealWaste,kEditDream,kEditRest,kEditWaste, kFinished];
     NSString *sql = [NSString stringWithFormat:@"%@%@",dreams, progress];
     ;

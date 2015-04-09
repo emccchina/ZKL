@@ -44,6 +44,8 @@
         _realWaste = 0;
         NSInteger rest = [_realRest integerValue] + waste;
         _realRest = [NSString stringWithFormat:@"%ld", (long)rest];
+    }else{
+        _realWaste = [NSString stringWithFormat:@"%ld",(long)waste];
     }
 }
 

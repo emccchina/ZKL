@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "PlanModel.h"
+
+/*
+ 添加一个新梦想，写入数据库dreamsTable，
+ 同时创建当天perform，同时写入数据库progress，当开始计时时候 刷新数据库 增加完成时间，计算完成比例，
+ 调整梦想 相当于重新创建一个 同时这个无效，
+ */
 @interface SQLManager : NSObject
 {
     FMDatabase *db;
@@ -23,16 +29,23 @@
 
 - (void)openDB;
 
-- (PlanModel*)doingPlan;
+- (PlanModel*)doingPlan;//正在进行的梦想
 
 - (NSArray*)allPlan;
 
-- (PerformModel*)myDoingPerform:(NSString*)planId;
+- (PerformModel*)myDoingPerform:(NSString*)planId;//每天实现情况
 - (NSArray*)allPerform:(NSString*)planId;
+- (BOOL)deletePerform:(PerformModel*)perform;
+
 
 - (void)updatePerform:(PerformModel*)model;
 - (void)updatePlan:(PlanModel*)planModel;
 
 - (BOOL)writePlanModel:(PlanModel*)model;
 - (BOOL)writePerformModel:(PerformModel*)model;
+
+- (BOOL)updatePlanVlaid:(PlanModel*)model;
+
+- (NSInteger)cupsTotal;
+- (NSInteger)cupsMonth:(NSString*)month;
 @end

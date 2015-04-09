@@ -85,6 +85,14 @@
     [self setButSelected:0];
 }
 
+- (void)setPerformModel:(PerformModel *)performModel
+{
+    _performModel = performModel;
+    self.dateLabel.text = _performModel.performCode;
+    self.timeTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planDream integerValue]/60)];
+    self.minuteTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planDream integerValue]%60)];
+}
+
 - (void)setButSelected:(NSInteger)type
 {
     switch (type) {
@@ -92,11 +100,15 @@
             self.dreamBut.selected = YES;
             self.restBut.selected = NO;
             self.wasteBut.selected = NO;
+            self.timeTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planDream integerValue]/60)];
+            self.minuteTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planDream integerValue]%60)];
         }break;
         case 1:{
             self.dreamBut.selected = NO;
             self.restBut.selected = YES;
             self.wasteBut.selected = NO;
+            self.timeTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planRest integerValue]/60)];
+            self.minuteTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planRest integerValue]%60)];
         }break;
         case 2:{
             self.dreamBut.selected = NO;
@@ -123,10 +135,11 @@
     
 }
 - (IBAction)doOKButton:(id)sender {
-    [self.timeTF resignFirstResponder];
-    self.hidden = YES;
+    
 }
 - (IBAction)doCancelBut:(id)sender {
+    [self.timeTF resignFirstResponder];
+    self.hidden = YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -137,14 +150,14 @@
 
 - (void)textFieldDidBeginEditing:(MyTextField *)textField
 {
-    NSLog(@"bigin tf");
+    [textField addNotifications];
     textField.superRect = textField.superview.superview.frame;
     textField.mySuperview = textField.superview.superview;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textFieldDidEndEditing:(MyTextField *)textField
 {
-    //    [textField.superview bringSubviewToFront:;];
+    [textField removeNotifications];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

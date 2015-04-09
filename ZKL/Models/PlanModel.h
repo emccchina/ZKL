@@ -37,7 +37,7 @@
 @property (nonatomic, strong) NSString *dayTime;
 @property (nonatomic, strong) NSString *finishedTime;
 @property (nonatomic, strong) NSString *restTime;
-
+@property (nonatomic, assign) BOOL      valid;//是否有效修改过没有
 @property (nonatomic, strong) PerformModel *doingPerform;
 
 @end

@@ -16,6 +16,7 @@
 #import "ProgressLineView.h"
 #import "PerformModel.h"
 #import "NSTimer+Addition.h"
+#import "NSDate+Agenda.h"
 @interface HomeControlVC ()
 {
     NSTimer     *myTimer;
@@ -23,7 +24,7 @@
     NSInteger stateDream;//0添加 1暂停 2播放
     BOOL        reminder;
 }
-#define kTimerSpace1 10
+#define kTimerSpace1 5
 #define kTimerShundle 0.5
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
@@ -93,7 +94,6 @@
 {
     PerformModel *perform = doingPlan.doingPerform;
     if ([SQLManager shareUserInfo].running) {
-        
         NSInteger timeInterval = [[NSDate date] timeIntervalSinceDate:[SQLManager shareUserInfo].runningBeginTime]/1;
         NSLog(@"%d", timeInterval);
         perform.realDream = [NSString stringWithFormat:@"%ld",(long)[perform.realDream integerValue]+timeInterval];
@@ -111,9 +111,6 @@
         reminder = YES;
         
     }
-    
-    
-    
     [[SQLManager shareUserInfo] updatePerform:perform];
     [[SQLManager shareUserInfo] updatePlan:doingPlan];
     
@@ -154,6 +151,7 @@
     if (state && [doingPlan.totalHour floatValue]) {
         CGFloat progress = [doingPlan.finishedTime floatValue]/[doingPlan.totalHour floatValue];
         [self.dreamView setStrokeEnd:progress animated:(state==1?YES:NO)];
+        NSLog(@"progress %f,, %d", progress, state);
     }
     [self setPerform];
 }
@@ -243,6 +241,11 @@
 
 - (void)presentEditTimeView
 {
+    if (!doingPlan.doingPerform) {
+        [self showAlertView:@"请添加梦想"];
+        return;
+    }
+    
     AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     EditTime *editTime = (EditTime*)[delegate.window viewWithTag:10];
     if (!editTime) {
@@ -250,6 +253,7 @@
         editTime.tag = 10;
     }
     editTime.hidden = NO;
+    editTime.performModel = doingPlan.doingPerform;
 }
 
 
@@ -266,6 +270,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController *destVC = [segue destinationViewController];
     destVC.hidesBottomBarWhenPushed = YES;
+    if ([segue.identifier isEqualToString:@"AddDreamVC"]) {
+        NSLog(@"addDream");
+        [destVC setValue:doingPlan forKey:@"plan"];
+    }
  }
 
 @end

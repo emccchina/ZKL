@@ -12,7 +12,8 @@
 @interface AddDreamVC ()
 {
     PlanModel *planModel;
-     UserInfo *user;
+    UserInfo *user;
+    BOOL        edit;
 }
 @property (weak, nonatomic) IBOutlet WhiteBlackTextFiled *addTF;
 @property (weak, nonatomic) IBOutlet WhiteBlackTextFiled *needTimeTF;
@@ -25,13 +26,19 @@
 @end
 
 @implementation AddDreamVC
-
+@synthesize plan = planModel;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     user=[UserInfo shareUserInfo];
-    planModel = [[PlanModel alloc] init];
+    if (!planModel) {
+        edit = NO;
+        planModel = [[PlanModel alloc] init];
+    }else{
+        edit = YES;
+        [self setTFValue];
+    }
     [self showBackItem];
     self.OKButton.layer.cornerRadius = 5;
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
@@ -40,12 +47,13 @@
 
 - (void)setTFValue
 {
-    self.addTF.TF.text=[NSString stringWithFormat:@"%@",_plan.title];
-    self.needTimeTF.TF.text=[NSString stringWithFormat:@"%@ 分钟",_plan.totalHour];
+    self.addTF.TF.text=[NSString stringWithFormat:@"%@",planModel.title];
+    self.needTimeTF.TF.text=[NSString stringWithFormat:@"%.1f",[planModel.totalHour floatValue]/60];
     self.needTimeTF.type = kNumberType;
-    self.timeEverydayTF.TF.text=[NSString stringWithFormat:@"%lld 分钟",_plan.planMinute];
-    self.beginTime.TF.text=[NSString stringWithFormat:@"%@",_plan.beginDate];
-    self.needTimeTF.TF.text=[NSString stringWithFormat:@"%@",_plan.endDate];
+    self.timeEverydayTF.TF.text=[NSString stringWithFormat:@"%.1f",[planModel.dayTime floatValue]/60];
+    self.beginTime.TF.text=[NSString stringWithFormat:@"%@",planModel.beginDate];
+    self.endTime.TF.text=[NSString stringWithFormat:@"%@",planModel.endDate];
+    self.restTime.TF.text = [NSString stringWithFormat:@"%.1f", [planModel.restTime floatValue]/60];
 }
 - (void)back
 {
@@ -63,7 +71,7 @@
     [super viewWillAppear:animated];
     [self.addTF setTitle:@"梦想标题"];
     self.addTF.finished = ^(NSString* string){
-        _plan.title=string;
+        planModel.title=string;
     };
     [self.needTimeTF setTitle:@"预计所需时间"];
     [self.needTimeTF setType:kNumberType];
@@ -87,7 +95,9 @@
     };
     [self.restTime setTitle:@"休息时间"];
     [self.restTime setType:kNumberType];
-    [self.restTime.TF setText:@"12"];
+    if (!planModel.restTime) {
+        [self.restTime.TF setText:@"12"];
+    }
     [self.restTime setFinished:^(NSString*string){
         
     }];
@@ -140,44 +150,21 @@
         [self showAlertView:@"请输入完整信息!"];
         return;
     }
-    
+    if (edit) {
+        [[SQLManager shareUserInfo] updatePlanVlaid:planModel];
+        [[SQLManager shareUserInfo] deletePerform:planModel.doingPerform];
+    }
     planModel.title = self.addTF.TF.text;
     planModel.beginDate = self.beginTime.TF.text;
     planModel.endDate = self.endTime.TF.text;
     planModel.totalHour = [NSString stringWithFormat:@"%.0f",[self.needTimeTF.TF.text floatValue]*60];
     planModel.finishedTime = @"0";
-    
+    planModel.valid = YES;
     planModel.planid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
-//    NSLog(@"%f,%ld, %f", space, days, planModel.planid);
+    planModel.doingPerform = nil;
     if ([[SQLManager shareUserInfo] writePlanModel:planModel]){
         [self back];
     }
-//    [self showIndicatorView:kNetworkConnecting];
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    NSString *url = [NSString stringWithFormat:@"%@planaction!addNewPlan.action",kServerDomain];
-//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:user.userCode , @"userCode",self.addTF.TF.text, @"title",self.needTimeTF.TF.text , @"totalHour", self.beginTime.TF.text , @"beginString", self.endTime.TF.text , @"endString",nil];
-//     NSLog( @"%@ ", dict);
-//    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        [self dismissIndicatorView];
-//        id result = [self parseResults:responseObject];
-//        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-//        NSLog(@"result is %@",result);
-//        if (result) {
-//            if (0==result[@"errorno"]) {
-////                [self showAlertView:@"添加成功!"];
-//                [UserInfo shareUserInfo].update = YES;
-//                [self back];
-//            }else{
-//                [self showAlertView:result[@"message"]];
-//            }
-//            
-//        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        [Utities errorPrint:error vc:self];
-//        [self dismissIndicatorView];
-//        [self showAlertView:kNetworkNotConnect];
-//    }];
 }
 
 

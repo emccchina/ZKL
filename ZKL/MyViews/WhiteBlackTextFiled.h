@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyTextField.h"
 #define kWhiteBGTF      [UIColor whiteColor]
 #define kBlackBGTF      [UIColor blackColor]
 
@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, kTypeTF){
     kTypeTF     _type;
     UIPickerView *numberPicker;
     UIDatePicker *picker;
-    UITextField *myTF;
+    MyTextField *myTF;
     UIFont      *myFont;
 }
 @property (nonatomic, strong) NSString      *title;

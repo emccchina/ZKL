@@ -16,4 +16,8 @@ typedef void (^DoFinished) (MyTextField* tf);
 @property (nonatomic, assign) CGRect superRect;
 @property (nonatomic, strong) id mark;
 @property (nonatomic, copy) DoFinished finished;
+
+- (void)removeNotifications;
+- (void)addNotifications;
+
 @end

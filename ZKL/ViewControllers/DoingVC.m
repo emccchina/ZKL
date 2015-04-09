@@ -37,6 +37,10 @@
     self.showView.progress = 0.3;
     self.showView.totalTime = 30;
     self.showView.buttom = YES;
+    
+    [[SQLManager shareUserInfo] cupsTotal];
+    [[SQLManager shareUserInfo] cupsMonth:@"2015-05"];
+    NSLog(@"%d,%d", [[SQLManager shareUserInfo] cupsTotal],[[SQLManager shareUserInfo] cupsMonth:@"2015-05"]);
 }
 
 - (void)didReceiveMemoryWarning {
