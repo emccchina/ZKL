@@ -9,7 +9,7 @@
 #import "CalendarVC.h"
 #import "CanlendarView.h"
 #import "ChartView.h"
-
+#import "NSDate+Agenda.h"
 @interface CalendarVC ()
 {
     ChartView *chartView;
@@ -30,6 +30,12 @@
         chartView = (ChartView*)[Utities viewAddContraintsParentView:self.view subNibName:@"ChartView"];
     }
     [self showView:0];
+    [self.calendarView setDoOneDay:^(DayButton *button){
+        chartView.dateString = [NSDate stringFromDate:button.date];
+        chartView.model = button.performModel;
+        [self.mySegment setSelectedSegmentIndex:1];
+        [self showView:1];
+    }];
     
 }
 
@@ -41,7 +47,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self setChartProgress];
+    chartView.dateString = [NSDate stringFromDate:[NSDate date]];
+    chartView.model = [[SQLManager shareUserInfo] cupsWithDate:[NSDate date]];
 }
 
 
@@ -56,12 +63,7 @@
     chartView.hidden = !calendar;
 }
 
-- (void)setChartProgress
-{
-    [chartView.dreamProgress setViewWithTitle:@"直接哦i街里街道；32就；i；瓯江；" progress:0.5 color:[UIColor redColor] titleColor:@"32"];
-    [chartView.restProgress setViewWithTitle:@"ljoij;;;" progress:0.1 color:[UIColor greenColor] titleColor:@"34"];
-    [chartView.wasteProgress setViewWithTitle:@"klj;i54" progress:0.8 color:[UIColor magentaColor] titleColor:@"54"];
-}
+
 
 - (void)doRight:(UINavigationItem*)item
 {

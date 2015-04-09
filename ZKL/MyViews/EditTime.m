@@ -89,8 +89,8 @@
 {
     _performModel = performModel;
     self.dateLabel.text = _performModel.performCode;
-    self.timeTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planDream integerValue]/60)];
-    self.minuteTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planDream integerValue]%60)];
+    self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planDream integerValue]/60)];
+    self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planDream integerValue]%60)];
 }
 
 - (void)setButSelected:(NSInteger)type
@@ -100,15 +100,15 @@
             self.dreamBut.selected = YES;
             self.restBut.selected = NO;
             self.wasteBut.selected = NO;
-            self.timeTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planDream integerValue]/60)];
-            self.minuteTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planDream integerValue]%60)];
+            self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planDream integerValue]/60)];
+            self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planDream integerValue]%60)];
         }break;
         case 1:{
             self.dreamBut.selected = NO;
             self.restBut.selected = YES;
             self.wasteBut.selected = NO;
-            self.timeTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planRest integerValue]/60)];
-            self.minuteTF.text = [NSString stringWithFormat:@"%d",(NSInteger)([_performModel.planRest integerValue]%60)];
+            self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planRest integerValue]/60)];
+            self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planRest integerValue]%60)];
         }break;
         case 2:{
             self.dreamBut.selected = NO;

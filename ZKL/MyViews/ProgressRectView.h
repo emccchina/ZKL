@@ -18,7 +18,7 @@
 
 }
 - (void)setViewWithTitle:(NSString*)title progress:(CGFloat)progress progress:(BOOL)p;//p 进度条是否存在
-- (void)setViewWithTitle:(NSString *)title progress:(CGFloat)progress color:(UIColor*)color titleColor:(NSString*)titleColor;//图表中进度条
+- (void)setViewWithTitle:(NSString *)title progress:(CGFloat)progress realTime:(NSString*)time color:(UIColor*)color titleColor:(NSString*)titleColor;//图表中进度条
 @end
 
 @interface WhorlLayer : UIView

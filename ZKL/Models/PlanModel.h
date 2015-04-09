@@ -39,5 +39,5 @@
 @property (nonatomic, strong) NSString *restTime;
 @property (nonatomic, assign) BOOL      valid;//是否有效修改过没有
 @property (nonatomic, strong) PerformModel *doingPerform;
-
+@property (nonatomic, assign) BOOL      lastDay;//是否是完成梦想的最后一天
 @end

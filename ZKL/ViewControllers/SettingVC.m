@@ -88,7 +88,7 @@ static NSString *settingCell = @"settingCell";
             [cell addSubview:headerView];
             headerView.tag = 10;
         }
-        [headerView.header setImageWithURL:[NSURL URLWithString:user.headimgurl]];
+        [headerView.header setImageWithURL:[NSURL URLWithString:@"http://d.hiphotos.baidu.com/image/pic/item/55e736d12f2eb93890a739fbd7628535e4dd6ff4.jpg"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView.name.text = user.userName;
         headerView.diolague.text = user.nickName;

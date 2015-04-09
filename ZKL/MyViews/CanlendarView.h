@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DayButton.h"
+typedef void (^DoOneDay) (DayButton* day);
 @interface CanlendarView : UIView
 
+@property (nonatomic, copy) DoOneDay doOneDay;
 
 @end

@@ -48,4 +48,5 @@
 
 - (NSInteger)cupsTotal;
 - (NSInteger)cupsMonth:(NSString*)month;
+- (PerformModel*)cupsWithDate:(NSDate*)date;
 @end

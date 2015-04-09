@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PerformModel.h"
 typedef NS_ENUM(NSInteger,  DayType) {
     KDayTypeEmpty,
     KDayTypeToday,
@@ -30,5 +30,6 @@ typedef NS_ENUM(NSInteger, DayState) {
 @property (nonatomic, assign) DayType   dayType;
 @property (nonatomic, assign) DayState  dayState;
 @property (nonatomic, strong) NSDate    *date;
+@property (nonatomic, strong) PerformModel *performModel;
 - (void)setshowMonth:(NSDate *)showDate showDay:(NSDate*)dateDay;
 @end

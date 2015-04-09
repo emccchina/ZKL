@@ -75,6 +75,10 @@
     if ([self.date isToday]) {
         self.layer.backgroundColor = kNavBGColor.CGColor;
     }
+    self.performModel = [[SQLManager shareUserInfo] cupsWithDate:dateDay];
+    if (self.performModel.finished) {
+        [self setDayState:kDayStateTwo];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    }
 }
 
 - (void)setDayState:(DayState)dayState

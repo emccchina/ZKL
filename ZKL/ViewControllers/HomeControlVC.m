@@ -95,7 +95,7 @@
     PerformModel *perform = doingPlan.doingPerform;
     if ([SQLManager shareUserInfo].running) {
         NSInteger timeInterval = [[NSDate date] timeIntervalSinceDate:[SQLManager shareUserInfo].runningBeginTime]/1;
-        NSLog(@"%d", timeInterval);
+        NSLog(@"%ld", (long)timeInterval);
         perform.realDream = [NSString stringWithFormat:@"%ld",(long)[perform.realDream integerValue]+timeInterval];
         doingPlan.finishedTime = [NSString stringWithFormat:@"%ld",(long)[doingPlan.finishedTime floatValue]+timeInterval];
         [SQLManager shareUserInfo].running = NO;
@@ -107,6 +107,10 @@
         perform.finished = YES;
         if (!reminder) {
             [self showAlertView:[NSString stringWithFormat:@"%@\n今日已完成",doingPlan.title]];
+            if (doingPlan.lastDay) {
+                doingPlan.finished = YES;
+                stateDream = 0;
+            }
         }
         reminder = YES;
         
@@ -151,7 +155,7 @@
     if (state && [doingPlan.totalHour floatValue]) {
         CGFloat progress = [doingPlan.finishedTime floatValue]/[doingPlan.totalHour floatValue];
         [self.dreamView setStrokeEnd:progress animated:(state==1?YES:NO)];
-        NSLog(@"progress %f,, %d", progress, state);
+        NSLog(@"progress %f,, %ld", progress, (long)state);
     }
     [self setPerform];
 }

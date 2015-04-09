@@ -146,11 +146,7 @@
         DayButton *day = [[DayButton alloc] initWithFrame:CGRectMake((i%7)*dayHeight, (i/7)*dayHeight+y, dayHeight, dayHeight)];
         [day setshowMonth:showDate showDay:[self dateAtItem:i]];
         [self addSubview:day];
-        if (i / 7) {
-            [day setDayState:kDayStateTwo];
-        }else{
-            [day setDayState:kDayStateOne];
-        }
+        [day addTarget:self action:@selector(doDayButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     
 //底部的
@@ -184,14 +180,17 @@
     
     
     UIFont* font4 = [UIFont fontWithName:kFontName size:30];
-    NSString *stringMonth = @"8";
+    NSString*dateMonth1 = [NSDate stringFromDate:showDate];
+    NSInteger cupsMonth = [[SQLManager shareUserInfo] cupsMonth:dateMonth1];
+    NSString *stringMonth = [NSString stringWithFormat:@"%ld",(long)cupsMonth];
     CGSize sizeMonth1 = [Utities sizeWithUIFont:font4 string:stringMonth];
     y += (height-y-dayHeight*.5 - sizeMonth1.height)/2;
     
     [stringMonth drawInRect:CGRectMake(width/4-sizeMonth1.width/2, y, sizeMonth1.width, sizeMonth1.height) withAttributes:@{NSForegroundColorAttributeName:kNavBGColor, NSFontAttributeName:font4}];
     
-    CGSize sizeMonth2 = [Utities sizeWithUIFont:font4 string:@"20"];
-    [@"20" drawInRect:CGRectMake(width*3/4-sizeMonth2.width/2, y, sizeMonth2.width, sizeMonth2.height) withAttributes:@{NSForegroundColorAttributeName:kNavBGColor, NSFontAttributeName:font4}];
+    NSString *totalCups = [NSString stringWithFormat:@"%ld",(long)[[SQLManager shareUserInfo] cupsTotal]];
+    CGSize sizeMonth2 = [Utities sizeWithUIFont:font4 string:totalCups];
+    [totalCups drawInRect:CGRectMake(width*3/4-sizeMonth2.width/2, y, sizeMonth2.width, sizeMonth2.height) withAttributes:@{NSForegroundColorAttributeName:kNavBGColor, NSFontAttributeName:font4}];
 }
 
 #pragma -mark private monthed
@@ -227,6 +226,14 @@
 {
     showDate = [showDate nextMonth];
     [self setNeedsDisplay];
+}
+
+- (void)doDayButton:(DayButton*)button
+{
+    NSLog(@"%@", button.date);
+    if (self.doOneDay) {
+        self.doOneDay(button);
+    }
 }
 
 @end

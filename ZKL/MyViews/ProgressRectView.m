@@ -161,8 +161,11 @@
     
 }
 
-- (void)setViewWithTitle:(NSString *)title progress:(CGFloat)progress color:(UIColor *)color titleColor:(NSString *)titleColor
+- (void)setViewWithTitle:(NSString *)title  progress:(CGFloat)progress realTime:(NSString*)time color:(UIColor *)color titleColor:(NSString *)titleColor
 {
+    if (progress >1) {
+        progress = 1;
+    }
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     self.backgroundColor = [UIColor clearColor];
@@ -200,7 +203,7 @@
     CGPathRelease(path);
     
     
-    NSString *timeString = [NSString stringWithFormat:@"%ld小时",(long)(progress*10)];
+    NSString *timeString = [NSString stringWithFormat:@"%.1f小时",[time floatValue]/60];
     UIFont *font3 = [UIFont fontWithName:kFontName size:15];
     CGSize size = [Utities sizeWithUIFont:font3 string:timeString];
     CGFloat stringX = (width-20)*progress +10-size.width;

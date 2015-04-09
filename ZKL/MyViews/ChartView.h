@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ProgressRectView.h"
 #import "RichStyleLabel.h"
+#import "PerformModel.h"
 
 @interface ChartView : UIView
-
+{
+    PerformModel *_model;
+}
 @property (weak, nonatomic) IBOutlet UIView *topBG;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet ProgressRectView *dreamProgress;
@@ -19,4 +22,6 @@
 @property (weak, nonatomic) IBOutlet ProgressRectView *wasteProgress;
 @property (weak, nonatomic) IBOutlet RichStyleLabel *sortLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dioLabel;
+@property (nonatomic, strong)PerformModel *model;
+@property (nonatomic, strong)NSString *dateString;
 @end

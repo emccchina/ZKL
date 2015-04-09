@@ -81,6 +81,7 @@
     NSString *dat = [NSDate stringFromDate:[NSDate date]];
     NSDate *date = [NSDate dateFromString:dat];
     NSTimeInterval time = [date timeIntervalSinceDate:finishedDate];
+    _myDoingPlan.lastDay = (time == 0);
     return time <= 0;
 }
 
@@ -134,6 +135,31 @@
         return YES;
     }
     return NO;
+}
+
+- (PerformModel*)cupsWithDate:(NSDate*)date
+{
+    NSString *dateString = [NSDate stringFromDate:date];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ('%@')", kProgressTable, kDate, dateString];
+    FMResultSet *provicesResult = [db executeQuery:sql];
+    while ([provicesResult next]) {
+        PerformModel *perforModelDate = [[PerformModel alloc] init];
+        perforModelDate.planId = [provicesResult stringForColumn:kCreateTime];
+        perforModelDate.planDream = [provicesResult stringForColumn:kPlanDream];
+        perforModelDate.planRest = [provicesResult stringForColumn:kPlanRest];
+        perforModelDate.planWaste = [provicesResult stringForColumn:kPlanWaste];
+        perforModelDate.realDream = [provicesResult stringForColumn:kRealDream];
+        perforModelDate.realRest = [provicesResult stringForColumn:kRealRest];
+        //        _myDoingPerform.realWaste = [provicesResult stringForColumn:kRealWaste];
+        perforModelDate.edit  = [provicesResult intForColumn:kEdit];
+        perforModelDate.editDream = [provicesResult stringForColumn:kEditDream];
+        perforModelDate.editRest = [provicesResult stringForColumn:kEditRest];
+        perforModelDate.editWaste = [provicesResult stringForColumn:kEditWaste];
+        perforModelDate.performCode = [provicesResult stringForColumn:kDate];
+        perforModelDate.finished = [provicesResult intForColumn:kFinished];
+        return perforModelDate;
+    }
+    return nil;
 }
 
 - (NSInteger)cupsTotal
@@ -231,7 +257,7 @@
 //    if (![self existPlan:planModel.planid]) {
 //        return;
 //    }
-    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@') where %@ = ('%@')", kDreamsTable, kFinishedTime, planModel.finishedTime, kCreateTime, planModel.planid];
+    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@=('%d') where %@ = ('%@')", kDreamsTable, kFinishedTime, planModel.finishedTime,kFinished, planModel.finished, kCreateTime, planModel.planid];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPlan = planModel;

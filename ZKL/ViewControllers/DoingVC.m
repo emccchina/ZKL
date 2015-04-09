@@ -30,17 +30,14 @@
     headerCell = (HeaderCell*)[Utities viewAddContraintsParentView:self.headViewBG subNibName:@"HeaderCell"];
     
     [headerCell.header setImageWithURL:[NSURL URLWithString:@"http://d.hiphotos.baidu.com/image/pic/item/55e736d12f2eb93890a739fbd7628535e4dd6ff4.jpg"]];
-    headerCell.name.text = user.userName;
-    headerCell.diolague.text = user.nickName;
-    self.showView.title = @"过四级";
+    headerCell.name.text = user.userName?:@"无名氏";
+    headerCell.diolague.text = user.nickName?:@"无名";
+    PlanModel* model = [[SQLManager shareUserInfo] doingPlan];
+    self.showView.title = model.title;
     self.showView.dio = @"岁月是把杀猪刀";
-    self.showView.progress = 0.3;
-    self.showView.totalTime = 30;
+    self.showView.progress = [model.finishedTime floatValue]/[model.totalHour floatValue];
+    self.showView.totalTime = [model.totalHour floatValue]/60;
     self.showView.buttom = YES;
-    
-    [[SQLManager shareUserInfo] cupsTotal];
-    [[SQLManager shareUserInfo] cupsMonth:@"2015-05"];
-    NSLog(@"%d,%d", [[SQLManager shareUserInfo] cupsTotal],[[SQLManager shareUserInfo] cupsMonth:@"2015-05"]);
 }
 
 - (void)didReceiveMemoryWarning {
