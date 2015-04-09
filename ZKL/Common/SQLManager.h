@@ -36,11 +36,12 @@
 - (PerformModel*)myDoingPerform:(NSString*)planId;//每天实现情况
 - (NSArray*)allPerform:(NSString*)planId;
 - (BOOL)deletePerform:(PerformModel*)perform;
-
+- (NSArray*)performsByPlan:(PlanModel*)plan;
 
 - (void)updatePerform:(PerformModel*)model;
 - (void)updatePlan:(PlanModel*)planModel;
 
+- (PlanModel*)lastPlan:(PlanModel*)model;
 - (BOOL)writePlanModel:(PlanModel*)model;
 - (BOOL)writePerformModel:(PerformModel*)model;
 

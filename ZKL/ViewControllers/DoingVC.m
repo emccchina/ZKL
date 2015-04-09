@@ -33,11 +33,15 @@
     headerCell.name.text = user.userName?:@"无名氏";
     headerCell.diolague.text = user.nickName?:@"无名";
     PlanModel* model = [[SQLManager shareUserInfo] doingPlan];
-    self.showView.title = model.title;
-    self.showView.dio = @"岁月是把杀猪刀";
-    self.showView.progress = [model.finishedTime floatValue]/[model.totalHour floatValue];
-    self.showView.totalTime = [model.totalHour floatValue]/60;
-    self.showView.buttom = YES;
+    if (!model.finished) {
+        self.showView.title = model.title;
+        self.showView.dio = @"岁月是把杀猪刀";
+        self.showView.progress = [model.finishedTime floatValue]/[model.totalHour floatValue];
+        self.showView.totalTime = [model.totalHour floatValue]/60;
+        self.showView.buttom = YES;
+    }else{
+        [self showAlertView:@"暂时没有梦想"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

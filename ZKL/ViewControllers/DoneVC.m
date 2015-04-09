@@ -14,6 +14,8 @@
 @interface DoneVC ()
 {
     HeaderCell *headerCell;
+    PlanModel   *planModel;
+    NSArray     *performs;
 }
 @property (weak, nonatomic) IBOutlet UIView *headViewBG;
 @property (weak, nonatomic) IBOutlet DoneShowView *showView;
@@ -31,16 +33,37 @@
     [headerCell.header setImageWithURL:[NSURL URLWithString:@"http://d.hiphotos.baidu.com/image/pic/item/55e736d12f2eb93890a739fbd7628535e4dd6ff4.jpg"]];
     headerCell.name.text = @"name";
     headerCell.diolague.text = @"jkj;i";
-    self.showView.title = @"过四级";
-    self.showView.dreamTime = 0.63;
-    self.showView.restTime = 0.2;
+    
+    planModel = [[SQLManager shareUserInfo] doingPlan];
+    if (!planModel.finished) {
+        planModel = [[SQLManager shareUserInfo] lastPlan:planModel];
+    }
+    if (!planModel) {
+        [self showAlertView:@"没有完成的梦想"];
+        return;
+    }
+    performs = [[SQLManager shareUserInfo] performsByPlan:planModel];
+    [self setShowViewState];
+    
+}
+
+- (void)setShowViewState
+{
+    self.showView.title = planModel.title;
+    
+    CGFloat dreams = 0;
+    CGFloat rest = 0;
     NSMutableArray *points = [[NSMutableArray alloc] init];
-    [points addObject:[self dictionaryWithTime:@"1.5" date:@"2/22"]];
-    [points addObject:[self dictionaryWithTime:@"4" date:@"3/33"]];
-    [points addObject:[self dictionaryWithTime:@"6" date:@"2/25"]];
+    for (PerformModel* model in performs) {
+        dreams += [model.realDream floatValue];
+        rest += [model.realDream floatValue];
+        [points addObject:[self dictionaryWithTime:[NSString stringWithFormat:@"%.1f",[model.realDream floatValue]/60] date:model.performCode]];
+    }
+    
+    self.showView.dreamTime = dreams/24/60;
+    self.showView.restTime = rest/24/60;
     self.showView.points = points;
     self.showView.backgroundColor = [UIColor clearColor];
-    
 }
 
 - (NSDictionary*)dictionaryWithTime:(NSString*)time date:(NSString*)date

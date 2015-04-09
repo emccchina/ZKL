@@ -15,6 +15,7 @@
     BOOL    _doing;
     PerformModel *_doingPerform;
 }
+@property (nonatomic, assign) NSInteger tableRowID;
 
 @property (nonatomic, strong) NSString *planid;
 @property (nonatomic, strong) NSString *planCode;// 编号

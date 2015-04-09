@@ -51,7 +51,7 @@
     self.needTimeTF.TF.text=[NSString stringWithFormat:@"%.1f",[planModel.totalHour floatValue]/60];
     self.needTimeTF.type = kNumberType;
     self.timeEverydayTF.TF.text=[NSString stringWithFormat:@"%.1f",[planModel.dayTime floatValue]/60];
-    self.beginTime.TF.text=[NSString stringWithFormat:@"%@",planModel.beginDate];
+    self.beginTime.TF.text=[NSString stringWithFormat:@"%@",[NSDate stringFromDate:[NSDate date]]];
     self.endTime.TF.text=[NSString stringWithFormat:@"%@",planModel.endDate];
     self.restTime.TF.text = [NSString stringWithFormat:@"%.1f", [planModel.restTime floatValue]/60];
 }
@@ -151,6 +151,8 @@
         return;
     }
     if (edit) {
+        planModel.finished = YES;
+        planModel.valid = NO;
         [[SQLManager shareUserInfo] updatePlanVlaid:planModel];
         [[SQLManager shareUserInfo] deletePerform:planModel.doingPerform];
     }
@@ -159,6 +161,7 @@
     planModel.endDate = self.endTime.TF.text;
     planModel.totalHour = [NSString stringWithFormat:@"%.0f",[self.needTimeTF.TF.text floatValue]*60];
     planModel.finishedTime = @"0";
+    planModel.finished = NO;
     planModel.valid = YES;
     planModel.planid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
     planModel.doingPerform = nil;

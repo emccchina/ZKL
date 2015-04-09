@@ -171,13 +171,13 @@
         f= a/[perform.planDream floatValue];
     }
     
-    [self.dreamProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",a/60] progress:f  progress:YES];
+    [self.dreamProgress setViewWithTitle:(doingPlan.finished ? @"0小时" :[NSString stringWithFormat:@"%.1f小时",a/60]) progress:(doingPlan.finished ? 0 : f)  progress:YES];
     
     h=[perform.realRest floatValue]/60;
-    [self.needProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:0.0 progress:NO];
+    [self.needProgress setViewWithTitle:(doingPlan.finished ? @"0小时" : [NSString stringWithFormat:@"%.1f小时",h]) progress:0.0 progress:NO];
     
     h=[perform.realWaste floatValue]/60;
-    [self.wasteProgress setViewWithTitle:[NSString stringWithFormat:@"%.1f小时",h] progress:0.0 progress:NO];
+    [self.wasteProgress setViewWithTitle:(doingPlan.finished ? @"0小时" :[NSString stringWithFormat:@"%.1f小时",h]) progress:0.0 progress:NO];
     
     if (stateDream && [perform.planDream floatValue]) {
         CGFloat progress = [perform.realDream floatValue]/[perform.planDream floatValue];

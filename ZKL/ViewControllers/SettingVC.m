@@ -36,8 +36,8 @@ static NSString *settingCell = @"settingCell";
 - (void)setArray
 {
     NSArray *section1 = @[@[@"running",@"正在进行的梦想",@"DoingVC"],@[@"finished",@"已经完成的梦想",@"DoneVC"]];
-    NSArray *section2 = @[@[@"setting",@"设置",@"DoingVC"]];
-    settingArray = @[section1,section2];
+//    NSArray *section2 = @[@[@"setting",@"设置",@"DoingVC"]];
+    settingArray = @[section1];
 }
 
 - (void)didReceiveMemoryWarning {
