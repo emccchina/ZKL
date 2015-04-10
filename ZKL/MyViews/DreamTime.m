@@ -307,17 +307,6 @@
             stateLayer.path = path.CGPath;
         }break;
         case 1:{
-//            stateLayer.fillColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5].CGColor;
-            CGRect rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space*3/4, CGRectGetHeight(self.frame)/2-space, space/2, space*2);
-            UIBezierPath *path = [UIBezierPath bezierPathWithRect:rectstate];
-            rectstate.origin.x += space;
-            UIBezierPath *path1 = [UIBezierPath bezierPathWithRect:rectstate];
-            [path appendPath:path1];
-            stateLayer.path = path.CGPath;
-        }break;
-        case 2:{
-            //1.获取图形上下文
-//            stateLayer.fillColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5].CGColor;
             CGFloat midX = CGRectGetWidth(self.frame)/2+10;
             CGFloat midY = CGRectGetHeight(self.frame)/2;
             CGMutablePathRef path=CGPathCreateMutable();
@@ -327,6 +316,18 @@
             UIBezierPath *path1 = [UIBezierPath bezierPathWithCGPath:path];
             stateLayer.path = path1.CGPath;
             CGPathRelease(path);
+//            stateLayer.fillColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5].CGColor;
+            
+        }break;
+        case 2:{
+            //1.获取图形上下文
+//            stateLayer.fillColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.5].CGColor;
+            CGRect rectstate = CGRectMake(CGRectGetWidth(self.frame)/2-space*3/4, CGRectGetHeight(self.frame)/2-space, space/2, space*2);
+            UIBezierPath *path = [UIBezierPath bezierPathWithRect:rectstate];
+            rectstate.origin.x += space;
+            UIBezierPath *path1 = [UIBezierPath bezierPathWithRect:rectstate];
+            [path appendPath:path1];
+            stateLayer.path = path.CGPath;
         }break;
             
         default:

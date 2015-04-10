@@ -181,7 +181,7 @@
     
     UIFont* font4 = [UIFont fontWithName:kFontName size:30];
     NSString*dateMonth1 = [NSDate stringFromDate:showDate];
-    NSInteger cupsMonth = [[SQLManager shareUserInfo] cupsMonth:dateMonth1];
+    NSInteger cupsMonth = [[SQLManager shareUserInfo] cupsMonth:[dateMonth1 substringToIndex:7]];
     NSString *stringMonth = [NSString stringWithFormat:@"%ld",(long)cupsMonth];
     CGSize sizeMonth1 = [Utities sizeWithUIFont:font4 string:stringMonth];
     y += (height-y-dayHeight*.5 - sizeMonth1.height)/2;

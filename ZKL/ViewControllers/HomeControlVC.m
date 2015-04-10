@@ -24,8 +24,8 @@
     NSInteger stateDream;//0添加 1暂停 2播放
     BOOL        reminder;
 }
-#define kTimerSpace1 5
-#define kTimerShundle 0.5
+#define kTimerSpace1 1
+#define kTimerShundle 1
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
 
@@ -275,8 +275,9 @@
     UIViewController *destVC = [segue destinationViewController];
     destVC.hidesBottomBarWhenPushed = YES;
     if ([segue.identifier isEqualToString:@"AddDreamVC"]) {
-        NSLog(@"addDream");
-        [destVC setValue:doingPlan forKey:@"plan"];
+        if (!doingPlan.finished) {
+            [destVC setValue:doingPlan forKey:@"plan"];
+        }
     }
  }
 

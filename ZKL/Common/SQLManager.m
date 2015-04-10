@@ -338,7 +338,7 @@
         return nil;
     }
     NSLog(@"doing plan");
-    NSString *sql = [NSString stringWithFormat:@"select * from %@ where id < %d and %@ = 1 and %@ = 1 order by id desc limit 1", kDreamsTable,model.tableRowID, kFinished,kValid];
+    NSString *sql = [NSString stringWithFormat:@"select * from %@ where id < %ld and %@ = 1 and %@ = 1 order by id desc limit 1", kDreamsTable,(long)model.tableRowID, kFinished,kValid];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
         PlanModel *planModel = [[PlanModel alloc] init];
