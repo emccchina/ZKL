@@ -41,6 +41,13 @@
         myTF.inputView = picker;
     }else if (type == kNumberType){
         myTF.keyboardType = UIKeyboardTypeNumberPad;
+        myTF.rightViewMode = UITextFieldViewModeAlways;
+        UILabel *right = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
+        right.font = [UIFont fontWithName:kFontName size:17];
+        right.text = @"小时";
+        right.textColor = [UIColor grayColor];
+        right.backgroundColor = [UIColor clearColor];
+        myTF.rightView = right;
     }
 }
 

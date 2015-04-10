@@ -86,7 +86,7 @@
                                   delay:0
                                 options:[[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue]
                              animations:^{
-                                 self.mySuperview.transform = CGAffineTransformMakeTranslation(0, -_keyboardRect.size.height*(iPhone_iOS8?1:2));
+                                 self.mySuperview.transform = CGAffineTransformMakeTranslation(0, -_keyboardRect.size.height);
                              } completion:nil];
             
         }

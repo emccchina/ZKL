@@ -56,6 +56,65 @@
     [self realWasteTime];
 }
 
+
+
+- (void)planWasteTime
+{
+    NSInteger waste = 60*24-[_realRest integerValue]-[_realDream integerValue];
+    if (waste <= 0) {
+        _planWaste = 0;
+        NSInteger rest = [_realRest integerValue] + waste;
+        _planRest = [NSString stringWithFormat:@"%ld", (long)rest];
+    }else{
+        _planWaste = [NSString stringWithFormat:@"%ld",(long)waste];
+    }
+}
+
+- (void)setPlanDream:(NSString *)planDream
+{
+    _planDream = planDream;
+    [self planWasteTime];
+}
+- (NSString*)planDream
+{
+    return  _planDream;
+}
+- (void)setPlanRest:(NSString *)planRest
+{
+    _planRest = planRest;
+    _realRest = planRest;
+    [self planWasteTime];
+}
+
+- (NSString*)planRest
+{
+    return _planRest;
+}
+
+- (void)setEditWasteTime
+{
+    NSInteger waste = 60*24-[_realRest integerValue]-[_realDream integerValue];
+    if (waste <= 0) {
+        _editWaste = 0;
+        NSInteger rest = [_realRest integerValue] + waste;
+        _editRest = [NSString stringWithFormat:@"%ld", (long)rest];
+    }else{
+        _editWaste = [NSString stringWithFormat:@"%ld",(long)waste];
+    }
+}
+
+- (void)setEditDream:(NSString *)editDream
+{
+    _editDream = editDream;
+    [self setEditWasteTime];
+}
+
+- (void)setEditRest:(NSString *)editRest
+{
+    _editRest = editRest;
+    [self setEditWasteTime];
+}
+
 @end
 
 

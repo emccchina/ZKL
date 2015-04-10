@@ -181,7 +181,7 @@
     //    if (![self existPerform:model.planId performID:model.performCode]) {
     //        return;
     //    }
-    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@ = ('%@'),%@= ('%d') where %@ = ('%@') and %@ = ('%@')", kProgressTable, kRealDream, model.realDream, kRealWaste, model.realWaste, kFinished, model.finished, kDate,model.performCode, kCreateTime, model.planId];
+    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@= ('%d'),%@= ('%d') where %@ = ('%@') and %@ = ('%@')", kProgressTable, kRealDream, model.realDream, kRealWaste, model.realWaste,kRealRest,model.realRest,kPlanDream,model.planDream,kPlanRest,model.planRest,kPlanWaste,model.planWaste,kEditDream,model.editDream,kEditRest,model.editRest,kEditWaste,model.editWaste, kFinished, model.finished,kEdit,model.edit, kDate,model.performCode, kCreateTime, model.planId];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPerform = model;

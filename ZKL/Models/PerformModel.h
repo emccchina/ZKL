@@ -14,6 +14,13 @@
     NSString *_realDream;
     NSString *_realRest;
     NSString *_realWaste;
+    
+    NSString *_planDream;
+    NSString *_planRest;
+    NSString *_planWaste;
+    NSString *_editDream;
+    NSString *_editRest;
+    NSString *_editWaste;
 }
 
 @property (nonatomic, strong) NSString *planId;

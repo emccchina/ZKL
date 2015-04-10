@@ -258,6 +258,9 @@
     }
     editTime.hidden = NO;
     editTime.performModel = doingPlan.doingPerform;
+    editTime.editFinished = ^(void){
+        [self setPerform];
+    };
 }
 
 

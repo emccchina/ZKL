@@ -49,8 +49,6 @@
     CGFloat scale = [UIScreen mainScreen].scale;
     self.whiteBG.layer.borderWidth = 1/scale;
     
-    self.dateLabel.text = @"2014 03 25   4";
-    
     self.timeTF.delegate  = self;
     self.timeTF.returnKeyType = UIReturnKeyDone;
     self.timeTF.keyboardType = UIKeyboardTypeNumberPad;
@@ -68,6 +66,8 @@
         [self doFinish:tf];
     };
     
+    dreamTime = 0;
+    restTime = 0;
     
     self.OKButton.layer.cornerRadius = 3;
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
@@ -89,12 +89,16 @@
 {
     _performModel = performModel;
     self.dateLabel.text = _performModel.performCode;
-    self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planDream integerValue]/60)];
-    self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planDream integerValue]%60)];
+    dreamTime = [_performModel.planDream integerValue];
+    restTime = [_performModel.planRest integerValue];
+    self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)(dreamTime/60)];
+    self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)(dreamTime%60)];
 }
 
 - (void)setButSelected:(NSInteger)type
 {
+    [self setMyDreamTime];
+    state = type;
     switch (type) {
         case 0:{
             self.dreamBut.selected = YES;
@@ -130,15 +134,41 @@
     [self setButSelected:2];
 }
 
+- (void)setMyDreamTime
+{
+    switch (state) {
+        case 0:{
+            dreamTime = [self.timeTF.text integerValue]*60+[self.minuteTF.text integerValue];
+        }break;
+        case 1:{
+            restTime = [self.timeTF.text integerValue]*60+[self.minuteTF.text integerValue];
+        }break;
+        default:
+            break;
+    }
+}
+
 - (void)doFinish:(MyTextField*)tf
 {
-    
+    [self setMyDreamTime];
 }
 - (IBAction)doOKButton:(id)sender {
-    
+    [self.timeTF resignFirstResponder];
+    [self.minuteTF resignFirstResponder];
+    _performModel.planDream = [NSString stringWithFormat:@"%ld",(long)dreamTime];
+    _performModel.planRest = [NSString stringWithFormat:@"%ld", (long)restTime];
+    _performModel.realDream = [NSString stringWithFormat:@"%ld",(long)dreamTime];
+    _performModel.realRest = [NSString stringWithFormat:@"%ld", (long)restTime];
+    _performModel.edit = YES;
+    [[SQLManager shareUserInfo] updatePerform:_performModel];
+    self.hidden = YES;
+    if (self.editFinished) {
+        self.editFinished();
+    }
 }
 - (IBAction)doCancelBut:(id)sender {
     [self.timeTF resignFirstResponder];
+    [self.minuteTF resignFirstResponder];
     self.hidden = YES;
 }
 
@@ -158,6 +188,12 @@
 - (void)textFieldDidEndEditing:(MyTextField *)textField
 {
     [textField removeNotifications];
+    [self setMyDreamTime];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return YES;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

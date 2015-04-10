@@ -11,11 +11,14 @@
 #import "PerformModel.h"
 
 @class DrawBut;
-
+typedef void (^EditFinished) (void);
 @interface EditTime : UIView
 <UITextFieldDelegate>
 {
     PerformModel *_performModel;
+    NSInteger   dreamTime;
+    NSInteger   restTime;
+    NSInteger   state;
 }
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet MyTextField *timeTF;
@@ -27,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet DrawBut *restBut;
 @property (weak, nonatomic) IBOutlet DrawBut *wasteBut;
 @property (nonatomic, strong) PerformModel *performModel;
+@property (nonatomic, copy) EditFinished    editFinished;
 @end
 
 @interface DrawBut : UIButton
