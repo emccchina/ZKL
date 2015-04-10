@@ -259,7 +259,8 @@
     editTime.hidden = NO;
     editTime.performModel = doingPlan.doingPerform;
     editTime.editFinished = ^(void){
-        [self setPerform];
+        stateDream = 1;
+        [self animationTimerDidFired:nil];
     };
 }
 
@@ -269,7 +270,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"CalendarVC" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CalendarVC"];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 

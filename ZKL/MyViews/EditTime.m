@@ -89,8 +89,8 @@
 {
     _performModel = performModel;
     self.dateLabel.text = _performModel.performCode;
-    dreamTime = [_performModel.planDream integerValue];
-    restTime = [_performModel.planRest integerValue];
+    dreamTime = [_performModel.realDream integerValue];
+    restTime = [_performModel.realRest integerValue];
     self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)(dreamTime/60)];
     self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)(dreamTime%60)];
 }
@@ -104,15 +104,15 @@
             self.dreamBut.selected = YES;
             self.restBut.selected = NO;
             self.wasteBut.selected = NO;
-            self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planDream integerValue]/60)];
-            self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planDream integerValue]%60)];
+            self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.realDream integerValue]/60)];
+            self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.realDream integerValue]%60)];
         }break;
         case 1:{
             self.dreamBut.selected = NO;
             self.restBut.selected = YES;
             self.wasteBut.selected = NO;
-            self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planRest integerValue]/60)];
-            self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.planRest integerValue]%60)];
+            self.timeTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.realRest integerValue]/60)];
+            self.minuteTF.text = [NSString stringWithFormat:@"%ld",(long)([_performModel.realRest integerValue]%60)];
         }break;
         case 2:{
             self.dreamBut.selected = NO;
@@ -155,8 +155,8 @@
 - (IBAction)doOKButton:(id)sender {
     [self.timeTF resignFirstResponder];
     [self.minuteTF resignFirstResponder];
-    _performModel.planDream = [NSString stringWithFormat:@"%ld",(long)dreamTime];
-    _performModel.planRest = [NSString stringWithFormat:@"%ld", (long)restTime];
+//    _performModel.planDream = [NSString stringWithFormat:@"%ld",(long)dreamTime];
+//    _performModel.planRest = [NSString stringWithFormat:@"%ld", (long)restTime];
     _performModel.realDream = [NSString stringWithFormat:@"%ld",(long)dreamTime];
     _performModel.realRest = [NSString stringWithFormat:@"%ld", (long)restTime];
     _performModel.edit = YES;
