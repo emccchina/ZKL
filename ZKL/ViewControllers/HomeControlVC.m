@@ -44,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    [self showBackItem];
+    [self showBackItem];
     
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
@@ -124,7 +124,8 @@
 
 - (void)back
 {
-    [Utities presentLoginVC:self];
+    [self presentCalendarVC];
+//    [Utities presentLoginVC:self];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
