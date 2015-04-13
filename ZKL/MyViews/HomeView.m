@@ -19,7 +19,11 @@
 - (IBAction)doButton:(id)sender {
     ImageButton *button = (ImageButton*)sender;
     doButtonType = button.tag - 1;
-    [self doCloseButton:nil];
+//    [self doCloseButton:nil];
+    [self selfAlpha:0];
+    if (self.doBut) {
+        self.doBut(doButtonType);
+    }
 }
 
 - (void)startAnimationHV
@@ -90,9 +94,9 @@
     NSLog(@"finished  %@", anim.name);
     if (willHidden) {
         [self selfAlpha:0];
-        if (self.doBut) {
-            self.doBut(doButtonType);
-        }
+//        if (self.doBut) {
+//            self.doBut(doButtonType);
+//        }
     }
 }
 

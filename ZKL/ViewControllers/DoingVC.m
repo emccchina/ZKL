@@ -36,7 +36,7 @@
     if (!model.finished) {
         self.showView.title = model.title;
         self.showView.dio = @"岁月是把杀猪刀";
-        self.showView.progress = [model.finishedTime floatValue]/[model.totalHour floatValue];
+        self.showView.progress = [model.totalHour floatValue]?[model.finishedTime floatValue]/[model.totalHour floatValue]:0;
         self.showView.totalTime = [model.totalHour floatValue]/60;
         self.showView.buttom = YES;
     }else{

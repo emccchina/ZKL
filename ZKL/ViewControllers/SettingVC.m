@@ -102,7 +102,7 @@ static NSString *settingCell = @"settingCell";
         UILabel *title = (UILabel*)[cell viewWithTag:11];
         title.text = arr[1];
         return cell;
-    }
+    } 
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
