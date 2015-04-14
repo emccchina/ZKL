@@ -53,9 +53,14 @@
     CGContextDrawPath(content, kCGPathFill);
     if (!humanView) {
         humanView = [[UIImageView alloc] initWithFrame:CGRectMake(20, spaceH*2+10, 74, 74)];
-        humanView.image = [UIImage imageNamed:@"human2"];
+        [humanView setContentMode:UIViewContentModeScaleAspectFill];
+        NSArray *arr = [NSArray arrayWithObjects:[UIImage imageNamed:@"010"],[UIImage imageNamed:@"011"], nil];
+        humanView.animationImages = arr;
+        humanView.animationDuration = 0.3;
+        [humanView startAnimating];
         [self addSubview:humanView];
     }
+    
     [self.title drawInRect:CGRectMake(spaceW*2, spaceH-(sizeTitle.height)/2, sizeTitle.width, sizeTitle.height) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:font3}];
     UIFont *font4 = [UIFont fontWithName:kFontName size:13];
     [@"时间比例" drawInRect:CGRectMake(width/2 - 50, spaceH*2-3, 150, 40) withAttributes:@{NSForegroundColorAttributeName:kBlackColor, NSFontAttributeName:font4}];

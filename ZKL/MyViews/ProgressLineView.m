@@ -29,7 +29,7 @@
     CGContextAddRect(content, CGRectMake(0, height-spaceH*spaceMuli, width, 3));
     CGContextDrawPath(content, kCGPathFill);
     
-    NSArray *points = @[@(width/2 - spaceH*3),@(width/2 + spaceH*3),@(width -  spaceH)];
+    NSArray *points = @[@(width/3),@(width*2/3),@(width -  spaceH)];
     
     for (NSInteger i = 0; i < 3; i++) {
         CGFloat arcX = [points[i] floatValue];
@@ -81,8 +81,12 @@
         humanView = [[UIImageView alloc] init];
         [self addSubview:humanView];
     }
-    
-    humanView.image = [UIImage imageNamed:@"human1"];
+    NSArray *arr = [NSArray arrayWithObjects:[UIImage imageNamed:@"001"],[UIImage imageNamed:@"002"], nil];
+//    humanView.image = [UIImage imageNamed:@"human1"];
+    [humanView setContentMode:UIViewContentModeScaleAspectFill];
+    humanView.animationImages = arr;
+    humanView.animationDuration = 0.3;
+    [humanView startAnimating];
     humanView.frame = CGRectMake(self.progress*width*0.8, height-spaceH*spaceMuli-80, 74, 74);
     UIFont *font3 = [UIFont fontWithName:kFontName size:15];
     CGSize size = [Utities sizeWithUIFont:font3 string:self.title];
