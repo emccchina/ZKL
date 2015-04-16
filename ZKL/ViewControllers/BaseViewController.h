@@ -30,7 +30,7 @@
 - (void)doAlertViewTwo;
 
 - (id)parseResults:(id)resultResponds;
-
+- (void)back;
 
 //打开相机
 - (void)presentCameraVC;

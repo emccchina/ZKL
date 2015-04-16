@@ -41,5 +41,7 @@
 @property (nonatomic, assign) BOOL finished;
 @property (nonatomic, assign) BOOL edit;
 
+@property (nonatomic, assign) BOOL  upload;
+@property (nonatomic, strong) NSString *planIDServer;
 
 @end

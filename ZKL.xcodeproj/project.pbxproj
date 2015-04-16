@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5756F2E04C56C1857922024C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D45F144EA7FC0C69E98E14EF /* libPods.a */; };
-		F7289BB21AC131630044F64F /* 兰亭黑 GBK.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F7289BB11AC131630044F64F /* 兰亭黑 GBK.TTF */; };
 		F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59951A9D64B3006EC998 /* AddDreamVC.m */; };
 		F75C59991A9D95F7006EC998 /* WhiteBlackTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */; };
+		F76B08FC1ADDFE1900DED1D0 /* 兰亭黑 GBK.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F76B08FB1ADDFE1900DED1D0 /* 兰亭黑 GBK.TTF */; };
 		F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */; };
 		F7ACCF221A71EF3300ABAA69 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7ACCF211A71EF3300ABAA69 /* HomeView.xib */; };
 		F7ACCF241A71FE7900ABAA69 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7ACCF231A71FE7900ABAA69 /* QuartzCore.framework */; };
@@ -113,11 +113,11 @@
 		173E3982BD6B614786560469 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C04D8267727ED642C92248FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D45F144EA7FC0C69E98E14EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7289BB11AC131630044F64F /* 兰亭黑 GBK.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "兰亭黑 GBK.TTF"; sourceTree = "<group>"; };
 		F75C59941A9D64B3006EC998 /* AddDreamVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDreamVC.h; sourceTree = "<group>"; };
 		F75C59951A9D64B3006EC998 /* AddDreamVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamVC.m; sourceTree = "<group>"; };
 		F75C59971A9D95F7006EC998 /* WhiteBlackTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteBlackTextFiled.h; sourceTree = "<group>"; };
 		F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteBlackTextFiled.m; sourceTree = "<group>"; };
+		F76B08FB1ADDFE1900DED1D0 /* 兰亭黑 GBK.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "兰亭黑 GBK.TTF"; sourceTree = "<group>"; };
 		F79F809A1A7F443000FDA3F9 /* ProgressRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressRectView.h; sourceTree = "<group>"; };
 		F79F809B1A7F443000FDA3F9 /* ProgressRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressRectView.m; sourceTree = "<group>"; };
 		F7ACCF211A71EF3300ABAA69 /* HomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 		F7D09D411A6E518000332331 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				F7289BB11AC131630044F64F /* 兰亭黑 GBK.TTF */,
+				F76B08FB1ADDFE1900DED1D0 /* 兰亭黑 GBK.TTF */,
 				F7EBB46D1ABBA59D00EFD10F /* RichStyleLabel */,
 				F7B167141AA1A9CE000B84D1 /* NSDate */,
 				F7D09D421A6E518000332331 /* aes */,
@@ -744,9 +744,9 @@
 				F7D164FE1AA00B1F0085F73B /* EditTime.xib in Resources */,
 				F7D09DEF1A6E518100332331 /* JHRefresh.bundle in Resources */,
 				F7AEF8841AC24218000A9142 /* PublicStoryboard.storyboard in Resources */,
-				F7289BB21AC131630044F64F /* 兰亭黑 GBK.TTF in Resources */,
 				F7BDC40C1AA05D92008A1BD0 /* CalendarVC.storyboard in Resources */,
 				F7F02E3C1ABA631F0095EA2E /* ChartView.xib in Resources */,
+				F76B08FC1ADDFE1900DED1D0 /* 兰亭黑 GBK.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self showBackItem];
+//    [self showBackItem];
     
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
@@ -71,10 +71,10 @@
     [self.dreamView setPressed:^(NSInteger type){
         switch (type) {
             case 0:
-//                if (![[UserInfo shareUserInfo] isLogin]) {
-//                    [Utities presentLoginVC:self];
-//                    break;
-//                }
+                if (![[UserInfo shareUserInfo] isLogin]) {
+                    [Utities presentLoginVC:self];
+                    break;
+                }
                 [self presentAddDreamVC];
                 break;
             case 1:{
@@ -191,6 +191,10 @@
 
 - (void)doRight:(UINavigationItem*)item
 {
+    if (![[UserInfo shareUserInfo] isLogin]) {
+        [Utities presentLoginVC:self];
+        return;
+    }
     [self performSegueWithIdentifier:@"SettingVC" sender:self];
     
 }

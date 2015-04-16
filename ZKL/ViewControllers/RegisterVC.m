@@ -57,7 +57,7 @@
     self.emailTF.hidden =self.typeVC;
     self.verifyTF.hidden =!self.typeVC;
     self.getVerifiBut.hidden =!self.typeVC;
-    self.agreeBut.hidden = self.typeVC;
+//    self.agreeBut.hidden = self.typeVC;
     [self.registerBut setTitle:(self.typeVC ? @"确定" : @"注册") forState:UIControlStateNormal];
 }
 
@@ -205,10 +205,10 @@
         [self showAlertView:@"密码不得少于六位"];
         return;
     }
-    if (!agree) {
-        [self showAlertView:@"请签署中艺易购协议协议"];
-        return;
-    }
+//    if (!agree) {
+//        [self showAlertView:@"请签署中艺易购协议协议"];
+//        return;
+//    }
     if  ([self.userNameTF.text isEqualToString:@""]||[self.emailTF.text isEqualToString:@""]|| [self.passwordTF.text isEqualToString:@""] || [self.passwordAgainTF.text isEqualToString:@""]){
         [self showAlertView:@"请完善信息!"];
         return;
@@ -229,9 +229,10 @@
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
         if (result) {
-            if (0==result[@"errorno"]) {
+            if (0==[result[@"errorno"] integerValue]) {
                 [self showAlertView:@"注册成功,请登录"];
                 registerSuccessuful = YES;
+                
             }else{
                 [self showAlertView:result[@"message"]];
             }
@@ -248,7 +249,7 @@
 - (void)doAlertView
 {
     if (registerSuccessuful) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self back];
     }
     
 }

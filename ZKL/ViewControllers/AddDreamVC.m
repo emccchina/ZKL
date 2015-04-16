@@ -150,6 +150,16 @@
         [self showAlertView:@"请输入完整信息!"];
         return;
     }
+    if ([UserInfo shareUserInfo].isLogin) {
+        [self requestForAddDream];
+    }else{
+        [self writeToDB];
+    }
+    
+}
+
+- (void)writeToDB
+{
     if (edit) {
         planModel.finished = YES;
         planModel.valid = NO;
@@ -168,6 +178,28 @@
     if ([[SQLManager shareUserInfo] writePlanModel:planModel]){
         [self back];
     }
+}
+
+- (void)requestForAddDream
+{
+    [self showIndicatorView:kNetworkConnecting];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@planaction!addNewPlan.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginDate",self.endTime.TF.text, @"endDate",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        [self dismissIndicatorView];
+        id result = [self parseResults:responseObject];
+        if (result) {
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+        [self showAlertView:kNetworkNotConnect];
+    }];
 }
 
 
