@@ -71,10 +71,10 @@
     [self.dreamView setPressed:^(NSInteger type){
         switch (type) {
             case 0:
-                if (![[UserInfo shareUserInfo] isLogin]) {
-                    [Utities presentLoginVC:self];
-                    break;
-                }
+//                if (![[UserInfo shareUserInfo] isLogin]) {
+//                    [Utities presentLoginVC:self];
+//                    break;
+//                }
                 [self presentAddDreamVC];
                 break;
             case 1:{
@@ -138,7 +138,63 @@
         [myTimer resumeTimerAfterTimeInterval:kTimerShundle];
     }
     [self setViewState:stateDream];
+    if ([[UserInfo shareUserInfo] isLogin]) {
+        [self synchronizeDreams];
+    }
+}
+
+- (void)synchronizeDreams
+{
+    NSArray *planModels = [[SQLManager shareUserInfo] uploadPlanModels];
+    for (PlanModel* model in planModels) {
+        [self requestForPlanModles:model];
+    }
     
+    NSArray *performModels = [[SQLManager shareUserInfo] uploadPerformModels];
+    for (PerformModel *model in performModels) {
+        [self requestForPerformModels:model];
+    }
+}
+//上传梦想
+- (void)requestForPlanModles:(PlanModel*)planModel
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@planaction!addNewPlan.action",kServerDomain];
+    NSString *titleHour = [NSString stringWithFormat:@"%ld",(long)[planModel.totalHour integerValue]/60];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title",titleHour, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        id result = [self parseResults:responseObject];
+        if (result[@"result"]) {
+            planModel.upload = YES;
+            planModel.planIDServer = result[@"result"][@"planCode"];
+            [[SQLManager shareUserInfo] writePlanModel:planModel];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+    }];
+}
+//上传每日计划
+- (void)requestForPerformModels:(PerformModel*)performModel
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@performaction!addPerform.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:performModel.planIDServer, @"planCode",performModel.performCode, @"dayString",performModel.planDream,@"planMinute",performModel.realDream, @"realPlanMinute",performModel.planRest,@"restMinute",performModel.realRest,@"realRestMinute",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        id result = [self parseResults:responseObject];
+        if (result[@"result"]) {
+            performModel.upload = YES;
+            performModel.planIDServer = result[@"result"][@"planCode"];
+            [[SQLManager shareUserInfo] writePerformModel:performModel];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+    }];
 }
 
 - (void)setViewState:(NSInteger)state

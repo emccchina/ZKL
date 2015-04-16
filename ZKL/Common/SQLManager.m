@@ -115,7 +115,11 @@
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = 0", kProgressTable, kUpload];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
-        [models addObject:[self performModelFromResult:provicesResult]];
+        PerformModel *model = [self performModelFromResult:provicesResult];
+        if ([model.performCode isEqualToString:[NSDate stringFromDate:[NSDate date]]]) {
+            continue;
+        }
+        [models addObject:model];
     }
     return models;
 }

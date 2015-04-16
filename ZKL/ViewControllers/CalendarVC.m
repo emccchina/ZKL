@@ -36,7 +36,29 @@
         [self.mySegment setSelectedSegmentIndex:1];
         [self showView:1];
     }];
-    
+    [self requestForMonthPlan:@"2015-04-01" toDate:@"2015-04-16"];
+}
+
+- (void)requestForMonthPlan:(NSString*)fromDate toDate:(NSString*)toDate
+{
+    [self showIndicatorView:kNetworkConnecting];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@planaction!getMonthPlan.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:fromDate,@"beginString",toDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        [self dismissIndicatorView];
+        id result = [self parseResults:responseObject];
+        if (result) {
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+        [self showAlertView:kNetworkNotConnect];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
