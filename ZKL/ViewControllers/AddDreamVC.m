@@ -151,8 +151,13 @@
         return;
     }
     if ([UserInfo shareUserInfo].isLogin) {
-        [self requestForAddDream];
+        if (edit) {
+            [self requestForEditDream];
+        }else{
+            [self requestForAddDream];
+        }
     }else{
+        planModel.upload = NO;
         [self writeToDB];
     }
     
@@ -186,14 +191,40 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!addNewPlan.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginDate",self.endTime.TF.text, @"endDate",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        [self dismissIndicatorView];
+        id result = [self parseResults:responseObject];
+        if (result[@"result"]) {
+            planModel.upload = YES;
+            planModel.planIDServer = result[@"result"][@"planCode"];
+            [self writeToDB];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+        [self showAlertView:kNetworkNotConnect];
+    }];
+}
+
+- (void)requestForEditDream
+{
+    [self showIndicatorView:kNetworkConnecting];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@planaction!updatePlan.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
         if (result) {
-            
+            planModel.upload = YES;
+            planModel.planIDServer = result[@"result"][@"planCode"];
+            [self writeToDB];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];

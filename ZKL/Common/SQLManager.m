@@ -84,6 +84,8 @@
     _myDoingPerform.editWaste = @"0";
     _myDoingPerform.performCode = [NSDate stringFromDate:[NSDate date]];
     _myDoingPerform.finished = NO;
+    _myDoingPerform.upload = NO;
+    _myDoingPerform.planIDServer = [self myDoingPlan].planIDServer;
     [self writePerformModel:_myDoingPerform];
     return _myDoingPerform;
 }
@@ -104,7 +106,69 @@
     return [NSArray array];
 }
 
+- (void)uploadPerformModel
+{
+    if (![db open]) {
+        return;
+    }
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = 0", kProgressTable, kUpload];
+    FMResultSet *provicesResult = [db executeQuery:sql];
+    while ([provicesResult next]) {
+        
+    }
 
+}
+
+- (void)uploadPlanModel
+{
+    if (![db open]) {
+        return;
+    }
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = 0 and %@=1", kDreamsTable, kUpload, kValid];
+    FMResultSet *provicesResult = [db executeQuery:sql];
+    while ([provicesResult next]) {
+        
+    }
+}
+
+- (PlanModel*)planModelFromResult:(FMResultSet*)provicesResult
+{
+    PlanModel *planModel = [[PlanModel alloc] init];
+    planModel.tableRowID = [provicesResult intForColumn:@"id"];
+    planModel.planid = [provicesResult stringForColumn:kCreateTime];
+    planModel.title = [provicesResult stringForColumn:kTitle];
+    planModel.beginDate = [provicesResult stringForColumn:kBeginTime];
+    planModel.endDate = [provicesResult stringForColumn:kEndTime];
+    planModel.totalHour = [provicesResult stringForColumn:kTotalTime];
+    planModel.dayTime = [provicesResult stringForColumn:kDayTime];
+    planModel.finished = [provicesResult intForColumn:kFinished];
+    planModel.finishedTime = [provicesResult stringForColumn:kFinishedTime];
+    planModel.restTime = [provicesResult stringForColumn:kRestTime];
+    planModel.upload = [provicesResult intForColumn:kUpload];
+    planModel.planIDServer = [provicesResult stringForColumn:kPlanIDServer];
+    return planModel;
+}
+
+- (PerformModel*)performModelFromResult:(FMResultSet*)provicesResult
+{
+    PerformModel *perforModelDate = [[PerformModel alloc] init];
+    perforModelDate.planId = [provicesResult stringForColumn:kCreateTime];
+    perforModelDate.planDream = [provicesResult stringForColumn:kPlanDream];
+    perforModelDate.planRest = [provicesResult stringForColumn:kPlanRest];
+    perforModelDate.planWaste = [provicesResult stringForColumn:kPlanWaste];
+    perforModelDate.realDream = [provicesResult stringForColumn:kRealDream];
+    perforModelDate.realRest = [provicesResult stringForColumn:kRealRest];
+    //        _myDoingPerform.realWaste = [provicesResult stringForColumn:kRealWaste];
+    perforModelDate.edit  = [provicesResult intForColumn:kEdit];
+    perforModelDate.editDream = [provicesResult stringForColumn:kEditDream];
+    perforModelDate.editRest = [provicesResult stringForColumn:kEditRest];
+    perforModelDate.editWaste = [provicesResult stringForColumn:kEditWaste];
+    perforModelDate.performCode = [provicesResult stringForColumn:kDate];
+    perforModelDate.finished = [provicesResult intForColumn:kFinished];
+    perforModelDate.upload = [provicesResult intForColumn:kUpload];
+    perforModelDate.planIDServer = [provicesResult stringForColumn:kPlanIDServer];
+    return perforModelDate;
+}
 
 - (PerformModel*)myDoingPerform:(NSString*)planId
 {//取出当天的计划
@@ -147,7 +211,7 @@
     if (![db open]) {
         return NO;
     }
-    NSString *string = [NSString stringWithFormat:@"insert into %@ (%@,%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%@','%@','%@','%@',%d,%d);", kProgressTable, kCreateTime,kDate, kPlanDream,kPlanRest,kPlanWaste,kRealDream,kRealRest,kRealWaste,kEditDream,kEditRest,kEditWaste,kEdit,kFinished,model.planId,model.performCode, model.planDream, model.planRest, model.planWaste, model.realDream, model.realRest, model.realWaste, model.editDream, model.editRest, model.editWaste, model.edit, model.finished];
+    NSString *string = [NSString stringWithFormat:@"insert into %@ (%@,%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%@','%@','%@','%@',%d,%d,%d,'%@');", kProgressTable, kCreateTime,kDate, kPlanDream,kPlanRest,kPlanWaste,kRealDream,kRealRest,kRealWaste,kEditDream,kEditRest,kEditWaste,kEdit,kFinished,kUpload,kPlanIDServer,model.planId,model.performCode, model.planDream, model.planRest, model.planWaste, model.realDream, model.realRest, model.realWaste, model.editDream, model.editRest, model.editWaste, model.edit, model.finished,model.upload,model.planIDServer];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPerform = model;
@@ -161,7 +225,7 @@
     if (![db open]) {
         return NO;
     }
-    NSString *string = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@) values ('%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d');", kDreamsTable, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid];
+    NSString *string = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d','%d','%@');", kDreamsTable, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid,kUpload,kPlanIDServer, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid,model.upload, model.planIDServer];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPlan = model;
@@ -184,7 +248,7 @@
     //    if (![self existPerform:model.planId performID:model.performCode]) {
     //        return;
     //    }
-    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@= ('%d'),%@= ('%d') where %@ = ('%@') and %@ = ('%@')", kProgressTable, kRealDream, model.realDream, kRealWaste, model.realWaste,kRealRest,model.realRest,kPlanDream,model.planDream,kPlanRest,model.planRest,kPlanWaste,model.planWaste,kEditDream,model.editDream,kEditRest,model.editRest,kEditWaste,model.editWaste, kFinished, model.finished,kEdit,model.edit, kDate,model.performCode, kCreateTime, model.planId];
+    NSString *string = [NSString stringWithFormat:@"update %@ set  %@ = %d, %@ = ('%@'), %@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@= ('%d'),%@= ('%d') where %@ = ('%@') and %@ = ('%@')", kProgressTable,kUpload,model.upload,kPlanIDServer,model.planIDServer, kRealDream, model.realDream, kRealWaste, model.realWaste,kRealRest,model.realRest,kPlanDream,model.planDream,kPlanRest,model.planRest,kPlanWaste,model.planWaste,kEditDream,model.editDream,kEditRest,model.editRest,kEditWaste,model.editWaste, kFinished, model.finished,kEdit,model.edit, kDate,model.performCode, kCreateTime, model.planId];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPerform = model;
@@ -256,6 +320,8 @@
         _myDoingPerform.editWaste = [provicesResult stringForColumn:kEditWaste];
         _myDoingPerform.performCode = [provicesResult stringForColumn:kDate];
         _myDoingPerform.finished = [provicesResult intForColumn:kFinished];
+        _myDoingPerform.upload = [provicesResult intForColumn:kUpload];
+        _myDoingPerform.planIDServer = [provicesResult stringForColumn:kPlanIDServer];
         return YES;
     }
     return NO;
@@ -267,21 +333,7 @@
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ('%@')", kProgressTable, kDate, dateString];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
-        PerformModel *perforModelDate = [[PerformModel alloc] init];
-        perforModelDate.planId = [provicesResult stringForColumn:kCreateTime];
-        perforModelDate.planDream = [provicesResult stringForColumn:kPlanDream];
-        perforModelDate.planRest = [provicesResult stringForColumn:kPlanRest];
-        perforModelDate.planWaste = [provicesResult stringForColumn:kPlanWaste];
-        perforModelDate.realDream = [provicesResult stringForColumn:kRealDream];
-        perforModelDate.realRest = [provicesResult stringForColumn:kRealRest];
-        //        _myDoingPerform.realWaste = [provicesResult stringForColumn:kRealWaste];
-        perforModelDate.edit  = [provicesResult intForColumn:kEdit];
-        perforModelDate.editDream = [provicesResult stringForColumn:kEditDream];
-        perforModelDate.editRest = [provicesResult stringForColumn:kEditRest];
-        perforModelDate.editWaste = [provicesResult stringForColumn:kEditWaste];
-        perforModelDate.performCode = [provicesResult stringForColumn:kDate];
-        perforModelDate.finished = [provicesResult intForColumn:kFinished];
-        return perforModelDate;
+        return [self performModelFromResult:provicesResult];
     }
     return nil;
 }
@@ -314,19 +366,7 @@
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = (SELECT MAX(id)  FROM dreamsTable)", kDreamsTable];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
-        if (!_myDoingPlan) {
-            _myDoingPlan = [[PlanModel alloc] init];
-        }
-        _myDoingPlan.tableRowID = [provicesResult intForColumn:@"id"];
-        _myDoingPlan.planid = [provicesResult stringForColumn:kCreateTime];
-        _myDoingPlan.title = [provicesResult stringForColumn:kTitle];
-        _myDoingPlan.beginDate = [provicesResult stringForColumn:kBeginTime];
-        _myDoingPlan.endDate = [provicesResult stringForColumn:kEndTime];
-        _myDoingPlan.totalHour = [provicesResult stringForColumn:kTotalTime];
-        _myDoingPlan.dayTime = [provicesResult stringForColumn:kDayTime];
-        _myDoingPlan.finished = [provicesResult intForColumn:kFinished];
-        _myDoingPlan.finishedTime = [provicesResult stringForColumn:kFinishedTime];
-        _myDoingPlan.restTime = [provicesResult stringForColumn:kRestTime];
+        _myDoingPlan = [self planModelFromResult:provicesResult];
         if (![self invauildPlan]) {
             return nil;
         }
@@ -344,18 +384,7 @@
     NSString *sql = [NSString stringWithFormat:@"select * from %@ where id < %ld and %@ = 1 and %@ = 1 order by id desc limit 1", kDreamsTable,(long)model.tableRowID, kFinished,kValid];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
-        PlanModel *planModel = [[PlanModel alloc] init];
-        planModel.tableRowID = [provicesResult intForColumn:@"id"];
-        planModel.planid = [provicesResult stringForColumn:kCreateTime];
-        planModel.title = [provicesResult stringForColumn:kTitle];
-        planModel.beginDate = [provicesResult stringForColumn:kBeginTime];
-        planModel.endDate = [provicesResult stringForColumn:kEndTime];
-        planModel.totalHour = [provicesResult stringForColumn:kTotalTime];
-        planModel.dayTime = [provicesResult stringForColumn:kDayTime];
-        planModel.finished = [provicesResult intForColumn:kFinished];
-        planModel.finishedTime = [provicesResult stringForColumn:kFinishedTime];
-        planModel.restTime = [provicesResult stringForColumn:kRestTime];
-        return planModel;
+        return [self planModelFromResult:provicesResult];
     }
     return nil;
 }
@@ -373,21 +402,7 @@
     NSString *sql = [NSString stringWithFormat:@"select * from %@ where %@ = ('%@')", kProgressTable, kCreateTime, plan.planid];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
-        PerformModel *perforModelDate = [[PerformModel alloc] init];
-        perforModelDate.planId = [provicesResult stringForColumn:kCreateTime];
-        perforModelDate.planDream = [provicesResult stringForColumn:kPlanDream];
-        perforModelDate.planRest = [provicesResult stringForColumn:kPlanRest];
-        perforModelDate.planWaste = [provicesResult stringForColumn:kPlanWaste];
-        perforModelDate.realDream = [provicesResult stringForColumn:kRealDream];
-        perforModelDate.realRest = [provicesResult stringForColumn:kRealRest];
-        //        _myDoingPerform.realWaste = [provicesResult stringForColumn:kRealWaste];
-        perforModelDate.edit  = [provicesResult intForColumn:kEdit];
-        perforModelDate.editDream = [provicesResult stringForColumn:kEditDream];
-        perforModelDate.editRest = [provicesResult stringForColumn:kEditRest];
-        perforModelDate.editWaste = [provicesResult stringForColumn:kEditWaste];
-        perforModelDate.performCode = [provicesResult stringForColumn:kDate];
-        perforModelDate.finished = [provicesResult intForColumn:kFinished];
-        [array addObject:perforModelDate];
+        [array addObject:[self performModelFromResult:provicesResult]];
     }
     return array;
 }

@@ -50,4 +50,8 @@
 - (NSInteger)cupsTotal;
 - (NSInteger)cupsMonth:(NSString*)month;
 - (PerformModel*)cupsWithDate:(NSDate*)date;
+
+- (void)uploadPlanModel;
+- (void)uploadPerformModel;
+
 @end
