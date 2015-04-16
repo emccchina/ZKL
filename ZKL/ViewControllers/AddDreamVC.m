@@ -48,7 +48,7 @@
 - (void)setTFValue
 {
     self.addTF.TF.text=[NSString stringWithFormat:@"%@",planModel.title];
-    self.needTimeTF.TF.text=[NSString stringWithFormat:@"%.1f",[planModel.totalHour floatValue]/60];
+    self.needTimeTF.TF.text=[NSString stringWithFormat:@"%.0f",[planModel.totalHour floatValue]/60];
     self.needTimeTF.type = kNumberType;
     self.timeEverydayTF.TF.text=[NSString stringWithFormat:@"%.1f",[planModel.dayTime floatValue]/60];
     self.beginTime.TF.text=[NSString stringWithFormat:@"%@",[NSDate stringFromDate:[NSDate date]]];

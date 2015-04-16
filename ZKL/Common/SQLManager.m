@@ -106,29 +106,32 @@
     return [NSArray array];
 }
 
-- (void)uploadPerformModel
+- (NSArray*)uploadPerformModels
 {
     if (![db open]) {
-        return;
+        return nil;
     }
+    NSMutableArray* models = [NSMutableArray array];
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = 0", kProgressTable, kUpload];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
-        
+        [models addObject:[self performModelFromResult:provicesResult]];
     }
-
+    return models;
 }
 
-- (void)uploadPlanModel
+- (NSArray*)uploadPlanModels
 {
     if (![db open]) {
-        return;
+        return nil;
     }
+    NSMutableArray *models = [NSMutableArray array];
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = 0 and %@=1", kDreamsTable, kUpload, kValid];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
-        
+        [models addObject:[self planModelFromResult:provicesResult]];
     }
+    return models;
 }
 
 - (PlanModel*)planModelFromResult:(FMResultSet*)provicesResult
