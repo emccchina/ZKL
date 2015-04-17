@@ -204,8 +204,8 @@
     if (![db open]) {
         return;
     }
-    NSString *dreams = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer primary key autoincrement,%@ text, %@ text, %@ text, %@ text, %@ text, %@ text, %@ integer, %@ text, %@ text,%@ integer,%@ integer,%@ text);", kDreamsTable, kCreateTime, kTitle,kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished, kFinishedTime,kRestTime, kValid, kUpload, kPlanIDServer];
-    NSString *progress = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer primary key autoincrement,%@ text, %@ integer, %@ text, %@ text, %@ text, %@ text, %@ text,%@ text,%@ text,%@ text,%@ text,%@ text, %@ integer,%@ integer, %@ text);", kProgressTable, kCreateTime,kEdit, kDate, kPlanDream, kPlanRest, kPlanWaste, kRealDream, kRealRest, kRealWaste,kEditDream,kEditRest,kEditWaste, kFinished, kUpload, kPlanIDServer];
+    NSString *dreams = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer,%@ text, %@ text, %@ text, %@ text, %@ text, %@ text, %@ integer, %@ text, %@ text,%@ integer,%@ integer,%@ text,PRIMARY KEY(%@));", kDreamsTable, kCreateTime, kTitle,kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished, kFinishedTime,kRestTime, kValid, kUpload, kPlanIDServer,kPlanIDServer];
+    NSString *progress = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer,%@ text, %@ integer, %@ text , %@ text, %@ text, %@ text, %@ text,%@ text,%@ text,%@ text,%@ text,%@ text, %@ integer,%@ integer, %@ text, PRIMARY KEY(%@));", kProgressTable, kCreateTime,kEdit, kDate, kPlanDream, kPlanRest, kPlanWaste, kRealDream, kRealRest, kRealWaste,kEditDream,kEditRest,kEditWaste, kFinished, kUpload, kPlanIDServer, kDate];
     NSString *sql = [NSString stringWithFormat:@"%@%@",dreams, progress];
     ;
     if (![db executeStatements:sql]) {
@@ -267,7 +267,7 @@
     }
     NSMutableString *sqlString = [NSMutableString string];
     for (PlanModel *model in models) {
-        NSString *string = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d',1,'%@');", kDreamsTable, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid,kUpload,kPlanIDServer, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid, model.planIDServer];
+        NSString *string = [NSString stringWithFormat:@"replace into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d',1);", kDreamsTable,kPlanIDServer, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid,kUpload,model.planIDServer, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid];
         [sqlString appendString:string];
     }
     
@@ -280,7 +280,7 @@
     }
     NSMutableString *sqlString = [NSMutableString string];
     for (PerformModel *model in models) {
-        NSString *string = [NSString stringWithFormat:@"replace into %@ (%@,%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%@','%@','%@','%@',%d,%d,1,'%@');", kProgressTable, kCreateTime,kDate, kPlanDream,kPlanRest,kPlanWaste,kRealDream,kRealRest,kRealWaste,kEditDream,kEditRest,kEditWaste,kEdit,kFinished,kUpload,kPlanIDServer,model.planId,model.performCode, model.planDream, model.planRest, model.planWaste, model.realDream, model.realRest, model.realWaste, model.editDream, model.editRest, model.editWaste, model.edit, model.finished,model.planIDServer];
+        NSString *string = [NSString stringWithFormat:@"replace into %@ (%@,%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@,%@,%@) values ('%@','%@','%@', '%@','%@','%@','%@','%@','%@','%@','%@','%@',%d,%d,1);", kProgressTable,kDate,kPlanIDServer, kCreateTime, kPlanDream,kPlanRest,kPlanWaste,kRealDream,kRealRest,kRealWaste,kEditDream,kEditRest,kEditWaste,kEdit,kFinished,kUpload,model.performCode,model.planIDServer,model.planId, model.planDream, model.planRest, model.planWaste, model.realDream, model.realRest, model.realWaste, model.editDream, model.editRest, model.editWaste, model.edit, model.finished];
         [sqlString appendString:string];
     }
     return [db executeStatements:sqlString];
