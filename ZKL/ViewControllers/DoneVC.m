@@ -14,9 +14,9 @@
 @interface DoneVC ()
 {
     HeaderCell *headerCell;
-    PlanModel   *planModel;
-    PlanModel   *nextPlanModel;
-    NSArray     *performs;
+    NSArray     *plans;
+    NSInteger   currentIndex;//正在显示的哪个
+    NSMutableArray  *performs;
 }
 @property (weak, nonatomic) IBOutlet UIView *headViewBG;
 @property (weak, nonatomic) IBOutlet DoneShowView *showView;
@@ -43,16 +43,6 @@
     headerCell.name.text = @"name";
     headerCell.diolague.text = @"jkj;i";
     [self requestForFinishedPlan];
-//    planModel = [[SQLManager shareUserInfo] doingPlan];
-//    if (!planModel.finished) {
-//        planModel = [[SQLManager shareUserInfo] lastPlan:planModel];
-//    }
-//    if (!planModel) {
-//        [self showAlertView:@"没有完成的梦想"];
-//        return;
-//    }
-//    performs = [[SQLManager shareUserInfo] performsByPlan:planModel];
-//    [self setShowViewState];
     
 }
 
@@ -63,13 +53,7 @@
 - (void)gestureSwipeUp:(UISwipeGestureRecognizer*)gesture
 {
 //    NSLog(@"%d", gesture.direction);
-    planModel = [[SQLManager shareUserInfo] lastPlan:planModel];
-    if (!planModel) {
-        [self showAlertView:@"没有完成的梦想了"];
-        return;
-    }
-    performs = [[SQLManager shareUserInfo] performsByPlan:planModel];
-    [self setShowViewState];
+    
 }
 
 - (void)requestForFinishedPlan
@@ -82,10 +66,44 @@
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        
+        id result = [self parseResults:responseObject];
+        if (result) {
+            [self parseForPlans:result[@"result"]];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+        [self showAlertView:kNetworkNotConnect];
+    }];
+}
+
+- (void)parseForPlans:(NSArray*)array
+{
+    plans = [MTLJSONAdapter modelsOfClass:[PlanModel class] fromJSONArray:array error:nil];
+    if (!plans.count) {
+        [self dismissIndicatorView];
+        return;
+    }
+    PlanModel *model = [plans objectAtIndex:0];
+    currentIndex = 0;
+    [self requestForPerform:@"142916846160500003"];
+}
+
+- (void)requestForPerform:(NSString*)planCode
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@performaction!getPerformByPlanCode.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",planCode,@"planCode", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
         if (result) {
-            
+            performs = result[@"result"];
+            [self setShowViewState];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];
@@ -96,15 +114,15 @@
 
 - (void)setShowViewState
 {
-    self.showView.title = planModel.title;
+    self.showView.title = ((PlanModel*)[plans objectAtIndex:currentIndex]).title;
     
     CGFloat dreams = 0;
     CGFloat rest = 0;
     NSMutableArray *points = [[NSMutableArray alloc] init];
-    for (PerformModel* model in performs) {
-        dreams += [model.realDream floatValue];
-        rest += [model.realDream floatValue];
-        [points addObject:[self dictionaryWithTime:[NSString stringWithFormat:@"%.1f",[model.realDream floatValue]/60] date:model.performCode]];
+    for (NSDictionary* model in performs) {
+        dreams += [model[@"realPlanMinute"] floatValue];
+        rest += [model[@"realRestMinute"] floatValue];
+        [points addObject:[self dictionaryWithTime:[NSString stringWithFormat:@"%.1f",[model[@"realPlanMinute"] floatValue]/60] date:model[@"theDay"]]];
     }
     
     self.showView.dreamTime = dreams/24/60;

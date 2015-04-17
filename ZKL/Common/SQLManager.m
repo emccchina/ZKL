@@ -267,7 +267,7 @@
     }
     NSMutableString *sqlString = [NSMutableString string];
     for (PlanModel *model in models) {
-        NSString *string = [NSString stringWithFormat:@"replace into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d',1);", kDreamsTable,kPlanIDServer, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid,kUpload,model.planIDServer, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid];
+        NSString *string = [NSString stringWithFormat:@"replace into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%d','%@','%@',1,1);", kDreamsTable,kPlanIDServer, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid,kUpload,model.planIDServer, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime];
         [sqlString appendString:string];
     }
     

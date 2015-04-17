@@ -165,8 +165,9 @@
         CGContextClosePath(content);
         CGContextDrawPath(content, kCGPathFill);
     }
-    
-    for (int i = 0; i < self.points.count; i++) {
+    NSInteger countsPointShow = (self.points.count < 5) ? self.points.count : 5;
+    NSInteger pointsSpace = self.points.count / 5;
+    for (int i = 0; i < self.points; i++) {
         NSDictionary *dict = self.points[i];
         CGFloat time = [dict[kTime] floatValue];
         CGFloat x = chatX*i +width/2-60+chatX/2;

@@ -17,22 +17,14 @@
 
 + (NSDictionary*)JSONKeyPathsByPropertyKey
 {
-    return @{@"planid":@"",
-             @"planCode":@"",
-             @"usercode":@"",
-             @"superCode":@"",
-             @"frontCode":@"",
-             @"title":@"",
-             @"content":@"",
-             @"beginDate":@"",
-             @"endDate":@"",
-             @"totalHour":@"",
-             @"unableMinute":@"",
-             @"planMinute":@"",
-             @"dayCount":@"",
-             @"priority":@"",
-             @"tag":@"",
-             @"performModels":@""
+    return @{
+             @"planIDServer":@"planCode",
+             @"title":@"title",
+             @"beginDate":@"beginDate",
+             @"endDate":@"endDate",
+             @"totalHour":@"planMinute",
+             @"unableMinute":@"unableMinute",
+             @"dayCount":@"dayCount"
              };
 }
 
