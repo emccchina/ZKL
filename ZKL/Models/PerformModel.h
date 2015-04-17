@@ -21,6 +21,7 @@
     NSString *_editDream;
     NSString *_editRest;
     NSString *_editWaste;
+    BOOL        _finished;
 }
 
 @property (nonatomic, strong) NSString *planId;

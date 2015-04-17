@@ -30,13 +30,25 @@
         chartView = (ChartView*)[Utities viewAddContraintsParentView:self.view subNibName:@"ChartView"];
     }
     [self showView:0];
+    if ([[UserInfo shareUserInfo] isLogin]) {
+        [self requestForMonthPlan:self.calendarView.showFirstDate toDate:self.calendarView.showLastDate];
+    }
     [self.calendarView setDoOneDay:^(DayButton *button){
         chartView.dateString = [NSDate stringFromDate:button.date];
         chartView.model = button.performModel;
         [self.mySegment setSelectedSegmentIndex:1];
         [self showView:1];
     }];
-    [self requestForMonthPlan:@"2015-04-01" toDate:@"2015-04-16"];
+    [self.calendarView setChangeMonth:^(NSInteger type){
+        if ([[UserInfo shareUserInfo] isLogin]) {
+            [self requestForMonthPlan:self.calendarView.showFirstDate toDate:self.calendarView.showLastDate];
+        }
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)requestForMonthPlan:(NSString*)fromDate toDate:(NSString*)toDate
@@ -52,7 +64,7 @@
         [self dismissIndicatorView];
         id result = [self parseResults:responseObject];
         if (result) {
-            
+            [self pareseForPerformModel:result[@"result"]];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];
@@ -61,11 +73,13 @@
     }];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)pareseForPerformModel:(NSArray*)models
 {
-    [super viewWillAppear:animated];
-    
+    NSArray *perfromModels = [MTLJSONAdapter modelsOfClass:[PerformModel class] fromJSONArray:models error:nil];
+    [[SQLManager shareUserInfo] replacePerformModels:perfromModels];
+    [self.calendarView setNeedsDisplay];
 }
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];

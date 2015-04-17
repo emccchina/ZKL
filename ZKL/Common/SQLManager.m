@@ -152,6 +152,7 @@
     planModel.finishedTime = [provicesResult stringForColumn:kFinishedTime];
     planModel.restTime = [provicesResult stringForColumn:kRestTime];
     planModel.upload = [provicesResult intForColumn:kUpload];
+    planModel.valid = [provicesResult intForColumn:kValid];
     planModel.planIDServer = [provicesResult stringForColumn:kPlanIDServer];
     return planModel;
 }
@@ -252,19 +253,42 @@
     if (![db open]) {
         return;
     }
-    //    if (![self existPerform:model.planId performID:model.performCode]) {
-    //        return;
-    //    }
-    NSString *string = [NSString stringWithFormat:@"update %@ set  %@ = %d, %@ = ('%@'), %@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@= ('%d'),%@= ('%d') where %@ = ('%@') and %@ = ('%@')", kProgressTable,kUpload,model.upload,kPlanIDServer,model.planIDServer, kRealDream, model.realDream, kRealWaste, model.realWaste,kRealRest,model.realRest,kPlanDream,model.planDream,kPlanRest,model.planRest,kPlanWaste,model.planWaste,kEditDream,model.editDream,kEditRest,model.editRest,kEditWaste,model.editWaste, kFinished, model.finished,kEdit,model.edit, kDate,model.performCode, kCreateTime, model.planId];
+    NSString *string = [NSString stringWithFormat:@"update %@ set  %@ = %d, %@ = ('%@'), %@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@ = ('%@'),%@= ('%d'),%@= ('%d'),%@=%d where %@ = ('%@') and %@ = ('%@')", kProgressTable,kUpload,model.upload,kPlanIDServer,model.planIDServer, kRealDream, model.realDream, kRealWaste, model.realWaste,kRealRest,model.realRest,kPlanDream,model.planDream,kPlanRest,model.planRest,kPlanWaste,model.planWaste,kEditDream,model.editDream,kEditRest,model.editRest,kEditWaste,model.editWaste, kFinished, model.finished,kEdit,model.edit,kUpload,model.upload, kDate,model.performCode, kCreateTime, model.planId];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPerform = model;
     }
 }
 
+- (BOOL)replacePlanModels:(NSArray*)models
+{
+    if (![db open]) {
+        return NO;
+    }
+    NSMutableString *sqlString = [NSMutableString string];
+    for (PlanModel *model in models) {
+        NSString *string = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d',1,'%@');", kDreamsTable, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid,kUpload,kPlanIDServer, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid, model.planIDServer];
+        [sqlString appendString:string];
+    }
+    
+    return [db executeStatements:sqlString];
+}
+- (BOOL)replacePerformModels:(NSArray*)models
+{
+    if (![db open]) {
+        return NO;
+    }
+    NSMutableString *sqlString = [NSMutableString string];
+    for (PerformModel *model in models) {
+        NSString *string = [NSString stringWithFormat:@"replace into %@ (%@,%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%@','%@','%@','%@',%d,%d,1,'%@');", kProgressTable, kCreateTime,kDate, kPlanDream,kPlanRest,kPlanWaste,kRealDream,kRealRest,kRealWaste,kEditDream,kEditRest,kEditWaste,kEdit,kFinished,kUpload,kPlanIDServer,model.planId,model.performCode, model.planDream, model.planRest, model.planWaste, model.realDream, model.realRest, model.realWaste, model.editDream, model.editRest, model.editWaste, model.edit, model.finished,model.planIDServer];
+        [sqlString appendString:string];
+    }
+    return [db executeStatements:sqlString];
+}
+
 - (BOOL)existPlan:(NSString*)planID
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ('%@')", kDreamsTable, kCreateTime, planID];
+    NSString *sql = [NSString stringWithFormat:@"SELECT Count(*) FROM %@ WHERE %@ = ('%@')", kDreamsTable, kCreateTime, planID];
     return [db executeStatements:sql];
 }
 
@@ -273,10 +297,7 @@
     if (![db open]) {
         return;
     }
-    //    if (![self existPlan:planModel.planid]) {
-    //        return;
-    //    }
-    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@=('%d') where %@ = ('%@')", kDreamsTable, kFinishedTime, planModel.finishedTime,kFinished, planModel.finished, kCreateTime, planModel.planid];
+    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@=('%d'),%@=('%d') where %@ = ('%@')", kDreamsTable, kFinishedTime, planModel.finishedTime,kFinished, planModel.finished,kUpload, planModel.upload, kCreateTime, planModel.planid];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPlan = planModel;
@@ -288,9 +309,6 @@
     if (![db open]) {
         return NO;
     }
-    //    if (![self existPlan:planModel.planid]) {
-    //        return;
-    //    }
     NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%d') where %@ = ('%@')", kDreamsTable, kValid, model.valid, kCreateTime, model.planid];
     return [db executeStatements:string];
     
@@ -359,7 +377,7 @@
     if (![db open]) {
         return 0;
     }
-    NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE %@ like '%%%@%%'", kProgressTable,kDate, month];
+    NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE %@ like '%%%@%%' and %@=1", kProgressTable,kDate, month,kFinished];
     return  [db intForQuery:sql];
     
 }

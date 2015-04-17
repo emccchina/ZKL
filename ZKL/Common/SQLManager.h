@@ -54,4 +54,7 @@
 - (NSArray*)uploadPlanModels;
 - (NSArray*)uploadPerformModels;
 
+- (BOOL)replacePlanModels:(NSArray*)models;
+- (BOOL)replacePerformModels:(NSArray*)models;
+
 @end

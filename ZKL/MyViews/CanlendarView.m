@@ -13,6 +13,8 @@
 {
     NSDate      *currentDate;
     NSDate      *showDate;
+    NSInteger   items;
+    NSInteger   numRows;
 }
 @property (strong, nonatomic) NSCalendar *calendar;
 
@@ -29,10 +31,23 @@
     currentDate = [NSDate date];
     showDate = [[NSDate date] firstDayOfTheMonth];
 //    self.userInteractionEnabled = YES;
+    self.showFirstDate = [NSDate stringFromDate:[self dateAtItem:0]];
+    self.showLastDate = [NSDate stringFromDate:[NSDate date]];
+    [self setItemsAndNumRows];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+
+}
+
+- (void)setItemsAndNumRows
+{
+    NSInteger weekDay = [showDate weekDay];
+    items =  weekDay + [NSDate numberOfDaysInMonthForDate:showDate];
+    numRows = (items/7+ (items%7?1:0));
+    self.showFirstDate = [NSDate stringFromDate:[self dateAtItem:0]];
+    self.showLastDate = [NSDate stringFromDate:[self dateAtItem:numRows*7-1]];
 
 }
 
@@ -42,8 +57,7 @@
     NSArray *arr = @[@"doPreYear:",@"doNextYear:",@"doPreMonth:",@"doNextMonth:"];
     
     //计算有多少天
-    NSInteger weekDay = [showDate weekDay];
-    NSInteger items =  weekDay + [NSDate numberOfDaysInMonthForDate:showDate];
+    
     
     CGFloat width = CGRectGetWidth(rect);
     CGFloat height = CGRectGetHeight(rect);
@@ -94,7 +108,7 @@
     CGSize sizeMonth = [Utities sizeWithUIFont:font string:month];
     [month drawInRect:CGRectMake(xmargin*6-sizeMonth.width/2, ymargin, sizeMonth.width, arrowSize*2) withAttributes:@{NSForegroundColorAttributeName:kArrowsColor, NSFontAttributeName:font}];
 //......................
-    NSInteger numRows = (items/7+ (items%7?1:0));//[self numRows];
+    //[self numRows];
     CGContextSetAllowsAntialiasing(context, NO);
     
     CGFloat y = xmargin;
@@ -146,6 +160,7 @@
         DayButton *day = [[DayButton alloc] initWithFrame:CGRectMake((i%7)*dayHeight, (i/7)*dayHeight+y, dayHeight, dayHeight)];
         [day setshowMonth:showDate showDay:[self dateAtItem:i]];
         [self addSubview:day];
+        
         [day addTarget:self action:@selector(doDayButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -207,25 +222,41 @@
 - (void)doPreYear:(id)sender
 {
     showDate = [showDate preYear];
+    [self setItemsAndNumRows];
     [self setNeedsDisplay];
+    if (self.changeMonth) {
+        self.changeMonth(2);
+    }
 }
 
 - (void)doNextYear:(id)sender
 {
     showDate = [showDate nextYear];
+    [self setItemsAndNumRows];
     [self setNeedsDisplay];
+    if (self.changeMonth) {
+        self.changeMonth(3);
+    }
 }
 
 - (void)doPreMonth:(id)sender
 {
     showDate = [showDate preMonth];
+    [self setItemsAndNumRows];
     [self setNeedsDisplay];
+    if (self.changeMonth) {
+        self.changeMonth(0);
+    }
 }
 
 - (void)doNextMonth:(id)sender
 {
     showDate = [showDate nextMonth];
+    [self setItemsAndNumRows];
     [self setNeedsDisplay];
+    if (self.changeMonth) {
+        self.changeMonth(1);
+    }
 }
 
 - (void)doDayButton:(DayButton*)button

@@ -12,23 +12,28 @@
 
 + (NSDictionary*)JSONKeyPathsByPropertyKey
 {
-    return @{@"performCode":@"performCode",
-             @"userCode":@"userCode",
-             @"planCode":@"planCode",
-             @"performName":@"performName",
-             @"planMinute":@"planMinute",
-             @"realPlanMinute":@"realPlanMinute",
-             @"restMinute":@"restMinute",
-             @"realRestMinute":@"realRestMinute",
-             @"wasteMinute":@"wasteMinute",
-             @"theDay":@"theDay",
-             @"timeLine":@"timeLine",
-             @"timeSwitch":@"timeSwitch",
-             @"performID":@"id",
-             @"createTime":@"createTime",
-             @"lastUpdateTime":@"lastUpdateTime",
-             @"viewState":@"viewState"
+    return @{
+             @"planIDServer":@"planCode",
+             @"planName":@"performName",
+             @"performCode":@"theDay",
+             @"planDream":@"planMinute",
+             @"realDream":@"realPlanMinute",
+             @"planRest":@"restMinute",
+             @"realRest":@"realRestMinute"
              };
+}
+
+- (void)setFinished:(BOOL)finished
+{
+    _finished = finished;
+}
+
+- (BOOL)finished
+{
+    if (!self.realDream || !self.planDream || ![self.planDream floatValue]) {
+        return NO;
+    }
+    return ([self.realDream floatValue]/[self.planDream floatValue] < 1) ? NO : YES;
 }
 
 - (void)setRealDream:(NSString *)realDream

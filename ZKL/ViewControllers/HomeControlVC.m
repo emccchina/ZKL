@@ -104,7 +104,6 @@
         doingPlan.finishedTime = [NSString stringWithFormat:@"%ld",(long)[doingPlan.finishedTime floatValue]+kTimerSpace1];
     }
     if ([perform.realDream integerValue] >= [perform.planDream integerValue]) {
-        perform.finished = YES;
         if (!reminder) {
             [self showAlertView:[NSString stringWithFormat:@"%@\n今日已完成",doingPlan.title]];
             if (doingPlan.lastDay) {
@@ -170,7 +169,7 @@
         if (result[@"result"]) {
             planModel.upload = YES;
             planModel.planIDServer = result[@"result"][@"planCode"];
-            [[SQLManager shareUserInfo] writePlanModel:planModel];
+            [[SQLManager shareUserInfo] updatePlan:planModel];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];
@@ -189,8 +188,7 @@
         id result = [self parseResults:responseObject];
         if (result[@"result"]) {
             performModel.upload = YES;
-            performModel.planIDServer = result[@"result"][@"planCode"];
-            [[SQLManager shareUserInfo] writePerformModel:performModel];
+            [[SQLManager shareUserInfo] updatePerform:performModel];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];
