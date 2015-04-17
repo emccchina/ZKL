@@ -140,19 +140,31 @@
     if ([[UserInfo shareUserInfo] isLogin]) {
         [self synchronizeDreams];
     }
+    if (!doingPlan) {
+        
+    }
 }
 
 - (void)synchronizeDreams
 {
     NSArray *planModels = [[SQLManager shareUserInfo] uploadPlanModels];
     for (PlanModel* model in planModels) {
-        [self requestForPlanModles:model];
+        if (model.planIDServer) {
+            [self requestForEditDream:model];
+        }else{
+            [self requestForPlanModles:model];
+        }
     }
     
     NSArray *performModels = [[SQLManager shareUserInfo] uploadPerformModels];
     for (PerformModel *model in performModels) {
         [self requestForPerformModels:model];
     }
+}
+//获取今日梦想
+- (void)requestForDoingDreams
+{
+    
 }
 //上传梦想
 - (void)requestForPlanModles:(PlanModel*)planModel
@@ -173,6 +185,30 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];
+    }];
+}
+//上传已经修改的梦想
+- (void)requestForEditDream:(PlanModel*)planModel
+{
+    [self showIndicatorView:kNetworkConnecting];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@planaction!updatePlan.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title",planModel.totalHour, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        [self dismissIndicatorView];
+        id result = [self parseResults:responseObject];
+        if (result) {
+            planModel.upload = YES;
+            planModel.planIDServer = result[@"result"][@"planCode"];
+            [[SQLManager shareUserInfo] updatePlan:planModel];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+        [self showAlertView:kNetworkNotConnect];
     }];
 }
 //上传每日计划

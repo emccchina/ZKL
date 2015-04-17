@@ -151,7 +151,7 @@
         return;
     }
     if ([UserInfo shareUserInfo].isLogin) {
-        if (edit) {
+        if (edit && planModel.planIDServer) {
             [self requestForEditDream];
         }else{
             [self requestForAddDream];

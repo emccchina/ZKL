@@ -58,11 +58,11 @@
 
 - (void)gestureSwipeDown:(UISwipeGestureRecognizer*)gesture
 {
-    NSLog(@"%d", gesture.direction);
+//    NSLog(@"%d", gesture.direction);
 }
 - (void)gestureSwipeUp:(UISwipeGestureRecognizer*)gesture
 {
-    NSLog(@"%d", gesture.direction);
+//    NSLog(@"%d", gesture.direction);
     planModel = [[SQLManager shareUserInfo] lastPlan:planModel];
     if (!planModel) {
         [self showAlertView:@"没有完成的梦想了"];
@@ -77,8 +77,8 @@
     [self showIndicatorView:kNetworkConnecting];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *url = [NSString stringWithFormat:@"%@planaction!getFinishedPlan.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"2015-04-09",@"beginString",[NSDate stringFromDate:[NSDate date]], @"endString",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSString *url = [NSString stringWithFormat:@"%@planaction!getAllFinishedPlan.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
