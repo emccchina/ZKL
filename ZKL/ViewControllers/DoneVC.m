@@ -49,11 +49,28 @@
 - (void)gestureSwipeDown:(UISwipeGestureRecognizer*)gesture
 {
 //    NSLog(@"%d", gesture.direction);
+    if (currentIndex == 0) {
+        [self showAlertView:@"没了"];
+        return;
+    }else{
+        currentIndex--;
+        PlanModel *model = [plans objectAtIndex:currentIndex];
+//        [self requestForPerform:model.planIDServer];
+        [self requestForPerform:@"142916846160500003"];
+    }
 }
 - (void)gestureSwipeUp:(UISwipeGestureRecognizer*)gesture
 {
 //    NSLog(@"%d", gesture.direction);
-    
+    if (currentIndex == plans.count-1) {
+        [self showAlertView:@"没了"];
+        return;
+    }else{
+        currentIndex++;
+        PlanModel *model = [plans objectAtIndex:currentIndex];
+//        [self requestForPerform:model.planIDServer];
+        [self requestForPerform:@"142916846160500003"];
+    }
 }
 
 - (void)requestForFinishedPlan
@@ -92,6 +109,7 @@
 
 - (void)requestForPerform:(NSString*)planCode
 {
+    NSLog(@"index is %d",currentIndex);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@performaction!getPerformByPlanCode.action",kServerDomain];
