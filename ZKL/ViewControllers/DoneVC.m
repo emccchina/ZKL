@@ -54,9 +54,7 @@
         return;
     }else{
         currentIndex--;
-        PlanModel *model = [plans objectAtIndex:currentIndex];
-//        [self requestForPerform:model.planIDServer];
-        [self requestForPerform:@"142916846160500003"];
+        [self planViewChange:currentIndex];
     }
 }
 - (void)gestureSwipeUp:(UISwipeGestureRecognizer*)gesture
@@ -67,9 +65,7 @@
         return;
     }else{
         currentIndex++;
-        PlanModel *model = [plans objectAtIndex:currentIndex];
-//        [self requestForPerform:model.planIDServer];
-        [self requestForPerform:@"142916846160500003"];
+        [self planViewChange:currentIndex];
     }
 }
 
@@ -102,14 +98,18 @@
         [self dismissIndicatorView];
         return;
     }
-    PlanModel *model = [plans objectAtIndex:0];
     currentIndex = 0;
-    [self requestForPerform:@"142916846160500003"];
+    [self planViewChange:currentIndex];
+}
+
+- (void)planViewChange:(NSInteger)index
+{
+    PlanModel *model = [plans objectAtIndex:0];
+    [self requestForPerform:model.planIDServer];
 }
 
 - (void)requestForPerform:(NSString*)planCode
 {
-    NSLog(@"index is %d",currentIndex);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@performaction!getPerformByPlanCode.action",kServerDomain];
