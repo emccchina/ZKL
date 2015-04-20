@@ -145,16 +145,30 @@
     if (!self.points || !self.points.count) {
         return;
     }
+    
+    NSMutableArray *arr = nil;
+    if (self.points.count < 6) {
+        arr = [NSMutableArray arrayWithArray:self.points];
+    }else{
+        CGFloat spacePoint = self.points.count / 5;
+        arr = [NSMutableArray array];
+        for (int i = 0; i < 5; i++) {
+            if (i*spacePoint < self.points.count) {
+                [arr addObject:[self.points objectAtIndex:i*spacePoint]];
+            }
+        }
+    }
+    
     CGContextSetLineWidth(content, 1);
-    CGFloat chatX = (width/2+40)/self.points.count;
+    CGFloat chatX = (width/2+40)/arr.count;
     NSDate *startTime = [NSDate date];
-    for (int i = 1; i < self.points.count; i++) {
-        NSDictionary *dict = self.points[i];
+    for (int i = 1; i < arr.count; i++) {
+        NSDictionary *dict = arr[i];
         CGFloat time = [dict[kTime] floatValue];
         CGFloat x = chatX*i +width/2-60+chatX/2;
         CGFloat y = height-spaceH*2 - time/spaceTime*spaceH*0.5;
         CGContextSetFillColorWithColor(content, [UIColor colorWithRed:47.0/255.0 green:194.0/255.0 blue:196.0/255.0 alpha:.5].CGColor);
-        NSDictionary *dictPre = self.points[i-1];
+        NSDictionary *dictPre = arr[i-1];
         CGFloat timePre = [dictPre[kTime] floatValue];
         CGFloat xPre = chatX*(i-1) +width/2-60+chatX/2;
         CGFloat yPre = height-spaceH*2 - timePre/spaceTime*spaceH*0.5;
@@ -166,8 +180,8 @@
         CGContextDrawPath(content, kCGPathFill);
     }
     
-    for (int i = 0; i < self.points.count; i++) {
-        NSDictionary *dict = self.points[i];
+    for (int i = 0; i < arr.count; i++) {
+        NSDictionary *dict = arr[i];
         CGFloat time = [dict[kTime] floatValue];
         CGFloat x = chatX*i +width/2-60+chatX/2;
         CGFloat y = height-spaceH*2 - time/spaceTime*spaceH*0.5;

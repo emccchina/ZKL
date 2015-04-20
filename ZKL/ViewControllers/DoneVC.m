@@ -120,13 +120,18 @@
     CGFloat rest = 0;
     NSMutableArray *points = [[NSMutableArray alloc] init];
     for (NSDictionary* model in performs) {
-        dreams += [model[@"realPlanMinute"] floatValue];
-        rest += [model[@"realRestMinute"] floatValue];
-        [points addObject:[self dictionaryWithTime:[NSString stringWithFormat:@"%.1f",[model[@"realPlanMinute"] floatValue]/60] date:model[@"theDay"]]];
+        dreams += [model[@"planMinute"] floatValue]/60;
+        rest += [model[@"restMinute"] floatValue]/60;
+        NSString *date = [model[@"theDay"] substringFromIndex:5];
+        [points addObject:[self dictionaryWithTime:[NSString stringWithFormat:@"%.1f",[model[@"planMinute"] floatValue]/60] date:date]];
     }
-    
-    self.showView.dreamTime = dreams/24/60;
-    self.showView.restTime = rest/24/60;
+    PlanModel *model = [plans objectAtIndex:currentIndex];
+    NSDate *beginDate = [NSDate dateFromString:model.beginDate];
+    NSDate  *endDate = [NSDate dateFromString:model.endDate];
+    NSTimeInterval space = [endDate timeIntervalSinceDate:beginDate];
+    NSInteger days = space/60/60/24;
+    self.showView.dreamTime = dreams/(61*24);
+    self.showView.restTime = rest/(61*24);
     self.showView.points = points;
     self.showView.backgroundColor = [UIColor clearColor];
 }
