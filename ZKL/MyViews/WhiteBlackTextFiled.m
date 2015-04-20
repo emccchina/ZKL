@@ -94,13 +94,13 @@
     
     [self.title drawAtPoint:CGPointMake(10, (height-titleSize.height)/2) withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:myFont}];
     
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
-    animation.fromValue = @(.1);
-    animation.toValue = @(1.0);
-    animation.springBounciness = 15;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.layer pop_addAnimation:animation forKey:@"ZoomInX"];
-    });
+//    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
+//    animation.fromValue = @(.1);
+//    animation.toValue = @(1.0);
+//    animation.springBounciness = 15;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.layer pop_addAnimation:animation forKey:@"ZoomInX"];
+//    });
     
     myTF.frame = CGRectMake(titleSize.width+space+15, 0, rect.size.width-titleSize.width-space-15, height);
 }

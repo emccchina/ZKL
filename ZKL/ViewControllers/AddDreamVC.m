@@ -102,13 +102,13 @@
         
     }];
     
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
-    animation.toValue = @(1.0);
-    animation.fromValue = @(.1);
-    animation.springBounciness = 15;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.OKButton.layer pop_addAnimation:animation forKey:@"ZoomInX"];
-    });
+//    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
+//    animation.toValue = @(1.0);
+//    animation.fromValue = @(.1);
+//    animation.springBounciness = 15;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.OKButton.layer pop_addAnimation:animation forKey:@"ZoomInX"];
+//    });
 }
 
 - (void)countDays
