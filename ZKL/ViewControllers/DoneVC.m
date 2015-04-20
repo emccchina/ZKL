@@ -148,8 +148,8 @@
     NSDate  *endDate = [NSDate dateFromString:model.endDate];
     NSTimeInterval space = [endDate timeIntervalSinceDate:beginDate];
     NSInteger days = space/60/60/24;
-    self.showView.dreamTime = dreams/(61*24);
-    self.showView.restTime = rest/(61*24);
+    self.showView.dreamTime = dreams/(days*24);
+    self.showView.restTime = rest/(days*24);
     self.showView.points = points;
     self.showView.backgroundColor = [UIColor clearColor];
 }
