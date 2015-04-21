@@ -64,7 +64,7 @@
     self.progreessLine.hidden = iPhone4;
     
     self.progreessLine.progress = 0;
-    self.progreessLine.title = @"岁月是把猪饲料";
+    self.progreessLine.title = @"梦想和灵魂总有一个在路上";
     self.progreessLine.backgroundColor = [UIColor clearColor];
     self.progreessLine.bottom = NO;
     
@@ -345,15 +345,19 @@
         return;
     }
     
-    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    EditTime *editTime = (EditTime*)[delegate.window viewWithTag:10];
+//    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    EditTime *editTime = (EditTime*)[self.view viewWithTag:10];
     if (!editTime) {
-        editTime = (EditTime*)[Utities viewAddContraintsParentView :delegate.window subNibName:@"EditTime"];
+        editTime = (EditTime*)[Utities viewAddContraintsParentView :self.view subNibName:@"EditTime"];
         editTime.tag = 10;
     }
     editTime.hidden = NO;
     editTime.performModel = doingPlan.doingPerform;
-    editTime.editFinished = ^(void){
+    editTime.editFinished = ^(BOOL success){
+        if (!success) {
+            [self showAlertView:@"时间超出"];
+            return;
+        }
         stateDream = 1;
         [self animationTimerDidFired:nil];
     };

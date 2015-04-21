@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet ProgressRectView *wasteProgress;
 @property (weak, nonatomic) IBOutlet RichStyleLabel *sortLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dioLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dioLabel2;
 @property (nonatomic, strong)PerformModel *model;
 @property (nonatomic, strong)NSString *dateString;
 @end

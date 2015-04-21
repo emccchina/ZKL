@@ -153,6 +153,14 @@
     [self setMyDreamTime];
 }
 - (IBAction)doOKButton:(id)sender {
+    
+    if (dreamTime > 60*24 || restTime > 24*60-dreamTime) {
+        if (self.editFinished) {
+            self.editFinished(NO);
+        }
+        return;
+    }
+    
     [self.timeTF resignFirstResponder];
     [self.minuteTF resignFirstResponder];
 //    _performModel.planDream = [NSString stringWithFormat:@"%ld",(long)dreamTime];
@@ -163,7 +171,7 @@
     [[SQLManager shareUserInfo] updatePerform:_performModel];
     self.hidden = YES;
     if (self.editFinished) {
-        self.editFinished();
+        self.editFinished(YES);
     }
 }
 - (IBAction)doCancelBut:(id)sender {

@@ -11,7 +11,7 @@
 #import "PerformModel.h"
 
 @class DrawBut;
-typedef void (^EditFinished) (void);
+typedef void (^EditFinished) (BOOL success);
 @interface EditTime : UIView
 <UITextFieldDelegate>
 {

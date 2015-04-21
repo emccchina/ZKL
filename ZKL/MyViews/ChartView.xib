@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="兰亭黑 GBK.TTF">
@@ -97,9 +97,15 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ya-MO-STe">
-                    <rect key="frame" x="0.0" y="420" width="600" height="170"/>
+                    <rect key="frame" x="0.0" y="420" width="520" height="20"/>
                     <fontDescription key="fontDescription" name="FZLTHK--GBK1-0" family="FZLanTingHei-R-GBK" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzt-Me-B3P">
+                    <rect key="frame" x="0.0" y="445" width="580" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -118,11 +124,13 @@
                 <constraint firstItem="GTR-Po-kpF" firstAttribute="centerY" secondItem="azr-QP-WH7" secondAttribute="centerY" id="I7L-fx-yKO"/>
                 <constraint firstItem="b1a-s8-gTa" firstAttribute="leading" secondItem="NeQ-Fg-hLY" secondAttribute="trailing" constant="10" id="M8d-Sm-51h"/>
                 <constraint firstItem="azr-QP-WH7" firstAttribute="leading" secondItem="GTR-Po-kpF" secondAttribute="trailing" constant="10" id="ONK-y5-UAZ"/>
+                <constraint firstItem="7ya-MO-STe" firstAttribute="leading" secondItem="lzt-Me-B3P" secondAttribute="leading" id="Ost-AE-dZu"/>
                 <constraint firstItem="60a-n0-eAm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="P45-nG-hBT"/>
-                <constraint firstAttribute="trailing" secondItem="7ya-MO-STe" secondAttribute="trailing" id="Wqi-N1-WM0"/>
+                <constraint firstAttribute="trailing" secondItem="7ya-MO-STe" secondAttribute="trailing" constant="80" id="Wqi-N1-WM0"/>
                 <constraint firstAttribute="trailing" secondItem="azr-QP-WH7" secondAttribute="trailing" constant="10" id="b5G-Dn-ILc"/>
                 <constraint firstItem="eWD-1B-YNG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="biW-ae-Op2"/>
                 <constraint firstItem="zZb-6r-aJX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="ctm-hP-Ajf"/>
+                <constraint firstAttribute="trailing" secondItem="lzt-Me-B3P" secondAttribute="trailing" constant="20" id="gTa-Pe-8jm"/>
                 <constraint firstItem="7ya-MO-STe" firstAttribute="top" secondItem="eWD-1B-YNG" secondAttribute="bottom" constant="20" id="gTc-93-dLF"/>
                 <constraint firstAttribute="trailing" secondItem="b1a-s8-gTa" secondAttribute="trailing" constant="10" id="hb4-zf-PIY"/>
                 <constraint firstItem="zZb-6r-aJX" firstAttribute="centerY" secondItem="t2a-hB-ZiA" secondAttribute="centerY" id="kgW-ib-s4l"/>
@@ -130,10 +138,17 @@
                 <constraint firstItem="7ya-MO-STe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uoM-fZ-a6y"/>
                 <constraint firstAttribute="trailing" secondItem="t2a-hB-ZiA" secondAttribute="trailing" constant="10" id="vMM-Nj-lAs"/>
                 <constraint firstItem="b1a-s8-gTa" firstAttribute="top" secondItem="azr-QP-WH7" secondAttribute="bottom" constant="10" id="y4p-Ul-xvi"/>
+                <constraint firstItem="lzt-Me-B3P" firstAttribute="top" secondItem="7ya-MO-STe" secondAttribute="bottom" constant="5" id="ziU-gP-csk"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="A6q-G7-tKp"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="dateLabel" destination="FLK-yg-4cC" id="5UV-lA-z43"/>
                 <outlet property="dioLabel" destination="7ya-MO-STe" id="8QI-ci-ZQM"/>
+                <outlet property="dioLabel2" destination="lzt-Me-B3P" id="5e1-nB-hEG"/>
                 <outlet property="dreamProgress" destination="azr-QP-WH7" id="9Sk-xv-5we"/>
                 <outlet property="restProgress" destination="b1a-s8-gTa" id="nzX-nQ-zas"/>
                 <outlet property="sortLabel" destination="eWD-1B-YNG" id="6Do-3d-fAY"/>

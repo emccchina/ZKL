@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -17,7 +17,7 @@
                     <items/>
                 </toolbar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwI-7c-1mO">
-                    <rect key="frame" x="285" y="561" width="30" height="34"/>
+                    <rect key="frame" x="285" y="551" width="30" height="34"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -93,7 +93,7 @@
                 <constraint firstAttribute="centerX" secondItem="OwI-7c-1mO" secondAttribute="centerX" id="fht-qh-m9a"/>
                 <constraint firstItem="TqR-As-fQR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="75" placeholder="YES" id="igd-Gn-y6z"/>
                 <constraint firstItem="2Nc-Dt-Ehb" firstAttribute="leading" secondItem="Hmq-Cd-mhE" secondAttribute="trailing" id="jB1-0f-NU0"/>
-                <constraint firstAttribute="bottom" secondItem="OwI-7c-1mO" secondAttribute="bottom" constant="5" id="jeQ-gS-KcG"/>
+                <constraint firstAttribute="bottom" secondItem="OwI-7c-1mO" secondAttribute="bottom" constant="15" id="jeQ-gS-KcG"/>
                 <constraint firstAttribute="trailing" secondItem="jPX-od-TKw" secondAttribute="trailing" id="rNS-mD-WIQ"/>
                 <constraint firstItem="jPX-od-TKw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tRu-o4-lYW"/>
                 <constraint firstAttribute="trailing" secondItem="2Nc-Dt-Ehb" secondAttribute="trailing" id="yMo-Vv-Qvs"/>

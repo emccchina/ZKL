@@ -69,7 +69,7 @@
 {
     
     [super viewWillAppear:animated];
-    [self.addTF setTitle:@"梦想标题"];
+    [self.addTF setTitle:@"梦想名称"];
     self.addTF.finished = ^(NSString* string){
         planModel.title=string;
     };
