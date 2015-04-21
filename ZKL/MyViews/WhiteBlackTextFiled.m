@@ -55,7 +55,7 @@
 - (void)doFinish
 {
     [myTF resignFirstResponder];
-    if (self.type == kDateType) {
+    if (self.type == kDateType || self.type == kNumberType) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat: @"yyyy-MM-dd"];
         NSString *destDate= [dateFormatter stringFromDate:picker.date];

@@ -149,7 +149,7 @@
 {
     NSArray *planModels = [[SQLManager shareUserInfo] uploadPlanModels];
     for (PlanModel* model in planModels) {
-        if (model.planIDServer) {
+        if (![model.planIDServer isEqualToString:@"(null)"]) {
             [self requestForEditDream:model];
         }else{
             [self requestForPlanModles:model];
@@ -194,7 +194,8 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!updatePlan.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title",planModel.totalHour, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode", nil];
+    NSString *total = [NSString stringWithFormat:@"%ld", (long)[planModel.totalHour integerValue]/60];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title", total, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
@@ -217,6 +218,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@performaction!addPerform.action",kServerDomain];
+    
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:performModel.planIDServer, @"planCode",performModel.performCode, @"dayString",performModel.planDream,@"planMinute",performModel.realDream, @"realPlanMinute",performModel.planRest,@"restMinute",performModel.realRest,@"realRestMinute",[UserInfo shareUserInfo].userCode, @"userCode", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {

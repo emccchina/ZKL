@@ -31,6 +31,7 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self showBackItem];
     user=[UserInfo shareUserInfo];
     if (!planModel) {
         edit = NO;
@@ -39,7 +40,7 @@
         edit = YES;
         [self setTFValue];
     }
-    [self showBackItem];
+    
     self.OKButton.layer.cornerRadius = 5;
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
     self.timeEverydayTF.editTF = NO;
@@ -76,12 +77,12 @@
     [self.needTimeTF setTitle:@"预计所需时间"];
     [self.needTimeTF setType:kNumberType];
     self.needTimeTF.finished = ^(NSString* string){
-
+        
     };
     [self.timeEverydayTF setTitle:@"每天所需时间"];
     [self.timeEverydayTF setType:kNumberType];
     self.timeEverydayTF.finished = ^(NSString* string){
-
+        
     };
     [self.beginTime setTitle:@"开始日期"];
     [self.beginTime setType:kDateType];
@@ -150,6 +151,7 @@
         [self showAlertView:@"请输入完整信息!"];
         return;
     }
+    
     if ([UserInfo shareUserInfo].isLogin) {
         if (edit && planModel.planIDServer) {
             [self requestForEditDream];
@@ -180,8 +182,11 @@
     planModel.valid = YES;
     planModel.planid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
     planModel.doingPerform = nil;
+    
     if ([[SQLManager shareUserInfo] writePlanModel:planModel]){
         [self back];
+    }else{
+        [self showAlertView:@"请重试"];
     }
 }
 

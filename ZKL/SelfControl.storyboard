@@ -46,6 +46,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBG" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-6D-ZbV">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQR-Wt-fg8" customClass="DreamTime">
                                 <rect key="frame" x="80" y="10" width="440" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,6 +154,7 @@
                             <constraint firstItem="TnZ-W7-pj5" firstAttribute="leading" secondItem="pPc-PS-HkJ" secondAttribute="leadingMargin" id="Jnw-Rd-5Nw"/>
                             <constraint firstItem="teN-mj-C3B" firstAttribute="height" secondItem="gJz-6E-5qw" secondAttribute="height" id="K54-LC-wEa"/>
                             <constraint firstAttribute="trailing" secondItem="bbQ-pQ-4nr" secondAttribute="trailing" id="NbY-L7-d97"/>
+                            <constraint firstItem="mn0-6D-ZbV" firstAttribute="top" secondItem="bDq-Y3-hXX" secondAttribute="bottom" id="S8Y-mO-wuH"/>
                             <constraint firstItem="teN-mj-C3B" firstAttribute="trailing" secondItem="euo-qH-pXU" secondAttribute="trailing" id="SIV-Sp-jSl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TnZ-W7-pj5" secondAttribute="trailing" id="TV6-Fj-QwR"/>
                             <constraint firstItem="RqS-0Q-1bZ" firstAttribute="centerY" secondItem="sQR-Wt-fg8" secondAttribute="centerY" constant="-11" id="U2y-eq-Rim"/>
@@ -159,12 +163,15 @@
                             <constraint firstItem="bbQ-pQ-4nr" firstAttribute="top" secondItem="gJz-6E-5qw" secondAttribute="bottom" constant="15" id="bqe-f3-PSg"/>
                             <constraint firstAttribute="bottom" secondItem="bbQ-pQ-4nr" secondAttribute="bottom" constant="50" id="dT4-n7-6Cr"/>
                             <constraint firstItem="gJz-6E-5qw" firstAttribute="top" secondItem="FtN-VX-LFd" secondAttribute="top" id="dga-xo-ax9"/>
+                            <constraint firstItem="nD6-mS-agK" firstAttribute="top" secondItem="mn0-6D-ZbV" secondAttribute="bottom" id="eR1-oT-gxZ"/>
                             <constraint firstItem="bbQ-pQ-4nr" firstAttribute="leading" secondItem="pPc-PS-HkJ" secondAttribute="leading" id="geJ-Bi-tMr"/>
+                            <constraint firstAttribute="trailing" secondItem="mn0-6D-ZbV" secondAttribute="trailing" id="grt-T9-eHZ"/>
                             <constraint firstItem="teN-mj-C3B" firstAttribute="leading" secondItem="gJz-6E-5qw" secondAttribute="leading" id="hNb-TL-F2r"/>
                             <constraint firstItem="sQR-Wt-fg8" firstAttribute="leading" secondItem="pPc-PS-HkJ" secondAttribute="leading" constant="80" id="hzQ-j5-423"/>
                             <constraint firstItem="dj4-sz-T0F" firstAttribute="centerY" secondItem="sQR-Wt-fg8" secondAttribute="centerY" constant="-11" id="iDW-kR-AxX"/>
                             <constraint firstItem="teN-mj-C3B" firstAttribute="width" secondItem="gJz-6E-5qw" secondAttribute="width" multiplier="3:1" id="kCa-8L-cqb"/>
                             <constraint firstItem="pg4-hw-Io0" firstAttribute="leading" secondItem="fF2-ru-jWL" secondAttribute="leading" id="kfX-QX-h4u"/>
+                            <constraint firstItem="mn0-6D-ZbV" firstAttribute="leading" secondItem="pPc-PS-HkJ" secondAttribute="leading" id="pFL-bs-61t"/>
                             <constraint firstItem="TnZ-W7-pj5" firstAttribute="top" secondItem="sQR-Wt-fg8" secondAttribute="bottom" constant="20" id="vfA-pK-oUd"/>
                             <constraint firstItem="sQR-Wt-fg8" firstAttribute="top" secondItem="pPc-PS-HkJ" secondAttribute="top" constant="10" placeholder="YES" id="x4D-Zn-cMp"/>
                             <constraint firstItem="gJz-6E-5qw" firstAttribute="height" secondItem="euo-qH-pXU" secondAttribute="height" id="yEH-72-jxS"/>
@@ -467,4 +474,7 @@
             <point key="canvasLocation" x="2738" y="1280"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HomeBG" width="414" height="702"/>
+    </resources>
 </document>

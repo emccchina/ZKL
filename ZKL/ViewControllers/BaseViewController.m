@@ -75,7 +75,7 @@
 
 - (void)showBackItem
 {
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UserInfo shareUserInfo].backImage style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backSign"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     leftItem.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = leftItem;
 }

@@ -141,7 +141,7 @@
 - (PlanModel*)planModelFromResult:(FMResultSet*)provicesResult
 {
     PlanModel *planModel = [[PlanModel alloc] init];
-    planModel.tableRowID = [provicesResult intForColumn:@"id"];
+//    planModel.tableRowID = [provicesResult intForColumn:@"rowid"];
     planModel.planid = [provicesResult stringForColumn:kCreateTime];
     planModel.title = [provicesResult stringForColumn:kTitle];
     planModel.beginDate = [provicesResult stringForColumn:kBeginTime];
@@ -204,8 +204,8 @@
     if (![db open]) {
         return;
     }
-    NSString *dreams = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer,%@ text, %@ text, %@ text, %@ text, %@ text, %@ text, %@ integer, %@ text, %@ text,%@ integer,%@ integer,%@ text,PRIMARY KEY(%@));", kDreamsTable, kCreateTime, kTitle,kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished, kFinishedTime,kRestTime, kValid, kUpload, kPlanIDServer,kPlanIDServer];
-    NSString *progress = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (id integer,%@ text, %@ integer, %@ text , %@ text, %@ text, %@ text, %@ text,%@ text,%@ text,%@ text,%@ text,%@ text, %@ integer,%@ integer, %@ text, PRIMARY KEY(%@));", kProgressTable, kCreateTime,kEdit, kDate, kPlanDream, kPlanRest, kPlanWaste, kRealDream, kRealRest, kRealWaste,kEditDream,kEditRest,kEditWaste, kFinished, kUpload, kPlanIDServer, kDate];
+    NSString *dreams = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (%@ text, %@ text, %@ text, %@ text, %@ text, %@ text, %@ integer, %@ text, %@ text,%@ integer,%@ integer,%@ text,PRIMARY KEY(%@,%@));", kDreamsTable, kCreateTime, kTitle,kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished, kFinishedTime,kRestTime, kValid, kUpload, kPlanIDServer,kPlanIDServer,kCreateTime];
+    NSString *progress = [NSString stringWithFormat:@"create table IF NOT EXISTS %@ (%@ text, %@ integer, %@ text , %@ text, %@ text, %@ text, %@ text,%@ text,%@ text,%@ text,%@ text,%@ text, %@ integer,%@ integer, %@ text, PRIMARY KEY(%@));", kProgressTable, kCreateTime,kEdit, kDate, kPlanDream, kPlanRest, kPlanWaste, kRealDream, kRealRest, kRealWaste,kEditDream,kEditRest,kEditWaste, kFinished, kUpload, kPlanIDServer, kDate];
     NSString *sql = [NSString stringWithFormat:@"%@%@",dreams, progress];
     ;
     if (![db executeStatements:sql]) {
@@ -219,7 +219,7 @@
     if (![db open]) {
         return NO;
     }
-    NSString *string = [NSString stringWithFormat:@"insert into %@ (%@,%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%@','%@','%@','%@',%d,%d,%d,'%@');", kProgressTable, kCreateTime,kDate, kPlanDream,kPlanRest,kPlanWaste,kRealDream,kRealRest,kRealWaste,kEditDream,kEditRest,kEditWaste,kEdit,kFinished,kUpload,kPlanIDServer,model.planId,model.performCode, model.planDream, model.planRest, model.planWaste, model.realDream, model.realRest, model.realWaste, model.editDream, model.editRest, model.editWaste, model.edit, model.finished,model.upload,model.planIDServer];
+    NSString *string = [NSString stringWithFormat:@"replace into %@ (%@,%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@,%@,%@) values ('%@','%@', '%@','%@','%@','%@','%@','%@','%@','%@','%@',%d,%d,%d,'%@');", kProgressTable, kCreateTime,kDate, kPlanDream,kPlanRest,kPlanWaste,kRealDream,kRealRest,kRealWaste,kEditDream,kEditRest,kEditWaste,kEdit,kFinished,kUpload,kPlanIDServer,model.planId,model.performCode, model.planDream, model.planRest, model.planWaste, model.realDream, model.realRest, model.realWaste, model.editDream, model.editRest, model.editWaste, model.edit, model.finished,model.upload,model.planIDServer];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPerform = model;
@@ -233,7 +233,7 @@
     if (![db open]) {
         return NO;
     }
-    NSString *string = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d','%d','%@');", kDreamsTable, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid,kUpload,kPlanIDServer, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid,model.upload, model.planIDServer];
+    NSString *string = [NSString stringWithFormat:@"replace into %@ (%@, %@, %@,%@,%@,%@,%@,%@, %@,%@,%@,%@) values ('%@', '%@','%@','%@','%@','%@','%d','%@','%@','%d','%d','%@');", kDreamsTable, kCreateTime, kTitle, kBeginTime, kEndTime, kTotalTime, kDayTime, kFinished,kFinishedTime,kRestTime,kValid,kUpload,kPlanIDServer, model.planid, model.title, model.beginDate, model.endDate, model.totalHour, model.dayTime, model.finished, model.finishedTime, model.restTime,model.valid,model.upload, model.planIDServer];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPlan = model;
@@ -297,7 +297,7 @@
     if (![db open]) {
         return;
     }
-    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@=('%d'),%@=('%d') where %@ = ('%@')", kDreamsTable, kFinishedTime, planModel.finishedTime,kFinished, planModel.finished,kUpload, planModel.upload, kCreateTime, planModel.planid];
+    NSString *string = [NSString stringWithFormat:@"update %@ set %@ = ('%@'),%@=('%d'),%@=('%d'),%@=('%@') where %@ = ('%@')", kDreamsTable, kFinishedTime, planModel.finishedTime,kFinished, planModel.finished,kUpload, planModel.upload,kPlanIDServer,planModel.planIDServer, kCreateTime, planModel.planid];
     BOOL success = [db executeStatements:string];
     if (success) {
         _myDoingPlan = planModel;
@@ -388,7 +388,7 @@
         return nil;
     }
     NSLog(@"doing plan");
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = (SELECT MAX(id)  FROM dreamsTable)", kDreamsTable];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE rowid = (SELECT MAX(rowid)  FROM dreamsTable)", kDreamsTable];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
         _myDoingPlan = [self planModelFromResult:provicesResult];
@@ -406,7 +406,7 @@
         return nil;
     }
     NSLog(@"doing plan");
-    NSString *sql = [NSString stringWithFormat:@"select * from %@ where id < %ld and %@ = 1 and %@ = 1 order by id desc limit 1", kDreamsTable,(long)model.tableRowID, kFinished,kValid];
+    NSString *sql = [NSString stringWithFormat:@"select * from %@ where rowid < %ld and %@ = 1 and %@ = 1 order by rowid desc limit 1", kDreamsTable,(long)model.tableRowID, kFinished,kValid];
     FMResultSet *provicesResult = [db executeQuery:sql];
     while ([provicesResult next]) {
         return [self planModelFromResult:provicesResult];
