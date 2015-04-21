@@ -10,6 +10,20 @@
 
 @implementation ProgressLineView
 
+- (void)awakeFromNib
+{
+    if (!humanView) {
+        humanView = [[UIImageView alloc] init];
+        [self addSubview:humanView];
+    }
+    
+    //    humanView.image = [UIImage imageNamed:@"human1"];
+    [humanView setContentMode:UIViewContentModeScaleAspectFill];
+    
+    humanView.animationDuration = 0.3;
+//    [humanView startAnimating];
+//    [humanView stopAnimating];
+}
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -77,16 +91,7 @@
         }
     }
     
-    if (!humanView) {
-        humanView = [[UIImageView alloc] init];
-        [self addSubview:humanView];
-    }
-    NSArray *arr = [NSArray arrayWithObjects:[UIImage imageNamed:@"001"],[UIImage imageNamed:@"002"], nil];
-//    humanView.image = [UIImage imageNamed:@"human1"];
-    [humanView setContentMode:UIViewContentModeScaleAspectFill];
-    humanView.animationImages = arr;
-    humanView.animationDuration = 0.3;
-    [humanView startAnimating];
+    
     humanView.frame = CGRectMake(self.progress*width*0.8, height-spaceH*spaceMuli-80, 74, 74);
     UIFont *font3 = [UIFont fontWithName:kFontName size:15];
     CGSize size = [Utities sizeWithUIFont:font3 string:self.title];
@@ -138,6 +143,18 @@
     
     // 结束点
     colorLayer.endPoint   = CGPointMake(1, 0);
+}
+
+- (void)animationDoing:(BOOL)doing
+{
+    if (doing) {
+        NSArray *arr = [NSArray arrayWithObjects:[UIImage imageNamed:@"001"],[UIImage imageNamed:@"002"], nil];
+        humanView.animationImages = arr;
+        [humanView startAnimating];
+    }else{
+        [humanView stopAnimating];
+        humanView.image = [UIImage imageNamed:@"001"];
+    }
 }
 
 

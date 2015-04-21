@@ -20,4 +20,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) CGFloat totalTime;
 @property (nonatomic, assign) BOOL      bottom;
+
+- (void)animationDoing:(BOOL)doing;
+
 @end

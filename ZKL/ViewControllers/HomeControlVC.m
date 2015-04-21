@@ -25,7 +25,7 @@
     BOOL        reminder;
 }
 #define kTimerSpace1 1
-#define kTimerShundle 1
+#define kTimerShundle 60
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBut;
 
@@ -236,6 +236,7 @@
 - (void)setViewState:(NSInteger)state
 {
     stateDream = state;
+    [self.progreessLine animationDoing:(state == 2)];
     [SQLManager shareUserInfo].runningState = stateDream -1;
     if (state == 2) {
         [myTimer resumeTimerAfterTimeInterval:kTimerShundle];
