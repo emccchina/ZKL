@@ -77,7 +77,7 @@
     [self.needTimeTF setTitle:@"预计所需时间"];
     [self.needTimeTF setType:kNumberType];
     self.needTimeTF.finished = ^(NSString* string){
-        
+        [self countDays];
     };
     [self.timeEverydayTF setTitle:@"每天所需时间"];
     [self.timeEverydayTF setType:kNumberType];
@@ -182,7 +182,10 @@
     planModel.valid = YES;
     planModel.planid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
     planModel.doingPerform = nil;
-    
+    if ([planModel.restTime floatValue] < 0) {
+        [self showAlertView:@"请正确填写时间安排"];
+        return;
+    }
     if ([[SQLManager shareUserInfo] writePlanModel:planModel]){
         [self back];
     }else{
