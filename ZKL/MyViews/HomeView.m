@@ -29,7 +29,7 @@
 - (void)startAnimationHV
 {
     doButtonType = 0;
-    self.textView.content = @"1231231231312312313";
+    self.textView.content = @"生活变的更美好，不是偶然，是我们更加努力的结果";
 //    if (iPhone_iOS8) {
         POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];
         anim.fromValue = @(-100);

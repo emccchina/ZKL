@@ -66,7 +66,7 @@
         }break;
         case NSOrderedDescending:{
             self.dayType = KDayTypeFutur;
-            titleColor = [UIColor redColor];
+            titleColor = [UIColor lightGrayColor];
         }
         default:
             break;

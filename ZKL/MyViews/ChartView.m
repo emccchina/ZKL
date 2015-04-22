@@ -42,11 +42,11 @@
     _model = model;
     self.dateLabel.text = self.dateString;
     CGFloat progress = [model.planDream floatValue] ? ([model.realDream floatValue]/[model.planDream floatValue]) : 0;
-    [self.dreamProgress setViewWithTitle:@"直接哦i街里街道；32就；i；瓯江；"  progress:progress realTime:model.realDream color:[UIColor redColor] titleColor:@"32"];
+    [self.dreamProgress setViewWithTitle:@"尔之所向，所向披靡。"  progress:progress realTime:model.realDream color:[UIColor redColor] titleColor:@"32"];
     progress = [model.planRest floatValue] ? ([model.realRest floatValue]/[model.planRest floatValue]):0;
-    [self.restProgress setViewWithTitle:@"ljoij;;;" progress:progress realTime:model.realRest color:[UIColor greenColor] titleColor:@"34"];
+    [self.restProgress setViewWithTitle:@"身体是革命的本钱，注意休息。" progress:progress realTime:model.realRest color:[UIColor greenColor] titleColor:@"34"];
     progress = [model.planWaste floatValue] ? ([model.realWaste floatValue]/[model.planWaste floatValue]):0;
-    [self.wasteProgress setViewWithTitle:@"klj;i54" progress:progress realTime:model.realWaste color:[UIColor magentaColor] titleColor:@"54"];
+    [self.wasteProgress setViewWithTitle:@"一寸光阴一寸金，莫要虚度。" progress:progress realTime:model.realWaste color:[UIColor magentaColor] titleColor:@"54"];
 }
 
 @end
