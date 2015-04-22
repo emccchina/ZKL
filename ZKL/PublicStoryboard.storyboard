@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddBG" translatesAutoresizingMaskIntoConstraints="NO" id="vxO-Zr-jeo">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="360-c9-dn5">
                                 <rect key="frame" x="250" y="70" width="100" height="100"/>
@@ -131,9 +131,15 @@
                             <constraint firstItem="vxO-Zr-jeo" firstAttribute="leading" secondItem="1fT-fC-iUg" secondAttribute="leading" id="WAf-Wh-QY3"/>
                             <constraint firstItem="ATe-0r-Svt" firstAttribute="top" secondItem="kr0-Ft-WEs" secondAttribute="bottom" constant="20" id="ZDO-Vu-15r"/>
                             <constraint firstItem="ceC-nm-xhH" firstAttribute="top" secondItem="6zM-Uo-tYQ" secondAttribute="bottom" constant="20" id="a7f-Ox-X7c"/>
+                            <constraint firstItem="vxO-Zr-jeo" firstAttribute="top" secondItem="vNs-al-PKl" secondAttribute="bottom" id="hMT-zq-4La"/>
                             <constraint firstAttribute="centerX" secondItem="360-c9-dn5" secondAttribute="centerX" id="nON-2t-hzz"/>
                             <constraint firstItem="360-c9-dn5" firstAttribute="top" secondItem="vNs-al-PKl" secondAttribute="bottom" constant="50" placeholder="YES" id="vrk-Zy-dvH"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="K1w-79-ZEd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="accoutTF" destination="6zM-Uo-tYQ" id="Vdb-bP-ZrN"/>

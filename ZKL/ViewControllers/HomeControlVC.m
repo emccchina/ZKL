@@ -220,6 +220,9 @@
 //上传每日计划
 - (void)requestForPerformModels:(PerformModel*)performModel
 {
+    if (![performModel.planIDServer isEqualToString:@"(null)"]) {
+        return;
+    }
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@performaction!addPerform.action",kServerDomain];
@@ -311,6 +314,7 @@
 
 - (void)presentAddDreamVC
 {
+    first = YES;
     [self performSegueWithIdentifier:@"AddDreamVC" sender:self];
 }
 
@@ -331,6 +335,7 @@
                 
             }break;
             case 1:{
+                
                 [self presentAddDreamVC];
             }break;
             case 2:{

@@ -240,7 +240,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8E-22-5Io">
-                                <rect key="frame" x="225" y="414" width="150" height="40"/>
+                                <rect key="frame" x="225" y="394" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Nub-Qq-TqO"/>
                                     <constraint firstAttribute="height" constant="40" id="cf6-CF-bBn"/>
@@ -282,7 +282,7 @@
                             <constraint firstItem="gS2-DZ-yLJ" firstAttribute="top" secondItem="C9R-xd-QeK" secondAttribute="bottom" constant="10" id="Qsj-ZW-khe"/>
                             <constraint firstItem="H28-8l-byI" firstAttribute="top" secondItem="gS2-DZ-yLJ" secondAttribute="bottom" constant="10" id="UXk-v1-Fql"/>
                             <constraint firstItem="BAt-dK-GvT" firstAttribute="width" secondItem="H28-8l-byI" secondAttribute="width" id="bA7-UF-qFV"/>
-                            <constraint firstItem="Z8E-22-5Io" firstAttribute="top" secondItem="BAt-dK-GvT" secondAttribute="bottom" constant="50" id="dQY-vC-3WE"/>
+                            <constraint firstItem="Z8E-22-5Io" firstAttribute="top" secondItem="BAt-dK-GvT" secondAttribute="bottom" constant="30" id="dQY-vC-3WE"/>
                             <constraint firstItem="BAt-dK-GvT" firstAttribute="top" secondItem="H28-8l-byI" secondAttribute="bottom" constant="10" id="duU-l7-UmI"/>
                             <constraint firstItem="H28-8l-byI" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="eg6-Ur-9o4"/>
                             <constraint firstItem="EX9-um-ybb" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" id="hga-FE-5iM"/>
