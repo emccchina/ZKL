@@ -23,6 +23,7 @@
     PlanModel    *doingPlan;
     NSInteger stateDream;//0添加 1暂停 2播放
     BOOL        reminder;
+    BOOL        first;
 }
 #define kTimerSpace1 1
 #define kTimerShundle 60
@@ -45,7 +46,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self showBackItem];
-    
+    first = YES;
     self.title = @"自控力";
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
     self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
@@ -131,7 +132,11 @@
     [super viewDidAppear:animated];
     
     doingPlan = [SQLManager shareUserInfo].myDoingPlan;
-    stateDream = !doingPlan ? 0 : (doingPlan.finished ? 0 : doingPlan.doing+1);
+    if (first) {
+        stateDream = !doingPlan ? 0 : (doingPlan.finished ? 0 : doingPlan.doing+1);
+        first = NO;
+    }
+    
     if ([SQLManager shareUserInfo].running) {
         stateDream = 2;
         [myTimer resumeTimerAfterTimeInterval:kTimerShundle];
