@@ -29,7 +29,7 @@
 - (void)startAnimationHV
 {
     doButtonType = 0;
-    self.textView.content = @"生活变的更美好，不是偶然，是我们更加努力的结果";
+    self.textView.content = @"“自控力”可记录您每天为梦想拼搏的时间，以及每天虚度的时间。日历中有奖杯标记，奖杯证明了你兑现了自己许下的诺言（完成每日目标）。让每一天都铭刻于心。";
 //    if (iPhone_iOS8) {
         POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];
         anim.fromValue = @(-100);
