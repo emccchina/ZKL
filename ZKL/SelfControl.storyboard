@@ -208,6 +208,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddBG" translatesAutoresizingMaskIntoConstraints="NO" id="EX9-um-ybb">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5gI-md-Syc" customClass="WhiteBlackTextFiled">
                                 <rect key="frame" x="10" y="74" width="580" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -267,11 +270,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wmN-rw-XZ5" firstAttribute="top" secondItem="EX9-um-ybb" secondAttribute="bottom" id="3bg-WA-lvw"/>
                             <constraint firstItem="C9R-xd-QeK" firstAttribute="top" secondItem="gec-Pp-8zR" secondAttribute="bottom" constant="10" id="3cR-fg-0aB"/>
                             <constraint firstItem="5gI-md-Syc" firstAttribute="top" secondItem="inK-t5-eFz" secondAttribute="bottom" constant="10" id="7Z8-QJ-Q5s"/>
                             <constraint firstItem="gec-Pp-8zR" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="7aa-83-zfg"/>
                             <constraint firstItem="gec-Pp-8zR" firstAttribute="top" secondItem="5gI-md-Syc" secondAttribute="bottom" constant="10" id="Ekt-wT-hLf"/>
                             <constraint firstItem="gS2-DZ-yLJ" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="ErZ-IZ-4Jg"/>
+                            <constraint firstItem="EX9-um-ybb" firstAttribute="top" secondItem="inK-t5-eFz" secondAttribute="bottom" id="I4Y-bL-svs"/>
                             <constraint firstAttribute="centerX" secondItem="Z8E-22-5Io" secondAttribute="centerX" id="IKs-Ey-cjf"/>
                             <constraint firstAttribute="trailing" secondItem="C9R-xd-QeK" secondAttribute="trailing" constant="10" id="KGo-tE-ECK"/>
                             <constraint firstItem="gS2-DZ-yLJ" firstAttribute="top" secondItem="C9R-xd-QeK" secondAttribute="bottom" constant="10" id="Qsj-ZW-khe"/>
@@ -280,12 +285,14 @@
                             <constraint firstItem="Z8E-22-5Io" firstAttribute="top" secondItem="BAt-dK-GvT" secondAttribute="bottom" constant="50" id="dQY-vC-3WE"/>
                             <constraint firstItem="BAt-dK-GvT" firstAttribute="top" secondItem="H28-8l-byI" secondAttribute="bottom" constant="10" id="duU-l7-UmI"/>
                             <constraint firstItem="H28-8l-byI" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="eg6-Ur-9o4"/>
+                            <constraint firstItem="EX9-um-ybb" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" id="hga-FE-5iM"/>
                             <constraint firstItem="5gI-md-Syc" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="htP-Cq-UOl"/>
                             <constraint firstItem="BAt-dK-GvT" firstAttribute="leading" secondItem="H28-8l-byI" secondAttribute="leading" id="jEK-NZ-T6d"/>
                             <constraint firstItem="C9R-xd-QeK" firstAttribute="leading" secondItem="47D-Vb-cub" secondAttribute="leading" constant="10" id="nE9-Kf-C9R"/>
                             <constraint firstAttribute="trailing" secondItem="gec-Pp-8zR" secondAttribute="trailing" constant="10" id="qBk-DL-M5g"/>
                             <constraint firstAttribute="trailing" secondItem="H28-8l-byI" secondAttribute="trailing" constant="10" id="sRg-OZ-9AC"/>
                             <constraint firstAttribute="trailing" secondItem="5gI-md-Syc" secondAttribute="trailing" constant="10" id="ttU-2d-RTU"/>
+                            <constraint firstAttribute="trailing" secondItem="EX9-um-ybb" secondAttribute="trailing" id="uK6-LB-PrB"/>
                             <constraint firstAttribute="trailing" secondItem="gS2-DZ-yLJ" secondAttribute="trailing" constant="10" id="xEL-yb-PbN"/>
                         </constraints>
                     </view>
@@ -475,6 +482,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddBG" width="414" height="678"/>
         <image name="HomeBG" width="414" height="702"/>
     </resources>
 </document>

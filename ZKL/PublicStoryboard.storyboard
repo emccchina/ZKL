@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--LoginVC-->
@@ -17,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddBG" translatesAutoresizingMaskIntoConstraints="NO" id="vxO-Zr-jeo">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="360-c9-dn5">
                                 <rect key="frame" x="250" y="70" width="100" height="100"/>
                                 <constraints>
@@ -117,10 +121,14 @@
                             <constraint firstItem="xC5-F8-XqV" firstAttribute="leading" secondItem="ATe-0r-Svt" secondAttribute="trailing" constant="25" id="B0x-Cj-ZAb"/>
                             <constraint firstAttribute="centerX" secondItem="6zM-Uo-tYQ" secondAttribute="centerX" id="Cw4-Yr-pzS"/>
                             <constraint firstItem="kr0-Ft-WEs" firstAttribute="top" secondItem="Gcc-d0-6rx" secondAttribute="bottom" constant="35" id="EUl-rr-w6f"/>
+                            <constraint firstItem="n7u-3Z-FOw" firstAttribute="top" secondItem="vxO-Zr-jeo" secondAttribute="bottom" id="Hxc-Mr-a4G"/>
+                            <constraint firstItem="vxO-Zr-jeo" firstAttribute="top" secondItem="1fT-fC-iUg" secondAttribute="topMargin" id="K1w-79-ZEd"/>
+                            <constraint firstAttribute="trailing" secondItem="vxO-Zr-jeo" secondAttribute="trailing" id="KAX-LI-xS1"/>
                             <constraint firstItem="Gcc-d0-6rx" firstAttribute="top" secondItem="ceC-nm-xhH" secondAttribute="bottom" constant="20" id="KP0-Nq-PqD"/>
                             <constraint firstAttribute="centerX" secondItem="kr0-Ft-WEs" secondAttribute="centerX" id="Ln3-pf-83D"/>
                             <constraint firstItem="DBZ-Y8-yT1" firstAttribute="leading" secondItem="1fT-fC-iUg" secondAttribute="leading" id="SFc-aO-4rG"/>
                             <constraint firstItem="ceC-nm-xhH" firstAttribute="leading" secondItem="Gcc-d0-6rx" secondAttribute="leading" id="SIH-XF-lt0"/>
+                            <constraint firstItem="vxO-Zr-jeo" firstAttribute="leading" secondItem="1fT-fC-iUg" secondAttribute="leading" id="WAf-Wh-QY3"/>
                             <constraint firstItem="ATe-0r-Svt" firstAttribute="top" secondItem="kr0-Ft-WEs" secondAttribute="bottom" constant="20" id="ZDO-Vu-15r"/>
                             <constraint firstItem="ceC-nm-xhH" firstAttribute="top" secondItem="6zM-Uo-tYQ" secondAttribute="bottom" constant="20" id="a7f-Ox-X7c"/>
                             <constraint firstAttribute="centerX" secondItem="360-c9-dn5" secondAttribute="centerX" id="nON-2t-hzz"/>
@@ -345,6 +353,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddBG" width="414" height="678"/>
         <image name="Header" width="120" height="120"/>
         <image name="accountUnselected" width="20" height="20"/>
         <image name="seleceteGreen" width="16" height="16"/>
