@@ -36,8 +36,8 @@ static NSString *settingCell = @"settingCell";
 - (void)setArray
 {
     NSArray *section1 = @[@[@"running",@"正在进行的梦想",@"DoingVC"],@[@"finished",@"已经完成的梦想",@"DoneVC"]];
-//    NSArray *section2 = @[@[@"setting",@"设置",@"DoingVC"]];
-    settingArray = @[section1];
+    NSArray *section2 = @[@[@"setting",@"退出登录",@"DoingVC"]];
+    settingArray = @[section1,section2];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +88,7 @@ static NSString *settingCell = @"settingCell";
             [cell addSubview:headerView];
             headerView.tag = 10;
         }
-        [headerView.header setImageWithURL:[NSURL URLWithString:@"http://d.hiphotos.baidu.com/image/pic/item/55e736d12f2eb93890a739fbd7628535e4dd6ff4.jpg"]];
+        [headerView.header setImage:[UIImage imageNamed:@"Header"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         headerView.name.text = user.userName;
         headerView.diolague.text = user.nickName;
@@ -109,6 +109,11 @@ static NSString *settingCell = @"settingCell";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
+        return;
+    }
+    if (indexPath.section == 2) {
+        [UserInfo shareUserInfo].userCode = nil;
+        [self back];
         return;
     }
     NSArray *arr1 = settingArray[indexPath.section-1];

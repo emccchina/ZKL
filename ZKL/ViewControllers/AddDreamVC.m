@@ -128,13 +128,13 @@
     planModel.finished = NO;
     planModel.dayTime = [NSString stringWithFormat:@"%.0f",([self.needTimeTF.TF.text floatValue]/(days+1)*60)];
     self.timeEverydayTF.TF.text = [NSString stringWithFormat:@"%.1f",[self.needTimeTF.TF.text floatValue]/(days+1)];
-    
-    if ([planModel.dayTime integerValue] > 12*60) {
-        planModel.restTime = [NSString stringWithFormat:@"%.0f",24*60-[planModel.dayTime floatValue]];
-    }else{
-        planModel.restTime = [NSString stringWithFormat:@"%.0f",[self.restTime.TF.text floatValue]*60];
-    }
-    self.restTime.TF.text = [NSString stringWithFormat:@"%.0f", [planModel.restTime floatValue]/60];
+    planModel.restTime = @"720";
+//    if ([planModel.dayTime integerValue] > 12*60) {
+//        planModel.restTime = [NSString stringWithFormat:@"%.0f",24*60-[planModel.dayTime floatValue]];
+//    }else{
+//        planModel.restTime = [NSString stringWithFormat:@"%.0f",[self.restTime.TF.text floatValue]*60];
+//    }
+    self.restTime.TF.text = @"12";//[NSString stringWithFormat:@"%.0f", [planModel.restTime floatValue]/60];
 }
 
 - (void)viewDidAppear:(BOOL)animated

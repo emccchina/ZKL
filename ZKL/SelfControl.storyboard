@@ -322,9 +322,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddBG" translatesAutoresizingMaskIntoConstraints="NO" id="lEz-5T-qEx">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ado-2R-WS2">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="2" id="Pdk-IE-T8C">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -366,10 +369,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lEz-5T-qEx" secondAttribute="trailing" id="1lu-tg-s0Z"/>
                             <constraint firstItem="Ado-2R-WS2" firstAttribute="top" secondItem="e9j-Ww-P7e" secondAttribute="top" id="6vz-h4-orz"/>
+                            <constraint firstItem="lEz-5T-qEx" firstAttribute="top" secondItem="b9W-lc-1Qw" secondAttribute="bottom" id="9Pg-BP-zgl"/>
+                            <constraint firstItem="lEz-5T-qEx" firstAttribute="leading" secondItem="e9j-Ww-P7e" secondAttribute="leading" id="Hyp-Eq-7Ik"/>
                             <constraint firstItem="Ado-2R-WS2" firstAttribute="leading" secondItem="e9j-Ww-P7e" secondAttribute="leading" id="MWJ-wu-sb0"/>
                             <constraint firstItem="w0M-7I-sL3" firstAttribute="top" secondItem="Ado-2R-WS2" secondAttribute="bottom" id="VtE-w8-QHg"/>
                             <constraint firstAttribute="trailing" secondItem="Ado-2R-WS2" secondAttribute="trailing" id="a3v-6F-0sj"/>
+                            <constraint firstItem="w0M-7I-sL3" firstAttribute="top" secondItem="lEz-5T-qEx" secondAttribute="bottom" id="baz-9Q-8pr"/>
                         </constraints>
                     </view>
                     <connections>

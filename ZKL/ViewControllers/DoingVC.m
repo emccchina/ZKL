@@ -29,7 +29,7 @@
     [self showBackItem];
     headerCell = (HeaderCell*)[Utities viewAddContraintsParentView:self.headViewBG subNibName:@"HeaderCell"];
     
-    [headerCell.header setImageWithURL:[NSURL URLWithString:@"http://d.hiphotos.baidu.com/image/pic/item/55e736d12f2eb93890a739fbd7628535e4dd6ff4.jpg"]];
+    [headerCell.header setImage:[UIImage imageNamed:@"Header"]];
     headerCell.name.text = user.userName?:@"无名氏";
     headerCell.diolague.text = user.nickName?:@"无名";
     PlanModel* model = [[SQLManager shareUserInfo] doingPlan];
