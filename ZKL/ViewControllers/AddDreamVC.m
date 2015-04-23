@@ -129,7 +129,7 @@
     planModel.dayTime = [NSString stringWithFormat:@"%.0f",([self.needTimeTF.TF.text floatValue]/(days+1)*60)];
     self.timeEverydayTF.TF.text = [NSString stringWithFormat:@"%.1f",[self.needTimeTF.TF.text floatValue]/(days+1)];
 
-    if ([planModel.dayTime integerValue] > 12*60) {
+    if ([planModel.dayTime integerValue] > (24*60-([self.restTime.TF.text floatValue]*60))) {
         planModel.restTime = [NSString stringWithFormat:@"%.0f",24*60-[planModel.dayTime floatValue]];
     }else{
         planModel.restTime = [NSString stringWithFormat:@"%.0f",[self.restTime.TF.text floatValue]*60];
@@ -199,7 +199,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!addNewPlan.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode", [self.restTime.TF.text floatValue] *60, @"unableMinute",nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
@@ -223,7 +223,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!updatePlan.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode", [self.restTime.TF.text floatValue] *60, @"unableMinute",nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
