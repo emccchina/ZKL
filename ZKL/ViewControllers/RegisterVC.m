@@ -102,7 +102,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@loginaction!userRegist.action",kServerDomain];
     if (self.typeVC) {
-      url = [NSString stringWithFormat:@"%@loginaction!userRetrievePass.action",kServerDomain];
+      url = [NSString stringWithFormat:@"%@loginaction!userGetVerif.action",kServerDomain];
     }
       NSLog(@"url is  %@", url);
     NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"userName", nil];
