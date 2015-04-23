@@ -125,8 +125,8 @@
 {
     CGRect rect = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
-    [imageView setImage:[UIImage     imageNamed:[NSString stringWithFormat:@"引导页%ld",(long)index+1]]];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [imageView setContentMode:UIViewContentModeScaleAspectFill];
+    [imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"引导页%ld",(long)index+1]]];
     return imageView;
 }
 

@@ -128,13 +128,13 @@
     planModel.finished = NO;
     planModel.dayTime = [NSString stringWithFormat:@"%.0f",([self.needTimeTF.TF.text floatValue]/(days+1)*60)];
     self.timeEverydayTF.TF.text = [NSString stringWithFormat:@"%.1f",[self.needTimeTF.TF.text floatValue]/(days+1)];
-    planModel.restTime = @"720";
-//    if ([planModel.dayTime integerValue] > 12*60) {
-//        planModel.restTime = [NSString stringWithFormat:@"%.0f",24*60-[planModel.dayTime floatValue]];
-//    }else{
-//        planModel.restTime = [NSString stringWithFormat:@"%.0f",[self.restTime.TF.text floatValue]*60];
-//    }
-    self.restTime.TF.text = @"12";//[NSString stringWithFormat:@"%.0f", [planModel.restTime floatValue]/60];
+
+    if ([planModel.dayTime integerValue] > 12*60) {
+        planModel.restTime = [NSString stringWithFormat:@"%.0f",24*60-[planModel.dayTime floatValue]];
+    }else{
+        planModel.restTime = [NSString stringWithFormat:@"%.0f",[self.restTime.TF.text floatValue]*60];
+    }
+    self.restTime.TF.text = [NSString stringWithFormat:@"%.0f", [planModel.restTime floatValue]/60];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -182,7 +182,7 @@
     planModel.valid = YES;
     planModel.planid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
     planModel.doingPerform = nil;
-    if ([planModel.dayTime floatValue] > 60*12) {
+    if ([planModel.dayTime floatValue] > 60*24 || [planModel.restTime floatValue] < 0) {
         [self showAlertView:@"请正确填写时间安排"];
         return;
     }
