@@ -153,7 +153,7 @@
         [humanView startAnimating];
     }else{
         [humanView stopAnimating];
-        humanView.image = [UIImage imageNamed:@"001"];
+        humanView.image = [UIImage imageNamed:@"003"];
     }
 }
 
