@@ -59,7 +59,7 @@
         if (result) {
             if([@"0" isEqual:result[@"errorno"]]){
                 [self showAlertView:@"密码修改成功"];
-
+                [self back];
             }else{
                 [self showAlertView:result[@"message"]];
             }

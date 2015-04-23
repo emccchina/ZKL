@@ -177,7 +177,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@loginaction!userRetrievePass.action",kServerDomain];
     NSString *password = self.passwordTF.text;
-    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"userName",password, @"password", self.verifyTF.text, @"checkCode", nil];
+    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameTF.text, @"userName",password, @"password", self.verifyTF.text, @"fax", nil];
     [manager POST:url parameters:regsiterDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"request is  %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         [self dismissIndicatorView];
