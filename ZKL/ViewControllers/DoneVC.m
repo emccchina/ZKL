@@ -40,8 +40,8 @@
     headerCell = (HeaderCell*)[Utities viewAddContraintsParentView:self.headViewBG subNibName:@"HeaderCell"];
     UserInfo* user =[UserInfo shareUserInfo];
     [headerCell.header setImage:[UIImage imageNamed:@"Header"]];
-    headerCell.name.text = user.userName?:@"无名氏";
-    headerCell.diolague.text = user.nickName?:@"无名";
+    headerCell.name.text = user.userName?:@"";
+    headerCell.diolague.text = user.nickName?:@"";
     [self requestForFinishedPlan];
     
 }

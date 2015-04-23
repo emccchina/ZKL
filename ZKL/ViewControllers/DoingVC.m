@@ -30,8 +30,8 @@
     headerCell = (HeaderCell*)[Utities viewAddContraintsParentView:self.headViewBG subNibName:@"HeaderCell"];
     
     [headerCell.header setImage:[UIImage imageNamed:@"Header"]];
-    headerCell.name.text = user.userName?:@"无名氏";
-    headerCell.diolague.text = user.nickName?:@"无名";
+    headerCell.name.text = user.userName?:@"";
+    headerCell.diolague.text = user.nickName?:@"";
     PlanModel* model = [[SQLManager shareUserInfo] doingPlan];
     if (!model.finished) {
         self.showView.title = model.title;
