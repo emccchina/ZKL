@@ -38,10 +38,10 @@
     [self.showView addGestureRecognizer:gestureUp];
     
     headerCell = (HeaderCell*)[Utities viewAddContraintsParentView:self.headViewBG subNibName:@"HeaderCell"];
-    
+    UserInfo* user =[UserInfo shareUserInfo];
     [headerCell.header setImage:[UIImage imageNamed:@"Header"]];
-    headerCell.name.text = @"name";
-    headerCell.diolague.text = @"jkj;i";
+    headerCell.name.text = user.userName?:@"无名氏";
+    headerCell.diolague.text = user.nickName?:@"无名";
     [self requestForFinishedPlan];
     
 }
