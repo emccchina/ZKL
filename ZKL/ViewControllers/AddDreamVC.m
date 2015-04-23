@@ -199,7 +199,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!addNewPlan.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.restTime,@"unableMinute", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
@@ -223,7 +223,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!updatePlan.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.addTF.TF.text, @"title",self.needTimeTF.TF.text, @"totalHour",self.beginTime.TF.text,@"beginString",self.endTime.TF.text, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode",planModel.restTime,@"unableMinute", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);

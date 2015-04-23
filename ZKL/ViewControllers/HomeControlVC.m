@@ -225,7 +225,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!addNewPlan.action",kServerDomain];
     NSString *titleHour = [NSString stringWithFormat:@"%ld",(long)[planModel.totalHour integerValue]/60];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title",titleHour, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title",titleHour, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.restTime,@"unableMinute", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
@@ -247,7 +247,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!updatePlan.action",kServerDomain];
     NSString *total = [NSString stringWithFormat:@"%ld", (long)[planModel.totalHour integerValue]/60];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title", total, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title", total, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode",planModel.restTime,@"unableMinute", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
