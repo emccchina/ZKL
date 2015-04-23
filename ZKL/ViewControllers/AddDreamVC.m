@@ -182,6 +182,7 @@
     planModel.valid = YES;
     planModel.planid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
     planModel.doingPerform = nil;
+    planModel.restTime = [NSString stringWithFormat:@"%.0f",[self.restTime.TF.text floatValue]*60];
     if ([planModel.dayTime floatValue] > 60*24 || [planModel.restTime floatValue] < 0) {
         [self showAlertView:@"请正确填写时间安排"];
         return;
