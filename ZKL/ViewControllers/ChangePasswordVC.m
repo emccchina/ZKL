@@ -24,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self showBackItem];
+    self.title = @"修改密码";
     [self.oldPassword setSecureTextEntry:YES];
     [self.p2 setSecureTextEntry:YES];
     [self.passwordAgain setSecureTextEntry:YES];

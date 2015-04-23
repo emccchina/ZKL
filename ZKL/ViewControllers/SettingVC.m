@@ -35,8 +35,8 @@ static NSString *settingCell = @"settingCell";
 
 - (void)setArray
 {
-    NSArray *section1 = @[@[@"running",@"正在进行的梦想",@"DoingVC"],@[@"finished",@"已经完成的梦想",@"DoneVC"]];
-    NSArray *section2 = @[@[@"",@"退出登录",@""],@[@"",@"修改密码",@"changePassword"]];
+    NSArray *section1 = @[@[@"running",@"正在进行的梦想",@"DoingVC"],@[@"finished",@"已经完成的梦想",@"DoneVC"],@[@"change",@"修改密码",@"changePassword"]];
+    NSArray *section2 = @[@[@"",@"退出登录",@""]];
     settingArray = @[section1,section2];
 }
 
@@ -111,19 +111,14 @@ static NSString *settingCell = @"settingCell";
     if (indexPath.section == 0) {
         return;
     }
-    NSArray *arr1 = settingArray[indexPath.section-1];
-    NSArray *arr = arr1[indexPath.row];
+    
     if (indexPath.section == 2) {
-        if (indexPath.row) {
-            [self performSegueWithIdentifier:arr[2] sender:self];
-            return;
-        }else{
             [UserInfo shareUserInfo].userCode = nil;
             [self back];
-        }
         return;
     }
-   
+    NSArray *arr1 = settingArray[indexPath.section-1];
+    NSArray *arr = arr1[indexPath.row];
     [self performSegueWithIdentifier:arr[2] sender:self];
 }
 
