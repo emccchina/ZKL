@@ -160,7 +160,9 @@
         }
         return;
     }
-    
+    PlanModel* model = [SQLManager shareUserInfo].myDoingPlan;
+    CGFloat finishedTime = [model.finishedTime floatValue]-[_performModel.realDream floatValue]+dreamTime;
+    model.finishedTime = [NSString stringWithFormat:@"%.0f",finishedTime];
     [self.timeTF resignFirstResponder];
     [self.minuteTF resignFirstResponder];
 //    _performModel.planDream = [NSString stringWithFormat:@"%ld",(long)dreamTime];

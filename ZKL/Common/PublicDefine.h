@@ -37,3 +37,4 @@
 #define kRememberAccount    @"remember"
 #define kAccountKey         @"accountKey"
 #define kAccountPassword    @"passwordKey"
+#define kVersion            @"version"
