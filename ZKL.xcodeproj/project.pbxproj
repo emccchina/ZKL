@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5756F2E04C56C1857922024C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D45F144EA7FC0C69E98E14EF /* libPods.a */; };
+		F75C47BA1AE8E6D000F7A8B5 /* ChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C47B91AE8E6D000F7A8B5 /* ChangePasswordVC.m */; };
 		F75C59961A9D64B3006EC998 /* AddDreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59951A9D64B3006EC998 /* AddDreamVC.m */; };
 		F75C59991A9D95F7006EC998 /* WhiteBlackTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = F75C59981A9D95F7006EC998 /* WhiteBlackTextFiled.m */; };
 		F76B08FC1ADDFE1900DED1D0 /* 兰亭黑 GBK.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F76B08FB1ADDFE1900DED1D0 /* 兰亭黑 GBK.TTF */; };
@@ -113,6 +114,8 @@
 		173E3982BD6B614786560469 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C04D8267727ED642C92248FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D45F144EA7FC0C69E98E14EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F75C47B81AE8E6D000F7A8B5 /* ChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordVC.h; sourceTree = "<group>"; };
+		F75C47B91AE8E6D000F7A8B5 /* ChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordVC.m; sourceTree = "<group>"; };
 		F75C59941A9D64B3006EC998 /* AddDreamVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDreamVC.h; sourceTree = "<group>"; };
 		F75C59951A9D64B3006EC998 /* AddDreamVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamVC.m; sourceTree = "<group>"; };
 		F75C59971A9D95F7006EC998 /* WhiteBlackTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteBlackTextFiled.h; sourceTree = "<group>"; };
@@ -618,6 +621,8 @@
 				F7AEF8881AC2427D000A9142 /* MyWebView.m */,
 				F7AEF8891AC2427D000A9142 /* RegisterVC.h */,
 				F7AEF88A1AC2427D000A9142 /* RegisterVC.m */,
+				F75C47B81AE8E6D000F7A8B5 /* ChangePasswordVC.h */,
+				F75C47B91AE8E6D000F7A8B5 /* ChangePasswordVC.m */,
 			);
 			name = ViewControllers;
 			path = ZKL/ViewControllers;
@@ -860,6 +865,7 @@
 				F7D09E081A6E57E300332331 /* MainViewController.m in Sources */,
 				F7D09DFF1A6E518100332331 /* KDPreView.m in Sources */,
 				F7EF35591A9F066300FEE796 /* ImageButton.m in Sources */,
+				F75C47BA1AE8E6D000F7A8B5 /* ChangePasswordVC.m in Sources */,
 				F79F809C1A7F443000FDA3F9 /* ProgressRectView.m in Sources */,
 				F7AEF88B1AC2427D000A9142 /* LoginVC.m in Sources */,
 				F7B1671B1AA1A9CE000B84D1 /* NSDate+Agenda.m in Sources */,

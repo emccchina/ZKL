@@ -383,6 +383,7 @@
                         <outlet property="settingTB" destination="Ado-2R-WS2" id="M5w-Eo-SPm"/>
                         <segue destination="xYa-zo-Qv0" kind="show" identifier="DoingVC" id="st8-fy-9v5"/>
                         <segue destination="fzX-YQ-dat" kind="show" identifier="DoneVC" id="xup-Mx-BQK"/>
+                        <segue destination="I9E-nv-i4U" kind="show" identifier="changePassword" id="eUB-Yh-meW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrx-P4-50D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bnz-yC-mkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2738" y="594"/>
+            <point key="canvasLocation" x="2801" y="171"/>
         </scene>
         <!--已完成梦想-->
         <scene sceneID="xKb-tA-YZe">
@@ -485,7 +486,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKq-kf-7vW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2738" y="1280"/>
+            <point key="canvasLocation" x="2801" y="848"/>
+        </scene>
+        <!--Change PasswordVC-->
+        <scene sceneID="4f0-5c-5NW">
+            <objects>
+                <viewController id="I9E-nv-i4U" customClass="ChangePasswordVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nxg-dI-BW0"/>
+                        <viewControllerLayoutGuide type="bottom" id="sZi-Ib-7lZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XEE-TY-8m1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="原始密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBS-sL-L2N">
+                                <rect key="frame" x="26" y="74" width="548" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WZe-bG-18B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="新密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fzj-Bv-AHt">
+                                <rect key="frame" x="26" y="124" width="548" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9GA-kK-BAJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zjc-hX-XeV">
+                                <rect key="frame" x="26" y="174" width="548" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ilA-Yp-oEJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRn-BL-Ctu">
+                                <rect key="frame" x="250" y="265" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Xtt-wE-BRK"/>
+                                    <constraint firstAttribute="width" constant="100" id="qda-Gz-MR9"/>
+                                </constraints>
+                                <state key="normal" title="确    定">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doOKButton:" destination="I9E-nv-i4U" eventType="touchUpInside" id="tIe-VS-SE0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zjc-hX-XeV" firstAttribute="top" secondItem="fzj-Bv-AHt" secondAttribute="bottom" constant="10" id="0Zc-IY-niv"/>
+                            <constraint firstAttribute="centerX" secondItem="VRn-BL-Ctu" secondAttribute="centerX" id="2NP-jH-9IM"/>
+                            <constraint firstItem="Zjc-hX-XeV" firstAttribute="width" secondItem="fzj-Bv-AHt" secondAttribute="width" id="661-xd-NE0"/>
+                            <constraint firstItem="Zjc-hX-XeV" firstAttribute="leading" secondItem="fzj-Bv-AHt" secondAttribute="leading" id="E7M-Wg-Dle"/>
+                            <constraint firstItem="fzj-Bv-AHt" firstAttribute="leading" secondItem="QBS-sL-L2N" secondAttribute="leading" id="LHM-MW-igq"/>
+                            <constraint firstItem="fzj-Bv-AHt" firstAttribute="top" secondItem="QBS-sL-L2N" secondAttribute="bottom" constant="10" id="LXe-20-Odx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QBS-sL-L2N" secondAttribute="trailing" constant="10" id="e5b-Kl-qbE"/>
+                            <constraint firstItem="VRn-BL-Ctu" firstAttribute="top" secondItem="Zjc-hX-XeV" secondAttribute="bottom" constant="51" id="qkn-EX-Te8"/>
+                            <constraint firstItem="QBS-sL-L2N" firstAttribute="top" secondItem="nxg-dI-BW0" secondAttribute="bottom" constant="10" id="spD-2Z-YbH"/>
+                            <constraint firstItem="fzj-Bv-AHt" firstAttribute="width" secondItem="QBS-sL-L2N" secondAttribute="width" id="suc-Se-aHa"/>
+                            <constraint firstItem="QBS-sL-L2N" firstAttribute="leading" secondItem="XEE-TY-8m1" secondAttribute="leadingMargin" constant="10" id="tW9-I0-d6P"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="okBut" destination="VRn-BL-Ctu" id="I8J-ay-cbQ"/>
+                        <outlet property="oldPassword" destination="QBS-sL-L2N" id="Qem-ba-I5N"/>
+                        <outlet property="p2" destination="fzj-Bv-AHt" id="m0q-zd-aY6"/>
+                        <outlet property="passwordAgain" destination="Zjc-hX-XeV" id="cOX-bo-f8h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="63O-EN-ghb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2801" y="1813"/>
         </scene>
     </scenes>
     <resources>
