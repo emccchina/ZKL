@@ -36,7 +36,7 @@
 @property (nonatomic,assign) NSInteger currentPage;
 @property (nonatomic,assign,setter = setDataource:) id<CycleScrollViewDatasource> datasource;
 @property (nonatomic,assign, setter=setDelegate:) id<CycleScrollViewDelegate> delegate;
-
+@property (nonatomic, assign) BOOL  showPageControl;
 - (void)reloadData;
 - (void)setViewContent:(UIView *)view atIndex:(NSInteger)index;
 

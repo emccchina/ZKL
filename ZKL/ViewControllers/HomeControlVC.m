@@ -17,13 +17,16 @@
 #import "PerformModel.h"
 #import "NSTimer+Addition.h"
 #import "NSDate+Agenda.h"
-@interface HomeControlVC ()
+#import "CycleScrollView.h"
+
+@interface HomeControlVC ()<CycleScrollViewDatasource, CycleScrollViewDelegate>
 {
     NSTimer     *myTimer;
     PlanModel    *doingPlan;
     NSInteger stateDream;//0添加 1暂停 2播放
     BOOL        reminder;
     BOOL        first;
+    CycleScrollView* scrollView;
 }
 #define kTimerSpace1 1
 #define kTimerShundle 60
@@ -89,6 +92,50 @@
         }
     }];
     
+    
+    [self addIntroductionViews];
+}
+
+- (void)addIntroductionViews
+{
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *storeVersion = [defaults objectForKey:kVersion];
+    if ([appVersion isEqualToString:storeVersion]) {
+        return;
+    }
+    [defaults setObject:appVersion forKey:kVersion];
+    [defaults synchronize];
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    scrollView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    scrollView.delegate = self;
+    scrollView.datasource = self;
+    [scrollView reloadData];
+    [scrollView setShowPageControl:YES];
+    [delegate.window addSubview:scrollView];
+}
+
+#pragma mark- ScrollViewDelegate
+- (NSInteger)numberOfPages
+{
+    return 3;
+}
+- (UIView *)pageAtIndex:(NSInteger)index
+{
+    CGRect rect = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
+    [imageView setImage:[UIImage     imageNamed:[NSString stringWithFormat:@"引导页%d",index+1]]];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    return imageView;
+}
+
+- (void)didClickPage:(CycleScrollView *)csView atIndex:(NSInteger)index
+{
+    NSLog(@"click %d", index);
+    if (index == 2) {
+        [scrollView removeFromSuperview];
+    }
 }
 
 - (void)animationTimerDidFired:(NSTimer*)timer

@@ -163,6 +163,10 @@
     }
 }
 
+- (void)setShowPageControl:(BOOL)showPageControl
+{
+    self.pageControl.hidden = showPageControl;
+}
 
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
