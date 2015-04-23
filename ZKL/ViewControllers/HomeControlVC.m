@@ -247,6 +247,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!updatePlan.action",kServerDomain];
     NSString *total = [NSString stringWithFormat:@"%ld", (long)[planModel.totalHour integerValue]/60];
+
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:planModel.title, @"title", total, @"totalHour",planModel.beginDate,@"beginString",planModel.endDate, @"endString",[UserInfo shareUserInfo].userCode, @"userCode",planModel.planIDServer,@"planCode",planModel.restTime,@"unableMinute", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
