@@ -185,7 +185,6 @@
         if (result) {
             if([@"0" isEqual:result[@"errorno"]]){
                 [self showAlertView:@"密码找回成功,请登录!"];
-                [self back];
             }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

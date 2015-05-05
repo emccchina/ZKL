@@ -50,7 +50,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@loginaction!userChangePass.action",kServerDomain];
-    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",self.p2.text,@"password", nil];
+    NSDictionary *regsiterDict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",self.p2.text,@"newPassword",self.oldPassword.text, @"password",nil];
     NSLog(@"%@",regsiterDict);
     [manager POST:url parameters:regsiterDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"request is  %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
@@ -59,7 +59,6 @@
         if (result) {
             if([@"0" isEqual:result[@"errorno"]]){
                 [self showAlertView:@"密码修改成功"];
-                [self back];
             }else{
                 [self showAlertView:result[@"message"]];
             }
