@@ -92,12 +92,12 @@
     }
     
     
-    humanView.frame = CGRectMake(self.progress*width*0.8, height-spaceH*spaceMuli-80, 74, 74);
+    humanView.frame = CGRectMake(self.progress*width*0.75, height-spaceH*spaceMuli-80, 74, 74);
     UIFont *font3 = [UIFont fontWithName:kFontName size:15];
     CGSize size = [Utities sizeWithUIFont:font3 string:self.title];
     CGFloat x = 0;
     if (self.progress > 0.5) {
-        x = width /2 - size.width/2+(self.progress-0.5)*width-85;
+        x = width /2 - size.width/2+(self.progress-0.5)*width-75;
     }else{
         x = self.progress *width+75;
     }
