@@ -79,10 +79,10 @@
     [super viewDidDisappear:animated];
     NSString *account = rememberAccount ? self.accoutTF.text : @"";
     [Utities setUserDefaults:account key:kAccountKey];
-#ifdef DEBUG
+//#ifdef DEBUG
     NSString *password = rememberAccount ? self.passwordTF.text : @"";
     [Utities setUserDefaults:password key:kAccountPassword];
-#endif
+//#endif
 }
 
 - (void)didReceiveMemoryWarning {

@@ -26,7 +26,7 @@
     NSInteger stateDream;//0添加 1暂停 2播放
     BOOL        reminder;
     BOOL        first;
-    CycleScrollView* scrollView;
+    CycleScrollView* scrollView;//引导页面
 }
 #define kTimerSpace1 1
 #define kTimerShundle 60
@@ -173,6 +173,12 @@
 {
     [self presentCalendarVC];
 //    [Utities presentLoginVC:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 - (void)viewDidAppear:(BOOL)animated
 {

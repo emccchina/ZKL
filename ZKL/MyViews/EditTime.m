@@ -70,7 +70,7 @@
     restTime = 0;
     
     self.OKButton.layer.cornerRadius = 3;
-    self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
+    self.OKButton.layer.backgroundColor = [UIColor colorWithRed:9.0/255.0 green:255.0/255.0 blue:212.0/255.0 alpha:1.0].CGColor;
     self.cancel.layer.cornerRadius = 3;
     self.cancel.layer.backgroundColor = kLightGrayColor.CGColor;
     

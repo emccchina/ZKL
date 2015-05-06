@@ -55,7 +55,6 @@
     //单例模式 只有一个实例化 所以合并在一起
     MTLJSONAdapter *adapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:result modelClass:[self class] error:nil];
     [self mergeValuesForKeysFromModel:adapter.model];
-    
 }
 
 - (BOOL)isLogin

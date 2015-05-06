@@ -97,7 +97,7 @@
     CGSize size = [Utities sizeWithUIFont:font3 string:self.title];
     CGFloat x = 0;
     if (self.progress > 0.5) {
-        x = width /2 - size.width/2+(self.progress-0.5)*width-75;
+        x = width /2 - size.width/2+(self.progress-0.5)*width-85;
     }else{
         x = self.progress *width+75;
     }

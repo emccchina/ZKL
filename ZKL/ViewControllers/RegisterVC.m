@@ -117,6 +117,7 @@
             }else{
                 [self showAlertView:result[@"message"]];
             }
+            
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utities errorPrint:error vc:self];
