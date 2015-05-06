@@ -38,11 +38,6 @@
 
 - (void)requestForNewPassword
 {
-    NSString *pass = [Utities getUserDefaults:kAccountPassword];
-    if (![pass isEqualToString:self.oldPassword.text]) {
-        [self showAlertView:@"旧密码错误"];
-        return;
-    }
     if ([self.oldPassword.text isEqualToString:@""] || [self.p2.text isEqualToString:@""] || [self.passwordAgain.text isEqualToString:@""]) {
         [self showAlertView:@"请完整信息"];
         return;
