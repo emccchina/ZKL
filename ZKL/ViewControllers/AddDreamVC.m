@@ -40,7 +40,9 @@
         edit = YES;
         [self setTFValue];
     }
-    
+    if (edit) {
+        self.title = @"调整梦想";
+    }
     self.OKButton.layer.cornerRadius = 5;
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
     self.timeEverydayTF.editTF = NO;

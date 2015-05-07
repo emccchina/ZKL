@@ -86,7 +86,7 @@
                         <constraint firstAttribute="height" constant="70" id="ob0-Oi-bYm"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWD-1B-YNG" customClass="RichStyleLabel">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWD-1B-YNG" customClass="RichStyleLabel">
                     <rect key="frame" x="0.0" y="310" width="600" height="90"/>
                     <color key="backgroundColor" red="0.29411764709999999" green="0.86274509799999999" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -105,7 +105,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzt-Me-B3P">
                     <rect key="frame" x="0.0" y="445" width="580" height="23"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
