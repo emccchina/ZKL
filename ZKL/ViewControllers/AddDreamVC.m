@@ -171,8 +171,8 @@
         planModel.finished = YES;
         planModel.valid = NO;
         [[SQLManager shareUserInfo] updatePlanVlaid:planModel];
-        [[SQLManager shareUserInfo] deletePerform:planModel.doingPerform];
     }
+    [[SQLManager shareUserInfo] deletePerform:planModel.doingPerform];
     planModel.title = self.addTF.TF.text;
     planModel.beginDate = self.beginTime.TF.text;
     planModel.endDate = self.endTime.TF.text;
