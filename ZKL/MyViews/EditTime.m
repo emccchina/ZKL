@@ -146,6 +146,7 @@
         default:
             break;
     }
+    NSLog(@"real dream time is %d,restTime is  %d,%@,%d", dreamTime, restTime,self.timeTF.text, [self.timeTF.text integerValue]);
 }
 
 - (void)doFinish:(MyTextField*)tf
@@ -153,7 +154,7 @@
     [self setMyDreamTime];
 }
 - (IBAction)doOKButton:(id)sender {
-    
+    [self setMyDreamTime];
     if (dreamTime > 60*24 || restTime > 24*60-dreamTime) {
         if (self.editFinished) {
             self.editFinished(NO);
@@ -161,8 +162,10 @@
         return;
     }
     PlanModel* model = [SQLManager shareUserInfo].myDoingPlan;
+    NSLog(@"plan fininshed time %f,real time %f, dream time %ld", [model.finishedTime floatValue],[_performModel.realDream floatValue], (long)dreamTime);
     CGFloat finishedTime = [model.finishedTime floatValue]-[_performModel.realDream floatValue]+dreamTime;
     model.finishedTime = [NSString stringWithFormat:@"%.0f",finishedTime];
+    NSLog(@"plan 1 fininshed time %f,", [model.finishedTime floatValue]);
     [self.timeTF resignFirstResponder];
     [self.minuteTF resignFirstResponder];
 //    _performModel.planDream = [NSString stringWithFormat:@"%ld",(long)dreamTime];
