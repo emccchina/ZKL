@@ -65,4 +65,6 @@
 - (BOOL)isLogin;
 + (UserInfo*)shareUserInfo; //全局共享的用户信息 单例模式
 - (void)parseWithDict:(NSDictionary*)result;
+- (void)saveUserInfo:(NSDictionary*)dict;
+- (void)readFromFile;
 @end

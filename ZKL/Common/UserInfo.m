@@ -27,8 +27,19 @@
         self.update = YES;
         self.homeAddImage = [Utities homeAddImage];
         self.backImage = [self myBackImage];
+        
     }
     return self;
+}
+
+- (void)readFromFile
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = [defaults objectForKey:@"userInfo"];
+    if (!dict) {
+        return;
+    }
+    [self parseWithDict:dict];
 }
 
 - (UIImage*)myBackImage
@@ -48,6 +59,13 @@
     UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return theImage;
+}
+
+- (void)saveUserInfo:(NSDictionary*)dict
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:dict forKey:@"userInfo"];
+    [defaults synchronize];
 }
 
 - (void)parseWithDict:(NSDictionary *)result

@@ -160,6 +160,7 @@
         if (result) {
             UserInfo *userInfo = [UserInfo shareUserInfo];
             [userInfo parseWithDict:result[@"result"]];
+            [[UserInfo shareUserInfo] saveUserInfo:result[@"result"]];
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

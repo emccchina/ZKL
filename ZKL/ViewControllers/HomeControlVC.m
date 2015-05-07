@@ -51,6 +51,7 @@
 //    [self showBackItem];
     first = YES;
     self.title = @"自控力";
+    [[UserInfo shareUserInfo] readFromFile];
     self.navigationItem.rightBarButtonItem = [Utities barButtonItemWithSomething:[UIImage imageNamed:@"Header"] target:self action:@selector(doRight:)];
     self.view.backgroundColor = [UIColor colorWithRed:69.0/255.0 green:188.0/255.0 blue:208.0/255.0 alpha:1];
     CGFloat topHieght = iPhone4 ? 10 : 50;
