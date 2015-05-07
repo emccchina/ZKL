@@ -143,7 +143,7 @@
     PerformModel *perform = doingPlan.doingPerform;
     if ([SQLManager shareUserInfo].running) {
         NSInteger timeInterval = [[NSDate date] timeIntervalSinceDate:[SQLManager shareUserInfo].runningBeginTime]/kTimerShundle;
-        NSLog(@"%ld", (long)timeInterval);
+        NSLog(@"time inter %ld", (long)timeInterval);
         perform.realDream = [NSString stringWithFormat:@"%ld",(long)[perform.realDream integerValue]+timeInterval];
         doingPlan.finishedTime = [NSString stringWithFormat:@"%ld",(long)[doingPlan.finishedTime floatValue]+timeInterval];
         [SQLManager shareUserInfo].running = NO;

@@ -171,6 +171,7 @@
     _performModel.realRest = [NSString stringWithFormat:@"%ld", (long)restTime];
     _performModel.edit = YES;
     [[SQLManager shareUserInfo] updatePerform:_performModel];
+    [[SQLManager shareUserInfo] updatePlan:model];
     self.hidden = YES;
     if (self.editFinished) {
         self.editFinished(YES);

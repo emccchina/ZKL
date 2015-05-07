@@ -44,14 +44,22 @@
     UIImage *bgImage = [UIImage imageWithContentsOfFile:imagePath];
     self.BGImage.image = bgImage;
     self.accoutTF.delegate = self;
+    self.accoutTF.layer.cornerRadius = 20;
+    self.passwordTF.layer.cornerRadius = 20;
+    self.accoutTF.layer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.15].CGColor;
+    self.passwordTF.layer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.15].CGColor;
     self.passwordTF.delegate = self;
     [self.passwordTF setSecureTextEntry:YES];
-    self.loginBut.layer.cornerRadius = 3;
+    self.loginBut.layer.cornerRadius = 20;
     self.loginBut.layer.backgroundColor = kNavBGColor.CGColor;
     self.sinaLoginBut.layer.borderColor = kNavBGColor.CGColor;
     self.sinaLoginBut.layer.borderWidth = 1;
     self.QQLoginBut.layer.borderWidth  = 1;
     self.QQLoginBut.layer.borderColor = kNavBGColor.CGColor;
+    self.registerBut.layer.cornerRadius = 20;
+    self.registerBut.layer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.15].CGColor;
+//    self.forgetBut.layer.cornerRadius = 15;
+//    self.forgetBut.layer.backgroundColor = kNavBGColor.CGColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated
