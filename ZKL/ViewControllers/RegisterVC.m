@@ -53,7 +53,7 @@
 - (void)setInitState
 {
     self.title = self.typeVC ? @"找回密码" : @"注册帐号";
-    self.userNameTF.placeholder=self.typeVC ? @"账号(5-40英文字母数字下划线)" : @"账号(5-40英文字母数字下划线)";
+    self.userNameTF.placeholder=self.typeVC ? @"账号" : @"账号";
     self.emailTF.hidden =self.typeVC;
     self.verifyTF.hidden =!self.typeVC;
     self.getVerifiBut.hidden =!self.typeVC;
@@ -165,7 +165,7 @@
         return;
     }
     if ([self.passwordTF.text length] < 6) {
-        [self showAlertView:@"密码不得少于六位"];
+        [self showAlertView:@"密码不得少于6位"];
         return;
     }
     if (![self.passwordAgainTF.text isEqualToString:self.passwordTF.text]) {
@@ -199,12 +199,8 @@
 
 - (void)requestRegister
 {
-    if ([self.userNameTF.text length] < 4) {
-        [self showAlertView:@"用户名不得少于四位"];
-        return;
-    }
     if ([self.passwordTF.text length] < 6) {
-        [self showAlertView:@"密码不得少于六位"];
+        [self showAlertView:@"密码不得少于6位"];
         return;
     }
 //    if (!agree) {
