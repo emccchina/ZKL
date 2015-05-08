@@ -45,6 +45,7 @@
     self.BGImage.image = bgImage;
     self.accoutTF.delegate = self;
     self.accoutTF.layer.cornerRadius = 20;
+    self.accoutTF.autocorrectionType = UITextAutocorrectionTypeNo;
     self.passwordTF.layer.cornerRadius = 20;
     self.accoutTF.layer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.15].CGColor;
     self.passwordTF.layer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.15].CGColor;

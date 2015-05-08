@@ -10,6 +10,9 @@
 
 @interface ChangePasswordVC ()
 <UITextFieldDelegate>
+{
+    BOOL isBack;
+}
 @property (weak, nonatomic) IBOutlet UITextField *oldPassword;
 @property (weak, nonatomic) IBOutlet UITextField *p2;
 
@@ -34,10 +37,15 @@
     
     self.okBut.layer.cornerRadius = 3;
     self.okBut.layer.backgroundColor = kNavBGColor.CGColor;
+    isBack = NO;
 }
 
 - (void)requestForNewPassword
 {
+    if (![self.oldPassword.text isEqualToString:[Utities getUserDefaults:kAccountPassword] ]) {
+        [self showAlertView:@"原始密码错误"];
+        return;
+    }
     if ([self.oldPassword.text isEqualToString:@""] || [self.p2.text isEqualToString:@""] || [self.passwordAgain.text isEqualToString:@""]) {
         [self showAlertView:@"请完整信息"];
         return;
@@ -59,6 +67,7 @@
         if (result) {
             if([@"0" isEqual:result[@"errorno"]]){
                 [self showAlertView:@"密码修改成功"];
+                isBack = YES;
             }else{
                 [self showAlertView:result[@"message"]];
             }
@@ -69,7 +78,12 @@
         [self showAlertView:kNetworkNotConnect];
     }];
 }
-
+- (void)doAlertView
+{
+    if (isBack) {
+        [self back];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

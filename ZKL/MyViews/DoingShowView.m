@@ -45,7 +45,7 @@
         progressView = [[ProgressLineView alloc] initWithFrame:CGRectMake(0, spaceH*2, width, (iPhone4 ?spaceH*8 : spaceH*6))];
         [self addSubview:progressView];
     }
-    progressView.progress = self.progress;
+    progressView.progress = (self.progress <=1 ? : 1);
     progressView.title = self.dio;
     progressView.backgroundColor = [UIColor clearColor];
     progressView.totalTime = self.progress*self.totalTime;

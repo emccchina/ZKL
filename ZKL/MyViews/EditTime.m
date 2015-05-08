@@ -155,7 +155,7 @@
 }
 - (IBAction)doOKButton:(id)sender {
     [self setMyDreamTime];
-    if (dreamTime > 60*24 || restTime > 24*60-dreamTime) {
+    if (dreamTime > 60*24 || restTime > 24*60-dreamTime || [self.minuteTF.text integerValue] >= 60) {
         if (self.editFinished) {
             self.editFinished(NO);
         }
