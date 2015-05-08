@@ -53,7 +53,7 @@
 - (void)setInitState
 {
     self.title = self.typeVC ? @"找回密码" : @"注册帐号";
-    self.userNameTF.placeholder=self.typeVC ? @"账号" : @"账号";
+    self.userNameTF.placeholder=self.typeVC ? @"账号(5-40英文字母数字下划线)" : @"账号(5-40英文字母数字下划线)";
     self.emailTF.hidden =self.typeVC;
     self.verifyTF.hidden =!self.typeVC;
     self.getVerifiBut.hidden =!self.typeVC;
