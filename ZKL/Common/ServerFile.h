@@ -9,7 +9,7 @@
 #ifndef ZKL_ServerFile_h
 #define ZKL_ServerFile_h
 
+//#define kServerDomain   @"http://wx.zaixianchuangxin.com:88/zkl/mobile/"
 #define kServerDomain   @"http://101.200.228.123/mobile/"
-//#define kServerDomain   @"http://192.168.66.110:8080/zkl/mobile/"
 
 #endif
