@@ -27,6 +27,7 @@
     user =[UserInfo shareUserInfo];
     // Do any additional setup after loading the view.
     [self showBackItem];
+    self.view.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1];
     headerCell = (HeaderCell*)[Utities viewAddContraintsParentView:self.headViewBG subNibName:@"HeaderCell"];
     
     [headerCell.header setImage:[UIImage imageNamed:@"Header"]];

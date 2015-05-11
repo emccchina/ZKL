@@ -46,6 +46,7 @@
     self.OKButton.layer.cornerRadius = 5;
     self.OKButton.layer.backgroundColor = kNavBGColor.CGColor;
     self.timeEverydayTF.editTF = NO;
+    self.addTF.TF.autocorrectionType = UITextAutocorrectionTypeNo;
 }
 
 - (void)setTFValue

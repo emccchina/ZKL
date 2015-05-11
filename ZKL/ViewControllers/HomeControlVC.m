@@ -425,7 +425,7 @@
     editTime.performModel = doingPlan.doingPerform;
     editTime.editFinished = ^(BOOL success){
         if (!success) {
-            [self showAlertView:@"分钟数不能超过60,小时数不能超过24"];
+            [self showAlertView:@"分钟数不能超过59,小时数不能超过23"];
             return;
         }
         stateDream = 1;

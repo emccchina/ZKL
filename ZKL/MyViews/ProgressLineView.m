@@ -12,6 +12,11 @@
 
 - (void)awakeFromNib
 {
+    [self setHumanView];
+}
+
+- (void)setHumanView
+{
     if (!humanView) {
         humanView = [[UIImageView alloc] init];
         [self addSubview:humanView];
@@ -21,8 +26,6 @@
     [humanView setContentMode:UIViewContentModeScaleAspectFill];
     
     humanView.animationDuration = 0.3;
-//    [humanView startAnimating];
-//    [humanView stopAnimating];
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -107,7 +110,7 @@
     if (!self.bottom) {
         return;
     }
-    [[NSString stringWithFormat:@"共奋斗了%ld小时", (long)self.totalTime] drawInRect:CGRectMake(20, height-spaceH*spaceMuli+30, size.width+10, size.height) withAttributes:@{NSForegroundColorAttributeName:kBlackColor, NSFontAttributeName:font3}];
+    [[NSString stringWithFormat:@"共奋斗了%.1f小时", self.totalTime] drawInRect:CGRectMake(20, height-spaceH*spaceMuli+30, size.width+10, size.height) withAttributes:@{NSForegroundColorAttributeName:kBlackColor, NSFontAttributeName:font3}];
     NSString *pr = [NSString stringWithFormat:@"共完成了%ld%%", (long)(self.progress*100)];
     CGSize sizePr = [Utities sizeWithUIFont:font3 string:pr];
     [pr drawInRect:CGRectMake(width - 20 - sizePr.width, height-spaceH*spaceMuli+30, size.width+10, size.height) withAttributes:@{NSForegroundColorAttributeName:kBlackColor, NSFontAttributeName:font3}];

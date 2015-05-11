@@ -13,7 +13,7 @@
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    
+    self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1];
     CGFloat width = CGRectGetWidth(rect);
     CGFloat height = CGRectGetHeight(rect);
     CGFloat spaceH = height / 11;
@@ -24,7 +24,7 @@
     CGContextSetLineWidth(content, 1/scale);
     UIColor *bgColor = [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1];
     CGContextSetFillColorWithColor(content, bgColor.CGColor);
-    CGContextAddRect(content, CGRectMake(0, spaceH, width, height-spaceH*4));
+    CGContextAddRect(content, CGRectMake(0, spaceH, width, height-spaceH));
     CGContextDrawPath(content, kCGPathFill);
     
     UIFont *font3 = [UIFont fontWithName:kFontName size:20];
@@ -45,11 +45,13 @@
         progressView = [[ProgressLineView alloc] initWithFrame:CGRectMake(0, spaceH*2, width, (iPhone4 ?spaceH*8 : spaceH*6))];
         [self addSubview:progressView];
     }
+    [progressView setHumanView];
     progressView.progress = (self.progress <=1 ? self.progress : 1);
     progressView.title = self.dio;
     progressView.backgroundColor = [UIColor clearColor];
     progressView.totalTime = self.progress*self.totalTime;
     progressView.bottom = self.buttom;
+    [progressView animationDoing:YES];
     
 }
 
