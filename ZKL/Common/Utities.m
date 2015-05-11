@@ -264,7 +264,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PublicStoryboard" bundle:nil];
     UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
     vc.hidesBottomBarWhenPushed = YES;
-    [parentVC.navigationController.view.layer addAnimation:[Utities getAnimation:5] forKey:nil];
+//    [parentVC.navigationController.view.layer addAnimation:[Utities getAnimation:5] forKey:nil];
     [parentVC.navigationController pushViewController:vc animated:YES];
 }
 
