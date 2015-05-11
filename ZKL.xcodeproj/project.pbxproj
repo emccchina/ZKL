@@ -706,6 +706,7 @@
 				TargetAttributes = {
 					F7D09D011A6E4F3700332331 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = L2VSF6G42N;
 					};
 					F7D09D1A1A6E4F3700332331 = {
 						CreatedOnToolsVersion = 6.1;
@@ -996,6 +997,7 @@
 			baseConfigurationReference = C04D8267727ED642C92248FF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = ZKL/PublicFile.h;
 				INFOPLIST_FILE = ZKL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1010,6 +1012,7 @@
 			baseConfigurationReference = 173E3982BD6B614786560469 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = ZKL/PublicFile.h;
 				INFOPLIST_FILE = ZKL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

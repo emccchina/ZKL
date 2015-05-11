@@ -33,7 +33,7 @@
     if (!self.realDream || !self.planDream || ![self.planDream floatValue]) {
         return NO;
     }
-    return ([self.realDream floatValue]/[self.planDream floatValue] < 1) ? NO : YES;
+    return ([self.realDream floatValue]/[self.planDream floatValue] >= 1);
 }
 
 - (void)setRealDream:(NSString *)realDream

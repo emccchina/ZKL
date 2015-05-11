@@ -22,7 +22,7 @@
 //    NSString *year = [NSString stringWithFormat:@"%ld", (long)[comps year]];
     
     NSDictionary* redTextAttributes = @{ NSForegroundColorAttributeName : [UIColor redColor], NSFontAttributeName:[UIFont fontWithName:kFontName size:19]};
-    [self.sortLabel setAttributedText:@"今天你击败了69%的人\n目前全世界排名2333333名\n快快分享给小伙伴吧" withRegularPattern:@"[0-9]+" attributes:redTextAttributes];
+    [self.sortLabel setAttributedText:@"如果已经登陆\n当日的结果需要\n第二天才可以看得到" withRegularPattern:@"[0-9]+" attributes:redTextAttributes];
     NSString *string = @"但你发现时间是贼,它早已偷走你的时光";
     NSArray *array = [string componentsSeparatedByString:@","];
     if (array.count > 1) {
