@@ -18,7 +18,7 @@
     BaseViewController *dest = (BaseViewController *)self.destinationViewController;
     dest.hidesBottomBarWhenPushed = YES;
     [src.navigationController pushViewController:dest animated:YES];
-    [src.navigationController.view.layer addAnimation:[Utities getAnimation:3] forKey:nil];
+//    [src.navigationController.view.layer addAnimation:[Utities getAnimation:3] forKey:nil];
     
 }
 
