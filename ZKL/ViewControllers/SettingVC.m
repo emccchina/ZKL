@@ -113,9 +113,14 @@ static NSString *settingCell = @"settingCell";
     }
     
     if (indexPath.section == 2) {
-            [UserInfo shareUserInfo].userCode = nil;
+        [SQLManager shareUserInfo].myDoingPlan = nil;
+        
+        [UserInfo shareUserInfo].userCode = nil;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:@"userInfo"];
+        [defaults synchronize];
         [[SQLManager shareUserInfo] cleanTables];
-            [self back];
+        [self back];
         return;
     }
     NSArray *arr1 = settingArray[indexPath.section-1];
