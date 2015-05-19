@@ -230,7 +230,7 @@
 //获取今日梦想
 - (void)requestForDoingDreams
 {
-    [self showIndicatorView:kNetworkConnecting];
+//    [self showIndicatorView:kNetworkConnecting];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!getThedayPaln.action",kServerDomain];
@@ -242,7 +242,6 @@
         if (result[@"result"]) {
             PlanModel *plan = [MTLJSONAdapter modelOfClass:[PlanModel class] fromJSONDictionary:result[@"result"] error:nil];
             if (plan) {
-                
                 [[SQLManager shareUserInfo] replacePlanModels:@[plan]];
                 [UserInfo shareUserInfo].loginRestore = NO;
                 [self requestForDoingPerform];
