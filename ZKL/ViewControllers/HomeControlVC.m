@@ -187,6 +187,11 @@
 {
     [super viewDidAppear:animated];
     
+    [self reloadView];
+}
+
+- (void)reloadView
+{
     doingPlan = [SQLManager shareUserInfo].myDoingPlan;
     if (first) {
         stateDream = !doingPlan ? 0 : (doingPlan.finished ? 0 : doingPlan.doing+1);
@@ -201,8 +206,8 @@
     if ([[UserInfo shareUserInfo] isLogin]) {
         [self synchronizeDreams];
     }
-    if (!doingPlan) {
-        
+    if ([UserInfo shareUserInfo].loginRestore) {
+        [self requestForDoingDreams];
     }
 }
 
@@ -225,7 +230,54 @@
 //获取今日梦想
 - (void)requestForDoingDreams
 {
+    [self showIndicatorView:kNetworkConnecting];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@planaction!getThedayPaln.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",@"2015-05-19",@"dayString", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        id result = [self parseResults:responseObject];
+        if (result[@"result"]) {
+            PlanModel *plan = [MTLJSONAdapter modelOfClass:[PlanModel class] fromJSONDictionary:result[@"result"] error:nil];
+            if (plan) {
+                
+                [[SQLManager shareUserInfo] replacePlanModels:@[plan]];
+                [UserInfo shareUserInfo].loginRestore = NO;
+                [self requestForDoingPerform];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+    }];
+}
+
+- (void)requestForDoingPerform
+{
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@performaction!getThedayPerform.action",kServerDomain];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",@"2015-05-19",@"dayString", nil];
+    NSLog(@"dict %@", dict);
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self dismissIndicatorView];
+        NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        id result = [self parseResults:responseObject];
+        if (result[@"result"]) {
+            stateDream = 1;
+            PerformModel *plan = [MTLJSONAdapter modelOfClass:[PerformModel class] fromJSONDictionary:result[@"result"] error:nil];
+            if (plan) {
+                [[SQLManager shareUserInfo] replacePerformModels:@[plan]];
+                [self reloadView];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [Utities errorPrint:error vc:self];
+        [self dismissIndicatorView];
+    }];
 }
 //上传梦想
 - (void)requestForPlanModles:(PlanModel*)planModel

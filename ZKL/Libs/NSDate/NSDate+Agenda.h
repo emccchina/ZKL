@@ -43,5 +43,5 @@
 
 + (NSDate*)dateFromString:(NSString*)string;
 + (NSString*)stringFromDate:(NSDate*)date;
-
++ (NSDate*)dayOfNumWithToday:(NSInteger)numDay;
 @end

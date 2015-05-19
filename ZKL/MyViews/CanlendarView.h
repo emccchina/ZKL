@@ -16,4 +16,5 @@ typedef void (^ChangeMonth) (NSInteger type);//0 下月，1 上月，2 上年，
 @property (nonatomic, copy) ChangeMonth changeMonth;
 @property (nonatomic, strong) NSString *showFirstDate;//显示的第一个日期
 @property (nonatomic, strong) NSString *showLastDate;//显示的最后一个日期
+@property (nonatomic, strong) NSString   *preDate;//今天之前的一天，用来请求日历中 是否完成今天以及之后的都 不请求
 @end

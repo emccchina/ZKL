@@ -30,8 +30,13 @@
         chartView = (ChartView*)[Utities viewAddContraintsParentView:self.view subNibName:@"ChartView"];
     }
     [self showView:0];
+    NSString *preDay = [self.calendarView preDate];
     if ([[UserInfo shareUserInfo] isLogin]) {
-        [self requestForMonthPlan:self.calendarView.showFirstDate toDate:self.calendarView.showLastDate];
+        NSString *showString = [self.calendarView showLastDate];
+        if ([[NSDate dateFromString:preDay] compare:[NSDate dateFromString:showString]] == NSOrderedAscending) {
+            showString = preDay;
+        }
+        [self requestForMonthPlan:self.calendarView.showFirstDate toDate:showString];
     }
     [self.calendarView setDoOneDay:^(DayButton *button){
         chartView.dateString = [NSDate stringFromDate:button.date];
@@ -40,6 +45,15 @@
         [self showView:1];
     }];
     [self.calendarView setChangeMonth:^(NSInteger type){
+        NSString *showString = [self.calendarView showLastDate];
+        if ([[NSDate dateFromString:preDay] compare:[NSDate dateFromString:showString]] == NSOrderedAscending) {
+            showString = preDay;
+        }
+        if ([[NSDate dateFromString:[self.calendarView showFirstDate]] compare:[NSDate date]] == NSOrderedDescending) {
+            NSLog(@"ascr");
+            return ;
+        }
+        
         if ([[UserInfo shareUserInfo] isLogin]) {
             [self requestForMonthPlan:self.calendarView.showFirstDate toDate:self.calendarView.showLastDate];
         }

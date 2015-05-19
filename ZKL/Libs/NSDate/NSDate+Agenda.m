@@ -256,4 +256,13 @@ const char * const JmoLocaleStoreKey = "jmo.locale";
     return destDate;
 }
 
++ (NSDate*)dayOfNumWithToday:(NSInteger)numDay
+{
+    NSCalendar *gregorian = [self.class gregorianCalendar];
+    NSDateComponents *comps = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
+    [comps setDay:comps.day-1];
+    NSDate *day = [gregorian dateFromComponents:comps];
+    return day;
+}
+
 @end

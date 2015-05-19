@@ -57,7 +57,7 @@
 @property (nonatomic, strong) NSString *education;// 学历
 @property (nonatomic, strong) NSString *incomeLevel;// 收入水平
 @property (nonatomic, assign) NSInteger userState; // 激活状态 0未激活 1激活
-
+@property (nonatomic, assign) BOOL      loginRestore;//是否登录过 登录后请求当天的梦想 并显示 默认no 登录后yes 请求完成no
 @property (nonatomic, assign) BOOL      update;//
 
 @property (nonatomic, strong) PlanModel *doingPlan;

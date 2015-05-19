@@ -48,7 +48,7 @@
     numRows = (items/7+ (items%7?1:0));
     self.showFirstDate = [NSDate stringFromDate:[self dateAtItem:0]];
     self.showLastDate = [NSDate stringFromDate:[self dateAtItem:numRows*7-1]];
-
+    self.preDate = [NSDate stringFromDate:[NSDate dayOfNumWithToday:2]];
 }
 
 - (void)drawRect:(CGRect)rect
