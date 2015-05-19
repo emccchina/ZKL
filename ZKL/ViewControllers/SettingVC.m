@@ -114,6 +114,7 @@ static NSString *settingCell = @"settingCell";
     
     if (indexPath.section == 2) {
             [UserInfo shareUserInfo].userCode = nil;
+        [[SQLManager shareUserInfo] cleanTables];
             [self back];
         return;
     }

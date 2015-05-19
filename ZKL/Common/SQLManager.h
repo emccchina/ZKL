@@ -57,4 +57,6 @@
 - (BOOL)replacePlanModels:(NSArray*)models;
 - (BOOL)replacePerformModels:(NSArray*)models;
 
+- (BOOL)cleanTables;
+
 @end

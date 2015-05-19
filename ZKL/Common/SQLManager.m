@@ -432,4 +432,16 @@
     return array;
 }
 
+- (BOOL)cleanTables
+{
+    if (![db open]) {
+        return NO;
+    }
+    NSString *sql = [NSString stringWithFormat:@"delete from %@", kDreamsTable];
+    [db executeStatements:sql];
+    sql = [NSString stringWithFormat:@"delete from %@", kProgressTable];
+    [db executeStatements:sql];
+    return YES;
+}
+
 @end
