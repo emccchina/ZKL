@@ -202,6 +202,10 @@
         stateDream = 2;
         [myTimer resumeTimerAfterTimeInterval:kTimerShundle];
     }
+    if ([UserInfo shareUserInfo].logoutRestore) {
+        stateDream = 0;
+        [UserInfo shareUserInfo].logoutRestore = NO;
+    }
     [self setViewState:stateDream];
     if ([[UserInfo shareUserInfo] isLogin]) {
         [self synchronizeDreams];
@@ -234,7 +238,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@planaction!getThedayPaln.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",@"2015-05-19",@"dayString", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",[NSDate stringFromDate:[NSDate date]],@"dayString", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject is %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
@@ -259,7 +263,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@performaction!getThedayPerform.action",kServerDomain];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",@"2015-05-19",@"dayString", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[UserInfo shareUserInfo].userCode, @"userCode",[NSDate stringFromDate:[NSDate date]],@"dayString", nil];
     NSLog(@"dict %@", dict);
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self dismissIndicatorView];

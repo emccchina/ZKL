@@ -114,8 +114,9 @@ static NSString *settingCell = @"settingCell";
     
     if (indexPath.section == 2) {
         [SQLManager shareUserInfo].myDoingPlan = nil;
-        
+        [SQLManager shareUserInfo].myDoingPerform = nil;
         [UserInfo shareUserInfo].userCode = nil;
+        [UserInfo shareUserInfo].logoutRestore = YES;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults removeObjectForKey:@"userInfo"];
         [defaults synchronize];

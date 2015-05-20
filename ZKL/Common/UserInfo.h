@@ -59,7 +59,7 @@
 @property (nonatomic, assign) NSInteger userState; // 激活状态 0未激活 1激活
 @property (nonatomic, assign) BOOL      loginRestore;//是否登录过 登录后请求当天的梦想 并显示 默认no 登录后yes 请求完成no
 @property (nonatomic, assign) BOOL      update;//
-
+@property (nonatomic, assign) BOOL      logoutRestore;//是否退出过
 @property (nonatomic, strong) PlanModel *doingPlan;
 
 - (BOOL)isLogin;

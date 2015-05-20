@@ -25,6 +25,7 @@
 @property (nonatomic, assign) BOOL      running;//后台运行
 @property (nonatomic, strong) NSDate    *runningBeginTime;
 @property (nonatomic, assign) BOOL      runningState;//后台运行是是否计时
+@property (nonatomic, strong) PerformModel *myDoingPerform;
 + (SQLManager*)shareUserInfo;
 
 - (void)openDB;
