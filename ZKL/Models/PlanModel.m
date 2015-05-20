@@ -23,8 +23,8 @@
              @"beginDate":@"beginDate",
              @"endDate":@"endDate",
              @"totalHour":@"planMinute",
-             @"unableMinute":@"unableMinute",
-             @"dayCount":@"dayCount"
+             @"restTime":@"unableMinute",
+             @"dayTime":@"dayCount"
              };
 }
 

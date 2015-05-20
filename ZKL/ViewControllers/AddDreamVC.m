@@ -103,7 +103,7 @@
         [self.restTime.TF setText:@"12"];
     }
     [self.restTime setFinished:^(NSString*string){
-        
+        [self countDays];
     }];
     
 //    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleX];
